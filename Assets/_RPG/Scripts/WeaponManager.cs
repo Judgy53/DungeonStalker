@@ -17,6 +17,9 @@ public class WeaponManager : MonoBehaviour
     public IWeapon OffHandWeapon { get { return offHandWeapon; }
         set 
         {
+            if (offHandWeapon != null)
+                UnregisterCallbacks(offHandWeapon);
+
             if (OnOffHandWeaponChange != null)
                 OnOffHandWeaponChange(this, new EventWeaponChange(offHandWeapon));
             offHandWeapon = value;
@@ -28,6 +31,8 @@ public class WeaponManager : MonoBehaviour
                 go.transform.localPosition = Vector3.zero;
                 go.transform.localRotation = Quaternion.identity;
             }
+
+            RegisterCallbacks(offHandWeapon);
         }
     }
 
@@ -37,6 +42,9 @@ public class WeaponManager : MonoBehaviour
         get { return mainHandWeapon; }
         set
         {
+            if (mainHandWeapon != null)
+                UnregisterCallbacks(mainHandWeapon);
+
             if (OnMainHandWeaponChange != null)
                 OnMainHandWeaponChange(this, new EventWeaponChange(mainHandWeapon));
             mainHandWeapon = value;
@@ -48,6 +56,8 @@ public class WeaponManager : MonoBehaviour
                 go.transform.localPosition = Vector3.zero;
                 go.transform.localRotation = Quaternion.identity;
             }
+
+            RegisterCallbacks(mainHandWeapon);
         }
     }
 
@@ -77,25 +87,11 @@ public class WeaponManager : MonoBehaviour
             SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
 
             if (Input.GetButtonDown("Fire1"))
-            {
                 mainHandWeapon.Primary();
-                SetAnimatorTrigger("MainHandPrimary");
-            }
-            else if (Input.GetButtonUp("Fire1"))
-            {
-                mainHandWeapon.EndPrimary();
-                SetAnimatorTrigger("MainHandEndPrimary");
-            }
             if (Input.GetButtonDown("Fire2"))
-            {
                 mainHandWeapon.Secondary();
-                SetAnimatorTrigger("MainHandSecondary");
-            }
             else if (Input.GetButtonUp("Fire2"))
-            {
                 mainHandWeapon.EndSecondary();
-                SetAnimatorTrigger("MainHandEndSecondary");
-            }
         }
         else if (mainHandWeapon != null && offHandWeapon != null)
         {
@@ -108,25 +104,13 @@ public class WeaponManager : MonoBehaviour
             SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
 
             if (Input.GetButtonDown("Fire1"))
-            {
                 mainHandWeapon.Primary();
-                SetAnimatorTrigger("MainHandPrimary");
-            }
             else if (Input.GetButtonUp("Fire1"))
-            {
                 mainHandWeapon.EndPrimary();
-                SetAnimatorTrigger("MainHandEndPrimary");
-            }
             if (Input.GetButtonDown("Fire2"))
-            {
                 offHandWeapon.Primary();
-                SetAnimatorTrigger("OffHandPrimary");
-            }
             else if (Input.GetButtonUp("Fire2"))
-            {
                 offHandWeapon.EndPrimary();
-                SetAnimatorTrigger("OffHandEndPrimary");
-            }
         }
         else if (mainHandWeapon == null && offHandWeapon != null)
         {
@@ -135,26 +119,66 @@ public class WeaponManager : MonoBehaviour
             SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
 
             if (Input.GetButtonDown("Fire1"))
-            {
                 offHandWeapon.Primary();
-                SetAnimatorTrigger("OffHandPrimary");
-            }
             else if (Input.GetButtonUp("Fire1"))
-            {
                 offHandWeapon.EndPrimary();
-                SetAnimatorTrigger("OffHandEndPrimary");
-            }
             if (Input.GetButtonDown("Fire2"))
-            {
                 offHandWeapon.Secondary();
-                SetAnimatorTrigger("OffHandSecondary");
-            }
             else if (Input.GetButtonUp("Fire2"))
-            {
                 offHandWeapon.EndSecondary();
-                SetAnimatorTrigger("OffHandEndSecondary");
-            }
         }
+    }
+
+    private void OnPrimary(object sender, EventArgs args)
+    {
+        IWeapon weapSender = sender as IWeapon;
+        if (weapSender == mainHandWeapon)
+            SetAnimatorTrigger("MainHandPrimary");
+        else
+            SetAnimatorTrigger("OffHandPrimary");
+    }
+
+    private void OnEndPrimary(object sender, EventArgs args)
+    {
+        IWeapon weapSender = sender as IWeapon;
+        if (weapSender == mainHandWeapon)
+            SetAnimatorTrigger("MainHandEndPrimary");
+        else
+            SetAnimatorTrigger("OffHandEndPrimary");
+    }
+
+    private void OnSecondary(object sender, EventArgs args)
+    {
+        IWeapon weapSender = sender as IWeapon;
+        if (weapSender == mainHandWeapon)
+            SetAnimatorTrigger("MainHandSecondary");
+        else
+            SetAnimatorTrigger("OffHandSecondary");
+    }
+
+    private void OnEndSecondary(object sender, EventArgs args)
+    {
+        IWeapon weapSender = sender as IWeapon;
+        if (weapSender == mainHandWeapon)
+            SetAnimatorTrigger("MainHandEndSecondary");
+        else
+            SetAnimatorTrigger("OffHandEndSecondary");
+    }
+
+    private void RegisterCallbacks(IWeapon weapon)
+    {
+        weapon.OnPrimary += OnPrimary;
+        weapon.OnEndPrimary += OnEndPrimary;
+        weapon.OnSecondary += OnSecondary;
+        weapon.OnEndSecondary += OnEndSecondary;
+    }
+
+    private void UnregisterCallbacks(IWeapon weapon)
+    {
+        weapon.OnPrimary -= OnPrimary;
+        weapon.OnEndPrimary -= OnEndPrimary;
+        weapon.OnSecondary -= OnSecondary;
+        weapon.OnEndSecondary -= OnEndSecondary;
     }
 
     private void SetAnimatorTimeModifier(IWeapon weapon, string parameterName)

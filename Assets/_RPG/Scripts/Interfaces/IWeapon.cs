@@ -6,6 +6,11 @@ public interface IWeapon
 {
     event EventHandler OnHit;
 
+    event EventHandler OnPrimary;
+    event EventHandler OnEndPrimary;
+    event EventHandler OnSecondary;
+    event EventHandler OnEndSecondary;
+
     void Primary();
     void EndPrimary();
     void Secondary();

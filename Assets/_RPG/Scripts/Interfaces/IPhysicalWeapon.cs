@@ -4,9 +4,6 @@ using System;
 
 public interface IPhysicalWeapon : IWeapon
 {
-    event EventHandler OnBlock;
-    event EventHandler OnStartAttack;
-
     float Damages { get; set; }
     float AttackSpeed { get; set; }
     float AnimationTime { get; set; }

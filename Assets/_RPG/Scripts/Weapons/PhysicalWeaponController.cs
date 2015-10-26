@@ -8,8 +8,10 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
 
     public event EventHandler OnHit;
 
-    public event EventHandler OnStartAttack;
-    public event EventHandler OnBlock;
+    public event EventHandler OnPrimary;
+    public event EventHandler OnEndPrimary;
+    public event EventHandler OnSecondary;
+    public event EventHandler OnEndSecondary;
 
     [SerializeField]
     private float damages = 1.0f;
@@ -56,7 +58,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             return;
 
         if (useState == WeaponUseState.Default)
+        {
+            if (OnPrimary != null)
+                OnPrimary(this, new EventArgs());
             useState = WeaponUseState.Attacking;
+        }
     }
 
     public void EndPrimary()
