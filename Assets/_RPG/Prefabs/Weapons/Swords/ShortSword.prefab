@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492872}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Helpers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484518}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: EndRaycast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,9 +39,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 461448}
   - 33: {fileID: 3382478}
-  - 65: {fileID: 6509932}
   - 23: {fileID: 2380152}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +56,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 424068}
   - 114: {fileID: 11415648}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ShortSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +72,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 481452}
   - 33: {fileID: 3362204}
-  - 65: {fileID: 6585258}
   - 23: {fileID: 2334936}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,9 +89,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 475374}
   - 33: {fileID: 3389420}
-  - 65: {fileID: 6501778}
   - 23: {fileID: 2334414}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +105,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432394}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StartRaycast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,42 +295,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164832}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6501778
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164832}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6509932
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122782}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6585258
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11415648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,9 +307,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 1
-  damages: 5
-  attackSpeed: 1.20000005
-  animationTime: 1
+  minDamages: 1
+  maxDamages: 3
+  attackSpeed: .400000006
+  animationTime: .800000012
   startRaycast: {fileID: 432394}
   endRaycast: {fileID: 484518}
   weaponHand: 0
