@@ -3,8 +3,14 @@ using System.Collections;
 
 public class UsableDoor : MonoBehaviour, IUsable
 {
+    private Animator animator = null;
 
     private bool closed = true;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public string GetActionName()
     {
@@ -21,6 +27,11 @@ public class UsableDoor : MonoBehaviour, IUsable
 
     public void Use()
     {
+        if(closed)
+            animator.SetTrigger("DoorOpen");
+        else
+            animator.SetTrigger("DoorClose");
+
         closed = !closed;
     }
 }
