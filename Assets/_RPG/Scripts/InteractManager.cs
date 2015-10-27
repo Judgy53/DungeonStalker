@@ -13,7 +13,9 @@ public class InteractManager : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
+        int layerMask = ~(1 << LayerMask.NameToLayer("FirstPass"));
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, layerMask))
         {
             IUsable usable = hit.collider.GetComponentInParent<IUsable>();
 
