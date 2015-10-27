@@ -67,7 +67,10 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
         if (useState == PhysicalWeaponUseState.Default)
         {
             if (OnPrimary != null)
+            {
                 OnPrimary(this, new EventArgs());
+                OnEndPrimary(this, new EventArgs());
+            }
             useState = PhysicalWeaponUseState.Attacking;
         }
     }
