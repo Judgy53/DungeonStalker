@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SwordOffIdle
+  m_Name: MagicMainIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -17,34 +17,34 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -1.05999994, y: -.629999995, z: 1.13}
-        inSlope: {x: 0, y: .0199999809, z: 0}
-        outSlope: {x: 0, y: .0199999809, z: 0}
+        value: {x: .799999952, y: -.524999976, z: .970000029}
+        inSlope: {x: -.0999999642, y: .0499999821, z: 0}
+        outSlope: {x: -.0999999642, y: .0499999821, z: 0}
         tangentMode: 0
       - time: 1
-        value: {x: -1.05999994, y: -.610000014, z: 1.13}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: .699999988, y: -.474999994, z: .970000029}
+        inSlope: {x: 2.98023224e-08, y: 0, z: 0}
+        outSlope: {x: 2.98023224e-08, y: 0, z: 0}
         tangentMode: 0
       - time: 2
-        value: {x: -1.05999994, y: -.629999995, z: 1.13}
-        inSlope: {x: 0, y: -.0199999809, z: 0}
-        outSlope: {x: 0, y: -.0199999809, z: 0}
+        value: {x: .800000012, y: -.524999976, z: .970000029}
+        inSlope: {x: .100000024, y: -.0499999821, z: 0}
+        outSlope: {x: .100000024, y: -.0499999821, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Leftarm
+    path: RightArm
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
-  m_SampleRate: 12
+  m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 3553512506
+    - path: 1806956327
       attribute: 1
       script: {fileID: 0}
       classID: 4
@@ -73,72 +73,72 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -1.05999994
-        inSlope: 0
-        outSlope: 0
+        value: .799999952
+        inSlope: -.0999999642
+        outSlope: -.0999999642
         tangentMode: 10
       - time: 1
-        value: -1.05999994
-        inSlope: 0
-        outSlope: 0
+        value: .699999988
+        inSlope: 2.98023224e-08
+        outSlope: 2.98023224e-08
         tangentMode: 10
       - time: 2
-        value: -1.05999994
-        inSlope: 0
-        outSlope: 0
+        value: .800000012
+        inSlope: .100000024
+        outSlope: .100000024
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
-    path: Leftarm
+    path: RightArm
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -.629999995
-        inSlope: .0199999809
-        outSlope: .0199999809
+        value: -.524999976
+        inSlope: .0499999821
+        outSlope: .0499999821
         tangentMode: 10
       - time: 1
-        value: -.610000014
+        value: -.474999994
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       - time: 2
-        value: -.629999995
-        inSlope: -.0199999809
-        outSlope: -.0199999809
+        value: -.524999976
+        inSlope: -.0499999821
+        outSlope: -.0499999821
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
-    path: Leftarm
+    path: RightArm
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1.13
+        value: .970000029
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       - time: 1
-        value: 1.13
+        value: .970000029
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       - time: 2
-        value: 1.13
+        value: .970000029
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
-    path: Leftarm
+    path: RightArm
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
