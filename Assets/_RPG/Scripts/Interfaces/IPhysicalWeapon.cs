@@ -12,10 +12,10 @@ public interface IPhysicalWeapon : IWeapon
     Transform StartRaycast { get; }
     Transform EndRaycast { get; }
 
-    WeaponUseState UseState { get; }
+    PhysicalWeaponUseState UseState { get; }
 }
 
-public enum WeaponUseState
+public enum PhysicalWeaponUseState
 {
     Default,
     Attacking,

@@ -52,8 +52,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
     private WeaponType weaponType = WeaponType.Sword;
     public WeaponType WeaponType { get { return weaponType; } }
 
-    private WeaponUseState useState = WeaponUseState.Default;
-    public WeaponUseState UseState { get { return useState; } }
+    private PhysicalWeaponUseState useState = PhysicalWeaponUseState.Default;
+    public PhysicalWeaponUseState UseState { get { return useState; } }
 
     private float useTimer = 0.0f;
 
@@ -64,11 +64,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
         if (!canUse) 
             return;
 
-        if (useState == WeaponUseState.Default)
+        if (useState == PhysicalWeaponUseState.Default)
         {
             if (OnPrimary != null)
                 OnPrimary(this, new EventArgs());
-            useState = WeaponUseState.Attacking;
+            useState = PhysicalWeaponUseState.Attacking;
         }
     }
 
@@ -81,11 +81,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
         if (!canUse)
             return;
 
-        if (useState == WeaponUseState.Default)
+        if (useState == PhysicalWeaponUseState.Default)
         {
             if (OnSecondary != null)
                 OnSecondary(this, new EventArgs());
-            useState = WeaponUseState.Blocking;
+            useState = PhysicalWeaponUseState.Blocking;
         }
     }
 
@@ -94,11 +94,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
         if (!canUse)
             return;
 
-        if (useState == WeaponUseState.Blocking)
+        if (useState == PhysicalWeaponUseState.Blocking)
         {
             if (OnEndSecondary != null)
                 OnEndSecondary(this, new EventArgs());
-            useState = WeaponUseState.Default;
+            useState = PhysicalWeaponUseState.Default;
         }
     }
 
@@ -116,7 +116,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
 
     private void FixedUpdate()
     {
-        if (useState == WeaponUseState.Attacking)
+        if (useState == PhysicalWeaponUseState.Attacking)
         {
             useTimer += Time.fixedDeltaTime;
 
@@ -139,7 +139,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             if (useTimer >= attackSpeed)
             {
                 useTimer = 0.0f;
-                useState = WeaponUseState.Default;
+                useState = PhysicalWeaponUseState.Default;
                 hits.Clear();
             }
         }
