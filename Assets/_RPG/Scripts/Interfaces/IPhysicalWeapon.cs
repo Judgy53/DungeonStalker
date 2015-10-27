@@ -4,7 +4,8 @@ using System;
 
 public interface IPhysicalWeapon : IWeapon
 {
-    float Damages { get; set; }
+    float MinDamages { get; set; }
+    float MaxDamages { get; set; }
     float AttackSpeed { get; set; }
     float AnimationTime { get; set; }
 

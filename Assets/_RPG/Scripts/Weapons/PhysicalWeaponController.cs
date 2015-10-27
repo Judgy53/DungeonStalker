@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
 {
@@ -14,8 +15,12 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
     public event EventHandler OnEndSecondary;
 
     [SerializeField]
-    private float damages = 1.0f;
-    public float Damages { get { return damages; } set { damages = value; } }
+    private float minDamages = 1.0f;
+    public float MinDamages { get { return minDamages; } set { minDamages = value; } }
+
+    [SerializeField]
+    private float maxDamages = 1.0f;
+    public float MaxDamages { get { return maxDamages; } set { maxDamages = value; } }
 
     [SerializeField]
     private float attackSpeed = 1.0f;
@@ -52,6 +57,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
 
     private float useTimer = 0.0f;
 
+    private List<IDamageable> hits = new List<IDamageable>();
+
     public void Primary()
     {
         if (!canUse) 
@@ -71,12 +78,28 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
 
     public void Secondary()
     {
-        throw new NotImplementedException();
+        if (!canUse)
+            return;
+
+        if (useState == WeaponUseState.Default)
+        {
+            if (OnSecondary != null)
+                OnSecondary(this, new EventArgs());
+            useState = WeaponUseState.Blocking;
+        }
     }
 
     public void EndSecondary()
     {
-        throw new NotImplementedException();
+        if (!canUse)
+            return;
+
+        if (useState == WeaponUseState.Blocking)
+        {
+            if (OnEndSecondary != null)
+                OnEndSecondary(this, new EventArgs());
+            useState = WeaponUseState.Default;
+        }
     }
 
     private void Start()
@@ -100,17 +123,24 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             Ray ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
             RaycastHit[] hitInfos = Physics.RaycastAll(ray, raycastDistance);
 
-#pragma warning disable 0168
             foreach (var hit in hitInfos)
             {
-                throw new NotImplementedException();
+                IDamageable damageable = null;
+                if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+                {
+                    if (!hits.Exists(x => x == damageable))
+                    {
+                        damageable.AddDamage(UnityEngine.Random.Range(minDamages, maxDamages));
+                        hits.Add(damageable);
+                    }
+                }
             }
-#pragma warning restore 0168
 
             if (useTimer >= attackSpeed)
             {
                 useTimer = 0.0f;
                 useState = WeaponUseState.Default;
+                hits.Clear();
             }
         }
     }

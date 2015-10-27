@@ -755,6 +755,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11415648, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
+      propertyPath: attackSpeed
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415648, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
+      propertyPath: animationTime
+      value: .800000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
   m_IsPrefabParent: 0

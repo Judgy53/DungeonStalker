@@ -82,7 +82,6 @@ public class WeaponManager : MonoBehaviour
 
         if (mainHandWeapon != null && offHandWeapon == null)
         {
-            SetAnimatorTimeModifier(mainHandWeapon, "MainHandTimeModifier");
             SetAnimatorHandsRestriction(mainHandWeapon, "HandRestriction");
             SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
 
@@ -95,12 +94,9 @@ public class WeaponManager : MonoBehaviour
         }
         else if (mainHandWeapon != null && offHandWeapon != null)
         {
-            SetAnimatorTimeModifier(mainHandWeapon, "MainHandTimeModifier");
             SetAnimatorHandsRestriction(mainHandWeapon, "HandRestriction");
-            SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
 
-            SetAnimatorTimeModifier(offHandWeapon, "OffHandTimeModifier");
-            //SetAnimatorHandsRestriction(offHandWeapon, "OffHandRestriction");
+            SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
             SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
 
             if (Input.GetButtonDown("Fire1"))
@@ -114,7 +110,6 @@ public class WeaponManager : MonoBehaviour
         }
         else if (mainHandWeapon == null && offHandWeapon != null)
         {
-            SetAnimatorTimeModifier(offHandWeapon, "OffHandTimeModifier");
             SetAnimatorHandsRestriction(offHandWeapon, "HandRestriction");
             SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
 
@@ -127,6 +122,10 @@ public class WeaponManager : MonoBehaviour
             else if (Input.GetButtonUp("Fire2"))
                 offHandWeapon.EndSecondary();
         }
+
+        //You cannot adjust an animation speed with a parameter in blend trees, thanks Unity ...
+        UpdateHitAnimatorSpeed("MainHand", mainHandWeapon);
+        //UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
     }
 
     private void OnPrimary(object sender, EventArgs args)
@@ -204,6 +203,19 @@ public class WeaponManager : MonoBehaviour
     {
         if (armsAnimator != null)
             armsAnimator.SetTrigger(parameterName);
+    }
+
+    private void UpdateHitAnimatorSpeed(string layerName, IWeapon weapon)
+    {
+        if (armsAnimator == null)
+            return;
+
+        AnimatorStateInfo stateInfo = armsAnimator.GetCurrentAnimatorStateInfo(armsAnimator.GetLayerIndex(layerName));
+
+        if (stateInfo.IsName(layerName + ".Primary"))
+            armsAnimator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
+        else
+            armsAnimator.speed = 1.0f;
     }
 }
 
