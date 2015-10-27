@@ -120,8 +120,25 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
         {
             useTimer += Time.fixedDeltaTime;
 
-            Ray ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
-            RaycastHit[] hitInfos = Physics.RaycastAll(ray, raycastDistance);
+            Ray ray = new Ray(transform.root.position, startRaycast.position - transform.root.position);
+            float rootDistance = Vector3.Distance(transform.root.position, startRaycast.position - transform.root.position);
+            RaycastHit[] hitInfos = Physics.RaycastAll(ray, rootDistance);
+
+            foreach (var hit in hitInfos)
+            {
+                IDamageable damageable = null;
+                if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+                {
+                    if (!hits.Exists(x => x == damageable))
+                    {
+                        damageable.AddDamage(UnityEngine.Random.Range(minDamages, maxDamages));
+                        hits.Add(damageable);
+                    }
+                }
+            }
+
+            ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
+            hitInfos = Physics.RaycastAll(ray, raycastDistance);
 
             foreach (var hit in hitInfos)
             {
