@@ -15,7 +15,7 @@ public class InteractManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
         {
-            IUsable usable = hit.collider.GetComponent<IUsable>();
+            IUsable usable = hit.collider.GetComponentInParent<IUsable>();
 
             target = usable;
         }
@@ -28,5 +28,7 @@ public class InteractManager : MonoBehaviour
         {
             target.Use();
         }
+
+        Debug.DrawLine(transform.position, transform.position + transform.forward * maxDistance, Color.red);
     }
 }
