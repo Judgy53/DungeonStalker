@@ -28,6 +28,7 @@ public class WeaponManager : MonoBehaviour
             {
                 GameObject go = (offHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(offHandWeaponPoint);
+                go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
                 go.transform.localPosition = Vector3.zero;
                 go.transform.localRotation = Quaternion.identity;
             }
@@ -53,6 +54,7 @@ public class WeaponManager : MonoBehaviour
             {
                 GameObject go = (mainHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(mainHandWeaponPoint);
+                go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
                 go.transform.localPosition = Vector3.zero;
                 go.transform.localRotation = Quaternion.identity;
             }
@@ -77,52 +79,6 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (mainHandWeapon == null && offHandWeapon == null)
-            return;
-
-        if (mainHandWeapon != null && offHandWeapon == null)
-        {
-            SetAnimatorHandsRestriction(mainHandWeapon, "HandRestriction");
-            SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
-
-            if (Input.GetButtonDown("Fire1"))
-                mainHandWeapon.Primary();
-            if (Input.GetButtonDown("Fire2"))
-                mainHandWeapon.Secondary();
-            else if (Input.GetButtonUp("Fire2"))
-                mainHandWeapon.EndSecondary();
-        }
-        else if (mainHandWeapon != null && offHandWeapon != null)
-        {
-            SetAnimatorHandsRestriction(mainHandWeapon, "HandRestriction");
-
-            SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
-            SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
-
-            if (Input.GetButtonDown("Fire1"))
-                mainHandWeapon.Primary();
-            else if (Input.GetButtonUp("Fire1"))
-                mainHandWeapon.EndPrimary();
-            if (Input.GetButtonDown("Fire2"))
-                offHandWeapon.Primary();
-            else if (Input.GetButtonUp("Fire2"))
-                offHandWeapon.EndPrimary();
-        }
-        else if (mainHandWeapon == null && offHandWeapon != null)
-        {
-            SetAnimatorHandsRestriction(offHandWeapon, "HandRestriction");
-            SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
-
-            if (Input.GetButtonDown("Fire1"))
-                offHandWeapon.Primary();
-            else if (Input.GetButtonUp("Fire1"))
-                offHandWeapon.EndPrimary();
-            if (Input.GetButtonDown("Fire2"))
-                offHandWeapon.Secondary();
-            else if (Input.GetButtonUp("Fire2"))
-                offHandWeapon.EndSecondary();
-        }
-
         //You cannot adjust an animation speed with a parameter in blend trees, thanks Unity ...
         UpdateHitAnimatorSpeed("MainHand", mainHandWeapon);
         //UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
@@ -216,6 +172,58 @@ public class WeaponManager : MonoBehaviour
             armsAnimator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
         else
             armsAnimator.speed = 1.0f;
+    }
+
+    /// <summary>
+    /// Try to call Primary use for weapon (Will call main hand primary if not wearing offhand weapon)
+    /// </summary>
+    /// <param name="weapon">0 : main hand, 1 : off hand</param>
+    public void Primary(int weapon)
+    {
+        if (offHandWeapon != null && weapon != 0)
+            offHandWeapon.Primary();
+        else if (mainHandWeapon != null)
+            mainHandWeapon.Primary();
+    }
+    
+    /// <summary>
+    /// Try to call Primary use for weapon (Will call main hand primary if not wearing offhand weapon)
+    /// </summary>
+    /// <param name="weapon">0 : main hand, 1 : off hand</param>
+    public void EndPrimary(int weapon)
+    {
+        if (offHandWeapon != null && weapon != 0)
+            offHandWeapon.EndPrimary();
+        else if (mainHandWeapon != null)
+            mainHandWeapon.EndPrimary();
+    }
+
+    /// <summary>
+    /// Try to call Secondary use for offhand weapon, if not wearing a offhand weapon, then it'll try to call the main hand one. (Will call main hand Primary if using two weapons)
+    /// </summary>
+    public void Secondary()
+    {
+        if (mainHandWeapon != null && offHandWeapon != null)
+            Primary(0);
+
+        if (offHandWeapon != null)
+            offHandWeapon.Secondary();
+        else if (mainHandWeapon != null)
+            mainHandWeapon.Secondary();    
+    }
+
+    /// <summary>
+    /// Try to call EndSecondary use for offhand weapon, if not wearing a offhand weapon, then it'll try to call the main hand one. (Will call main hand EndPrimary if using two weapons)
+    /// </summary>
+    public void EndSecondary()
+    {
+        if (mainHandWeapon != null && offHandWeapon != null)
+            EndPrimary(0);
+
+        if (offHandWeapon != null)
+            offHandWeapon.EndSecondary();
+        else if (mainHandWeapon != null)
+            mainHandWeapon.EndSecondary();  
     }
 }
 

@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492872}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Helpers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484518}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: EndRaycast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - 33: {fileID: 3382478}
   - 65: {fileID: 6509932}
   - 23: {fileID: 2380152}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 424068}
   - 114: {fileID: 11415648}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ShortSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - 33: {fileID: 3362204}
   - 65: {fileID: 6585258}
   - 23: {fileID: 2334936}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - 33: {fileID: 3389420}
   - 65: {fileID: 6501778}
   - 23: {fileID: 2334414}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432394}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StartRaycast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,9 +346,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 1
-  damages: 5
-  attackSpeed: 1.20000005
-  animationTime: 1
+  minDamages: 1
+  maxDamages: 3
+  attackSpeed: .400000006
+  animationTime: .800000012
   startRaycast: {fileID: 432394}
   endRaycast: {fileID: 484518}
   weaponHand: 0

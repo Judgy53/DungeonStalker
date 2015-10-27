@@ -20,14 +20,30 @@ public class UserInputController : MonoBehaviour, IControls
     private float gravityMultiplier = 1.0f;
     public float GravityMultiplier { get { return gravityMultiplier; } set { gravityMultiplier = value; } }
 
+    private WeaponManager weaponManager = null;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
+        weaponManager = GetComponent<WeaponManager>();
     }
 
     private void Update()
     {
         horizontalInputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (weaponManager != null)
+        {
+            if (Input.GetButtonDown("Fire1"))
+                weaponManager.Primary(1);
+            else if (Input.GetButtonUp("Fire1"))
+                weaponManager.EndPrimary(1);
+
+            if (Input.GetButtonDown("Fire2"))
+                weaponManager.Secondary();
+            else if (Input.GetButtonUp("Fire2"))
+                weaponManager.EndSecondary();
+        }
     }
 
     private void FixedUpdate()
