@@ -1216,6 +1216,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11415648, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
+      propertyPath: hitEffectPrefab
+      value: 
+      objectReference: {fileID: 172656, guid: a5d1e1cad3b926e4485c2e37fc8fc628, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
   m_IsPrefabParent: 0

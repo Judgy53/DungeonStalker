@@ -12,13 +12,23 @@ public class HealthManager : MonoBehaviour, IDamageable
 
     public float Damage { get { return maxHealth - currentHealth; } }
 
+    private EffectManager effectManager = null;
+
     private void Start()
     {
         currentHealth = maxHealth;
+        effectManager = GetComponent<EffectManager>();
     }
 
     public void AddDamage(float damage)
     {
+        if (effectManager != null)
+        {
+            IDamageReceivedEffect[] effects = effectManager.GetEffects<IDamageReceivedEffect>();
+            foreach (var e in effects)
+                e.ApplyDamageModifier(ref damage);
+        }
+
         currentHealth -= damage;
 
         if (currentHealth <= 0f)

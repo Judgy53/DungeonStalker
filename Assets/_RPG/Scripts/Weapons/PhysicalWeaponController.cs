@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
+public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockable
 {
     public bool canUse = true;
 
@@ -13,6 +13,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
     public event EventHandler OnEndPrimary;
     public event EventHandler OnSecondary;
     public event EventHandler OnEndSecondary;
+
+    public GameObject hitEffectPrefab = null;
 
     [SerializeField]
     private float minDamages = 1.0f;
@@ -25,6 +27,14 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
     [SerializeField]
     private float attackSpeed = 1.0f;
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
+
+    [SerializeField]
+    private float minBlockValue = 0.2f;
+    public float MinBlockValue { get { return minBlockValue; } set { minBlockValue = value; } }
+
+    [SerializeField]
+    private float maxBlockValue = 1.5f;
+    public float MaxBlockValue { get { return maxBlockValue; } set { maxBlockValue = value; } }
 
     [SerializeField]
     private float animationTime = 1.0f;
@@ -59,6 +69,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
 
     private List<IDamageable> hits = new List<IDamageable>();
 
+    private BlockEffect blockEffect = null;
+
     public void Primary()
     {
         if (!canUse) 
@@ -86,6 +98,13 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             if (OnSecondary != null)
                 OnSecondary(this, new EventArgs());
             useState = WeaponUseState.Blocking;
+
+            EffectManager manager = GetComponentInParent<EffectManager>();
+            if (manager != null)
+            {
+                blockEffect = new BlockEffect(minBlockValue, maxBlockValue);
+                manager.AddEffect(blockEffect);
+            }
         }
     }
 
@@ -99,6 +118,13 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             if (OnEndSecondary != null)
                 OnEndSecondary(this, new EventArgs());
             useState = WeaponUseState.Default;
+
+            EffectManager manager = GetComponentInParent<EffectManager>();
+            if (manager != null && blockEffect != null)
+            {
+                manager.RemoveEffect(blockEffect);
+                blockEffect = null;
+            }
         }
     }
 
@@ -128,13 +154,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             {
                 IDamageable damageable = null;
                 if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
-                {
-                    if (!hits.Exists(x => x == damageable))
-                    {
-                        damageable.AddDamage(UnityEngine.Random.Range(minDamages, maxDamages));
-                        hits.Add(damageable);
-                    }
-                }
+                    TryRegisterHit(hit, damageable);
             }
 
             ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
@@ -144,13 +164,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
             {
                 IDamageable damageable = null;
                 if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
-                {
-                    if (!hits.Exists(x => x == damageable))
-                    {
-                        damageable.AddDamage(UnityEngine.Random.Range(minDamages, maxDamages));
-                        hits.Add(damageable);
-                    }
-                }
+                    TryRegisterHit(hit, damageable);
             }
 
             if (useTimer >= attackSpeed)
@@ -158,6 +172,24 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon
                 useTimer = 0.0f;
                 useState = WeaponUseState.Default;
                 hits.Clear();
+            }
+        }
+    }
+
+    private void TryRegisterHit(RaycastHit hit, IDamageable damageable)
+    {
+        if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+        {
+            if (!hits.Exists(x => x == damageable))
+            {
+                damageable.AddDamage(UnityEngine.Random.Range(minDamages, maxDamages));
+                hits.Add(damageable);
+
+                if (hitEffectPrefab != null)
+                    GameObject.Destroy(GameObject.Instantiate(hitEffectPrefab, hit.point, Quaternion.identity), 5.0f);
+
+                if (OnHit != null)
+                    OnHit(this, new EventArgs());
             }
         }
     }

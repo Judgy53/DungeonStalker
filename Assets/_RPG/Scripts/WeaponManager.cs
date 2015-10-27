@@ -80,8 +80,18 @@ public class WeaponManager : MonoBehaviour
     private void Update()
     {
         //You cannot adjust an animation speed with a parameter in blend trees, thanks Unity ...
-        UpdateHitAnimatorSpeed("MainHand", mainHandWeapon);
-        //UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
+        
+        if (mainHandWeapon != null)
+        {
+            SetAnimatorHandsRestriction(mainHandWeapon, "HandRestriction");
+            UpdateHitAnimatorSpeed("MainHand", mainHandWeapon);
+            SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
+        }
+        if (offHandWeapon != null)
+        {
+            //UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
+            SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
+        }
     }
 
     private void OnPrimary(object sender, EventArgs args)
