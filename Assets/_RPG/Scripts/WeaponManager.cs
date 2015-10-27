@@ -146,13 +146,6 @@ public class WeaponManager : MonoBehaviour
         weapon.OnEndSecondary -= OnEndSecondary;
     }
 
-    private void SetAnimatorTimeModifier(IWeapon weapon, string parameterName)
-    {
-        if (weapon is IPhysicalWeapon)
-            if (armsAnimator != null)
-                armsAnimator.SetFloat(parameterName, 1.0f / (weapon as IPhysicalWeapon).AnimationTime);
-    }
-
     private void SetAnimatorHandsRestriction(IWeapon weapon, string parameterName)
     {
         if (armsAnimator != null)
@@ -179,7 +172,10 @@ public class WeaponManager : MonoBehaviour
         AnimatorStateInfo stateInfo = armsAnimator.GetCurrentAnimatorStateInfo(armsAnimator.GetLayerIndex(layerName));
 
         if (stateInfo.IsName(layerName + ".Primary"))
-            armsAnimator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
+            if (weapon is IPhysicalWeapon)
+                armsAnimator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
+            else
+                armsAnimator.speed = 1.0f;
         else
             armsAnimator.speed = 1.0f;
     }
