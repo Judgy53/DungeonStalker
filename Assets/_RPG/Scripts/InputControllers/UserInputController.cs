@@ -22,10 +22,13 @@ public class UserInputController : MonoBehaviour, IControls
 
     private WeaponManager weaponManager = null;
 
+    private EffectManager effectManager = null;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
         weaponManager = GetComponent<WeaponManager>();
+        effectManager = GetComponent<EffectManager>();
     }
 
     private void Update()
@@ -50,6 +53,14 @@ public class UserInputController : MonoBehaviour, IControls
     {
         Vector3 frameVelocity = moveSpeed;
         frameVelocity.Scale(new Vector3(horizontalInputs.x, 0.0f, horizontalInputs.y));
+
+        if (effectManager != null)
+        {
+            IMovementEffect[] effects = effectManager.GetEffects<IMovementEffect>();
+            foreach (IMovementEffect e in effects)
+                e.ApplyMovementEffect(ref frameVelocity);
+        }
+
         velocity = transform.TransformDirection(frameVelocity * Time.fixedDeltaTime);
 
         velocity += Physics.gravity * gravityMultiplier * Time.fixedDeltaTime;

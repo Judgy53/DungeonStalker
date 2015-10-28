@@ -3,7 +3,6 @@ using System.Collections;
 
 public class InteractManager : MonoBehaviour
 {
-
     private IUsable target = null;
     public IUsable Target { get { return target; } }
 
@@ -28,7 +27,7 @@ public class InteractManager : MonoBehaviour
 
         if (target != null && Input.GetKeyDown(KeyCode.E))
         {
-            target.Use();
+            target.Use(this);
         }
 
         Debug.DrawLine(transform.position, transform.position + transform.forward * maxDistance, Color.red);
