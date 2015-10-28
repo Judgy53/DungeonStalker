@@ -307,9 +307,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 1
+  hitEffectPrefab: {fileID: 172656, guid: a5d1e1cad3b926e4485c2e37fc8fc628, type: 2}
   minDamages: 1
   maxDamages: 3
   attackSpeed: .400000006
+  minBlockValue: .800000012
+  maxBlockValue: 3
   animationTime: .800000012
   startRaycast: {fileID: 432394}
   endRaycast: {fileID: 484518}
