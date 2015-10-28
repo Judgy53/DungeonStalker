@@ -15,6 +15,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public event EventHandler OnEndSecondary;
 
     [SerializeField]
+    private Vector3 handOffset = new Vector3(1.0f, 0.75f, 0.0f);
+    public Vector3 HandOffset { get { return handOffset; } }
+
+    [SerializeField]
     private float minDamages = 1.0f;
     public float MinDamages { get { return minDamages; } set { minDamages = value; } }
 
