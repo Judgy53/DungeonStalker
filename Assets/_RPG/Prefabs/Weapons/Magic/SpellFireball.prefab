@@ -74,14 +74,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 1
-  minDamages: 1
-  maxDamages: 1
+  handOffset: {x: 0, y: 1, z: 0}
+  minDamages: 2
+  maxDamages: 10
   maxChargeTime: 1
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 6
   chargeScaleFactor: 1.29999995
   projectilePrefab: {fileID: 147408, guid: 818b9eaaf062c2c44adeaae529bb34d0, type: 2}
+  cooldown: 1
 --- !u!135 &13598734
 SphereCollider:
   m_ObjectHideFlags: 1
