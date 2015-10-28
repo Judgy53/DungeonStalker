@@ -29,7 +29,7 @@ public class WeaponManager : MonoBehaviour
                 GameObject go = (offHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(offHandWeaponPoint);
                 go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
-                go.transform.localPosition = Vector3.zero;
+                go.transform.localPosition = new Vector3(-mainHandWeapon.HandOffset.x, mainHandWeapon.HandOffset.y, mainHandWeapon.HandOffset.z);
                 go.transform.localRotation = Quaternion.identity;
             }
 
@@ -55,7 +55,7 @@ public class WeaponManager : MonoBehaviour
                 GameObject go = (mainHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(mainHandWeaponPoint);
                 go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
-                go.transform.localPosition = Vector3.zero;
+                go.transform.localPosition = mainHandWeapon.HandOffset;
                 go.transform.localRotation = Quaternion.identity;
             }
 

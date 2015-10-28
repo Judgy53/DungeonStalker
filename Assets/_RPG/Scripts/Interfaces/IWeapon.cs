@@ -11,6 +11,8 @@ public interface IWeapon
     event EventHandler OnSecondary;
     event EventHandler OnEndSecondary;
 
+    Vector3 HandOffset { get; }
+
     void Primary();
     void EndPrimary();
     void Secondary();
