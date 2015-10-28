@@ -22,7 +22,6 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     private float minDamages = 1.0f;
     public float MinDamages { get { return minDamages; } set { minDamages = value; } }
 
-
     [SerializeField]
     private float maxDamages = 1.0f;
     public float MaxDamages { get { return maxDamages; } set { maxDamages = value; } }
@@ -57,8 +56,18 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     private GameObject projectilePrefab = null;
     public GameObject ProjectilePrefab { get { return projectilePrefab; } }
 
+    [SerializeField]
+    private float cooldown = 1.0f;
+    public float Cooldown { get { return cooldown; } set { cooldown = value; } }
+
+    private float timeToWait = 1.0f;
+
     private Vector3 baseScale;
 
+    private void Start()
+    {
+        timeToWait = cooldown;
+    }
 
     public void Primary()
     {
@@ -98,7 +107,13 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     private void FixedUpdate()
     {
-        if (useState == MagicalWeaponUseState.Charging)
+        if(useState == MagicalWeaponUseState.Default)
+        {
+            timeToWait = Mathf.Max(timeToWait - Time.fixedDeltaTime, 0f);
+            if (timeToWait == 0f)
+                canUse = true;
+        }
+        else if (useState == MagicalWeaponUseState.Charging)
         {
             currentChargeTime = Mathf.Min(currentChargeTime + Time.fixedDeltaTime, maxChargeTime);
 
@@ -116,6 +131,9 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
             currentChargeTime = 0f;
             transform.localScale = baseScale;
             useState = MagicalWeaponUseState.Default;
+
+            canUse = false;
+            timeToWait = cooldown;
         }
     }
 

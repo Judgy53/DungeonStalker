@@ -5,7 +5,7 @@ public class MagicProjectileFireball : MagicProjectile
 {
 
     [SerializeField]
-    private float summonDistance = 2.0f;
+    private float summonDistance = 1.0f;
 
     [SerializeField]
     private float speed = 10.0f;
