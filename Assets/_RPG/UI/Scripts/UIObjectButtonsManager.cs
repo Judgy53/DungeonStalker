@@ -9,6 +9,8 @@ public class UIObjectButtonsManager : MonoBehaviour
     public bool autoAddListeners = true;
 
     public Button useButton = null;
+    public Button mainHandEquipButton = null;
+    public Button offHandEquipButton = null;
     public Button dropButton = null;
 
     private IItem lastSelectedItem = null;
@@ -19,6 +21,7 @@ public class UIObjectButtonsManager : MonoBehaviour
         {
             Debug.LogError("No inventoryManager defined on " + this.name);
             enabled = false;
+            return;
         }
 
         inventoryListManager.OnItemFocusChange += OnItemFocusChangeCallback;
@@ -27,6 +30,10 @@ public class UIObjectButtonsManager : MonoBehaviour
         {
             if (useButton != null)
                 useButton.onClick.AddListener(OnUseCallback);
+            if (mainHandEquipButton != null)
+                mainHandEquipButton.onClick.AddListener(OnMainHandEquipCallback);
+            if (offHandEquipButton != null)
+                offHandEquipButton.onClick.AddListener(OnOffHandEquipCallback);
             if (dropButton != null)
                 dropButton.onClick.AddListener(OnDropCallback);
         }
@@ -56,16 +63,38 @@ public class UIObjectButtonsManager : MonoBehaviour
     private void OnUseCallback()
     {
         if (lastSelectedItem is IUsable)
+        {
             (lastSelectedItem as IUsable).Use((lastSelectedItem as Behaviour).GetComponentInParent<InteractManager>());
 
-        inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
-        inventoryListManager.SelectFirst();
+            inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+            inventoryListManager.SelectFirst();
+        }
     }
 
     private void OnDropCallback()
     {
         if (lastSelectedItem.CanDrop)
+        {
             GetComponentInParent<UIItemPauseMenu>().target.DropItem(lastSelectedItem);
+
+            inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+            inventoryListManager.SelectFirst();
+        }
+    }
+
+    private void OnMainHandEquipCallback()
+    {
+        if (lastSelectedItem is ItemWeapon)
+            (lastSelectedItem as ItemWeapon).Use((lastSelectedItem as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.MainHand));
+
+        inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+        inventoryListManager.SelectFirst();
+    }
+
+    private void OnOffHandEquipCallback()
+    {
+        if (lastSelectedItem is ItemWeapon)
+            (lastSelectedItem as ItemWeapon).Use((lastSelectedItem as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.OffHand));
 
         inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
         inventoryListManager.SelectFirst();
@@ -75,50 +104,68 @@ public class UIObjectButtonsManager : MonoBehaviour
     {
         if (args.newItem == null)
         {
-            if (useButton != null)
-            {
-                useButton.enabled = false;
-                useButton.GetComponent<Image>().enabled = false;
-                useButton.GetComponentInChildren<Text>().enabled = false;
-            }
-
-            if (dropButton != null)
-            {
-                dropButton.enabled = false;
-                dropButton.GetComponent<Image>().enabled = false;
-                dropButton.GetComponentInChildren<Text>().enabled = false;
-            }
+            ChangeButtonState(useButton, false);
+            ChangeButtonState(dropButton, false);
+            ChangeButtonState(mainHandEquipButton, false);
+            ChangeButtonState(offHandEquipButton, false);
 
             return;
         }
         else
         {
+            ChangeButtonState(useButton, true);
+            ChangeButtonState(dropButton, true);
+            ChangeButtonState(mainHandEquipButton, true);
+            ChangeButtonState(offHandEquipButton, true);
+        }
+
+        if (args.newItem is ItemWeapon)
+        {
+            ChangeButtonState(useButton, false);
+
+            switch ((args.newItem as ItemWeapon).Restriction)
+            {
+                case WeaponRestriction.Both:
+                    ChangeButtonState(mainHandEquipButton, true);
+                    ChangeButtonState(offHandEquipButton, true);
+                    break;
+                case WeaponRestriction.MainHand:
+                    ChangeButtonState(mainHandEquipButton, true);
+                    ChangeButtonState(offHandEquipButton, false);
+                    break;
+                case WeaponRestriction.OffHand:
+                    ChangeButtonState(mainHandEquipButton, false);
+                    ChangeButtonState(offHandEquipButton, true);
+                    break;
+            }
+        }
+        else
+        {
+            ChangeButtonState(mainHandEquipButton, false);
+            ChangeButtonState(offHandEquipButton, false);
+
             if (useButton != null)
             {
-                useButton.enabled = true;
-                useButton.GetComponent<Image>().enabled = true;
-                useButton.GetComponentInChildren<Text>().enabled = true;
+                if (args.newItem is IUsable)
+                    useButton.gameObject.SetActive(true);
+                else
+                    useButton.gameObject.SetActive(false);
             }
 
             if (dropButton != null)
-            {
-                dropButton.enabled = true;
-                dropButton.GetComponent<Image>().enabled = true;
-                dropButton.GetComponentInChildren<Text>().enabled = true;
-            }
+                dropButton.gameObject.SetActive(args.newItem.CanDrop);
         }
-
-        if (useButton != null)
-        {
-            if (args.newItem is IUsable)
-                useButton.gameObject.SetActive(true);
-            else
-                useButton.gameObject.SetActive(false);
-        }
-
-        if (dropButton != null)
-            dropButton.gameObject.SetActive(args.newItem.CanDrop);
 
         lastSelectedItem = args.newItem;
+    }
+
+    private void ChangeButtonState(Button button, bool state)
+    {
+        if (button != null)
+        {
+            button.enabled = state;
+            button.GetComponent<Image>().enabled = state;
+            button.GetComponentInChildren<Text>().enabled = state;
+        }
     }
 }

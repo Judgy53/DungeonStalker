@@ -25,7 +25,7 @@ public class UsableDoor : MonoBehaviour, IUsable
         return "Usable Door";
     }
 
-    public void Use(InteractManager manager)
+    public void Use(InteractManager manager, UsableArgs args)
     {
         if(closed)
             animator.SetTrigger("DoorOpen");

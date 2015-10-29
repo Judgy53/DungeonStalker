@@ -32,7 +32,7 @@ public class Pickable : MonoBehaviour, IPickable
         return description;
     }
 
-    public void Use(InteractManager user)
+    public void Use(InteractManager user, UsableArgs args)
     {
         if (pickedItemPrefab != null)
         {

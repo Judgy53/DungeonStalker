@@ -75,6 +75,10 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
     private BlockEffect blockEffect = null;
 
+    [SerializeField]
+    private GameObject inventoryItemPrefab = null;
+    public GameObject InventoryItemPrefab { get { return inventoryItemPrefab; } }
+
     public void Primary()
     {
         if (!canUse) 
@@ -201,5 +205,13 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
                     OnHit(this, new EventArgs());
             }
         }
+    }
+
+    public void TransferToContainer(IContainer container)
+    {
+        if (inventoryItemPrefab != null)
+            container.AddItem((GameObject.Instantiate(inventoryItemPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
+
+        GameObject.Destroy(this.gameObject);
     }
 }

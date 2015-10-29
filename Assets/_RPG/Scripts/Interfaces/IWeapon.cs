@@ -21,6 +21,10 @@ public interface IWeapon
     WeaponHand WeaponHand { get; }
     WeaponRestriction WeaponRestrictions { get; }
     WeaponType WeaponType { get; }
+
+    GameObject InventoryItemPrefab { get; }
+
+    void TransferToContainer(IContainer container);
 }
 
 public enum WeaponHand : int

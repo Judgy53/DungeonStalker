@@ -72,6 +72,8 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     private Vector3 baseScale;
 
+    public GameObject InventoryItemPrefab { get { throw new NotImplementedException(); } }
+
     private void Start()
     {
         currentCD = cooldown;
@@ -192,5 +194,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
             return false;
 
         return true;
+    }
+
+    public void TransferToContainer(IContainer container)
+    {
+        throw new NotImplementedException();
     }
 }

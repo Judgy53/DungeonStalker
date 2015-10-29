@@ -40,7 +40,7 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
         return useDescription;
     }
 
-    public void Use(InteractManager manager)
+    public void Use(InteractManager manager, UsableArgs args)
     {
         IDamageable playerHM = GetComponentInParent<IDamageable>();
         if (playerHM != null)

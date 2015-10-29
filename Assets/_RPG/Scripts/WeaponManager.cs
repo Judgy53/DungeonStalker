@@ -18,7 +18,12 @@ public class WeaponManager : MonoBehaviour
         set 
         {
             if (offHandWeapon != null)
+            {
                 UnregisterCallbacks(offHandWeapon);
+                IContainer container = GetComponentInChildren<IContainer>();
+                if (container != null)
+                    offHandWeapon.TransferToContainer(container);
+            }
 
             if (OnOffHandWeaponChange != null)
                 OnOffHandWeaponChange(this, new EventWeaponChange(offHandWeapon));
@@ -29,7 +34,7 @@ public class WeaponManager : MonoBehaviour
                 GameObject go = (offHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(offHandWeaponPoint);
                 go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
-                go.transform.localPosition = new Vector3(-mainHandWeapon.HandOffset.x, mainHandWeapon.HandOffset.y, mainHandWeapon.HandOffset.z);
+                go.transform.localPosition = new Vector3(-offHandWeapon.HandOffset.x, offHandWeapon.HandOffset.y, offHandWeapon.HandOffset.z);
                 go.transform.localRotation = Quaternion.identity;
             }
 
@@ -44,7 +49,12 @@ public class WeaponManager : MonoBehaviour
         set
         {
             if (mainHandWeapon != null)
+            {
                 UnregisterCallbacks(mainHandWeapon);
+                IContainer container = GetComponentInChildren<IContainer>();
+                if (container != null)
+                    mainHandWeapon.TransferToContainer(container);
+            }
 
             if (OnMainHandWeaponChange != null)
                 OnMainHandWeaponChange(this, new EventWeaponChange(mainHandWeapon));
