@@ -5,16 +5,10 @@ public class MagicProjectileFireball : MagicProjectile
 {
 
     [SerializeField]
-    private float summonDistance = 2.0f;
+    private float summonDistance = 1.0f;
 
     [SerializeField]
     private float speed = 10.0f;
-
-    [SerializeField]
-    private float minDamage = 2.0f;
-
-    [SerializeField]
-    private float maxDamage = 10.0f;
 
     private void Start()
     {
@@ -31,14 +25,14 @@ public class MagicProjectileFireball : MagicProjectile
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject == launcher)
+        if (collider.gameObject == launcher.gameObject)
             return;
 
         IDamageable target = collider.gameObject.GetComponent<IDamageable>();
 
         if (target != null)
         {
-            target.AddDamage(minDamage + ((maxDamage - minDamage) * Power));
+            target.AddDamage(Damage);
             //target.AddEffect(EffectType.Burn, 10);
         }
 

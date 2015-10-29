@@ -22,7 +22,6 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     private float minDamages = 1.0f;
     public float MinDamages { get { return minDamages; } set { minDamages = value; } }
 
-
     [SerializeField]
     private float maxDamages = 1.0f;
     public float MaxDamages { get { return maxDamages; } set { maxDamages = value; } }
@@ -50,15 +49,33 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public MagicalWeaponUseState UseState { get { return useState; } }
 
     [SerializeField]
-    private float chargeScaleFactor = 1.0f;
-    public float ChargeScaleFactor { get { return chargeScaleFactor; } }
+    private float sizeChargeScale = 1.0f;
+    public float SizeChargeScale { get { return sizeChargeScale; } }
 
     [SerializeField]
     private GameObject projectilePrefab = null;
     public GameObject ProjectilePrefab { get { return projectilePrefab; } }
 
+    [SerializeField]
+    private float cooldown = 1.0f;
+    public float Cooldown { get { return cooldown; } set { cooldown = value; } }
+
+    private float currentCD = 1.0f;
+
+    [SerializeField]
+    private float manaCost = 10.0f;
+    public float ManaCost { get { return manaCost; } set { manaCost = value; } }
+
+    [SerializeField]
+    private float manaChargeScale = 1.0f;
+    public float ManaChargeScale { get { return manaChargeScale; } set { manaChargeScale = value; } }
+
     private Vector3 baseScale;
 
+    private void Start()
+    {
+        currentCD = cooldown;
+    }
 
     public void Primary()
     {
@@ -98,12 +115,18 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     private void FixedUpdate()
     {
-        if (useState == MagicalWeaponUseState.Charging)
+        if(useState == MagicalWeaponUseState.Default)
+        {
+            currentCD = Mathf.Max(currentCD - Time.fixedDeltaTime, 0f);
+            if (currentCD == 0f)
+                canUse = true;
+        }
+        else if (useState == MagicalWeaponUseState.Charging)
         {
             currentChargeTime = Mathf.Min(currentChargeTime + Time.fixedDeltaTime, maxChargeTime);
 
             float scaleFactor = currentChargeTime / maxChargeTime;
-            scaleFactor *= chargeScaleFactor;
+            scaleFactor *= sizeChargeScale;
             scaleFactor += 1f;
 
             transform.localScale = baseScale * scaleFactor;
@@ -116,29 +139,58 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
             currentChargeTime = 0f;
             transform.localScale = baseScale;
             useState = MagicalWeaponUseState.Default;
+
+            canUse = false;
+            currentCD = cooldown;
         }
     }
 
     private void LaunchProjectile()
     {
+        ManaManager launcher = GetComponentInParent<ManaManager>();
+
+        float chargeNormalized = currentChargeTime / maxChargeTime;
+
+        float realManaCost = manaCost * (1 + ManaChargeScale * chargeNormalized);
+
+        if (CanLaunch(launcher, realManaCost))
+        {
+            GameObject projectile = Instantiate<GameObject>(projectilePrefab);
+
+            MagicProjectile magic = projectile.GetComponent<MagicProjectile>();
+
+            magic.Launcher = launcher;
+            magic.Power = chargeNormalized;
+            magic.Damage = minDamages + ((maxDamages - minDamages) * chargeNormalized);
+
+            launcher.RemoveMana(realManaCost);
+        }
+    }
+
+    private bool CanLaunch(ManaManager launcher, float realManaCost)
+    {
         if (projectilePrefab == null)
         {
             Debug.LogWarning("Not Projectile bound to " + this.name);
-            return;
+            return false;
         }
 
-        GameObject projectile = Instantiate<GameObject>(projectilePrefab);
-
-        MagicProjectile magic = projectile.GetComponent<MagicProjectile>();
-
-        if (magic == null)
+        if(projectilePrefab.GetComponent<MagicProjectile>() == null)
         {
             Debug.LogWarning("Projectile bound to " + this.name + " is not a magic projectile.");
-            Destroy(projectile);
-            return;
+            return false;
         }
 
-        magic.Launcher = GetComponentInParent<WeaponManager>().gameObject;
-        magic.Power = currentChargeTime / maxChargeTime;
+        if (launcher == null)
+        {
+            WeaponManager weaponLauncher = GetComponentInParent<WeaponManager>();
+            Debug.LogWarning(this.name + "launched by " + weaponLauncher.name + " but do not use mana.");
+            return false;
+        }
+
+        if (launcher.CurrentMana < realManaCost)
+            return false;
+
+        return true;
     }
 }

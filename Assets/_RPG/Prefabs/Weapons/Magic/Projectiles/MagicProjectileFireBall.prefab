@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33655ee02cd55634695991cb85a9ea75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  summonDistance: 2
+  summonDistance: 1
   speed: 10
   minDamage: 2
   maxDamage: 10
@@ -118,6 +118,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: summonDistance
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
