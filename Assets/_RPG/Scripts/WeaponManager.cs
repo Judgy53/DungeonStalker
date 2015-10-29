@@ -18,7 +18,12 @@ public class WeaponManager : MonoBehaviour
         set 
         {
             if (offHandWeapon != null)
+            {
                 UnregisterCallbacks(offHandWeapon);
+                IContainer container = GetComponentInChildren<IContainer>();
+                if (container != null)
+                    offHandWeapon.TransferToContainer(container);
+            }
 
             if (OnOffHandWeaponChange != null)
                 OnOffHandWeaponChange(this, new EventWeaponChange(offHandWeapon));
@@ -30,7 +35,11 @@ public class WeaponManager : MonoBehaviour
                 go.transform.SetParent(offHandWeaponPoint);
                 go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
                 go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
-                go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset); // may need a inversion on one dir
+                go.transform.localRotation = Quaternion.identity;
+                // HACK
+                offHandWeaponPoint.DetachChildren();
+                go.transform.localScale = Vector3.one;
+                go.transform.parent = offHandWeaponPoint;
             }
 
             RegisterCallbacks(offHandWeapon);
@@ -44,7 +53,12 @@ public class WeaponManager : MonoBehaviour
         set
         {
             if (mainHandWeapon != null)
+            {
                 UnregisterCallbacks(mainHandWeapon);
+                IContainer container = GetComponentInChildren<IContainer>();
+                if (container != null)
+                    mainHandWeapon.TransferToContainer(container);
+            }
 
             if (OnMainHandWeaponChange != null)
                 OnMainHandWeaponChange(this, new EventWeaponChange(mainHandWeapon));
@@ -56,7 +70,11 @@ public class WeaponManager : MonoBehaviour
                 go.transform.SetParent(mainHandWeaponPoint);
                 go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
                 go.transform.localPosition = mainHandWeapon.HandPositionOffset;
-                go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
+                go.transform.localRotation = Quaternion.identity;
+                // HACK
+                mainHandWeaponPoint.DetachChildren();
+                go.transform.localScale = Vector3.one;
+                go.transform.parent = mainHandWeaponPoint;
             }
 
             RegisterCallbacks(mainHandWeapon);
@@ -88,10 +106,7 @@ public class WeaponManager : MonoBehaviour
             SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
         }
         if (offHandWeapon != null)
-        {
-            //UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
             SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
-        }
     }
 
     private void OnPrimary(object sender, EventArgs args)

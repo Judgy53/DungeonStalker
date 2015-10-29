@@ -1698,6 +1698,10 @@ Prefab:
       propertyPath: interactManager
       value: 
       objectReference: {fileID: 404587100}
+    - target: {fileID: 11490074, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
   m_IsPrefabParent: 0
@@ -1732,7 +1736,7 @@ Transform:
   - {fileID: 120447810}
   - {fileID: 649306312}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &819628772 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 158406, guid: 231dd5e483a173944902b789ceb623fa, type: 2}
