@@ -7,4 +7,28 @@ AvatarMask:
   m_PrefabInternal: {fileID: 0}
   m_Name: MainHand
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-  m_Elements: []
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: ArmsArmature
+    m_Weight: 0
+  - m_Path: ArmsArmature/Root
+    m_Weight: 0
+  - m_Path: ArmsArmature/Root/LeftShoulder
+    m_Weight: 0
+  - m_Path: ArmsArmature/Root/LeftShoulder/LeftArm
+    m_Weight: 0
+  - m_Path: ArmsArmature/Root/LeftShoulder/LeftArm/LeftForearm
+    m_Weight: 0
+  - m_Path: ArmsArmature/Root/LeftShoulder/LeftArm/LeftForearm/LeftForearm_end
+    m_Weight: 0
+  - m_Path: ArmsArmature/Root/RightShoulder
+    m_Weight: 1
+  - m_Path: ArmsArmature/Root/RightShoulder/RightArm
+    m_Weight: 1
+  - m_Path: ArmsArmature/Root/RightShoulder/RightArm/RightForearm
+    m_Weight: 1
+  - m_Path: ArmsArmature/Root/RightShoulder/RightArm/RightForearm/RightForearm_end
+    m_Weight: 1
+  - m_Path: Cube
+    m_Weight: 0
