@@ -106,7 +106,10 @@ public class WeaponManager : MonoBehaviour
             SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
         }
         if (offHandWeapon != null)
+        {
             SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
+            UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
+        }
     }
 
     private void OnPrimary(object sender, EventArgs args)
@@ -225,7 +228,10 @@ public class WeaponManager : MonoBehaviour
     public void Secondary()
     {
         if (mainHandWeapon != null && offHandWeapon != null)
+        {
             Primary(0);
+            return;
+        }
 
         if (offHandWeapon != null)
             offHandWeapon.Secondary();
@@ -239,7 +245,10 @@ public class WeaponManager : MonoBehaviour
     public void EndSecondary()
     {
         if (mainHandWeapon != null && offHandWeapon != null)
+        {
             EndPrimary(0);
+            return;
+        }
 
         if (offHandWeapon != null)
             offHandWeapon.EndSecondary();
