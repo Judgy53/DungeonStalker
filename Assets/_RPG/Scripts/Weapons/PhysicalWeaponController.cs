@@ -14,10 +14,6 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public event EventHandler OnSecondary;
     public event EventHandler OnEndSecondary;
 
-    [SerializeField]
-    private Vector3 handOffset = new Vector3(0.0f, 0.0f, 0.0f);
-    public Vector3 HandOffset { get { return handOffset; } }
-
     public GameObject hitEffectPrefab = null;
 
     [SerializeField]
@@ -68,6 +64,14 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
     private PhysicalWeaponUseState useState = PhysicalWeaponUseState.Default;
     public PhysicalWeaponUseState UseState { get { return useState; } }
+
+    [SerializeField]
+    private Vector3 handPositionOffset = Vector3.zero;
+    public Vector3 HandPositionOffset { get { return handPositionOffset; } }
+
+    [SerializeField]
+    private Vector3 handRotationOffset = Vector3.zero;
+    public Vector3 HandRotationOffset { get { return handRotationOffset; } }
 
     private float useTimer = 0.0f;
 

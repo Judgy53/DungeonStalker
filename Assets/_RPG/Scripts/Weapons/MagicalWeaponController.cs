@@ -15,10 +15,6 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public event EventHandler OnEndSecondary;
 
     [SerializeField]
-    private Vector3 handOffset = new Vector3(1.0f, 0.75f, 0.0f);
-    public Vector3 HandOffset { get { return handOffset; } }
-
-    [SerializeField]
     private float minDamages = 1.0f;
     public float MinDamages { get { return minDamages; } set { minDamages = value; } }
 
@@ -47,6 +43,14 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     private MagicalWeaponUseState useState = MagicalWeaponUseState.Default;
     public MagicalWeaponUseState UseState { get { return useState; } }
+
+    [SerializeField]
+    private Vector3 handPositionOffset = Vector3.zero;
+    public Vector3 HandPositionOffset { get { return handPositionOffset; } }
+
+    [SerializeField]
+    private Vector3 handRotationOffset = Vector3.zero;
+    public Vector3 HandRotationOffset { get { return handRotationOffset; } }
 
     [SerializeField]
     private float sizeChargeScale = 1.0f;
