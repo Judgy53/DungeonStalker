@@ -76,7 +76,9 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     private Vector3 baseScale;
 
-    public GameObject InventoryItemPrefab { get { throw new NotImplementedException(); } }
+    [SerializeField]
+    private GameObject inventoryItemPrefab = null;
+    public GameObject InventoryItemPrefab { get { return inventoryItemPrefab; } }
 
     private void Start()
     {
@@ -202,6 +204,9 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     public void TransferToContainer(IContainer container)
     {
-        throw new NotImplementedException();
+        if (inventoryItemPrefab != null)
+            container.AddItem((GameObject.Instantiate(inventoryItemPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
+
+        GameObject.Destroy(this.gameObject);
     }
 }
