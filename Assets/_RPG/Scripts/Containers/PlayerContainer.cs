@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class PlayerContainer : MonoBehaviour, IContainer
 {
@@ -18,6 +19,16 @@ public class PlayerContainer : MonoBehaviour, IContainer
                 OnWeightChange(this, new WeightChangeArgs(currentWeight, value));
 
             currentWeight = value;
+        }
+    }
+
+    public IItem[] Items { 
+        get 
+        {
+            List<IItem> results = new List<IItem>(GetComponentsInChildren<IItem>());
+            //Somehow, GetComponentsInChildren returns destroyed components on the same frame ...
+            results.RemoveAll(x => !(x as Behaviour).enabled);
+            return results.ToArray();
         }
     }
 

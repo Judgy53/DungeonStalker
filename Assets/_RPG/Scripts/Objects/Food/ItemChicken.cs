@@ -12,6 +12,10 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
     public string Name { get { return objName; } }
 
     [SerializeField]
+    private string itemDescription = "Roasted chicken !";
+    public string Description { get { return itemDescription; } }
+
+    [SerializeField]
     private uint weigth = 1u;
     public uint Weigth { get { return weigth; } }
 
@@ -24,7 +28,7 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
     public GameObject DropPrefab { get { return dropPrefab; } }
 
     public string actionName = "Eat";
-    public string description = "Delicious, delicious chicken ...";
+    public string useDescription = "Will restore 10 life";
     
     public string GetActionName()
     {
@@ -33,7 +37,7 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
 
     public string GetDescription()
     {
-        return description;
+        return useDescription;
     }
 
     public void Use(InteractManager manager)

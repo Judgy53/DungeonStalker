@@ -25,7 +25,7 @@ public class InteractManager : MonoBehaviour
             target = null;
         }
 
-        if (target != null && Input.GetKeyDown(KeyCode.E))
+        if (target != null && Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0.0f)
         {
             target.Use(this);
         }
