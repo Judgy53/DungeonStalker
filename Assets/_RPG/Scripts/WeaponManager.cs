@@ -35,7 +35,7 @@ public class WeaponManager : MonoBehaviour
                 go.transform.SetParent(offHandWeaponPoint);
                 go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
                 go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
-                go.transform.localRotation = Quaternion.identity;
+                go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset);
                 // HACK
                 offHandWeaponPoint.DetachChildren();
                 go.transform.localScale = Vector3.one;
@@ -70,7 +70,7 @@ public class WeaponManager : MonoBehaviour
                 go.transform.SetParent(mainHandWeaponPoint);
                 go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
                 go.transform.localPosition = mainHandWeapon.HandPositionOffset;
-                go.transform.localRotation = Quaternion.identity;
+                go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
                 // HACK
                 mainHandWeaponPoint.DetachChildren();
                 go.transform.localScale = Vector3.one;

@@ -29,7 +29,7 @@ public class HealthManager : MonoBehaviour, IDamageable
                 e.ApplyDamageModifier(ref damage);
         }
 
-        currentHealth -= damage;
+        currentHealth = Mathf.Min(currentHealth - damage, maxHealth);
 
         if (currentHealth <= 0f)
             Die();
