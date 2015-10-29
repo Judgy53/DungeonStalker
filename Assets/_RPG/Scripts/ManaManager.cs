@@ -20,7 +20,7 @@ public class ManaManager : MonoBehaviour
         currentMana = maxMana;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         currentMana += regenRate * Time.fixedDeltaTime;
         currentMana = Mathf.Min(currentMana, maxMana);
