@@ -46,6 +46,7 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
         if (playerHM != null)
             playerHM.AddDamage(-10.0f);
 
+        manager.gameObject.GetComponentInChildren<PlayerContainer>().RemoveItem(this);
         Destroy(this.gameObject);
     }
 }
