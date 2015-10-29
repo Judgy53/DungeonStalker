@@ -29,8 +29,8 @@ public class WeaponManager : MonoBehaviour
                 GameObject go = (offHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(offHandWeaponPoint);
                 go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
-                go.transform.localPosition = new Vector3(-mainHandWeapon.HandOffset.x, mainHandWeapon.HandOffset.y, mainHandWeapon.HandOffset.z);
-                go.transform.localRotation = Quaternion.identity;
+                go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
+                go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset); // may need a inversion on one dir
             }
 
             RegisterCallbacks(offHandWeapon);
@@ -55,8 +55,8 @@ public class WeaponManager : MonoBehaviour
                 GameObject go = (mainHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(mainHandWeaponPoint);
                 go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
-                go.transform.localPosition = mainHandWeapon.HandOffset;
-                go.transform.localRotation = Quaternion.identity;
+                go.transform.localPosition = mainHandWeapon.HandPositionOffset;
+                go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
             }
 
             RegisterCallbacks(mainHandWeapon);
