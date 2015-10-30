@@ -152,13 +152,8 @@ public class UIObjectButtonsManager : MonoBehaviour
                     ChangeButtonState(useButton, false);
             }
 
-            if (lastSelectedItem != null)
-            {
-                if (dropButton != null)
-                    ChangeButtonState(dropButton, lastSelectedItem.CanDrop);
-            }
-            else
-                ChangeButtonState(dropButton, false);
+            if (dropButton != null)
+                ChangeButtonState(dropButton, args.newItem.CanDrop);
         }
 
         lastSelectedItem = args.newItem;
