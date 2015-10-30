@@ -55,7 +55,9 @@ public class AIInputController : MonoBehaviour, IControls
                     Quaternion.LookRotation((target.transform.position - transform.position).normalized, Vector3.up),
                     angleInterpolationFactor * Time.fixedDeltaTime);
 
-                weaponManager.Primary(1);
+                weaponManager.Primary(0);
+                if (weaponManager.OffHandWeapon != null)
+                    weaponManager.Primary(1);
             }
         }
     }

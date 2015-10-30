@@ -7,8 +7,8 @@ public class WeaponManager : MonoBehaviour
     public event EventHandler<EventWeaponChange> OnMainHandWeaponChange;
     public event EventHandler<EventWeaponChange> OnOffHandWeaponChange;
 
-    public GameObject debugMainHandStartWeapon = null;
-    public GameObject debugOffHandStartWeapon = null;
+    public GameObject debugMainHandStartWeaponPrefab = null;
+    public GameObject debugOffHandStartWeaponPrefab = null;
 
     public Transform mainHandWeaponPoint = null;
     public Transform offHandWeaponPoint = null;
@@ -33,7 +33,10 @@ public class WeaponManager : MonoBehaviour
             {
                 GameObject go = (offHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(offHandWeaponPoint);
-                go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
+                if (tag == "Player")
+                    go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
+                else
+                    go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
                 go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
                 go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset);
                 // HACK
@@ -68,7 +71,10 @@ public class WeaponManager : MonoBehaviour
             {
                 GameObject go = (mainHandWeapon as Behaviour).gameObject;
                 go.transform.SetParent(mainHandWeaponPoint);
-                go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
+                if (tag == "Player")
+                    go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
+                else
+                    go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
                 go.transform.localPosition = mainHandWeapon.HandPositionOffset;
                 go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
                 // HACK
@@ -88,11 +94,11 @@ public class WeaponManager : MonoBehaviour
         if (armsAnimator == null)
             Debug.LogWarning(this.name + " : No arms animator specified.");
 
-        if (debugMainHandStartWeapon != null)
-            MainHandWeapon = debugMainHandStartWeapon.GetComponent<IWeapon>();
+        if (debugMainHandStartWeaponPrefab != null)
+            MainHandWeapon = (GameObject.Instantiate(debugMainHandStartWeaponPrefab, Vector3.zero, debugMainHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
 
-        if (debugOffHandStartWeapon != null)
-            OffHandWeapon = debugOffHandStartWeapon.GetComponent<IWeapon>();
+        if (debugOffHandStartWeaponPrefab != null)
+            OffHandWeapon = (GameObject.Instantiate(debugOffHandStartWeaponPrefab, Vector3.zero, debugOffHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
     }
 
     private void Update()

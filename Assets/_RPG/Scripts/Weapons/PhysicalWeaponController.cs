@@ -169,9 +169,12 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
             foreach (var hit in hitInfos)
             {
-                IDamageable damageable = null;
-                if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
-                    TryRegisterHit(hit, damageable);
+                if (!hit.collider.transform.IsChildOf(transform.root))
+                {
+                    IDamageable damageable = null;
+                    if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+                        TryRegisterHit(hit, damageable);
+                }
             }
 
             ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
@@ -179,9 +182,12 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
             foreach (var hit in hitInfos)
             {
-                IDamageable damageable = null;
-                if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
-                    TryRegisterHit(hit, damageable);
+                if (!hit.collider.transform.IsChildOf(transform.root))
+                {
+                    IDamageable damageable = null;
+                    if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+                        TryRegisterHit(hit, damageable);
+                }
             }
 
             if (useTimer >= attackSpeed)
