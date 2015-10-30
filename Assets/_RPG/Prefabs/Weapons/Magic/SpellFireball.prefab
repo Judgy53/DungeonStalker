@@ -110,7 +110,7 @@ MonoBehaviour:
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 6
-  handPositionOffset: {x: 0, y: 0, z: -.25}
+  handPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 90, y: 0, z: 0}
   sizeChargeScale: 2
   projectilePrefab: {fileID: 147408, guid: 818b9eaaf062c2c44adeaae529bb34d0, type: 2}
@@ -1220,6 +1220,10 @@ Prefab:
       propertyPath: inventoryItemPrefab
       value: 
       objectReference: {fileID: 120742, guid: 4bbbd0efc65bc4e45a91711992d6ff1a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: handPositionOffset.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106920}
