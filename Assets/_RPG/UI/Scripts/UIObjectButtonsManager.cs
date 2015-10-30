@@ -147,13 +147,18 @@ public class UIObjectButtonsManager : MonoBehaviour
             if (useButton != null)
             {
                 if (args.newItem is IUsable)
-                    useButton.gameObject.SetActive(true);
+                    ChangeButtonState(useButton, true);
                 else
-                    useButton.gameObject.SetActive(false);
+                    ChangeButtonState(useButton, false);
             }
 
-            if (dropButton != null)
-                dropButton.gameObject.SetActive(args.newItem.CanDrop);
+            if (lastSelectedItem != null)
+            {
+                if (dropButton != null)
+                    ChangeButtonState(dropButton, lastSelectedItem.CanDrop);
+            }
+            else
+                ChangeButtonState(dropButton, false);
         }
 
         lastSelectedItem = args.newItem;
