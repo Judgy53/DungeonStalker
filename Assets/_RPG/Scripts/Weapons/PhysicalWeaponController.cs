@@ -164,7 +164,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
             useTimer += Time.fixedDeltaTime;
 
             Ray ray = new Ray(transform.root.position, startRaycast.position - transform.root.position);
-            float rootDistance = Vector3.Distance(transform.root.position, startRaycast.position - transform.root.position);
+            float rootDistance = Vector3.Distance(transform.root.position, startRaycast.position);
             RaycastHit[] hitInfos = Physics.RaycastAll(ray, rootDistance);
 
             foreach (var hit in hitInfos)
