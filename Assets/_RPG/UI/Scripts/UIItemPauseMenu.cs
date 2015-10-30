@@ -12,7 +12,6 @@ public class UIItemPauseMenu : MonoBehaviour
     public GameObject content = null;
 
     public UnityEngine.EventSystems.EventSystem eventSystem = null;
-    public GUIElement firstFocus = null;
 
     private ItemPauseMenuState state = ItemPauseMenuState.Hidden;
     public ItemPauseMenuState State { get { return state; }
@@ -69,8 +68,6 @@ public class UIItemPauseMenu : MonoBehaviour
         }
         else
         {
-            /*if (eventSystem != null && firstFocus != null)
-                eventSystem.SetSelectedGameObject(firstFocus.gameObject);*/
             content.SetActive(true);
             Time.timeScale = 0.0f;
         }
