@@ -5,8 +5,12 @@ using System.Collections;
 public class UserInputController : MonoBehaviour, IControls
 {
     [SerializeField] 
-    private Vector3 moveSpeed = new Vector3(5.0f, 0.0f, 5.0f);
+    private Vector3 moveSpeed = new Vector3(5.0f, 1.0f, 5.0f);
     public Vector3 MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
+
+    public float sprintMultiplier = 2.5f;
+
+    public float jumpForce = 5.0f;
 
     private CharacterController cc = null;
     public CharacterController CC { get { return cc; } }
@@ -15,6 +19,8 @@ public class UserInputController : MonoBehaviour, IControls
     public Vector3 Velocity { get { return velocity; } set { velocity = value; } }
 
     private Vector2 horizontalInputs = Vector2.zero;
+    private float sprintInput = 0.0f;
+    private bool jumpInput = false;
 
     [SerializeField]
     private float gravityMultiplier = 1.0f;
@@ -34,6 +40,8 @@ public class UserInputController : MonoBehaviour, IControls
     private void Update()
     {
         horizontalInputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        sprintInput = Input.GetAxis("Sprint");
+        jumpInput = Input.GetButtonDown("Jump");
 
         if (weaponManager != null)
         {
@@ -52,7 +60,9 @@ public class UserInputController : MonoBehaviour, IControls
     private void FixedUpdate()
     {
         Vector3 frameVelocity = moveSpeed;
-        frameVelocity.Scale(new Vector3(horizontalInputs.x, 0.0f, horizontalInputs.y));
+        frameVelocity.Scale(new Vector3(horizontalInputs.x, 1.0f, horizontalInputs.y));
+
+        frameVelocity += frameVelocity * (sprintMultiplier * sprintInput);
 
         if (effectManager != null)
         {
@@ -61,10 +71,15 @@ public class UserInputController : MonoBehaviour, IControls
                 e.ApplyMovementEffect(ref frameVelocity);
         }
 
-        velocity = transform.TransformDirection(frameVelocity * Time.fixedDeltaTime);
+        float velocityy = velocity.y;
+        velocity = transform.TransformDirection(frameVelocity);
+        velocity.y = velocityy;
+
+        if (jumpInput && cc.isGrounded)
+            velocity.y = jumpForce;
 
         velocity += Physics.gravity * gravityMultiplier * Time.fixedDeltaTime;
 
-        cc.Move(velocity);
+        cc.Move(velocity * Time.fixedDeltaTime);
     }
 }
