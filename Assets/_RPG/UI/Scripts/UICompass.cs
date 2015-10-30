@@ -19,11 +19,13 @@ public class UICompass : MonoBehaviour {
         {
             float angle = target.transform.eulerAngles.y;
 
+            RawImage image = GetComponent<RawImage>();
+            Rect rect = image.uvRect;
+
+            angle += 360f * ((1 - rect.width) / 2f);
+
             float angleRatio = angle / 360f;
 
-            RawImage image = GetComponent<RawImage>();
-
-            Rect rect = image.uvRect;
             rect.x = angleRatio;
             image.uvRect = rect;
         }
