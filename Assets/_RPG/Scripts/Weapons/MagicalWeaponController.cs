@@ -96,7 +96,16 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
         {
             if (OnPrimary != null)
                 OnPrimary(this, new EventArgs());
-            useState = MagicalWeaponUseState.Charging;
+
+            if (MaxChargeTime > 0f)
+                useState = MagicalWeaponUseState.Charging;
+            else
+            {
+                if (OnEndPrimary != null)
+                    OnEndPrimary(this, new EventArgs());
+                useState = MagicalWeaponUseState.Launching;
+            }
+
             baseScale = transform.localScale;
         }
     }
@@ -120,7 +129,6 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     public void EndSecondary()
     {
-
     }
 
     private void FixedUpdate()
@@ -159,7 +167,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     {
         ManaManager launcher = GetComponentInParent<ManaManager>();
 
-        float chargeNormalized = currentChargeTime / maxChargeTime;
+        float chargeNormalized = 1f;
+
+        if (maxChargeTime != 0f)
+            chargeNormalized = currentChargeTime / maxChargeTime;
 
         float realManaCost = manaCost * (1 + ManaChargeScale * chargeNormalized);
 
