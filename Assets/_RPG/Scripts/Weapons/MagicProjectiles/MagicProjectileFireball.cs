@@ -17,7 +17,7 @@ public class MagicProjectileFireball : MagicProjectile
         transform.position = launcher.transform.position + launcher.transform.forward * summonDistance;
         transform.rotation = launcher.transform.rotation;
 
-        speed -= speed / 2f * Power;
+        speed -= speed / 3f * Power;
 
         Vector3 scale = transform.localScale;
         scale.Scale(scaleFactor * (Power + 1f));
@@ -32,7 +32,10 @@ public class MagicProjectileFireball : MagicProjectile
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject == launcher.gameObject || collider.gameObject.layer == LayerMask.NameToLayer("FirstPass"))
-            return;
+            return; // Don't collide with launcher or player arms
+
+        if (collider.gameObject.GetComponent<MagicProjectile>())
+            return; // Don't collide with other projectiles
 
         IDamageable target = collider.gameObject.GetComponent<IDamageable>();
 
