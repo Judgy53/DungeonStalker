@@ -74,6 +74,8 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     private float manaChargeScale = 1.0f;
     public float ManaChargeScale { get { return manaChargeScale; } set { manaChargeScale = value; } }
 
+    public float MaxManaCost { get { return manaCost * (1 + ManaChargeScale); } }
+
     private Vector3 baseScale;
 
     [SerializeField]

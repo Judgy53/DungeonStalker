@@ -60,12 +60,23 @@ public class UIItemDescription : MonoBehaviour
             if (args.newItem is ItemWeapon)
             {
                 ItemWeapon weapItem = args.newItem as ItemWeapon;
-                IPhysicalWeapon weap = weapItem.weaponPrefab.GetComponent<IPhysicalWeapon>();
-                if (weap != null)
+                IPhysicalWeapon weapPhys = weapItem.weaponPrefab.GetComponent<IPhysicalWeapon>();
+                if (weapPhys != null)
                 {
-                    objectDescription.text += "\nDamages : " + weap.MinDamages + " - " + weap.MaxDamages;
-                    objectDescription.text += "\nAttack speed : " + weap.AttackSpeed;
-                    if (weap.WeaponHand == WeaponHand.OneHanded)
+                    objectDescription.text += "\nDamages : " + weapPhys.MinDamages + " - " + weapPhys.MaxDamages;
+                    objectDescription.text += "\nAttack speed : " + weapPhys.AttackSpeed;
+                    if (weapPhys.WeaponHand == WeaponHand.OneHanded)
+                        objectDescription.text += "\nOneHanded";
+                    else
+                        objectDescription.text += "\nTwoHanded";
+                }
+
+                IMagicalWeapon weapMag = weapItem.weaponPrefab.GetComponent<IMagicalWeapon>();
+                if (weapMag != null)
+                {
+                    objectDescription.text += "\nDamages : " + weapMag.MinDamages + " - " + weapMag.MaxDamages;
+                    objectDescription.text += "\nMana Cost : " + weapMag.ManaCost  + " - " + weapMag.MaxManaCost;
+                    if (weapMag.WeaponHand == WeaponHand.OneHanded)
                         objectDescription.text += "\nOneHanded";
                     else
                         objectDescription.text += "\nTwoHanded";

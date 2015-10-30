@@ -9,6 +9,12 @@ public interface IMagicalWeapon : IWeapon
     float MaxChargeTime { get; set; }
     float CurrentChargeTime { get; }
 
+    float Cooldown { get; set; }
+
+    float ManaCost { get; set; }
+    float ManaChargeScale { get; set ; }
+    float MaxManaCost { get; }
+
     MagicalWeaponUseState UseState { get; }
 }
 
