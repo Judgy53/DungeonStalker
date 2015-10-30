@@ -112,7 +112,7 @@ MonoBehaviour:
   weaponType: 6
   handPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 90, y: 0, z: 0}
-  sizeChargeScale: 2
+  sizeChargeScale: .25
   projectilePrefab: {fileID: 147408, guid: 818b9eaaf062c2c44adeaae529bb34d0, type: 2}
   cooldown: 1
   manaCost: 10
@@ -383,7 +383,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 2000
+      scalar: 1000
       maxCurve:
         serializedVersion: 2
         m_Curve:
