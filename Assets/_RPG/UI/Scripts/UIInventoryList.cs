@@ -11,6 +11,10 @@ public class UIInventoryList : MonoBehaviour
     public GameObject buttonTemplatePrefab = null;
 
     public RectTransform content = null;
+    public RectTransform background = null;
+
+    public string weightPrefix = "Weight : ";
+    public Text weightText = null;
 
     public float spacing = 5.0f;
 
@@ -75,6 +79,7 @@ public class UIInventoryList : MonoBehaviour
         float buttonHeight = buttonTemplatePrefab.GetComponent<RectTransform>().rect.height;
 
         content.sizeDelta = new Vector2(content.sizeDelta.x, buttonHeight);
+        background.sizeDelta = new Vector2(background.sizeDelta.x, buttonHeight);
 
         int i = 0;
         foreach (IItem item in items)
@@ -87,21 +92,28 @@ public class UIInventoryList : MonoBehaviour
             button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, (buttonHeight * -i) + (-i * spacing));
             
             if (text != null)
-                text.text = item.Name;
+                text.text = item.Name + " (W:" + item.Weigth + ")";
 
-            content.sizeDelta = new Vector2(content.sizeDelta.x, buttonHeight * (i + 1));
+            content.sizeDelta = new Vector2(content.sizeDelta.x, buttonHeight * (i + 1) + (i * spacing));
+            background.sizeDelta = new Vector2(background.sizeDelta.x, buttonHeight * (i + 1) + (i * spacing));
 
             instantiatedList.Add(button);
 
             ++i;
         }
 
-        if (instantiatedList.Count > 0)
+        if (weightText != null)
         {
-            /*if (manager != null && manager.eventSystem != null)
-                manager.eventSystem.SetSelectedGameObject(instantiatedList[0]);*/
-            instantiatedList[0].GetComponent<Selectable>().Select();
+            weightText.text = weightPrefix + container.CurrentWeight + "/" + container.MaxWeight;
+
+            if (container.CurrentWeight <= container.MaxWeight)
+                weightText.color = Color.white;
+            else
+                weightText.color = Color.red;
         }
+
+        if (instantiatedList.Count > 0)
+            instantiatedList[0].GetComponent<Selectable>().Select();
         else
         {
             if (OnItemFocusChange != null)
