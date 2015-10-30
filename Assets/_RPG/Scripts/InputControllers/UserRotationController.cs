@@ -30,6 +30,12 @@ public class UserRotationController : MonoBehaviour, IRotationControls
             Vector3 frameVelocity = new Vector3(-mouseInputs.y * sensivity.y, mouseInputs.x * sensivity.x, 0.0f);
             rotation += frameVelocity * Time.fixedDeltaTime;
 
+            float tempRotation = rotation.x - 180.0f;
+            if (tempRotation > -110.0f && tempRotation < 0.0f)
+                rotation.x = -110.0f + 180.0f;
+            else if (tempRotation < 110.0f && tempRotation > 0.0f)
+                rotation.x = 110.0f + 180.0f;
+
             target.localEulerAngles = rotation;
         }
     }

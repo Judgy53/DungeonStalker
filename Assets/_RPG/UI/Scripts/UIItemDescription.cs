@@ -57,6 +57,20 @@ public class UIItemDescription : MonoBehaviour
             objectDescription.text = args.newItem.Description;
             if (args.newItem is IUsable)
                 objectDescription.text += "\nUse : " + (args.newItem as IUsable).GetDescription();
+            if (args.newItem is ItemWeapon)
+            {
+                ItemWeapon weapItem = args.newItem as ItemWeapon;
+                IPhysicalWeapon weap = weapItem.weaponPrefab.GetComponent<IPhysicalWeapon>();
+                if (weap != null)
+                {
+                    objectDescription.text += "\nDamages : " + weap.MinDamages + " - " + weap.MaxDamages;
+                    objectDescription.text += "\nAttack speed : " + weap.AttackSpeed;
+                    if (weap.WeaponHand == WeaponHand.OneHanded)
+                        objectDescription.text += "\nOneHanded";
+                    else
+                        objectDescription.text += "\nTwoHanded";
+                }
+            }
         }
 
         if (objectImage != null)
