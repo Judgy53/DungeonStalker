@@ -121,7 +121,7 @@ Transform:
   m_Children:
   - {fileID: 1601430984}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 22
 --- !u!136 &29299040
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6329,7 +6329,7 @@ Transform:
   m_Children:
   - {fileID: 133512733}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
 --- !u!195 &1815334236
 NavMeshAgent:
   m_ObjectHideFlags: 0
