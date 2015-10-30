@@ -201,6 +201,9 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
     private void TryRegisterHit(RaycastHit hit, IDamageable damageable)
     {
+        if ((damageable as Behaviour).gameObject.tag == transform.root.tag)
+            return;
+
         if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
         {
             if (!hits.Exists(x => x == damageable))
