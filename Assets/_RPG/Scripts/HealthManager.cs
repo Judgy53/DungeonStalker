@@ -14,10 +14,15 @@ public class HealthManager : MonoBehaviour, IDamageable
 
     private EffectManager effectManager = null;
 
+    [SerializeField]
+    private UIBar uiBar = null;
+
     private void Start()
     {
         currentHealth = maxHealth;
         effectManager = GetComponent<EffectManager>();
+
+        UpdateBar();
     }
 
     public void AddDamage(float damage)
@@ -33,6 +38,8 @@ public class HealthManager : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0f)
             Die();
+
+        UpdateBar();
     }
 
     public bool WillKill(float damages)
@@ -45,6 +52,13 @@ public class HealthManager : MonoBehaviour, IDamageable
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        UpdateBar();
+    }
+
+    private void UpdateBar()
+    {
+        if (uiBar != null)
+            uiBar.Value = currentHealth / maxHealth;
     }
 
     public void Die()
