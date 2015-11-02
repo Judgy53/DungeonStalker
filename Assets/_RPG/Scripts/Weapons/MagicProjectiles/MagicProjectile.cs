@@ -6,6 +6,9 @@ public abstract class MagicProjectile : MonoBehaviour
     protected ManaManager launcher = null;
     public ManaManager Launcher { get { return launcher; } set { launcher = value; } }
 
+    public delegate void DelegateSignature(IDamageable target);
+    public DelegateSignature OnKill = null;
+
     protected float power = 0f;
     public float Power { get { return power; } set { power = value; } }
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class ManaManager : MonoBehaviour
@@ -18,9 +19,15 @@ public class ManaManager : MonoBehaviour
     [SerializeField]
     private UIBar uiBar = null;
 
+    private StatsManager statsManager = null;
+
     private void Start()
     {
         currentMana = maxMana;
+
+        statsManager = GetComponentInParent<StatsManager>();
+        if (statsManager != null)
+            statsManager.Stats.OnStatsChange += OnStatsChange;
 
         UpdateBar();
     }
@@ -51,5 +58,15 @@ public class ManaManager : MonoBehaviour
     {
         if (uiBar != null)
             uiBar.Value = currentMana / maxMana;
+    }
+
+    public void OnStatsChange(object sender, EventArgs args)
+    {
+        maxMana = 40u + statsManager.Stats.Energy * 10u;
+        regenRate = 3u + statsManager.Stats.Energy * 1u;
+
+        currentMana = Mathf.Min(currentMana, maxMana);
+
+        UpdateBar();
     }
 }

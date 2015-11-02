@@ -14,6 +14,8 @@ public class HealthManager : MonoBehaviour, IDamageable
 
     private EffectManager effectManager = null;
 
+    private StatsManager statsManager = null;
+
     [SerializeField]
     private UIBar uiBar = null;
 
@@ -21,6 +23,10 @@ public class HealthManager : MonoBehaviour, IDamageable
     {
         currentHealth = maxHealth;
         effectManager = GetComponent<EffectManager>();
+
+        statsManager = GetComponentInParent<StatsManager>();
+        if (statsManager != null)
+            statsManager.Stats.OnStatsChange += OnStatsChange;
 
         UpdateBar();
     }
@@ -44,7 +50,7 @@ public class HealthManager : MonoBehaviour, IDamageable
 
     public bool WillKill(float damages)
     {
-        if (currentHealth - damages < 0.0f)
+        if (currentHealth - damages <= 0.0f)
             return true;
         return false;
     }
@@ -65,5 +71,14 @@ public class HealthManager : MonoBehaviour, IDamageable
     {
         //Temporary
         Destroy(gameObject);
+    }
+
+    public void OnStatsChange(object sender, EventArgs args)
+    {
+        maxHealth = 50u + statsManager.Stats.Stamina * 30u;
+
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        UpdateBar();
     }
 }

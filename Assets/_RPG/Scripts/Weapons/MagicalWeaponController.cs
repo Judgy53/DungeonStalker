@@ -190,9 +190,17 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
             magic.Power = chargeNormalized;
             magic.Damage = minDamages + ((maxDamages - minDamages) * chargeNormalized);
 
+            magic.OnKill = delegate(IDamageable target)
+            {
+                if (OnKill != null)
+                    OnKill(this, new OnKillArgs(target));
+            };
+
             launcher.RemoveMana(realManaCost);
         }
     }
+
+
 
     private bool CanLaunch(ManaManager launcher, float realManaCost)
     {

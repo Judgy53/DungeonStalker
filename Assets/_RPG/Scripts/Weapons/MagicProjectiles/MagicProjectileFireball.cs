@@ -41,6 +41,10 @@ public class MagicProjectileFireball : MagicProjectile
 
         if (target != null)
         {
+            if (target.WillKill(Damage))
+                if (OnKill != null)
+                    OnKill(target);
+                
             target.AddDamage(Damage);
         }
 
