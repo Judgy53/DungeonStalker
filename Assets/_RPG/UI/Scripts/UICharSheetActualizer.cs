@@ -115,6 +115,7 @@ public class UICharSheetActualizer : MonoBehaviour
     {
         tmpAddedPoint.OnStatsChange -= OnStatsChanged;
         target.Stats += tmpAddedPoint;
+        target.Stats.FireEvent();
         tmpAddedPoint = new CharStats(0u);
         tmpAddedPoint.OnStatsChange += OnStatsChanged;
     }
