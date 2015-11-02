@@ -11,6 +11,8 @@ public interface IWeapon
     event EventHandler OnSecondary;
     event EventHandler OnEndSecondary;
 
+    event EventHandler<OnKillArgs> OnKill;
+
     Vector3 HandPositionOffset { get; }
     Vector3 HandRotationOffset { get; }
 
@@ -50,4 +52,14 @@ public enum WeaponType : int
     Staff,
     Wand,
     Magic
+}
+
+public class OnKillArgs : EventArgs
+{
+    public IDamageable target = null;
+
+    public OnKillArgs(IDamageable damageable)
+    {
+        target = damageable;
+    }
 }
