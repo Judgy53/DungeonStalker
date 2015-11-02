@@ -321,14 +321,18 @@ MonoBehaviour:
   weaponType: 0
   handPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 0, y: 0, z: 0}
-  inventoryItemPrefab: {fileID: 113310, guid: acf83e31504d9f24dafce756cc778479, type: 2}
+  inventoryItemPrefab: {fileID: 171718, guid: d7a2f3505e3bfc74883088f519e78982, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: inventoryItemPrefab
+      value: 
+      objectReference: {fileID: 171718, guid: d7a2f3505e3bfc74883088f519e78982, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126292}

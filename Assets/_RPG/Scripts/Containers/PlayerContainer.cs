@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class PlayerContainer : MonoBehaviour, IContainer
+public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable
 {
     public event EventHandler<WeightChangeArgs> OnWeightChange;
 
@@ -35,10 +35,19 @@ public class PlayerContainer : MonoBehaviour, IContainer
     private EffectManager effectManager = null;
     private MovementEffect effect = null;
 
+    private StatsManager statsManager = null;
+    public StatsManager StatsManager { get { return statsManager; } }
+
     private void Start()
     {
         OnWeightChange += OnWeightChangeCallback;
         effectManager = GetComponentInParent<EffectManager>();
+
+        statsManager = GetComponentInParent<StatsManager>();
+        if (statsManager != null)
+            statsManager.Stats.OnStatsChange += OnStatsChange;
+        else
+            Debug.LogWarning("No StatsManager found in " + this.name + " parents ...");
     }
 
     public bool AddItem(IItem item)
@@ -101,6 +110,11 @@ public class PlayerContainer : MonoBehaviour, IContainer
                 effect = null;
             }
         }
+    }
+
+    public void OnStatsChange(object sender, EventArgs args)
+    {
+        maxWeight = 90u + statsManager.Stats.Strength * 10u;
     }
 }
 
