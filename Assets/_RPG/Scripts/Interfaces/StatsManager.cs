@@ -8,13 +8,14 @@ public class StatsManager : MonoBehaviour
 
     [SerializeField]
     private CharStats stats = new CharStats();
-    public CharStats Stats { get { return stats; } }
+    public CharStats Stats { get { return stats; } set { stats = value; } }
 
     [SerializeField]
     private bool debugFireEvent = false;
 
     [SerializeField]
     private uint unspentPoint = 0u;
+    public uint UnspentPoints { get { return unspentPoint; } set { unspentPoint = value; } }
 
     [SerializeField]
     private uint currentLevel = 1u;
@@ -41,6 +42,9 @@ public class StatsManager : MonoBehaviour
                 currentLevel++;
 
                 uint oldMaxExp = maxExp;
+
+                maxExp = ComputeMaxExp();
+                unspentPoint += 5u;
 
                 if (OnLevelUp != null)
                     OnLevelUp(this, new EventArgs());
@@ -87,8 +91,8 @@ public class StatsManager : MonoBehaviour
 
     private void OnLevelUpCallback(object sender, EventArgs args)
     {
-        maxExp = ComputeMaxExp();
-        unspentPoint += 5u;
+        IDamageable dmg = GetComponent<IDamageable>();
+        dmg.AddDamage(-dmg.Damage);
 
         Debug.Log("Congratulations ! You reached level " + currentLevel + " !");
         Debug.Log("You have " + unspentPoint + " attributes point(s) to spend.");
@@ -111,6 +115,29 @@ public class StatsManager : MonoBehaviour
 public class CharStats : System.Object
 {
     public event EventHandler OnStatsChange;
+
+    public uint PointCount { get { return strength + stamina + defense + energy; } }
+
+    public CharStats()
+    {
+    }
+
+    public CharStats(uint value)
+    {
+        strength = value;
+        defense = value;
+        stamina = value;
+        energy = value;
+    }
+
+    public CharStats(uint str, uint def, uint stam, uint ener, EventHandler ev)
+    {
+        strength = str;
+        defense = def;
+        stamina = stam;
+        energy = ener;
+        OnStatsChange = ev;
+    }
 
     [SerializeField]
     private uint strength = 1u;
@@ -161,4 +188,21 @@ public class CharStats : System.Object
         if (OnStatsChange != null)
             OnStatsChange(this, new EventArgs());
     }
+
+    public static CharStats operator +(CharStats lhs, CharStats rhs)
+    {
+        return new CharStats(lhs.Strength + rhs.Strength,
+            lhs.Defense + rhs.Defense,
+            lhs.Stamina + rhs.Stamina,
+            lhs.Energy + rhs.Energy,
+            lhs.OnStatsChange + rhs.OnStatsChange);
+    }
+}
+
+public enum StatType
+{
+    Stength,
+    Defense,
+    Stamina,
+    Energy
 }

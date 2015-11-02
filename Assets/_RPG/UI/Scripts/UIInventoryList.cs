@@ -61,9 +61,9 @@ public class UIInventoryList : MonoBehaviour
         }
     }
 
-    private void OnItemPauseMenuStateChangeCallback(object sender, ItemPauseMenuStateChangeArgs e)
+    private void OnItemPauseMenuStateChangeCallback(object sender, UIMenuStateChangeArgs e)
     {
-        if (e.newState == ItemPauseMenuState.Shown)
+        if (e.newState == UIMenuState.Shown)
             Populate((sender as UIItemPauseMenu).target);
         else
             Clear();

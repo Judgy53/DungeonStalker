@@ -12,9 +12,9 @@ public class UICrosshair : MonoBehaviour
             pauseMenu.OnItemPauseMenuStateChange += OnStateChangeCallback;
     }
 
-    private void OnStateChangeCallback(object sender, ItemPauseMenuStateChangeArgs args)
+    private void OnStateChangeCallback(object sender, UIMenuStateChangeArgs args)
     {
-        if (args.newState == ItemPauseMenuState.Hidden)
+        if (args.newState == UIMenuState.Hidden)
             gameObject.SetActive(true);
         else
             gameObject.SetActive(false);

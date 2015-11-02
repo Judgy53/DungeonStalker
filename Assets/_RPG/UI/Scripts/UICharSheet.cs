@@ -1,24 +1,19 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System;
+using System.Collections;
 
-public class UIItemPauseMenu : MonoBehaviour
+public class UICharSheet : MonoBehaviour
 {
-    public event EventHandler<UIMenuStateChangeArgs> OnItemPauseMenuStateChange;
-
-    public PlayerContainer target = null;
+    public event EventHandler<UIMenuStateChangeArgs> OnMenuStateChange;
 
     public GameObject content = null;
-
-    public UnityEngine.EventSystems.EventSystem eventSystem = null;
 
     private UIMenuState state = UIMenuState.Hidden;
     public UIMenuState State { get { return state; }
         set
         {
-            if (OnItemPauseMenuStateChange != null)
-                OnItemPauseMenuStateChange(this, new UIMenuStateChangeArgs(value));
+            if (OnMenuStateChange != null)
+                OnMenuStateChange(this, new UIMenuStateChangeArgs(value));
 
             state = value;
         }
@@ -27,18 +22,13 @@ public class UIItemPauseMenu : MonoBehaviour
     private void Awake()
     {
         //It must be fired first to enable all gameobjects before other events, hence registration in Awake().
-        OnItemPauseMenuStateChange += OnStateChangeCallback;
-
-        if (target == null)
-        {
-            Debug.LogError("No target set on " + this.name);
-            enabled = false;
-        }
+        OnMenuStateChange += OnStateChangeCallback;
 
         if (content == null)
         {
-            Debug.LogError("No content gameobject set on " + this.name);
+            Debug.LogError("No content defined on " + this.name);
             enabled = false;
+            return;
         }
     }
 
@@ -50,7 +40,7 @@ public class UIItemPauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("ToggleInventory"))
+        if (Input.GetButtonDown("ToggleCharSheet"))
         {
             if (state == UIMenuState.Hidden && UIStateManager.State == UIState.Free)
                 State = UIMenuState.Shown;
@@ -73,21 +63,5 @@ public class UIItemPauseMenu : MonoBehaviour
             content.SetActive(true);
             Time.timeScale = 0.0f;
         }
-    }
-}
-
-public enum UIMenuState
-{
-    Hidden,
-    Shown
-}
-
-public class UIMenuStateChangeArgs : EventArgs
-{
-    public UIMenuState newState;
-
-    public UIMenuStateChangeArgs(UIMenuState newState)
-    {
-        this.newState = newState;
     }
 }
