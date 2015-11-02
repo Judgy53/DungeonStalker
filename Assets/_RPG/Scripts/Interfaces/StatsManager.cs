@@ -50,7 +50,11 @@ public class StatsManager : MonoBehaviour
                     OnLevelUp(this, new EventArgs());
 
                 CurrentExp = value - oldMaxExp;
+                return;
             }
+
+            if (xpBar != null)
+                xpBar.Value = (float)currentExp / (float)MaxExp;
         }
     }
 
@@ -60,6 +64,9 @@ public class StatsManager : MonoBehaviour
     public bool canGainExp = true;
 
     private WeaponManager weapManager = null;
+
+    [SerializeField]
+    private UIBar xpBar = null;
 
     //Fire this script's Start after every other Starts.
     private void Start()
