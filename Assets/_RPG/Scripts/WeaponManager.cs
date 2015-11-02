@@ -7,6 +7,8 @@ public class WeaponManager : MonoBehaviour
     public event EventHandler<EventWeaponChange> OnMainHandWeaponChange;
     public event EventHandler<EventWeaponChange> OnOffHandWeaponChange;
 
+    public event EventHandler<OnKillArgs> OnKill;
+
     public GameObject debugMainHandStartWeaponPrefab = null;
     public GameObject debugOffHandStartWeaponPrefab = null;
 
@@ -154,12 +156,19 @@ public class WeaponManager : MonoBehaviour
             SetAnimatorTrigger("OffHandEndSecondary");
     }
 
+    private void OnKillCallback(object sender, OnKillArgs args)
+    {
+        if (OnKill != null)
+            OnKill(sender, args);
+    }
+
     private void RegisterCallbacks(IWeapon weapon)
     {
         weapon.OnPrimary += OnPrimary;
         weapon.OnEndPrimary += OnEndPrimary;
         weapon.OnSecondary += OnSecondary;
         weapon.OnEndSecondary += OnEndSecondary;
+        weapon.OnKill += OnKillCallback;
     }
 
     private void UnregisterCallbacks(IWeapon weapon)
@@ -168,6 +177,7 @@ public class WeaponManager : MonoBehaviour
         weapon.OnEndPrimary -= OnEndPrimary;
         weapon.OnSecondary -= OnSecondary;
         weapon.OnEndSecondary -= OnEndSecondary;
+        weapon.OnKill -= OnKillCallback;
     }
 
     private void SetAnimatorHandsRestriction(IWeapon weapon, string parameterName)

@@ -14,6 +14,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public event EventHandler OnSecondary;
     public event EventHandler OnEndSecondary;
 
+    public event EventHandler<OnKillArgs> OnKill;
+
     public GameObject hitEffectPrefab = null;
 
     [SerializeField]
@@ -208,7 +210,15 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         {
             if (!hits.Exists(x => x == damageable))
             {
-                damageable.AddDamage(UnityEngine.Random.Range(minDamages, maxDamages));
+                float damages = UnityEngine.Random.Range(minDamages, maxDamages);
+
+                if (damageable.WillKill(damages))
+                {
+                    if (OnKill != null)
+                        OnKill(this, new OnKillArgs(damageable));
+                }
+
+                damageable.AddDamage(damages);
                 hits.Add(damageable);
 
                 if (hitEffectPrefab != null)

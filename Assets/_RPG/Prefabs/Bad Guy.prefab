@@ -152,6 +152,7 @@ GameObject:
   - 195: {fileID: 19561392}
   - 114: {fileID: 11459170}
   - 136: {fileID: 13626784}
+  - 114: {fileID: 11436080}
   m_Layer: 0
   m_Name: Bad Guy
   m_TagString: Enemy
@@ -370,7 +371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .220399112, y: 1.38, z: 10.5299997}
+  m_LocalPosition: {x: .220399112, y: 1.38, z: 12.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 492068}
@@ -505,6 +506,27 @@ MonoBehaviour:
   mainHandWeaponPoint: {fileID: 496296}
   offHandWeaponPoint: {fileID: 464076}
   armsAnimator: {fileID: 9556448}
+--- !u!114 &11436080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afded9c686858474d9b1284af82fd93b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    strength: 1
+    defense: 1
+    stamina: 1
+    energy: 1
+  debugFireEvent: 0
+  unspentPoint: 0
+  currentLevel: 1
+  currentExp: 0
+  canGainExp: 0
 --- !u!114 &11459170
 MonoBehaviour:
   m_ObjectHideFlags: 1

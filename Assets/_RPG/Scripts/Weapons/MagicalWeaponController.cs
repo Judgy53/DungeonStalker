@@ -14,6 +14,8 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public event EventHandler OnSecondary;
     public event EventHandler OnEndSecondary;
 
+    public event EventHandler<OnKillArgs> OnKill;
+
     [SerializeField]
     private float minDamages = 1.0f;
     public float MinDamages { get { return minDamages; } set { minDamages = value; } }

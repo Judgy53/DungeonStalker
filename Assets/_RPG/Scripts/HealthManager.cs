@@ -42,6 +42,13 @@ public class HealthManager : MonoBehaviour, IDamageable
         UpdateBar();
     }
 
+    public bool WillKill(float damages)
+    {
+        if (currentHealth - damages < 0.0f)
+            return true;
+        return false;
+    }
+
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
