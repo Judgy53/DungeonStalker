@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae83bfacbf95c94c95228f1107f09b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Pickup - ShortSword
+  actionName: Pickup - SharpSword
   description: It's sharp ! And shiny !
   pickedItemPrefab: {fileID: 171718, guid: d7a2f3505e3bfc74883088f519e78982, type: 2}
 --- !u!1001 &100100000

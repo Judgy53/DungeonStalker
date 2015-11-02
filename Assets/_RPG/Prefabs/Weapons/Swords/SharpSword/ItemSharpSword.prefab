@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  objName: ShortSword
+  objName: SharpSword
   itemDescription: It's sharp !
   weigth: 30
   canDrop: 1
@@ -67,6 +67,10 @@ Prefab:
       propertyPath: dropPrefab
       value: 
       objectReference: {fileID: 157042, guid: a3f1d07d7621ad640a6a261418db492a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: objName
+      value: SharpSword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171718}
