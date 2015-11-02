@@ -57,7 +57,10 @@ public class ManaManager : MonoBehaviour
     private void UpdateBar()
     {
         if (uiBar != null)
-            uiBar.Value = currentMana / maxMana;
+        {
+            uiBar.CurrentValue = currentMana;
+            uiBar.MaxValue = maxMana;
+        }
     }
 
     public void OnStatsChange(object sender, EventArgs args)

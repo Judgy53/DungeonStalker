@@ -64,7 +64,10 @@ public class HealthManager : MonoBehaviour, IDamageable
     private void UpdateBar()
     {
         if (uiBar != null)
-            uiBar.Value = currentHealth / maxHealth;
+        {
+            uiBar.CurrentValue = currentHealth;
+            uiBar.MaxValue = maxHealth;
+        }
     }
 
     public void Die()

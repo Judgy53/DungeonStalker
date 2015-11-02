@@ -4,8 +4,11 @@ using System.Collections;
 
 public class UIBar : MonoBehaviour
 {
-    private float valueNormalized = 0f;
-    public float Value { get { return valueNormalized; } set { valueNormalized = value; } }
+    private float currentValue = 1f;
+    public float CurrentValue { get { return currentValue; } set { currentValue = value; } }
+
+    private float maxValue = 1f;
+    public float MaxValue { get { return maxValue; } set { maxValue = value; } }
 
     private Image bar = null;
 
@@ -17,7 +20,7 @@ public class UIBar : MonoBehaviour
     private void Update()
     {
         Vector3 barScale = bar.transform.localScale;
-        barScale.x = valueNormalized;
+        barScale.x = currentValue / maxValue;
 
         bar.transform.localScale = barScale;
     }

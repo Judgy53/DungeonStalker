@@ -54,7 +54,10 @@ public class StatsManager : MonoBehaviour
             }
 
             if (xpBar != null)
-                xpBar.Value = (float)currentExp / (float)MaxExp;
+            {
+                xpBar.CurrentValue = (float)currentExp;
+                xpBar.MaxValue = (float)MaxExp;
+            }
         }
     }
 
