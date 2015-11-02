@@ -43,6 +43,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     private WeaponType weaponType = WeaponType.Magic;
     public WeaponType WeaponType { get { return weaponType; } }
 
+    [SerializeField]
+    private MagicalWeaponType magicalType = MagicalWeaponType.Destruction;
+    public MagicalWeaponType MagicalType { get { return magicalType; } }
+
     private MagicalWeaponUseState useState = MagicalWeaponUseState.Default;
     public MagicalWeaponUseState UseState { get { return useState; } }
 

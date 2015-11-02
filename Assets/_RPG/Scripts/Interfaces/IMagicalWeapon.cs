@@ -16,6 +16,7 @@ public interface IMagicalWeapon : IWeapon
     float MaxManaCost { get; }
 
     MagicalWeaponUseState UseState { get; }
+    MagicalWeaponType MagicalType { get; }
 }
 
 public enum MagicalWeaponUseState
@@ -23,4 +24,11 @@ public enum MagicalWeaponUseState
     Default,
     Charging,
     Launching
+}
+
+public enum MagicalWeaponType
+{
+    Destruction,
+    Restoration,
+    Illusion
 }
