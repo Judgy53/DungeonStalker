@@ -172,6 +172,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -271,6 +275,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -536,6 +544,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -745,6 +757,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -830,6 +846,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -885,6 +905,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -1103,6 +1127,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -1294,6 +1322,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -1545,6 +1577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showValues: 1
+  prefix: 'XP : '
+  suffix: 
 --- !u!114 &729822625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1622,6 +1656,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -2097,6 +2135,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -2143,6 +2185,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -2188,6 +2234,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -2239,6 +2289,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -2284,6 +2338,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -2411,6 +2469,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -2751,6 +2813,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -2801,6 +2867,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -2846,6 +2916,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -3129,6 +3203,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -3217,6 +3295,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -3317,6 +3399,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -3422,6 +3508,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -3506,6 +3596,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -3930,7 +4024,7 @@ Prefab:
       objectReference: {fileID: 729822624}
     - target: {fileID: 11428234, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
       propertyPath: currentExp
-      value: 50000
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
@@ -4071,6 +4165,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -4249,6 +4347,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11436080, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: currentLevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -4363,6 +4469,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -4635,6 +4745,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -4754,6 +4868,10 @@ Prefab:
       propertyPath: m_Name
       value: Bad Guy (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
   m_IsPrefabParent: 0
@@ -4799,6 +4917,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
@@ -4849,6 +4971,10 @@ Prefab:
     - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
       propertyPath: m_Name
       value: Bad Guy (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163784, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45c83160789904749bfe09e06abd4a71, type: 2}
