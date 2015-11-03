@@ -1461,15 +1461,15 @@ Prefab:
       objectReference: {fileID: 272518905}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: .0454545468
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: .681818187
       objectReference: {fileID: 0}
     - target: {fileID: 22458288, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_RootOrder
@@ -1544,6 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc29a963ebc077498bf2fa3fd1a80c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showValues: 1
 --- !u!114 &729822625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3927,6 +3928,10 @@ Prefab:
       propertyPath: xpBar
       value: 
       objectReference: {fileID: 729822624}
+    - target: {fileID: 11428234, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
+      propertyPath: currentExp
+      value: 50000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
   m_IsPrefabParent: 0

@@ -117,7 +117,7 @@ public class StatsManager : MonoBehaviour
 
     private uint ComputeMaxExp()
     {
-        return (uint)Mathf.RoundToInt(100 + Mathf.Pow(2.0f, (float)currentLevel));
+        return (uint)Mathf.RoundToInt(100 + Mathf.Pow(10.0f, (float)currentLevel));
     }
 }
 

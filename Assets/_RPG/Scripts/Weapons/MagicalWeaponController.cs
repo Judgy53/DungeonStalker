@@ -236,4 +236,8 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
         GameObject.Destroy(this.gameObject);
     }
+
+    public void OnEquip()
+    {
+    }
 }
