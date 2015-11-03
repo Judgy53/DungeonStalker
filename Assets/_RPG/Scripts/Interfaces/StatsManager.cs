@@ -71,6 +71,9 @@ public class StatsManager : MonoBehaviour
     [SerializeField]
     private UIBar xpBar = null;
 
+    [SerializeField]
+    private uint xpOnKill = 5;
+
     //Fire this script's Start after every other Starts.
     private void Start()
     {
@@ -82,6 +85,12 @@ public class StatsManager : MonoBehaviour
             weapManager.OnKill += OnKillCallback;
 
         maxExp = ComputeMaxExp();
+
+        if (xpBar != null)
+        {
+            xpBar.CurrentValue = (float)currentExp;
+            xpBar.MaxValue = (float)MaxExp;
+        }
     }
 
     private void OnDestroy()
@@ -112,7 +121,7 @@ public class StatsManager : MonoBehaviour
     {
         StatsManager manager = (args.target as Behaviour).GetComponent<StatsManager>();
         if (manager != null && manager.currentLevel + 10 > currentLevel)
-            CurrentExp += (manager.currentLevel * (uint)UnityEngine.Random.Range(5, 10));
+            CurrentExp += (manager.currentLevel * (uint)UnityEngine.Random.Range(5, 10) + manager.xpOnKill);
     }
 
     private uint ComputeMaxExp()
