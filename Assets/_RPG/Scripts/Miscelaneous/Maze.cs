@@ -6,8 +6,6 @@ public class Maze : MonoBehaviour
 {
     public Vector2i size = new Vector2i(20, 20);
 
-    public float generationStepDelay = 0.5f;
-
     public MazeCell cellPrefab = null;
     public MazePassage passagePrefab = null;
     public MazeWall[] wallPrefabs = null;
@@ -42,19 +40,21 @@ public class Maze : MonoBehaviour
                     GameObject.Destroy(cell.gameObject);
             }
 
+            cells = new MazeCell[0,0];
+
             StartCoroutine(Generate());
         }
     }
 
     public IEnumerator Generate()
     {
-        WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
         List<MazeCell> activeCells = new List<MazeCell>();
         DoFirstGenerationStep(activeCells);
         while (activeCells.Count > 0)
         {
-            yield return delay;
+            if (activeCells.Count % 100 == 0)
+                yield return false;
             DoNextGenerationStep(activeCells);
         }
     }
@@ -87,6 +87,8 @@ public class Maze : MonoBehaviour
                 CreatePassage(currentCell, neighbor, direction);
                 activeCells.Add(neighbor);
             }
+            else if (currentCell.room.settingsIndex == neighbor.room.settingsIndex)
+                CreatePassageInSameRoom(currentCell, neighbor, direction);
             else
                 CreateWall(currentCell, neighbor, direction);
         }
@@ -114,6 +116,22 @@ public class Maze : MonoBehaviour
         newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0.0f, coordinates.z - size.z * 0.5f + 0.5f);
 
         return newCell;
+    }
+
+    private void CreatePassageInSameRoom(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazePassage passage = GameObject.Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(cell, otherCell, direction);
+        passage = GameObject.Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(otherCell, cell, direction.GetOpposite());
+
+        if (cell.room != otherCell.room)
+        {
+            MazeRoom roomToAssimilate = otherCell.room;
+            cell.room.Assimilate(roomToAssimilate);
+            rooms.Remove(roomToAssimilate);
+            Destroy(roomToAssimilate);
+        }
     }
 
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
@@ -214,5 +232,4 @@ public static class MazeDirections
     {
         return rotations[(int)direction];
     }
-
 }

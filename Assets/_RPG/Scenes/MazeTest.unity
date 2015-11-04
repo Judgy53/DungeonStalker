@@ -76,15 +76,15 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .5
-    agentHeight: 2
+    agentRadius: .0500000007
+    agentHeight: 1
     agentSlope: 45
-    agentClimb: .400000006
+    agentClimb: .100000001
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .166666672
+    cellSize: .0166666675
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &16585813
@@ -281,11 +281,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475878, guid: 364d8460a82e71e498acc63757eed6d4, type: 2}
       propertyPath: size.x
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 11475878, guid: 364d8460a82e71e498acc63757eed6d4, type: 2}
       propertyPath: size.z
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 11475878, guid: 364d8460a82e71e498acc63757eed6d4, type: 2}
       propertyPath: generationStepDelay
