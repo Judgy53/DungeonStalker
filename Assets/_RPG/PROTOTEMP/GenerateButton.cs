@@ -13,12 +13,19 @@ public class GenerateButton : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(OnClick);
         sizex.onValueChange.AddListener(OnSizeXValueChange);
+        sizey.onValueChange.AddListener(OnSizeYValueChange);
     }
 
     void OnSizeXValueChange(string value)
     {
         if (int.Parse(sizex.text) > 50)
             sizex.text = "50";
+    }
+
+    void OnSizeYValueChange(string value)
+    {
+        if (int.Parse(sizey.text) > 50)
+            sizey.text = "50";
     }
 
     void OnClick()

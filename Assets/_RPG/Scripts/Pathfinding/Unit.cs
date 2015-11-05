@@ -13,6 +13,8 @@ public class Unit : MonoBehaviour, IControls
 
     public float gravityMultiplier = 1.0f;
 
+    public float actualizationTime = 0.3f;
+
     private Vector3[] path = null;
     private int targetIndex = 0;
     private bool pathProcessing = false;
@@ -114,7 +116,7 @@ public class Unit : MonoBehaviour, IControls
                     pathProcessing = true;
                 }
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(actualizationTime);
         }
     }
 
