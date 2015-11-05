@@ -1,14 +1,22 @@
 ﻿using System;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour, IDamageable
+public class HealthManager : MonoBehaviour, IDamageable, ISavable
 {
     [SerializeField]
     private float maxHealth = 10f;
-    public float MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
+    public float MaxHealth 
+    { 
+        get { return maxHealth; }
+        set { maxHealth = value; CapHealth(); } 
+    }
 
     private float currentHealth = 10f;
-    public float CurrentHealth { get { return currentHealth; } }
+    public float CurrentHealth 
+    {
+        get { return currentHealth; }
+        set { currentHealth = value; CapHealth(); } 
+    }
 
     public float Damage { get { return maxHealth - currentHealth; } }
 
@@ -40,7 +48,7 @@ public class HealthManager : MonoBehaviour, IDamageable
                 e.ApplyDamageModifier(ref damage);
         }
 
-        currentHealth = Mathf.Min(currentHealth - damage, maxHealth);
+        CurrentHealth = CurrentHealth - damage;
 
         if (currentHealth <= 0f)
             Die();
@@ -83,5 +91,22 @@ public class HealthManager : MonoBehaviour, IDamageable
         currentHealth = Mathf.Min(currentHealth, maxHealth);
 
         UpdateBar();
+    }
+
+    private void CapHealth()
+    {
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("MaxHealth", MaxHealth);
+        data.Add("CurrentHealth", CurrentHealth);
+    }
+
+    public void Load(SaveData data)
+    {
+        MaxHealth = float.Parse(data.Get("MaxHealth"));
+        CurrentHealth = float.Parse(data.Get("CurrentHealth"));
     }
 }

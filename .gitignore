@@ -34,3 +34,10 @@ ehthumbs.db
 [Tt]humbs.db
 UpgradeLog.htm
 Builds/
+
+# ========== #
+# Save files #
+# ========== #
+saves/
+
+

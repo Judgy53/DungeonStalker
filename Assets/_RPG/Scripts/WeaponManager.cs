@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : MonoBehaviour, ISavable
 {
     public event EventHandler<EventWeaponChange> OnMainHandWeaponChange;
     public event EventHandler<EventWeaponChange> OnOffHandWeaponChange;
@@ -270,6 +270,37 @@ public class WeaponManager : MonoBehaviour
             offHandWeapon.EndSecondary();
         else if (mainHandWeapon != null)
             mainHandWeapon.EndSecondary();  
+    }
+
+    public void Save(SaveData data)
+    {
+        if (MainHandWeapon != null)
+            MainHandWeapon.ToSaveData(data, "MainHandWeapon");
+
+        if(OffHandWeapon != null)
+            OffHandWeapon.ToSaveData(data, "OffHandWeapon");
+    }
+
+    public void Load(SaveData data)
+    {
+        string mainHandPath = data.Get("MainHandWeapon");
+        string offHandPath = data.Get("OffHandWeapon");
+
+        if(mainHandPath != null)
+        {
+            GameObject prefab = Resources.Load<GameObject>(mainHandPath);
+            GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+            MainHandWeapon = instance.GetComponent<IWeapon>();
+        }
+
+        if (offHandPath != null)
+        {
+            GameObject prefab = Resources.Load<GameObject>(offHandPath);
+            GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+            OffHandWeapon = instance.GetComponent<IWeapon>();
+        }
     }
 }
 

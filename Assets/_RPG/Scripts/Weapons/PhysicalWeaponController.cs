@@ -237,4 +237,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
         GameObject.Destroy(this.gameObject);
     }
+
+    public void ToSaveData(SaveData data, string name)
+    {
+        string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
+
+        data.Add(name, path);
+    }
 }

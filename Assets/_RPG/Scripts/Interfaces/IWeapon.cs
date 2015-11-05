@@ -28,6 +28,8 @@ public interface IWeapon
     GameObject InventoryItemPrefab { get; }
 
     void TransferToContainer(IContainer container);
+
+    void ToSaveData(SaveData data, string name);
 }
 
 public enum WeaponHand : int
