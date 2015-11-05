@@ -331,10 +331,10 @@ RectTransform:
   - {fileID: 862006642}
   m_Father: {fileID: 1909472461}
   m_RootOrder: 5
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -293, y: 61.9999962}
-  m_SizeDelta: {x: 53.7599983, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107, y: -163}
+  m_SizeDelta: {x: 53.7600098, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &273168241
 GameObject:
@@ -467,9 +467,9 @@ RectTransform:
   - {fileID: 1343420770}
   m_Father: {fileID: 1909472461}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -213, y: 145}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187, y: -80}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &374010942
@@ -674,9 +674,9 @@ RectTransform:
   - {fileID: 1222204595}
   m_Father: {fileID: 1909472461}
   m_RootOrder: 7
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 311, y: -204}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -89, y: 21}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &556887514
@@ -996,10 +996,10 @@ RectTransform:
   - {fileID: 7772306}
   m_Father: {fileID: 1909472461}
   m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -364, y: 62}
-  m_SizeDelta: {x: 53.7599983, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 36, y: -163}
+  m_SizeDelta: {x: 53.7600098, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1206431761
 MonoBehaviour:
@@ -1183,9 +1183,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1909472461}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -256, y: 144}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 144, y: -81}
   m_SizeDelta: {x: 260.660004, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1247542206
@@ -1332,9 +1332,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1909472461}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -256, y: 99}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 144, y: -126}
   m_SizeDelta: {x: 260.660004, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1369326236
@@ -1417,9 +1417,9 @@ RectTransform:
   - {fileID: 1632496975}
   m_Father: {fileID: 1909472461}
   m_RootOrder: 6
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -311, y: 18}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 89, y: -207}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1550616568
@@ -1818,7 +1818,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Procedural dungeon generator tech demo
+  m_Text: Procedural Dungeon generator Tech demo
 --- !u!222 &1640130422
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1837,10 +1837,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1909472461}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -55, y: 184}
-  m_SizeDelta: {x: 672.5, y: 64.0999985}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 345, y: -41}
+  m_SizeDelta: {x: 672.5, y: 64.1000061}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1897420682
 GameObject:
