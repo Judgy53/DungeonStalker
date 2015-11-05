@@ -65,12 +65,14 @@ public class UIItemPauseMenu : MonoBehaviour
         {
             UIStateManager.UnregisterUI();
             content.SetActive(false);
+            Cursor.visible = false;
             Time.timeScale = 1.0f;
         }
         else
         {
             UIStateManager.RegisterUI();
             content.SetActive(true);
+            Cursor.visible = true;
             Time.timeScale = 0.0f;
         }
     }
