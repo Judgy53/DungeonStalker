@@ -45,4 +45,10 @@ public static class Vector3Extension
 
         return vector;
     }
+
+    public static Vector3 RotateAround(this Vector3 vector, Vector3 pivot, Quaternion angle)
+    {
+        return angle * (vector - pivot) + pivot;
+    }
+
 }

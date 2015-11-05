@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public interface IDamageable 
 {
+    event EventHandler OnKill;
+
     float Damage { get; }
 
     void AddDamage(float damages);

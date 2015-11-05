@@ -78,8 +78,11 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
                 e.ApplyMovementEffect(ref frameVelocity);
         }
 
+        
+
         float velocityy = velocity.y;
-        velocity = transform.TransformDirection(frameVelocity);
+        //velocity = transform.TransformDirection(frameVelocity);
+        velocity = frameVelocity.RotateAround(Vector3.zero, Quaternion.Euler(0f, transform.eulerAngles.y, 0f));
         velocity.y = velocityy;
 
         if (jumpInput && cc.isGrounded)
