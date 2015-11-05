@@ -28,22 +28,19 @@ public class Maze : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Regenerate()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        StopAllCoroutines();
+
+        foreach (var cell in cells)
         {
-            StopAllCoroutines();
-
-            foreach (var cell in cells)
-            {
-                if (cell != null)
-                    GameObject.Destroy(cell.gameObject);
-            }
-
-            cells = new MazeCell[0,0];
-
-            StartCoroutine(Generate());
+            if (cell != null)
+                GameObject.Destroy(cell.gameObject);
         }
+
+        cells = new MazeCell[0, 0];
+
+        StartCoroutine(Generate());
     }
 
     public IEnumerator Generate()
@@ -108,7 +105,7 @@ public class Maze : MonoBehaviour
 
     private MazeCell CreateCell(Vector2i coordinates)
     {
-        MazeCell newCell = GameObject.Instantiate(cellPrefab) as MazeCell;
+        MazeCell newCell = GameObject.Instantiate(cellPrefab, transform.position, transform.rotation) as MazeCell;
         cells[coordinates.x, coordinates.z] = newCell;
         newCell.coordinates = coordinates;
         newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
