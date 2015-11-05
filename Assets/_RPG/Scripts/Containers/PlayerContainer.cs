@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable
+public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISavable
 {
     public event EventHandler<WeightChangeArgs> OnWeightChange;
 
@@ -68,6 +68,16 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable
         }
     }
 
+    private void ClearInventory()
+    {
+        IItem[] items = Items;
+
+        foreach (IItem item in items)
+        {
+            Destroy((item as Behaviour).gameObject);
+        }
+    }
+
     public void DropItem(IItem item)
     {
         Behaviour itemBehaviour = (item as Behaviour);
@@ -115,6 +125,42 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable
     public void OnStatsChange(object sender, EventArgs args)
     {
         maxWeight = 90u + statsManager.Stats.Strength * 10u;
+    }
+
+    public void Save(SaveData data)
+    {
+        IItem[] items = Items;
+
+        int counter = 0;
+
+        foreach(IItem item in items)
+        {
+            string name = (item as Behaviour).name;
+            data.Add("Item_" + counter, ResourcesPathHelper.GetItemPath(name));
+
+            counter++;
+        }
+    }
+
+    public void Load(SaveData data)
+    {
+        ClearInventory();
+        
+        int counter = 0;
+
+        while(true)
+        {
+            string path = data.Get("Item_" + counter);
+            if (path == null)
+                break;
+
+            GameObject prefab = Resources.Load(path) as GameObject;
+            GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+            AddItem(instance.GetComponent<IItem>());
+
+            counter++;
+        }
     }
 }
 
