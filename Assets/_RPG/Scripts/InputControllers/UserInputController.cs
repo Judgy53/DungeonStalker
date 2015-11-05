@@ -56,10 +56,12 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
                 weaponManager.EndSecondary();
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
             SaveManager.Instance.Save();
         if (Input.GetKeyDown(KeyCode.Alpha2))
             SaveManager.Instance.LoadLast();
+        */
     }
 
     private void FixedUpdate()

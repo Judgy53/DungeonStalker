@@ -9,11 +9,15 @@ public class GenerateButton : MonoBehaviour
     public InputField sizex = null;
     public InputField sizey = null;
 
+    public Button random;
+
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(OnClick);
         sizex.onValueChange.AddListener(OnSizeXValueChange);
         sizey.onValueChange.AddListener(OnSizeYValueChange);
+
+        random.onClick.AddListener(RandomSeed);
     }
 
     void OnSizeXValueChange(string value)
@@ -33,7 +37,10 @@ public class GenerateButton : MonoBehaviour
         if (seed.text.Length != 0)
             Random.seed = int.Parse(seed.text);
         else
-            Random.seed = 0;
+        {
+            RandomSeed();
+            Random.seed = int.Parse(seed.text);
+        }
         if (sizex.text.Length != 0 && int.Parse(sizex.text) != 0)
             maze.size.x = int.Parse(sizex.text);
         else
@@ -45,5 +52,10 @@ public class GenerateButton : MonoBehaviour
             maze.size.z = 1;
 
         maze.Regenerate();
+    }
+
+    void RandomSeed()
+    {
+        seed.text = Random.Range(0, 999999).ToString();
     }
 }
