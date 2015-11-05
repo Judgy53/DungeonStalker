@@ -48,6 +48,8 @@ public class WeaponManager : MonoBehaviour, ISavable
             }
 
             RegisterCallbacks(offHandWeapon);
+
+            value.OnEquip();
         }
     }
 
@@ -86,6 +88,8 @@ public class WeaponManager : MonoBehaviour, ISavable
             }
 
             RegisterCallbacks(mainHandWeapon);
+
+            value.OnEquip();
         }
     }
 

@@ -200,8 +200,6 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
         }
     }
 
-
-
     private bool CanLaunch(ManaManager launcher, float realManaCost)
     {
         if (projectilePrefab == null)
@@ -237,10 +235,15 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
         GameObject.Destroy(this.gameObject);
     }
 
-    public void ToSaveData(SaveData data, string name)
+    public void OnEquip()
+    {
+
+    }
+	
+	public void ToSaveData(SaveData data, string name)
     {
         string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
 
         data.Add(name, path);
-    }
+	}
 }

@@ -41,12 +41,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
 
     public void AddDamage(float damage)
     {
-        if (effectManager != null)
-        {
-            IDamageReceivedEffect[] effects = effectManager.GetEffects<IDamageReceivedEffect>();
-            foreach (var e in effects)
-                e.ApplyDamageModifier(ref damage);
-        }
+        damage = ApplyDamagesModifiers(damage);
 
         CurrentHealth = CurrentHealth - damage;
 
@@ -56,11 +51,25 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
         UpdateBar();
     }
 
+    public void AddDamage(float damages, StatsManager other)
+    {
+        float realDamages = ComputeDamageReceived(statsManager, other, damages);
+        AddDamage(realDamages);
+    }
+
     public bool WillKill(float damages)
     {
-        if (currentHealth - damages <= 0.0f)
+        float realDamages = ApplyDamagesModifiers(damages);
+
+        if (currentHealth - realDamages <= 0.0f)
             return true;
         return false;
+    }
+
+    public bool WillKill(float damages, StatsManager other)
+    {
+        float realDamages = ComputeDamageReceived(statsManager, other, damages);
+        return WillKill(realDamages);
     }
 
     public void Heal(float amount)
@@ -92,7 +101,39 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
 
         UpdateBar();
     }
+	
+    private float ComputeDamageReceived(StatsManager self, StatsManager other, float damages)
+    {
+        damages *= Mathf.Pow(0.90f, (float)self.Stats.Defense);
 
+        float damageLevelModifier = ((float)other.CurrentLevel - (float)self.CurrentLevel) * 2.0f;
+
+        try
+        {
+            damages = checked(damages + damageLevelModifier);
+        }
+        catch
+        {
+            damages = 0.0f;
+        }
+
+        damages = Mathf.Max(damages, 0.1f);
+        
+        return damages;
+    }
+
+    private float ApplyDamagesModifiers(float damages)
+    {
+        if (effectManager != null)
+        {
+            IDamageReceivedEffect[] effects = effectManager.GetEffects<IDamageReceivedEffect>();
+            foreach (var e in effects)
+                e.ApplyDamageModifier(ref damages);
+        }
+
+        return damages;
+	}
+	
     private void CapHealth()
     {
         currentHealth = Mathf.Min(currentHealth, maxHealth);

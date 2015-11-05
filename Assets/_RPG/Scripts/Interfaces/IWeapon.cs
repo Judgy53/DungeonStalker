@@ -21,6 +21,8 @@ public interface IWeapon
     void Secondary();
     void EndSecondary();
 
+    void OnEquip();
+
     WeaponHand WeaponHand { get; }
     WeaponRestriction WeaponRestrictions { get; }
     WeaponType WeaponType { get; }

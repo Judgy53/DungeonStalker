@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockable
 {
@@ -84,6 +84,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     [SerializeField]
     private GameObject inventoryItemPrefab = null;
     public GameObject InventoryItemPrefab { get { return inventoryItemPrefab; } }
+
+    private StatsManager stManager = null;
 
     public void Primary()
     {
@@ -210,22 +212,41 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         {
             if (!hits.Exists(x => x == damageable))
             {
-                float damages = UnityEngine.Random.Range(minDamages, maxDamages);
+                float damages = 0.0f;
+                if (stManager != null)
+                    damages = UnityEngine.Random.Range(minDamages, maxDamages) + (0.4f * stManager.Stats.Strength);
+                else
+                    damages = UnityEngine.Random.Range(minDamages, maxDamages);
 
-                if (damageable.WillKill(damages))
+                if (OnHit != null)
+                    OnHit(this, new EventArgs());
+
+                if (stManager != null)
                 {
-                    if (OnKill != null)
-                        OnKill(this, new OnKillArgs(damageable));
+                    if (damageable.WillKill(damages, stManager))
+                    {
+                        if (OnKill != null)
+                            OnKill(this, new OnKillArgs(damageable));
+                    }
+                }
+                else
+                {
+                    if (damageable.WillKill(damages))
+                    {
+                        if (OnKill != null)
+                            OnKill(this, new OnKillArgs(damageable));
+                    }
                 }
 
-                damageable.AddDamage(damages);
+                if (stManager != null)
+                    damageable.AddDamage(damages, stManager);
+                else
+                    damageable.AddDamage(damages);
+
                 hits.Add(damageable);
 
                 if (hitEffectPrefab != null)
                     GameObject.Destroy(GameObject.Instantiate(hitEffectPrefab, hit.point, Quaternion.identity), 5.0f);
-
-                if (OnHit != null)
-                    OnHit(this, new EventArgs());
             }
         }
     }
@@ -238,10 +259,15 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         GameObject.Destroy(this.gameObject);
     }
 
-    public void ToSaveData(SaveData data, string name)
+    public void OnEquip()
+    {
+        stManager = GetComponentInParent<StatsManager>();
+    }
+	
+	public void ToSaveData(SaveData data, string name)
     {
         string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
 
         data.Add(name, path);
-    }
+	}
 }
