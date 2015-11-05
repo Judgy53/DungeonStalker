@@ -4,4 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_RPG/Scenes/MainMenu.unity
+  - enabled: 1
+    path: Assets/_RPG/Scenes/TestRoom.unity
+  - enabled: 1
+    path: Assets/_RPG/Scenes/MazeTest.unity
+  - enabled: 1
+    path: Assets/_RPG/Scenes/AStarTest.unity
