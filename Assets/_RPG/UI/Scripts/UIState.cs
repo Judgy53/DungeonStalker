@@ -14,6 +14,8 @@ public static class UIStateManager
             state = UIState.Busy;
         else
             state = UIState.Free;
+
+        HandleCursorState();
     }
 
     public static void UnregisterUI()
@@ -24,6 +26,14 @@ public static class UIStateManager
             state = UIState.Busy;
         else
             state = UIState.Free;
+
+        HandleCursorState();
+    }
+
+    public static void HandleCursorState()
+    {
+        Cursor.visible = count > 0;
+        Cursor.lockState = count > 0 ? CursorLockMode.Confined : CursorLockMode.Locked;
     }
 }
 

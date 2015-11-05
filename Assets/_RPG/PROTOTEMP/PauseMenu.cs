@@ -26,8 +26,6 @@ public class PauseMenu : MonoBehaviour
     {
         state = newState;
 
-        Cursor.visible = newState;
-
         content.SetActive(newState);
         Time.timeScale = newState ? 0f : 1f;
 

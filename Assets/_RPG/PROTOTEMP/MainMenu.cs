@@ -3,6 +3,11 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void LoadScene(int id)
     {
         Application.LoadLevel(id);
