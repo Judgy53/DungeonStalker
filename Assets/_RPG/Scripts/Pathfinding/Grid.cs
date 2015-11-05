@@ -7,8 +7,7 @@ public class Grid : MonoBehaviour
     public LayerMask unwalkableMask = new LayerMask();
     public Vector2 gridWorldSize = Vector2.one;
     public float nodeRadius = 1.0f;
-
-    public bool onlyDisplayPathGizmos = true;
+    public bool displayGrid = false;
 
     public int MaxSize
     {
@@ -23,7 +22,7 @@ public class Grid : MonoBehaviour
     private float nodeDiameter = 0.0f;
     private int gridSizeX, gridSizeY;
 
-    void Start()
+    void Awake()
     {
         nodeDiameter = nodeRadius * 2.0f;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -84,37 +83,16 @@ public class Grid : MonoBehaviour
         return neighbours;
     }
 
-    public List<Node> path = null;
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-        if (onlyDisplayPathGizmos)
+        if (grid != null && displayGrid)
         {
-            if (path != null)
+            foreach (Node n in grid)
             {
-                foreach (Node n in path)
-                {
-                    if (path.Contains(n))
-                        Gizmos.color = Color.black;
-                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.05f));
-                }
-            }
-        }
-        else
-        {
-            if (grid != null)
-            {
-                foreach (Node n in grid)
-                {
-                    Gizmos.color = n.walkable ? Color.white : Color.red;
-                    if (path != null)
-                    {
-                        if (path.Contains(n))
-                            Gizmos.color = Color.black;
-                    }
-                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.05f));
-                }
+                Gizmos.color = n.walkable ? Color.white : Color.red;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.05f));
             }
         }
     }
