@@ -53,4 +53,9 @@ public class PauseMenu : MonoBehaviour
     {
         Application.LoadLevel(0);
     }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
+    }
 }
