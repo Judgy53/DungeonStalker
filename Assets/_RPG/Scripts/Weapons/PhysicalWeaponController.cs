@@ -263,4 +263,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     {
         stManager = GetComponentInParent<StatsManager>();
     }
+	
+	public void ToSaveData(SaveData data, string name)
+    {
+        string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
+
+        data.Add(name, path);
+	}
 }

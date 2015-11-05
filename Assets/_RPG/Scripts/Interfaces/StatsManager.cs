@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class StatsManager : MonoBehaviour
+public class StatsManager : MonoBehaviour, ISavable
 {
     public event EventHandler OnLevelUp;
 
@@ -127,6 +127,32 @@ public class StatsManager : MonoBehaviour
     private uint ComputeMaxExp()
     {
         return (uint)Mathf.RoundToInt(100 + Mathf.Pow(10.0f, (float)currentLevel));
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("StatsUnspent", unspentPoint);
+
+        data.Add("StatsStrength", Stats.Strength);
+        data.Add("StatsDefense", Stats.Defense);
+        data.Add("StatsStamina", Stats.Stamina);
+        data.Add("StatsEnergy", Stats.Energy);
+
+        data.Add("CurrentLevel", currentLevel);
+        data.Add("CurrentExp", currentExp);
+    }
+
+    public void Load(SaveData data)
+    {
+        UnspentPoints = uint.Parse(data.Get("StatsUnspent"));
+
+        Stats.Strength = uint.Parse(data.Get("StatsStrength"));
+        Stats.Defense = uint.Parse(data.Get("StatsDefense"));
+        Stats.Stamina = uint.Parse(data.Get("StatsStamina"));
+        Stats.Energy = uint.Parse(data.Get("StatsEnergy"));
+
+        CurrentLevel = uint.Parse(data.Get("CurrentLevel"));
+        CurrentExp = uint.Parse(data.Get("CurrentExp"));
     }
 }
 

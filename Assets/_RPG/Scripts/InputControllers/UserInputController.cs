@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
-public class UserInputController : MonoBehaviour, IControls
+public class UserInputController : MonoBehaviour, IControls, ISavable
 {
     [SerializeField] 
     private Vector3 moveSpeed = new Vector3(5.0f, 1.0f, 5.0f);
@@ -55,6 +55,11 @@ public class UserInputController : MonoBehaviour, IControls
             else if (Input.GetButtonUp("Fire2"))
                 weaponManager.EndSecondary();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SaveManager.Instance.Save();
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            SaveManager.Instance.LoadLast();
     }
 
     private void FixedUpdate()
@@ -81,5 +86,19 @@ public class UserInputController : MonoBehaviour, IControls
         velocity += Physics.gravity * gravityMultiplier * Time.fixedDeltaTime;
 
         cc.Move(velocity * Time.fixedDeltaTime);
+    }
+
+    public void Save(SaveData data)
+    {
+        transform.position.ToSaveData(data, "Position");
+        transform.eulerAngles.ToSaveData(data, "Rotation");
+        velocity.ToSaveData(data, "Velocity");
+    }
+
+    public void Load(SaveData data)
+    {
+        transform.position = new Vector3().FromSaveData(data, "Position");
+        transform.rotation = Quaternion.Euler(new Vector3().FromSaveData(data, "Rotation"));
+        velocity = new Vector3().FromSaveData(data, "Velocity");
     }
 }

@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-public class ManaManager : MonoBehaviour
+public class ManaManager : MonoBehaviour, ISavable
 {
 
     [SerializeField]
@@ -66,10 +66,22 @@ public class ManaManager : MonoBehaviour
     public void OnStatsChange(object sender, EventArgs args)
     {
         maxMana = 40u + statsManager.Stats.Energy * 10u;
-        regenRate = 3u + statsManager.Stats.Energy * 1u;
+        regenRate = 4u + statsManager.Stats.Energy * 1u;
 
         currentMana = Mathf.Min(currentMana, maxMana);
 
         UpdateBar();
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("MaxMana", MaxMana);
+        data.Add("CurrentMana", CurrentMana);
+    }
+
+    public void Load(SaveData data)
+    {
+        MaxMana = float.Parse(data.Get("MaxMana"));
+        CurrentMana = float.Parse(data.Get("CurrentMana"));
     }
 }

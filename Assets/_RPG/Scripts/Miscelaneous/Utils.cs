@@ -27,3 +27,22 @@ public class Vector2i
         return new Vector2i(a.x + b.x, a.z + b.z);
     }
 }
+
+public static class Vector3Extension
+{
+    public static void ToSaveData(this Vector3 vector, SaveData data, string name)
+    {
+        data.Add(name + "X", vector.x);
+        data.Add(name + "Y", vector.y);
+        data.Add(name + "Z", vector.z);
+    }
+
+    public static Vector3 FromSaveData(this Vector3 vector, SaveData data, string name)
+    {
+        vector.x = float.Parse(data.Get(name + "X"));
+        vector.y = float.Parse(data.Get(name + "Y"));
+        vector.z = float.Parse(data.Get(name + "Z"));
+
+        return vector;
+    }
+}
