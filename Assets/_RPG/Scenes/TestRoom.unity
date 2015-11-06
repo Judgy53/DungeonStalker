@@ -4659,6 +4659,10 @@ Prefab:
       propertyPath: currentExp
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11484992, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
+      propertyPath: PickablesContainer
+      value: 
+      objectReference: {fileID: 1981392883}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
   m_IsPrefabParent: 0
@@ -5186,6 +5190,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1981392884}
+  - 114: {fileID: 1981392886}
+  - 114: {fileID: 1981392885}
   m_Layer: 0
   m_Name: Pickables
   m_TagString: Untagged
@@ -5228,6 +5234,29 @@ Transform:
   - {fileID: 748032506}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1981392885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1981392883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42dfa50ad30e1b145807dfd419b80137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1981392886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1981392883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113d434bc756f8e4480e1cb2d47aa78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 7681d599-f223-46c5-b3b4-825cd94938e0
 --- !u!1 &1989655614
 GameObject:
   m_ObjectHideFlags: 0

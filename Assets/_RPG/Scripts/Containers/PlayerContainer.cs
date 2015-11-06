@@ -22,6 +22,9 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
         }
     }
 
+    [SerializeField]
+    private GameObject PickablesContainer;
+
     public IItem[] Items { 
         get 
         {
@@ -72,8 +75,9 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
     {
         IItem[] items = Items;
 
-        foreach (IItem item in items)
+        foreach (IItem item in items)   
         {
+            RemoveItem(item);
             Destroy((item as Behaviour).gameObject);
         }
     }
@@ -91,6 +95,9 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
                 {
                     GameObject pickableGo = GameObject.Instantiate(item.DropPrefab, transform.position + transform.forward * 2.0f, Quaternion.identity) as GameObject;
                     pickableGo.GetComponent<Rigidbody>().AddForce(transform.forward * 2.0f);
+
+                    if (PickablesContainer != null)
+                        pickableGo.transform.parent = PickablesContainer.transform;
                 }
 
                 GameObject.Destroy(itemBehaviour.gameObject);
@@ -136,9 +143,7 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
         foreach(IItem item in items)
         {
             string name = (item as Behaviour).name;
-            data.Add("Item_" + counter, ResourcesPathHelper.GetItemPath(name));
-
-            counter++;
+            data.Add("Item_" + counter++, ResourcesPathHelper.GetItemPath(name));
         }
     }
 
@@ -150,16 +155,20 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
 
         while(true)
         {
-            string path = data.Get("Item_" + counter);
+            string path = data.Get("Item_" + counter++);
             if (path == null)
                 break;
 
             GameObject prefab = Resources.Load(path) as GameObject;
+            if (prefab == null)
+            {
+                Debug.LogWarning("Loading Inventory : Failed to load \"" + path + "\"");
+                continue;
+            }
+
             GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 
             AddItem(instance.GetComponent<IItem>());
-
-            counter++;
         }
     }
 }
