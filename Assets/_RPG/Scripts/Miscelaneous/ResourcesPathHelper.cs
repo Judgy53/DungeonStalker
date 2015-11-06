@@ -7,7 +7,7 @@ public class ResourcesPathHelper
         string path = "Weapons/";
         path += type.ToString() + "/";
         path += CleanName(name);
-
+        
         return path;
     }
 
@@ -20,14 +20,25 @@ public class ResourcesPathHelper
         return path;
     }
 
+    public static string GetPickablePath(string name)
+    {
+        string path = "Pickables/";
+        //path += type.ToString() + "/"; // pickable type would be great
+        path += CleanName(name);
+
+        return path;
+    }
+
     private static string CleanName(string name)
     {
         string weaponName = name;
 
-        if (weaponName.EndsWith("(Clone)"))
-            weaponName = weaponName.Remove(weaponName.LastIndexOf('('));
+        int index = weaponName.LastIndexOf('(');
 
-        weaponName.Trim();
+        if (index > 0)
+            weaponName = weaponName.Remove(index);
+
+        weaponName = weaponName.TrimEnd(); // copy in editor adds a space (Instantiate does not)
 
         return weaponName;
     }

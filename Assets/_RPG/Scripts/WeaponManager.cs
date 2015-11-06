@@ -287,23 +287,46 @@ public class WeaponManager : MonoBehaviour, ISavable
 
     public void Load(SaveData data)
     {
+        if (MainHandWeapon != null)
+        {
+            Destroy((MainHandWeapon as Behaviour).gameObject);
+            mainHandWeapon = null; // set the variable (not the property) to null to avoid transfering to inventory
+        }
+
+        if (OffHandWeapon != null)
+        {
+            Destroy((OffHandWeapon as Behaviour).gameObject);
+            offHandWeapon = null; // set the variable (not the property) to null to avoid transfering to inventory
+        }
+
+
         string mainHandPath = data.Get("MainHandWeapon");
         string offHandPath = data.Get("OffHandWeapon");
 
         if(mainHandPath != null)
         {
             GameObject prefab = Resources.Load<GameObject>(mainHandPath);
-            GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-
-            MainHandWeapon = instance.GetComponent<IWeapon>();
+            if (prefab == null)
+                Debug.LogWarning("Loading Weapon MainHand : Failed to load \"" + mainHandPath + "\"");
+            else
+            {
+                GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+                
+                MainHandWeapon = instance.GetComponent<IWeapon>();
+            }
         }
 
         if (offHandPath != null)
         {
             GameObject prefab = Resources.Load<GameObject>(offHandPath);
-            GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+            if (prefab == null)
+                Debug.LogWarning("Loading Weapon OffHand : Failed to load \"" + offHandPath + "\"");
+            else
+            {
+                GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 
-            OffHandWeapon = instance.GetComponent<IWeapon>();
+                OffHandWeapon = instance.GetComponent<IWeapon>();
+            }
         }
     }
 }
