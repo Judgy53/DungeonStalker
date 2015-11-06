@@ -473,9 +473,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazeInstance: {fileID: 255568896}
   playerPrefab: {fileID: 102502, guid: 01a671901d6d4514e8947d41a3b8debb, type: 2}
-  minEnemies: 100
-  maxEnemies: 100
-  maxEnemiesPerRoom: 100
+  minEnemies: 30
+  maxEnemies: 60
+  maxEnemiesPerRoom: 10
 --- !u!4 &1321811100
 Transform:
   m_ObjectHideFlags: 0
