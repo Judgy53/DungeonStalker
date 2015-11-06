@@ -5,8 +5,21 @@ using System;
 [RequireComponent(typeof(CharacterController))]
 public class Unit : MonoBehaviour, IControls
 {
-    public Transform target = null;
-    public float speed = 20.0f;
+    [SerializeField]
+    private Transform target = null;
+    public Transform Target
+    {
+        get { return target; }
+        set
+        {
+            StopCoroutine(AutoActualizePath());
+            target = value;
+            path = null;
+            if (target != null)
+                StartCoroutine(AutoActualizePath());
+        }
+    }
+
     public float precision = 2.0f;
     public float angleInterpolationFactor = 5.0f;
     public float acceleration = 0.5f;
@@ -14,6 +27,8 @@ public class Unit : MonoBehaviour, IControls
     public float gravityMultiplier = 1.0f;
 
     public float actualizationTime = 0.3f;
+
+    public float gizmoSize = 1.0f;
 
     private Vector3[] path = null;
     private int targetIndex = 0;
@@ -39,7 +54,6 @@ public class Unit : MonoBehaviour, IControls
 
     private void Start()
     {
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
         StartCoroutine(AutoActualizePath());
     }
 
@@ -59,8 +73,12 @@ public class Unit : MonoBehaviour, IControls
                 currentWaypoint = path[targetIndex];
             }
 
+            Vector3 direction = currentWaypoint - transform.position;
+            direction.y = transform.position.y;
+            direction.Normalize();
+
             transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.LookRotation((currentWaypoint - transform.position).normalized, Vector3.up),
+                Quaternion.LookRotation(direction),
                 angleInterpolationFactor * Time.fixedDeltaTime);
 
             /*if (effectManager != null)
@@ -99,7 +117,8 @@ public class Unit : MonoBehaviour, IControls
 
         pathProcessing = false;
 
-        oldTargetPosition = target.position;
+        if (target != null)
+            oldTargetPosition = target.position;
 
         targetIndex = 0;
     }
@@ -108,30 +127,36 @@ public class Unit : MonoBehaviour, IControls
     {
         while (true)
         {
-            if (oldTargetPosition != target.position)
+            if (target != null)
             {
-                if (!pathProcessing)
+                if (oldTargetPosition != target.position)
                 {
-                    PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
-                    pathProcessing = true;
+                    if (!pathProcessing)
+                    {
+                        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+                        pathProcessing = true;
+                    }
                 }
             }
+
             yield return new WaitForSeconds(actualizationTime);
         }
     }
 
     public void OnDrawGizmos()
     {
-        if(path != null)
+        if (path != null)
+        {
             for (int i = targetIndex; i < path.Length; i++)
             {
                 Gizmos.color = Color.black;
-                Gizmos.DrawCube(path[i], Vector3.one);
+                Gizmos.DrawCube(path[i], new Vector3(gizmoSize, gizmoSize, gizmoSize));
 
                 if (i == targetIndex)
                     Gizmos.DrawLine(transform.position, path[i]);
                 else
                     Gizmos.DrawLine(path[i - 1], path[i]);
             }
+        }
     }
 }

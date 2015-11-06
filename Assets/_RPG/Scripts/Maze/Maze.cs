@@ -15,10 +15,18 @@ public class Maze : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float doorProbablity = 0.1f;
 
+    public GameObject playerStartPrefab = null;
+
+    public GameObject[] enemiesPrefabs = null;
+
     public MazeRoomSettings[] roomSettings = new MazeRoomSettings[0];
 
     private MazeCell[,] cells = new MazeCell[0, 0];
     private List<MazeRoom> rooms = new List<MazeRoom>();
+
+    private List<GameObject> enemies = new List<GameObject>();
+
+    private bool playerStartCreated = false;
 
     public Vector2i RandomCoordinates
     {
@@ -36,6 +44,12 @@ public class Maze : MonoBehaviour
         {
             if (cell != null)
                 GameObject.Destroy(cell.gameObject);
+        }
+
+        foreach (var e in enemies)
+        {
+            if (e != null)
+                GameObject.Destroy(e);
         }
 
         cells = new MazeCell[0, 0];
@@ -56,11 +70,48 @@ public class Maze : MonoBehaviour
         }
     }
 
+    public IEnumerator Populate(int enemiesNumber, int maxEnemiesPerRoom)
+    {
+        enemies = new List<GameObject>();
+        while (enemies.Count < enemiesNumber)
+        {
+            MazeRoom randRoom = rooms[Random.Range(0, rooms.Count)];
+            int randNumber = Random.Range(1, maxEnemiesPerRoom + 1);
+            yield return StartCoroutine(GenerateEnemiesInRoom(randRoom, randNumber));
+        }
+    }
+
+    private IEnumerator GenerateEnemiesInRoom(MazeRoom room, int number)
+    {
+        int enemiesGenerated = 0;
+        List<MazeCell> activeCells = new List<MazeCell>(room.Cells);
+
+        while (enemiesGenerated < number)
+        {
+            if (enemies.Count % 10 == 0)
+                yield return false;
+
+            if (activeCells.Count == 0)
+                break;
+
+            MazeCell randCell = activeCells[Random.Range(0, activeCells.Count)];
+            activeCells.Remove(randCell);
+
+            GameObject enemy = GameObject.Instantiate(enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)]) as GameObject;
+            enemy.transform.parent = transform;
+            enemy.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, transform.position.y + 1.0f, randCell.coordinates.z - size.z * 0.5f + 0.5f);
+            enemiesGenerated++;
+
+            enemies.Add(enemy);
+        }
+    }
+
     private void DoFirstGenerationStep(List<MazeCell> activeCells)
     {
         MazeCell newCell = CreateCell(RandomCoordinates);
         newCell.Initialize(CreateRoom(-1));
         activeCells.Add(newCell);
+        playerStartCreated = false;
     }
 
     private void DoNextGenerationStep(List<MazeCell> activeCells)
@@ -90,7 +141,24 @@ public class Maze : MonoBehaviour
                 CreateWall(currentCell, neighbor, direction);
         }
         else
-            CreateWall(currentCell, null, direction);
+        {
+            if (playerStartCreated)
+                CreateWall(currentCell, null, direction);
+            else
+            {
+                CreateWall(currentCell, null, direction);
+                //CreateReloadDoor();
+                GameObject start = GameObject.Instantiate(playerStartPrefab) as GameObject;
+                start.transform.parent = transform;
+
+                start.transform.localPosition = new Vector3(
+                    coordinates.x - size.x * 0.5f + 0.5f - direction.ToVector2i().x,
+                    transform.position.y + start.transform.localPosition.y, 
+                    coordinates.z - size.z * 0.5f + 0.5f - direction.ToVector2i().z);
+
+                playerStartCreated = true;
+            }
+        }
     }
 
     public bool ContainsCoordinates(Vector2i coordinate)

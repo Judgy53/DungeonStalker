@@ -42,10 +42,12 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
-  generationStepDelay: .00100000005
   cellPrefab: {fileID: 11409142, guid: 831e3854449573745ad27beebf4836df, type: 2}
   passagePrefab: {fileID: 11446928, guid: 2200dcd1fb7a2ee46b989e16fda7add4, type: 2}
-  wallPrefab: {fileID: 11461198, guid: 30fd419007b65cc43ae6d3fff73a5538, type: 2}
+  wallPrefabs: []
+  doorPrefab: {fileID: 0}
+  doorProbablity: .100000001
+  roomSettings: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -43,7 +43,7 @@ public class WeaponManager : MonoBehaviour, ISavable
                 go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset);
                 // HACK
                 offHandWeaponPoint.DetachChildren();
-                go.transform.localScale = Vector3.one;
+                go.transform.localScale = transform.lossyScale;
                 go.transform.parent = offHandWeaponPoint;
             }
 
@@ -83,7 +83,7 @@ public class WeaponManager : MonoBehaviour, ISavable
                 go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
                 // HACK
                 mainHandWeaponPoint.DetachChildren();
-                go.transform.localScale = Vector3.one;
+                go.transform.localScale = transform.lossyScale;
                 go.transform.parent = mainHandWeaponPoint;
             }
 

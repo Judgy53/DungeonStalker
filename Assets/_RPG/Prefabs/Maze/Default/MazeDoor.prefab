@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3336766}
   - 65: {fileID: 6599748}
   - 23: {fileID: 2361916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - 65: {fileID: 6521744}
   - 23: {fileID: 2396660}
   - 208: {fileID: 20860786}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 33: {fileID: 3346792}
   - 65: {fileID: 6582380}
   - 23: {fileID: 2310336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - 33: {fileID: 3306982}
   - 65: {fileID: 6549422}
   - 23: {fileID: 2328926}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -.707105994, z: 0, w: .707107604}
   m_LocalPosition: {x: -.300000012, y: 0, z: .474999994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -435,7 +435,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 730bb6b98a662a34bbec0e5eb4f8f50d, type: 2}
   m_CullingMode: 1
