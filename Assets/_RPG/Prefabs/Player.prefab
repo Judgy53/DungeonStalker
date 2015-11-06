@@ -187,6 +187,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &157720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 448140}
+  - 135: {fileID: 13527952}
+  m_Layer: 10
+  m_Name: SensorDetect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &160662
 GameObject:
   m_ObjectHideFlags: 1
@@ -352,12 +368,13 @@ Transform:
   m_GameObject: {fileID: 102502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .220399112, y: 1.38, z: .211021185}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children:
   - {fileID: 469272}
   - {fileID: 484540}
   - {fileID: 409082}
   - {fileID: 480608}
+  - {fileID: 448140}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &441016
@@ -386,6 +403,18 @@ Transform:
   - {fileID: 404492}
   m_Father: {fileID: 468380}
   m_RootOrder: 0
+--- !u!4 &448140
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 437890}
+  m_RootOrder: 4
 --- !u!4 &453312
 Transform:
   m_ObjectHideFlags: 1
@@ -541,8 +570,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
+  near clip plane: .00999999978
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -574,8 +603,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
+  near clip plane: .100000001
+  far clip plane: 1
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -598,8 +627,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102502}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 3
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
@@ -694,6 +723,8 @@ MonoBehaviour:
   currentLevel: 1
   currentExp: 200
   canGainExp: 1
+  xpBar: {fileID: 0}
+  xpOnKill: 5
 --- !u!114 &11429156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88e29fb8c0234441b926d630d368ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: {x: 5, y: 0, z: 5}
+  moveSpeed: {x: 1.5, y: 0, z: 1.5}
   sprintMultiplier: 1.5
   jumpForce: 5
   gravityMultiplier: 1
@@ -801,6 +832,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138062}
   m_Enabled: 1
+--- !u!135 &13527952
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .753201723
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13680664
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -867,9 +910,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2.76999998
-  m_Radius: .5
+  m_Radius: .600000024
   m_SlopeLimit: 45
-  m_StepOffset: .300000012
+  m_StepOffset: .00999999978
   m_SkinWidth: .0799999982
   m_MinMoveDistance: .00100000005
   m_Center: {x: 0, y: 0, z: 0}

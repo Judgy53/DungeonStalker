@@ -8,6 +8,7 @@ public class MazeRoom : ScriptableObject
     public MazeRoomSettings settings = null;
 
     private List<MazeCell> cells = new List<MazeCell>();
+    public List<MazeCell> Cells { get { return cells; } }
 
     public void Add(MazeCell cell)
     {

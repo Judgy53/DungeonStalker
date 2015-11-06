@@ -7,13 +7,7 @@ public class MazeCell : MonoBehaviour
 
     public MazeRoom room = null;
 
-    public bool IsFullyInitialized
-    {
-        get
-        {
-            return initializedEdgeCount == MazeDirections.Count;
-        }
-    }
+    public bool IsFullyInitialized { get { return initializedEdgeCount == MazeDirections.Count; } }
 
     public MazeDirection RandomUninitializedDirection
     {

@@ -83,9 +83,27 @@ public class Grid : MonoBehaviour
         return neighbours;
     }
 
+    public void RecomputeStaticObstacles()
+    {
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2.0f - Vector3.forward * gridWorldSize.y / 2.0f;
+
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int y = 0; y < gridSizeY; y++)
+            {
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
+                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
+
+                grid[x, y].walkable = walkable;
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        nodeDiameter = nodeRadius * 2.0f;
+
+        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, nodeDiameter, gridWorldSize.y));
 
         if (grid != null && displayGrid)
         {

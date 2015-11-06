@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - PlayerStart
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - FirstPass
   - Unwalkable
-  - 
-  - 
+  - SensorDetect
+  - Sensor
   - 
   - 
   - 
