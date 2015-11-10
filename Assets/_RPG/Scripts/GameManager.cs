@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Finished generate !");
 
-        mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles();
+        mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
         Task mazePopulation = new Task(mazeInstance.Populate(Random.Range(minEnemies, maxEnemies), maxEnemiesPerRoom), false);
         mazePopulation.Finished += MazePopulationFinished;
         mazePopulation.Start();

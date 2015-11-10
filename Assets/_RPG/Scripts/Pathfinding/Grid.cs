@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class Grid : MonoBehaviour
 {
@@ -16,14 +17,23 @@ public class Grid : MonoBehaviour
             return gridSizeX * gridSizeY;
         }
     }
-    
+
     private Node[,] grid = new Node[0, 0];
+    private Node[,] staticMask = new Node[0, 0];
 
     private float nodeDiameter = 0.0f;
     private int gridSizeX, gridSizeY;
 
-    void Awake()
+    private static Grid instance = null;
+
+    private bool processingObstacle = false;
+    private Queue<ObstacleRecomputingRequest> obstacleRequests = new Queue<ObstacleRecomputingRequest>();
+    private ObstacleRecomputingRequest currentRequest = null;
+
+    private void Awake()
     {
+        instance = this;
+
         nodeDiameter = nodeRadius * 2.0f;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
@@ -34,6 +44,8 @@ public class Grid : MonoBehaviour
     private void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
+        staticMask = new Node[gridSizeX, gridSizeY];
+
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2.0f - Vector3.forward * gridWorldSize.y / 2.0f;
 
         for (int x = 0; x < gridSizeX; x++)
@@ -44,6 +56,7 @@ public class Grid : MonoBehaviour
                 bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
 
                 grid[x, y] = new Node(walkable, worldPoint, x, y);
+                staticMask[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
     }
@@ -83,7 +96,7 @@ public class Grid : MonoBehaviour
         return neighbours;
     }
 
-    public void RecomputeStaticObstacles()
+    public void RecomputeStaticObstacles(bool clearNodes = false)
     {
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2.0f - Vector3.forward * gridWorldSize.y / 2.0f;
 
@@ -94,7 +107,9 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
                 bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
 
-                grid[x, y].walkable = walkable;
+                if (!walkable || clearNodes)
+                    grid[x, y].walkable = walkable;
+                staticMask[x, y].walkable = walkable;
             }
         }
     }
@@ -113,5 +128,103 @@ public class Grid : MonoBehaviour
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.05f));
             }
         }
+    }
+
+    public void RecomputeWalkableNode(Vector2i nodeCoordinates)
+    {
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2.0f - Vector3.forward * gridWorldSize.y / 2.0f;
+        Vector3 worldPoint = worldBottomLeft + Vector3.right * (nodeCoordinates.x * nodeDiameter + nodeRadius) + Vector3.forward * (nodeCoordinates.z * nodeDiameter + nodeRadius);
+
+        grid[nodeCoordinates.x, nodeCoordinates.z].walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
+    }
+
+    public static bool EnqueueRecomputeObstacle(Bounds bounds, Node[] previouslyAffectedNodes, Action<Node[]> callback)
+    {
+        if (instance.obstacleRequests.Count < 20)
+        {
+            instance.obstacleRequests.Enqueue(new ObstacleRecomputingRequest(previouslyAffectedNodes, bounds, callback));
+            instance.TryProcessNextRequest();
+            return true;
+        }
+        return false;
+    }
+
+    private void TryProcessNextRequest()
+    {
+        if (!processingObstacle && obstacleRequests.Count > 0)
+        {
+            currentRequest = obstacleRequests.Dequeue();
+            processingObstacle = true;
+            StartCoroutine(RecomputeDynamicObstacleNodes(currentRequest.bounds, currentRequest.previouslyAffectedNodes));
+        }
+    }
+
+    private void FinishedRecompute(Node[] affectedNodes)
+    {
+        currentRequest.callback(affectedNodes);
+        processingObstacle = false;
+        TryProcessNextRequest();
+    }
+
+    private IEnumerator RecomputeDynamicObstacleNodes(Bounds bounds, Node[] previouslyAffectedNodes)
+    {
+        foreach (var n in previouslyAffectedNodes)
+            n.walkable = staticMask[n.gridX, n.gridY].walkable;
+
+        List<Node> affectedNodes = new List<Node>();
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2.0f - Vector3.forward * gridWorldSize.y / 2.0f;
+        foreach (Node node in grid)
+        {
+            if (!staticMask[node.gridX, node.gridY].walkable)
+            {
+                node.walkable = false;
+                continue;
+            }
+
+            Vector3 worldPoint = worldBottomLeft + Vector3.right * (node.gridX * nodeDiameter + nodeRadius)
+                + Vector3.forward * (node.gridY * nodeDiameter + nodeRadius);
+
+            if (bounds.Intersects(new Bounds(worldPoint, new Vector3(nodeDiameter, nodeDiameter, nodeDiameter))))
+            {
+                RaycastHit[] hitInfo = Physics.SphereCastAll(worldPoint, nodeRadius, Vector3.one, 0.0f);
+                if (hitInfo.Length == 0)
+                    node.walkable = true;
+                else
+                {
+                    Collider[] colliders = new Collider[hitInfo.Length];
+                    for (int i = 0; i < hitInfo.Length; i++)
+                        colliders[i] = hitInfo[i].collider;
+
+                    node.walkable = true;
+                    foreach (Collider c in colliders)
+                    {
+                        if (c.gameObject.GetComponentInParent<DynamicObstacle>() != null)
+                        {
+                            node.walkable = false;
+                            affectedNodes.Add(node);
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+
+        yield return null;
+
+        FinishedRecompute(affectedNodes.ToArray());
+    }
+}
+
+public class ObstacleRecomputingRequest
+{
+    public Node[] previouslyAffectedNodes;
+    public Bounds bounds;
+    public Action<Node[]> callback;
+
+    public ObstacleRecomputingRequest(Node[] prev, Bounds b, Action<Node[]> callback)
+    {
+        previouslyAffectedNodes = prev;
+        bounds = b;
+        this.callback = callback;
     }
 }
