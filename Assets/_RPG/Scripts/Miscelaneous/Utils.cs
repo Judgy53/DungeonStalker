@@ -50,5 +50,12 @@ public static class Vector3Extension
     {
         return angle * (vector - pivot) + pivot;
     }
+}
 
+public static class LayerMaskExtension
+{
+    public static bool IsInLayer(this LayerMask mask, int layer)
+    {
+        return ((mask.value & (1 << layer)) > 0);
+    }
 }

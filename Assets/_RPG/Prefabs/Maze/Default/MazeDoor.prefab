@@ -79,8 +79,8 @@ GameObject:
   - 33: {fileID: 3387736}
   - 65: {fileID: 6521744}
   - 23: {fileID: 2396660}
-  - 208: {fileID: 20860786}
-  m_Layer: 9
+  - 114: {fileID: 11422964}
+  m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,16 +435,28 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 730bb6b98a662a34bbec0e5eb4f8f50d, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11422964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2a9da43ef3b844aacc57365cb46189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticActualizeTimer: .5
 --- !u!114 &11425256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,21 +472,6 @@ MonoBehaviour:
   otherCell: {fileID: 0}
   direction: 0
   hinge: {fileID: 438814}
---- !u!208 &20860786
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179404}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: .5, y: .5, z: .5}
-  m_MoveThreshold: .100000001
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

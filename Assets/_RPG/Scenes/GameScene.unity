@@ -135,7 +135,7 @@ MonoBehaviour:
     m_Bits: 512
   gridWorldSize: {x: 30, y: 30}
   nodeRadius: .100000001
-  displayGrid: 0
+  displayGrid: 1
 --- !u!1 &773724174
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   minEnemies: 30
   maxEnemies: 60
   maxEnemiesPerRoom: 10
-  stage: 50
+  stage: 1
 --- !u!4 &1321811100
 Transform:
   m_ObjectHideFlags: 0
