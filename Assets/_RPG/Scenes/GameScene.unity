@@ -582,6 +582,7 @@ MonoBehaviour:
   minEnemies: 30
   maxEnemies: 60
   maxEnemiesPerRoom: 10
+  stage: 50
 --- !u!4 &1321811100
 Transform:
   m_ObjectHideFlags: 0

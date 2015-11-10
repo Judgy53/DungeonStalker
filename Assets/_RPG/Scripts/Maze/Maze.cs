@@ -96,11 +96,24 @@ public class Maze : MonoBehaviour, ISavable
         donePopulating = false; //should already be false, security
 
         enemies = new List<GameObject>();
+        List<MazeRoom> activeRooms = new List<MazeRoom>(rooms);
         while (enemies.Count < enemiesNumber)
         {
-            MazeRoom randRoom = rooms[Random.Range(0, rooms.Count)];
+            if (activeRooms.Count == 0)
+                break;
+
+            MazeRoom randRoom = activeRooms[Random.Range(0, activeRooms.Count)];
+            activeRooms.Remove(randRoom);
+
             int randNumber = Random.Range(1, maxEnemiesPerRoom + 1);
             yield return StartCoroutine(GenerateEnemiesInRoom(randRoom, randNumber));
+        }
+
+        foreach (var enemy in enemies)
+        {
+            StatsManager stm = enemy.GetComponent<StatsManager>();
+            if (stm != null)
+                stm.GenerateRandomStats(checked((uint)Random.Range(Mathf.Max(1u, GameManager.Stage - 1u), Mathf.Max(2u, GameManager.Stage + 1u))));
         }
     }
 

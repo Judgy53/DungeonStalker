@@ -14,8 +14,16 @@ public class GameManager : MonoBehaviour
 
     public int maxEnemiesPerRoom = 10;
 
+    [SerializeField]
+    private uint stage = 1;
+    public static uint Stage { get { return instance.stage; } }
+
+    private static GameManager instance = null;
+
     private void Start()
     {
+        instance = this;
+
         if (mazeInstance != null)
         {
             Task mazeGeneration = new Task(mazeInstance.Generate(), false);
