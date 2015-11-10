@@ -121,6 +121,7 @@ public class SaveManager {
 
     public void SortSavesByDate()
     {
-        saves.Sort((s1, s2) => -(s1.creationDate.CompareTo(s2.creationDate))); // invert it to get most recent first
+        saves.Sort((s1, s2) => s1.creationDate.CompareTo(s2.creationDate));
+        saves.Reverse(); // invert it to get most recent first
     }
 }

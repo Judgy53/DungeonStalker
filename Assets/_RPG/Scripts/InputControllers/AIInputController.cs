@@ -3,7 +3,7 @@ using System.Collections;
 
 //[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Unit))]
-public class AIInputController : MonoBehaviour, IControls
+public class AIInputController : MonoBehaviour, IControls, ISavable
 {
     private Vector3 moveSpeed = new Vector3(5.0f, 0.0f, 5.0f);
     public Vector3 MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
@@ -17,7 +17,8 @@ public class AIInputController : MonoBehaviour, IControls
             return null;
         } 
 
-        set { unit.Target = value.transform; } }
+        set { unit.Target = value.transform; } 
+    }
 
     public Vector3 Velocity { get { return unit.Velocity; } set { unit.Velocity = value; } }
 
@@ -56,5 +57,17 @@ public class AIInputController : MonoBehaviour, IControls
     {
         if (e.other.transform.parent.gameObject.tag == "Player" && Target == null)
             Target = e.other.gameObject;
+    }
+
+    public void Save(SaveData data)
+    {
+        transform.position.ToSaveData(data, "Position");
+        transform.eulerAngles.ToSaveData(data, "Rotation");
+    }
+
+    public void Load(SaveData data)
+    {
+        transform.position = new Vector3().FromSaveData(data, "Position");
+        transform.rotation = Quaternion.Euler(new Vector3().FromSaveData(data, "Rotation"));
     }
 }
