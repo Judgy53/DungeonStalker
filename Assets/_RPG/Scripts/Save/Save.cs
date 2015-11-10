@@ -5,16 +5,30 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Save
 {
-    public DateTime creationDate;
+    //store informations outside dictionnary for easy access
+    public bool autoSave = false;
+    public string PlayerName = "Player";
+    public uint PlayerLevel = 0;
+    public uint Stage = 0;
+    public DateTime CreationDate;
+    public DateTime TimePlayed = new DateTime();
+
     private Dictionary<string, SaveData> datas = new Dictionary<string, SaveData>();
 
-    public void SaveCurrentSceneState()
+    public void SaveScene(bool auto)
     {
+        autoSave = auto;
+        //PlayerName = GameManager.PlayerName??
+        PlayerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<StatsManager>().CurrentLevel;
+        Stage = GameManager.Stage;
+        CreationDate = DateTime.Now;
+        //TimePlayed = GameManager.TimePlayed??
+
         UniqueId[] saveables = GameObject.FindObjectsOfType<UniqueId>();
 
-        if (saveables.Length == 0)
+        if (saveables.Length == 0) // nothing to save
             return;
-
+        
         foreach (UniqueId savGaO in saveables)
         {
             ISavable[] save = savGaO.GetComponents<ISavable>();
@@ -27,8 +41,6 @@ public class Save
                 datas.Add(dataId, data);
             }
         }
-
-        creationDate = DateTime.Now;
     }
 
     private SaveData CreateSaveData(ISavable[] save)

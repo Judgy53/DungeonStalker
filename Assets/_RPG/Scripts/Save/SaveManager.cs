@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 public class SaveManager {
 
@@ -22,8 +23,8 @@ public class SaveManager {
 
     private bool Loaded = false;
 
-    private List<Save> saves = new List<Save>();
-    public List<Save> Saves 
+    private Dictionary<string, Save> saves = new Dictionary<string, Save>();
+    public Dictionary<string, Save> Saves 
     { 
         get 
         {
@@ -68,10 +69,13 @@ public class SaveManager {
         Stream stream = File.Open(saveFile, FileMode.Open);
         BinaryFormatter bformatter = new BinaryFormatter();
 
+        string cutFolder = Regex.Replace(saveFile, ".*/", "");
+        string fileName = Regex.Replace(cutFolder, "\\.sav", "");
+
         try
         {
             Save sav = bformatter.Deserialize(stream) as Save;
-            saves.Add(sav);
+            saves.Add(fileName, sav);
         }
         catch(Exception e)
         {
@@ -83,9 +87,9 @@ public class SaveManager {
 
     public void LoadLast()
     {
-        SortSavesByDate(); // not needed but secure
+        SortSavesByDate();
 
-        Load(Saves[0]);
+        Load(saves.Last().Value);
     }
 
     public void Load(Save save)
@@ -93,23 +97,23 @@ public class SaveManager {
         save.Load();
     }
 
-    public void Save()
+    public void Save(bool auto)
     {
         if (!Loaded)
             LoadAllSaves();
 
-        string fileName = "save" + saves.Count + ".sav";
+        string fileName = "save" + saves.Count;
         Directory.CreateDirectory(folder);
-        Stream stream = File.Open(folder + fileName, FileMode.Create);
+        Stream stream = File.Open(folder + fileName + ".sav", FileMode.Create);
         BinaryFormatter bformatter = new BinaryFormatter();
 
         Save sav = new Save();
-        sav.SaveCurrentSceneState();
+        sav.SaveScene(auto);
 
         try
         {
             bformatter.Serialize(stream, sav);
-            saves.Add(sav);
+            saves.Add(fileName, sav);
         }
         catch (Exception e)
         {
@@ -117,11 +121,12 @@ public class SaveManager {
         }
 
         stream.Close();
+
+        SortSavesByDate();
     }
 
     public void SortSavesByDate()
     {
-        saves.Sort((s1, s2) => s1.creationDate.CompareTo(s2.creationDate));
-        saves.Reverse(); // invert it to get most recent first
+        saves.OrderBy(d => d.Value.CreationDate);
     }
 }

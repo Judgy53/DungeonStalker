@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Save()
     {
-        SaveManager.Instance.Save();
+        SaveManager.Instance.Save(false);
         Show(false);
     }
 
