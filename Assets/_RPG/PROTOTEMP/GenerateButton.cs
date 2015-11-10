@@ -34,13 +34,11 @@ public class GenerateButton : MonoBehaviour
 
     void OnClick()
     {
-        if (seed.text.Length != 0)
-            Random.seed = int.Parse(seed.text);
-        else
-        {
+        if (seed.text.Length == 0)
             RandomSeed();
-            Random.seed = int.Parse(seed.text);
-        }
+
+        maze.seed = int.Parse(seed.text);
+
         if (sizex.text.Length != 0 && int.Parse(sizex.text) != 0)
             maze.size.x = int.Parse(sizex.text);
         else
@@ -56,6 +54,6 @@ public class GenerateButton : MonoBehaviour
 
     void RandomSeed()
     {
-        seed.text = Random.Range(0, 999999).ToString();
+        seed.text = Random.Range(0, 100000).ToString();
     }
 }

@@ -60,11 +60,11 @@ public class Save
             if (savables.Length == 0)
                 continue;
 
+            SaveData data = datas[dataId];
+            data.Prefix = ""; //no prefix when loading starts
+
             foreach (ISavable sav in savables)
-            {
-                SaveData data = datas[dataId];
                 sav.Load(data);
-            }
         }
     }
 

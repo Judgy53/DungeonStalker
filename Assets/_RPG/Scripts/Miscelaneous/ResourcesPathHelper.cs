@@ -29,6 +29,15 @@ public class ResourcesPathHelper
         return path;
     }
 
+    public static string GetEnemyPath(string name)
+    {
+        string path = "Enemies/";
+        //path += type.ToString() + "/"; // enemies type would be great
+        path += CleanName(name);
+
+        return path;
+    }
+
     private static string CleanName(string name)
     {
         string weaponName = name;

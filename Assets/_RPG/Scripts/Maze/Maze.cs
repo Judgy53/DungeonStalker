@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Maze : MonoBehaviour
+public class Maze : MonoBehaviour, ISavable
 {
     public Vector2i size = new Vector2i(20, 20);
 
@@ -28,6 +28,14 @@ public class Maze : MonoBehaviour
 
     private bool playerStartCreated = false;
 
+    public int seed = -1;
+
+    private SaveData toLoad = null;
+
+    public bool donePopulating = false;
+
+    public event System.EventHandler OnMazeDonePopulating;
+
     public Vector2i RandomCoordinates
     {
         get
@@ -49,16 +57,23 @@ public class Maze : MonoBehaviour
         foreach (var e in enemies)
         {
             if (e != null)
-                GameObject.Destroy(e);
+                Destroy(e);
         }
+        enemies.Clear();
 
         cells = new MazeCell[0, 0];
+        donePopulating = false;
 
         StartCoroutine(Generate());
     }
 
     public IEnumerator Generate()
     {
+        if (seed == -1)
+            seed = Random.Range(0, 1000000);
+
+        Random.seed = seed;
+
         cells = new MazeCell[size.x, size.z];
         List<MazeCell> activeCells = new List<MazeCell>();
         DoFirstGenerationStep(activeCells);
@@ -68,10 +83,18 @@ public class Maze : MonoBehaviour
                 yield return false;
             DoNextGenerationStep(activeCells);
         }
+
+        if (toLoad != null) // we're loading a save
+        {
+            GenerateEnemiesFromSave(toLoad);
+            toLoad = null;
+        }
     }
 
     public IEnumerator Populate(int enemiesNumber, int maxEnemiesPerRoom)
     {
+        donePopulating = false; //should already be false, security
+
         enemies = new List<GameObject>();
         List<MazeRoom> activeRooms = new List<MazeRoom>(rooms);
         while (enemies.Count < enemiesNumber)
@@ -248,6 +271,88 @@ public class Maze : MonoBehaviour
         rooms.Add(newRoom);
 
         return newRoom;
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("seed", seed.ToString());
+
+        int count = 0;
+
+        foreach(GameObject enemy in enemies)
+        {
+            if (enemy == null)
+                continue;
+
+            ISavable[] savables = enemy.GetComponents<ISavable>();
+
+            if (savables.Length == 0)
+                continue;
+
+            data.Prefix = "enemy_" + count++ + "_";
+
+            data.Add("prefab_path", ResourcesPathHelper.GetEnemyPath(enemy.name));
+
+            foreach(ISavable sav in savables)
+            {
+                sav.Save(data);
+            }
+        }
+    }
+
+    public void Load(SaveData data)
+    {
+        int newSeed = int.Parse(data.Get("seed"));
+
+        if(seed != newSeed)
+        {
+            //Loading another level
+            seed = newSeed;
+            toLoad = data;
+
+            Regenerate();
+        }
+        else
+            GenerateEnemiesFromSave(data);
+    }
+
+    private void GenerateEnemiesFromSave(SaveData data)
+    {
+        int count = 0;
+
+        foreach (var e in enemies)
+        {
+            if (e != null)
+                Destroy(e);
+        }
+        enemies.Clear();
+
+        while(true)
+        {
+            data.Prefix = "enemy_" + count++ + "_";
+
+            string prefab_path = data.Get("prefab_path");
+
+            if (prefab_path == null)
+                break;
+
+            GameObject prefab = Resources.Load<GameObject>(prefab_path);
+            GameObject enemy = Instantiate(prefab) as GameObject;
+
+            ISavable[] savables = enemy.GetComponents<ISavable>();
+
+            if (savables.Length == 0)
+                continue;
+
+            foreach (ISavable sav in savables)
+            {
+                sav.Load(data);
+            }
+        }
+
+        donePopulating = true;
+        if (OnMazeDonePopulating != null)
+            OnMazeDonePopulating(this, new System.EventArgs());
     }
 }
 
