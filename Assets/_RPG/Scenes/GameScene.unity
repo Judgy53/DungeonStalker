@@ -547,6 +547,34 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: .681818187
       objectReference: {fileID: 0}
+    - target: {fileID: 119132, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 113692, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 153032, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111152, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 105440, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100786, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102618, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
   m_IsPrefabParent: 0
@@ -582,7 +610,7 @@ MonoBehaviour:
   minEnemies: 30
   maxEnemies: 60
   maxEnemiesPerRoom: 10
-  stage: 50
+  stage: 1
 --- !u!4 &1321811100
 Transform:
   m_ObjectHideFlags: 0

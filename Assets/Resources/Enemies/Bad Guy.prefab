@@ -590,7 +590,7 @@ MonoBehaviour:
     stamina: 1
     energy: 1
   debugFireEvent: 0
-  unspentPoint: 0
+  unspentPoints: 0
   currentLevel: 1
   currentExp: 0
   canGainExp: 0

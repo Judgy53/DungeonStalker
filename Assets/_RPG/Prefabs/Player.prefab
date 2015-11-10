@@ -20,6 +20,7 @@ GameObject:
   - 114: {fileID: 11461184}
   - 114: {fileID: 11428234}
   - 136: {fileID: 13680664}
+  - 114: {fileID: 11477554}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -719,7 +720,7 @@ MonoBehaviour:
     stamina: 1
     energy: 1
   debugFireEvent: 0
-  unspentPoint: 0
+  unspentPoints: 0
   currentLevel: 1
   currentExp: 200
   canGainExp: 1
@@ -780,6 +781,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2d7011f89f1cb4fa6762ed8dd1d2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11477554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113d434bc756f8e4480e1cb2d47aa78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 082444d9-a077-40d7-b8e7-465b2f8c7788
 --- !u!114 &11484992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxWeight: 100
+  PickablesContainer: {fileID: 0}
 --- !u!114 &11495188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,7 +936,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: uniqueId
+      value: 082444d9-a077-40d7-b8e7-465b2f8c7788
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}
