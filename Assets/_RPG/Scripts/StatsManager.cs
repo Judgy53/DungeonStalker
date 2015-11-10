@@ -8,14 +8,23 @@ public class StatsManager : MonoBehaviour, ISavable
 
     [SerializeField]
     private CharStats stats = new CharStats();
-    public CharStats Stats { get { return stats; } set { stats = value; } }
+    public CharStats Stats 
+    { 
+        get { return stats; } 
+
+        set 
+        { 
+            stats = value; 
+            stats.FireEvent(); 
+        } 
+    }
 
     [SerializeField]
     private bool debugFireEvent = false;
 
     [SerializeField]
-    private uint unspentPoint = 0u;
-    public uint UnspentPoints { get { return unspentPoint; } set { unspentPoint = value; } }
+    private uint unspentPoints = 0u;
+    public uint UnspentPoints { get { return unspentPoints; } set { unspentPoints = value; } }
 
     [SerializeField]
     private uint currentLevel = 1u;
@@ -44,7 +53,7 @@ public class StatsManager : MonoBehaviour, ISavable
                 uint oldMaxExp = maxExp;
 
                 maxExp = ComputeMaxExp();
-                unspentPoint += 5u;
+                unspentPoints += 5u;
 
                 if (OnLevelUp != null)
                     OnLevelUp(this, new EventArgs());
@@ -114,7 +123,7 @@ public class StatsManager : MonoBehaviour, ISavable
         dmg.AddDamage(-dmg.Damage);
 
         Debug.Log("Congratulations ! You reached level " + currentLevel + " !");
-        Debug.Log("You have " + unspentPoint + " attributes point(s) to spend.");
+        Debug.Log("You have " + unspentPoints + " attributes point(s) to spend.");
     }
 
     private void OnKillCallback(object sender, OnKillArgs args)
@@ -129,9 +138,25 @@ public class StatsManager : MonoBehaviour, ISavable
         return (uint)Mathf.RoundToInt(100 + Mathf.Pow(10.0f, (float)currentLevel));
     }
 
+    public void GenerateRandomStats(uint level)
+    {
+        unspentPoints = (level - currentLevel) * 5u;
+        
+        currentLevel = level;
+
+        CharStats addedPoints = new CharStats(0);
+        while (unspentPoints > 0)
+        {
+            addedPoints.AddStat((StatType)UnityEngine.Random.Range(0, 4), 1);
+            unspentPoints--;
+        }
+
+        Stats += addedPoints;
+    }
+
     public void Save(SaveData data)
     {
-        data.Add("StatsUnspent", unspentPoint);
+        data.Add("StatsUnspent", unspentPoints);
 
         data.Add("StatsStrength", Stats.Strength);
         data.Add("StatsDefense", Stats.Defense);
@@ -228,6 +253,27 @@ public class CharStats : System.Object
         }
     }
 
+    public void AddStat(StatType type, uint value)
+    {
+        switch (type)
+        {
+            case StatType.Stength:
+                Strength += value;
+                break;
+            case StatType.Defense:
+                Defense += value;
+                break;
+            case StatType.Stamina:
+                Stamina += value;
+                break;
+            case StatType.Energy:
+                Energy += value;
+                break;
+            default:
+                throw new ArgumentException("Invalid type");
+        }
+    }
+
     public void FireEvent()
     {
         if (OnStatsChange != null)
@@ -244,9 +290,9 @@ public class CharStats : System.Object
     }
 }
 
-public enum StatType
+public enum StatType : int
 {
-    Stength,
+    Stength = 0,
     Defense,
     Stamina,
     Energy
