@@ -35,7 +35,7 @@ public class MazeDoor : MazePassage
 
         foreach (Transform c in transform)
         {
-            if (c != hinge)
+            if (c != hinge && c.name != "Button")
             {
                 Renderer[] rends = c.GetComponentsInChildren<Renderer>();
                 foreach (var r in rends)
@@ -48,7 +48,7 @@ public class MazeDoor : MazePassage
             Debug.LogWarning("No AnimatorController on " + this.name);
     }
 
-    public void ToogleState()
+    public void ToogleState(bool callOtherSide = true)
     {
         switch (state)
         {
@@ -59,6 +59,9 @@ public class MazeDoor : MazePassage
                 state = DoorState.Closed;
                 break;
         }
+
+        if (callOtherSide)
+            OtherSideOfDoor.ToogleState(false);
 
         if (animator != null)
             animator.SetBool("Open", state == DoorState.Open);

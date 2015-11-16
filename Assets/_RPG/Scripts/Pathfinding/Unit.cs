@@ -110,10 +110,7 @@ public class Unit : MonoBehaviour, IControls
         if (success)
             path = newPath;
         else
-        {
-            Debug.Log("No path availiable");
             path = null;
-        }
 
         pathProcessing = false;
 
