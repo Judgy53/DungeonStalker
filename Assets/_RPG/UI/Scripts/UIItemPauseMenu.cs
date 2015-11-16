@@ -29,17 +29,18 @@ public class UIItemPauseMenu : MonoBehaviour
         //It must be fired first to enable all gameobjects before other events, hence registration in Awake().
         OnItemPauseMenuStateChange += OnStateChangeCallback;
 
-        if (target == null)
-        {
-            Debug.LogError("No target set on " + this.name);
-            enabled = false;
-        }
+        GameManager.OnPlayerCreation += OnPlayerCreation;
 
         if (content == null)
         {
             Debug.LogError("No content gameobject set on " + this.name);
             enabled = false;
         }
+    }
+
+    private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    {
+        target = e.player.GetComponent<PlayerContainer>();
     }
 
     //Must be called after all registrations are done (ScriptExecutionOrder)

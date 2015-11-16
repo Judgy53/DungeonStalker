@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class GameManager : MonoBehaviour, ISavable
@@ -6,6 +7,8 @@ public class GameManager : MonoBehaviour, ISavable
     public Maze mazeInstance = null;
 
     public GameObject playerPrefab = null;
+
+    public static event EventHandler<EventPlayerCreationArgs> OnPlayerCreation;
 
     [Range(0, 100)]
     public int minEnemies = 10;
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour, ISavable
         Debug.Log("Finished generate !");
 
         mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
-        Task mazePopulation = new Task(mazeInstance.Populate(Random.Range(minEnemies, maxEnemies), maxEnemiesPerRoom), false);
+        Task mazePopulation = new Task(mazeInstance.Populate(UnityEngine.Random.Range(minEnemies, maxEnemies), maxEnemiesPerRoom), false);
         mazePopulation.Finished += MazePopulationFinished;
         mazePopulation.Start();
     }
@@ -56,7 +59,12 @@ public class GameManager : MonoBehaviour, ISavable
         }
 
         if (playerPrefab != null)
-            GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
+        {
+            GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
+
+            if (OnPlayerCreation != null)
+                OnPlayerCreation(this, new EventPlayerCreationArgs(player));
+        }
     }
 
     private void Update()
@@ -97,5 +105,15 @@ public class GameManager : MonoBehaviour, ISavable
         mazeInstance.GenerateEnemiesFromSave(toLoad);
 
         toLoad = null;
+    }
+}
+
+public class EventPlayerCreationArgs : EventArgs
+{
+    public GameObject player;
+
+    public EventPlayerCreationArgs(GameObject gao)
+    {
+        player = gao;
     }
 }
