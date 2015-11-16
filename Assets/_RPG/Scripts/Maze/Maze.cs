@@ -32,7 +32,8 @@ public class Maze : MonoBehaviour, ISavable
 
     private SaveData toLoad = null;
 
-    public bool donePopulating = false;
+    private bool donePopulating = false;
+    public bool DonePopulating { get { return donePopulating; } }
 
     public event System.EventHandler OnMazeDonePopulating;
 
