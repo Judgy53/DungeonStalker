@@ -5,12 +5,12 @@ public class DoorButton : UsableButton
 {
     public MazeDoor door = null;
 
-    public new string GetActionName()
+    public override string GetActionName()
     {
         return door.State.GetOpposite().ToActionString() + " Door";
     }
 
-    public new string GetDescription()
+    public override string GetDescription()
     {
         return "";
     }

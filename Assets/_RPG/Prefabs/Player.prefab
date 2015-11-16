@@ -724,7 +724,6 @@ MonoBehaviour:
   currentLevel: 1
   currentExp: 200
   canGainExp: 1
-  xpBar: {fileID: 0}
   xpOnKill: 5
 --- !u!114 &11429156
 MonoBehaviour:
@@ -738,7 +737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  uiBar: {fileID: 0}
 --- !u!114 &11437088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f6efa37fe191147bf57042a0b79532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 3
+  maxDistance: 1
 --- !u!114 &11496146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -831,7 +829,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMana: 50
   regenRate: 5
-  uiBar: {fileID: 0}
 --- !u!124 &12409792
 Behaviour:
   m_ObjectHideFlags: 1
@@ -940,6 +937,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: uniqueId
       value: 082444d9-a077-40d7-b8e7-465b2f8c7788
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

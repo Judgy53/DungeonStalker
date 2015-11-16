@@ -10,20 +10,17 @@ public class UsableButton : MonoBehaviour, IUsable
 
     public UnityEvent onUse = new UnityEvent();
 
-    public delegate string GetStringDelegate();
-    public GetStringDelegate getActionNameDelegate;
-
-    public string GetActionName()
+    public virtual string GetActionName()
     {
         return actionName;
     }
 
-    public string GetDescription()
+    public virtual string GetDescription()
     {
         return actionDescription;
     }
 
-    public void Use(InteractManager user, UsableArgs args = null)
+    public virtual void Use(InteractManager user, UsableArgs args = null)
     {
         onUse.Invoke();
     }
