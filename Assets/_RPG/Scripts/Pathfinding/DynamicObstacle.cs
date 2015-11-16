@@ -22,16 +22,13 @@ public class DynamicObstacle : MonoBehaviour
     {
         if (hasChanged)
         {
-            /*if (processing)
-                Debug.Log("Processing ...");*/
             if (oldMat == transform.worldToLocalMatrix)
-                timeSinceLastChange += Time.deltaTime;
+                timeSinceLastChange += Time.unscaledDeltaTime;
             else
                 timeSinceLastChange = 0.0f;
 
             if (timeSinceLastChange > staticActualizeTimer && !processing)
             {
-                //Debug.Log("Recomputing ...");
                 Bounds bounds = new Bounds(transform.position, Vector3.zero);
                 foreach (var collider in GetComponentsInChildren<Collider>())
                     bounds.Encapsulate(collider.bounds);

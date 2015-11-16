@@ -5,6 +5,11 @@ public class MazeDoor : MazePassage
 {
     public Transform hinge = null;
 
+    private DoorState state = DoorState.Closed;
+    public DoorState State { get { return state; } }
+
+    private Animator animator = null;
+
     private MazeDoor OtherSideOfDoor
     {
         get
@@ -16,7 +21,7 @@ public class MazeDoor : MazePassage
     public override void Initialize(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
         base.Initialize(cell, otherCell, direction);
-        if (OtherSideOfDoor != null)
+        /*if (OtherSideOfDoor != null)
         {
             if (hinge != null)
             {
@@ -26,7 +31,7 @@ public class MazeDoor : MazePassage
                 p.x = -p.x;
                 hinge.localPosition = p;
             }
-        }
+        }*/
 
         foreach (Transform c in transform)
         {
@@ -37,5 +42,67 @@ public class MazeDoor : MazePassage
                     r.material = cell.room.settings.wallMaterial;
             }
         }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+            Debug.LogWarning("No AnimatorController on " + this.name);
+    }
+
+    public void ToogleState()
+    {
+        switch (state)
+        {
+            case DoorState.Closed:
+                state = DoorState.Open;
+                break;
+            case DoorState.Open:
+                state = DoorState.Closed;
+                break;
+        }
+
+        if (animator != null)
+            animator.SetBool("Open", state == DoorState.Open);
+    }
+}
+
+public enum DoorState
+{
+    Closed,
+    Open
+}
+
+public static class DoorStateExtensions
+{
+    public static DoorState GetOpposite(this DoorState state)
+    {
+        if (state == DoorState.Closed)
+            return DoorState.Open;
+        return DoorState.Closed;
+    }
+
+    public static string ToString(this DoorState state)
+    {
+        switch (state)
+        {
+            case DoorState.Closed:
+                return "Closed";
+            case DoorState.Open:
+                return "Open";
+        }
+
+        throw new System.InvalidOperationException("Invalid state");
+    }
+
+    public static string ToActionString(this DoorState state)
+    {
+        switch (state)
+        {
+            case DoorState.Closed:
+                return "Close";
+            case DoorState.Open:
+                return "Open";
+        }
+
+        throw new System.InvalidOperationException("Invalid state");
     }
 }
