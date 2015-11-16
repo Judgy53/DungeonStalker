@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Maze : MonoBehaviour, ISavable
+public class Maze : MonoBehaviour
 {
     public Vector2i size = new Vector2i(20, 20);
 
@@ -28,13 +28,9 @@ public class Maze : MonoBehaviour, ISavable
 
     private bool playerStartCreated = false;
 
-    public int seed = -1;
+    private int seed = -1;
+    public int Seed { get { return seed; } set { seed = value; } }
 
-    private SaveData toLoad = null;
-
-    public bool donePopulating = false;
-
-    public event System.EventHandler OnMazeDonePopulating;
 
     public Vector2i RandomCoordinates
     {
@@ -44,10 +40,8 @@ public class Maze : MonoBehaviour, ISavable
         }
     }
 
-    public void Regenerate()
+    public void Clear()
     {
-        StopAllCoroutines();
-
         foreach (var cell in cells)
         {
             if (cell != null)
@@ -59,12 +53,10 @@ public class Maze : MonoBehaviour, ISavable
             if (e != null)
                 Destroy(e);
         }
+
         enemies.Clear();
 
         cells = new MazeCell[0, 0];
-        donePopulating = false;
-
-        StartCoroutine(Generate());
     }
 
     public IEnumerator Generate()
@@ -83,18 +75,10 @@ public class Maze : MonoBehaviour, ISavable
                 yield return false;
             DoNextGenerationStep(activeCells);
         }
-
-        if (toLoad != null) // we're loading a save
-        {
-            GenerateEnemiesFromSave(toLoad);
-            toLoad = null;
-        }
     }
 
     public IEnumerator Populate(int enemiesNumber, int maxEnemiesPerRoom)
     {
-        donePopulating = false; //should already be false, security
-
         enemies = new List<GameObject>();
         List<MazeRoom> activeRooms = new List<MazeRoom>(rooms);
         while (enemies.Count < enemiesNumber)
@@ -298,25 +282,11 @@ public class Maze : MonoBehaviour, ISavable
                 sav.Save(data);
             }
         }
+
+        data.Prefix = "";
     }
 
-    public void Load(SaveData data)
-    {
-        int newSeed = int.Parse(data.Get("seed"));
-
-        if(seed != newSeed)
-        {
-            //Loading another level
-            seed = newSeed;
-            toLoad = data;
-
-            Regenerate();
-        }
-        else
-            GenerateEnemiesFromSave(data);
-    }
-
-    private void GenerateEnemiesFromSave(SaveData data)
+    public void GenerateEnemiesFromSave(SaveData data)
     {
         int count = 0;
 
@@ -348,11 +318,9 @@ public class Maze : MonoBehaviour, ISavable
             {
                 sav.Load(data);
             }
-        }
 
-        donePopulating = true;
-        if (OnMazeDonePopulating != null)
-            OnMazeDonePopulating(this, new System.EventArgs());
+            enemies.Add(enemy);
+        }
     }
 }
 

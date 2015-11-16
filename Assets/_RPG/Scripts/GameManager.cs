@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISavable
 {
     public Maze mazeInstance = null;
 
@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public static uint Stage { get { return instance.stage; } }
 
     private static GameManager instance = null;
+
+    private SaveData toLoad = null;
 
     private void Start()
     {
@@ -60,5 +62,40 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("stage", stage);
+        mazeInstance.Save(data);
+    }
+
+    public void Load(SaveData data)
+    {
+        int seed = int.Parse(data.Get("seed"));
+
+        toLoad = data;
+
+        if(mazeInstance.Seed != seed)
+        {
+            mazeInstance.Seed = seed;
+
+            mazeInstance.Clear();
+
+            Task mazeGeneration = new Task(mazeInstance.Generate(), false);
+            mazeGeneration.Finished += MazeLoadFinished;
+            mazeGeneration.Start();
+        }
+        else
+            MazeLoadFinished(true);
+    }
+
+    private void MazeLoadFinished(bool manual)
+    {
+        mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
+
+        mazeInstance.GenerateEnemiesFromSave(toLoad);
+
+        toLoad = null;
     }
 }

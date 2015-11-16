@@ -30,8 +30,6 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
 
     private EffectManager effectManager = null;
 
-    private SaveData ToLoad = null;
-
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -104,28 +102,8 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
 
     public void Load(SaveData data)
     {
-        ToLoad = data;
-
-        Maze maze = GameObject.FindObjectOfType<Maze>();
-
-        if(maze == null)
-        {
-            LoadData();
-            return;
-        }
-
-        maze.OnMazeDonePopulating += LoadData;
-    }
-
-    public void LoadData(object sender = null, System.EventArgs args = null)
-    {
-        if (ToLoad == null)
-            return;
-
-        transform.position = new Vector3().FromSaveData(ToLoad, "Position");
-        transform.rotation = Quaternion.Euler(new Vector3().FromSaveData(ToLoad, "Rotation"));
-        velocity = new Vector3().FromSaveData(ToLoad, "Velocity");
-
-        ToLoad = null;
+        transform.position = new Vector3().FromSaveData(data, "Position");
+        transform.rotation = Quaternion.Euler(new Vector3().FromSaveData(data, "Rotation"));
+        velocity = new Vector3().FromSaveData(data, "Velocity");
     }
 }
