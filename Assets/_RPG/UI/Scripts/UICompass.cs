@@ -4,14 +4,17 @@ using System.Collections;
 
 public class UICompass : MonoBehaviour {
 
-    [SerializeField]
     private GameObject target = null;
 
 	// Use this for initialization
 	private void Start () {
-        if (target == null)
-            Debug.LogWarning("Compass' target not set.");
+        GameManager.OnPlayerCreation += OnPlayerCreation;
 	}
+
+    private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    {
+        target = e.player;
+    }
 	
 	// Update is called once per frame
 	private void Update () {

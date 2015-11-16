@@ -21,12 +21,7 @@ public class UICharSheetActualizer : MonoBehaviour
 
     void Start()
     {
-        if (target == null)
-        {
-            Debug.LogError("No target defined for " + this.name);
-            enabled = false;
-            return;
-        }
+        GameManager.OnPlayerCreation += OnPlayerCreation;
 
         manager = GetComponentInParent<UICharSheet>();
         if (manager == null)
@@ -37,6 +32,11 @@ public class UICharSheetActualizer : MonoBehaviour
         }
 
         manager.OnMenuStateChange += OnMenuStateChange;
+    }
+
+    private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    {
+        target = e.player.GetComponent<StatsManager>();
 
         target.OnLevelUp += OnStatsChanged;
 
@@ -114,8 +114,11 @@ public class UICharSheetActualizer : MonoBehaviour
     public void ApplyModifications()
     {
         tmpAddedPoint.OnStatsChange -= OnStatsChanged;
-        target.Stats += tmpAddedPoint;
-        target.Stats.FireEvent();
+        if (target != null)
+        {
+            target.Stats += tmpAddedPoint;
+            target.Stats.FireEvent();
+        }
         tmpAddedPoint = new CharStats(0u);
         tmpAddedPoint.OnStatsChange += OnStatsChanged;
     }

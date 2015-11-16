@@ -61,12 +61,6 @@ public class StatsManager : MonoBehaviour, ISavable
                 CurrentExp = value - oldMaxExp;
                 return;
             }
-
-            if (xpBar != null)
-            {
-                xpBar.CurrentValue = (float)currentExp;
-                xpBar.MaxValue = (float)MaxExp;
-            }
         }
     }
 
@@ -76,9 +70,6 @@ public class StatsManager : MonoBehaviour, ISavable
     public bool canGainExp = true;
 
     private WeaponManager weapManager = null;
-
-    [SerializeField]
-    private UIBar xpBar = null;
 
     [SerializeField]
     private uint xpOnKill = 5;
@@ -94,12 +85,6 @@ public class StatsManager : MonoBehaviour, ISavable
             weapManager.OnKill += OnKillCallback;
 
         maxExp = ComputeMaxExp();
-
-        if (xpBar != null)
-        {
-            xpBar.CurrentValue = (float)currentExp;
-            xpBar.MaxValue = (float)MaxExp;
-        }
     }
 
     private void OnDestroy()

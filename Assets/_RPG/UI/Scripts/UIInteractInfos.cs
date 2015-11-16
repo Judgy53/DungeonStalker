@@ -4,19 +4,20 @@ using System.Collections;
 
 public class UIInteractInfos : MonoBehaviour {
 
-    [SerializeField]
     private InteractManager interactManager = null;
 
     private Text textComponent = null;
 
     private void Start()
     {
-        if(interactManager == null)
-        {
-            Debug.LogWarning(this.name + " is not set properly. Please bind the players's InteractManager");
-        }
-
         textComponent = GetComponent<Text>();
+
+        GameManager.OnPlayerCreation += OnPlayerCreation;
+    }
+
+    private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    {
+        interactManager = e.player.GetComponent<InteractManager>();
     }
 
     private void Update()

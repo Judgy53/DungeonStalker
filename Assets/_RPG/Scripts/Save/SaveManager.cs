@@ -31,6 +31,8 @@ public class SaveManager {
             if (!Loaded)
                 LoadAllSaves();
 
+            SortSavesByDate();
+
             return saves; 
         } 
     }
@@ -102,7 +104,7 @@ public class SaveManager {
         if (!Loaded)
             LoadAllSaves();
 
-        string fileName = "save" + saves.Count;
+        string fileName = "save" + saves.Count.ToString("000");
         Directory.CreateDirectory(folder);
         Stream stream = File.Open(folder + fileName + ".sav", FileMode.Create);
         BinaryFormatter bformatter = new BinaryFormatter();

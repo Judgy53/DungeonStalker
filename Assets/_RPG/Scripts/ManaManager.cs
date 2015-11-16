@@ -16,9 +16,6 @@ public class ManaManager : MonoBehaviour, ISavable
     private float regenRate = 5.0f;
     public float RegenRate { get { return regenRate; } set { regenRate = value; } }
 
-    [SerializeField]
-    private UIBar uiBar = null;
-
     private StatsManager statsManager = null;
 
     private void Start()
@@ -28,39 +25,22 @@ public class ManaManager : MonoBehaviour, ISavable
         statsManager = GetComponentInParent<StatsManager>();
         if (statsManager != null)
             statsManager.Stats.OnStatsChange += OnStatsChange;
-
-        UpdateBar();
     }
 
     private void FixedUpdate()
     {
         currentMana += regenRate * Time.fixedDeltaTime;
         currentMana = Mathf.Min(currentMana, maxMana);
-
-        UpdateBar();
     }
 
     public void AddMana(float amount)
     {
         currentMana = Mathf.Min(currentMana + amount, maxMana);
-
-        UpdateBar();
     }
 
     public void RemoveMana(float amount)
     {
         currentMana = Mathf.Min(currentMana - amount, maxMana);
-
-        UpdateBar();
-    }
-
-    private void UpdateBar()
-    {
-        if (uiBar != null)
-        {
-            uiBar.CurrentValue = currentMana;
-            uiBar.MaxValue = maxMana;
-        }
     }
 
     public void OnStatsChange(object sender, EventArgs args)
@@ -69,8 +49,6 @@ public class ManaManager : MonoBehaviour, ISavable
         regenRate = 4u + statsManager.Stats.Energy * 1u;
 
         currentMana = Mathf.Min(currentMana, maxMana);
-
-        UpdateBar();
     }
 
     public void Save(SaveData data)

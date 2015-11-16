@@ -37,7 +37,7 @@ public class GenerateButton : MonoBehaviour
         if (seed.text.Length == 0)
             RandomSeed();
 
-        maze.seed = int.Parse(seed.text);
+        maze.Seed = int.Parse(seed.text);
 
         if (sizex.text.Length != 0 && int.Parse(sizex.text) != 0)
             maze.size.x = int.Parse(sizex.text);
@@ -49,7 +49,7 @@ public class GenerateButton : MonoBehaviour
         else
             maze.size.z = 1;
 
-        maze.Regenerate();
+        //maze.Regenerate();
     }
 
     void RandomSeed()

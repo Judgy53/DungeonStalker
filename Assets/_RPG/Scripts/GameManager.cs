@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISavable
 {
     public Maze mazeInstance = null;
 
     public GameObject playerPrefab = null;
+
+    public static event EventHandler<EventPlayerCreationArgs> OnPlayerCreation;
 
     [Range(0, 100)]
     public int minEnemies = 10;
@@ -19,6 +22,8 @@ public class GameManager : MonoBehaviour
     public static uint Stage { get { return instance.stage; } }
 
     private static GameManager instance = null;
+
+    private SaveData toLoad = null;
 
     private void Start()
     {
@@ -37,7 +42,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Finished generate !");
 
         mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
-        Task mazePopulation = new Task(mazeInstance.Populate(Random.Range(minEnemies, maxEnemies), maxEnemiesPerRoom), false);
+        Task mazePopulation = new Task(mazeInstance.Populate(UnityEngine.Random.Range(minEnemies, maxEnemies), maxEnemiesPerRoom), false);
         mazePopulation.Finished += MazePopulationFinished;
         mazePopulation.Start();
     }
@@ -54,11 +59,61 @@ public class GameManager : MonoBehaviour
         }
 
         if (playerPrefab != null)
-            GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
+        {
+            GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
+
+            if (OnPlayerCreation != null)
+                OnPlayerCreation(this, new EventPlayerCreationArgs(player));
+        }
     }
 
     private void Update()
     {
 
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("stage", stage);
+        mazeInstance.Save(data);
+    }
+
+    public void Load(SaveData data)
+    {
+        int seed = int.Parse(data.Get("seed"));
+
+        toLoad = data;
+
+        if(mazeInstance.Seed != seed)
+        {
+            mazeInstance.Seed = seed;
+
+            mazeInstance.Clear();
+
+            Task mazeGeneration = new Task(mazeInstance.Generate(), false);
+            mazeGeneration.Finished += MazeLoadFinished;
+            mazeGeneration.Start();
+        }
+        else
+            MazeLoadFinished(true);
+    }
+
+    private void MazeLoadFinished(bool manual)
+    {
+        mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
+
+        mazeInstance.GenerateEnemiesFromSave(toLoad);
+
+        toLoad = null;
+    }
+}
+
+public class EventPlayerCreationArgs : EventArgs
+{
+    public GameObject player;
+
+    public EventPlayerCreationArgs(GameObject gao)
+    {
+        player = gao;
     }
 }

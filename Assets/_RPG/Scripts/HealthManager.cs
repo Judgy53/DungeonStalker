@@ -26,9 +26,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
 
     private StatsManager statsManager = null;
 
-    [SerializeField]
-    private UIBar uiBar = null;
-
     private void Start()
     {
         currentHealth = maxHealth;
@@ -37,8 +34,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
         statsManager = GetComponentInParent<StatsManager>();
         if (statsManager != null)
             statsManager.Stats.OnStatsChange += OnStatsChange;
-
-        UpdateBar();
     }
 
     public void AddDamage(float damage)
@@ -49,8 +44,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
 
         if (currentHealth <= 0f)
             Die();
-
-        UpdateBar();
     }
 
     public void AddDamage(float damages, StatsManager other)
@@ -77,16 +70,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        UpdateBar();
-    }
-
-    private void UpdateBar()
-    {
-        if (uiBar != null)
-        {
-            uiBar.CurrentValue = currentHealth;
-            uiBar.MaxValue = maxHealth;
-        }
     }
 
     public void Die()
@@ -103,8 +86,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
         maxHealth = 50u + statsManager.Stats.Stamina * 30u;
 
         currentHealth = Mathf.Min(currentHealth, maxHealth);
-
-        UpdateBar();
     }
 	
     private float ComputeDamageReceived(StatsManager self, StatsManager other, float damages)
