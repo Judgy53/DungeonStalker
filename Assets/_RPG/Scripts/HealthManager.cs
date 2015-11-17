@@ -4,6 +4,7 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour, IDamageable, ISavable
 {
     public event EventHandler OnDeath;
+    public event EventHandler OnHit;
 
     [SerializeField]
     private float maxHealth = 10f;
@@ -41,6 +42,9 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
         damage = ApplyDamagesModifiers(damage);
 
         CurrentHealth = CurrentHealth - damage;
+
+        if (OnHit != null)
+            OnHit(this, new EventArgs());
 
         if (currentHealth <= 0f)
             Die();

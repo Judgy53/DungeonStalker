@@ -171,6 +171,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
             float rootDistance = Vector3.Distance(transform.root.position, startRaycast.position);
             RaycastHit[] hitInfos = Physics.RaycastAll(ray, rootDistance);
 
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * rootDistance, Color.cyan);
+
             foreach (var hit in hitInfos)
             {
                 if (!hit.collider.transform.IsChildOf(transform.root))
@@ -183,6 +185,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
             ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
             hitInfos = Physics.RaycastAll(ray, raycastDistance);
+
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * rootDistance, Color.cyan);
 
             foreach (var hit in hitInfos)
             {

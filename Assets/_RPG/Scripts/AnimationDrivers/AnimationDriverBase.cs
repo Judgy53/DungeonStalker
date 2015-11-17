@@ -35,6 +35,7 @@ public abstract class AnimationDriverBase : MonoBehaviour
 
     public virtual void SetSpeed(IWeapon weapon, WeaponRestriction hand) { }
 
+    public virtual void OnHit(object sender, System.EventArgs args) { }
     public virtual void OnDeath(object sender, System.EventArgs args) { }
 
     public virtual void SetMovementVelocity(float forwardVelocity, float lateralVelocity, float airVelocity, bool grounded) { }

@@ -26,13 +26,17 @@ public class AnimationDriver : AnimationDriverBase
     public string movementVelocityAirName = "";
     public string movementGroundedName = "";
 
+    public string onHitName = "";
     public string onDeathName = "";
 
     protected override void OnStart()
     {
         HealthManager hm = GetComponent<HealthManager>();
         if (hm != null)
+        {
+            hm.OnHit += OnHit;
             hm.OnDeath += OnDeath;
+        }
     }
 
     public override void MainHandPrimary() 
@@ -159,6 +163,12 @@ public class AnimationDriver : AnimationDriverBase
 
         if (movementGroundedName != "")
             animator.SetBool(movementGroundedName, grounded);
+    }
+
+    public override void OnHit(object sender, System.EventArgs args)
+    {
+        if (onHitName != "")
+            animator.SetTrigger(onHitName);
     }
 
     public override void OnDeath(object sender, System.EventArgs args)

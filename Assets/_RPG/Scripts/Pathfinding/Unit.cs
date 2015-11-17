@@ -126,7 +126,7 @@ public class Unit : MonoBehaviour, IControls
     {
         while (true)
         {
-            if (target != null)
+            if (target != null && enabled)
             {
                 if (oldTargetPosition != target.position)
                 {

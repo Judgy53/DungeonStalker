@@ -1097,8 +1097,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.73299998}
-  m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
+  m_LocalPosition: {x: 0, y: 0, z: -2.18600011}
+  m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children:
   - {fileID: 444394}
   - {fileID: 487058}
@@ -1280,8 +1280,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160402}
-  m_LocalRotation: {x: .644046009, y: .0731555074, z: -.723329782, w: -.238006577}
-  m_LocalPosition: {x: -.260989696, y: -.157005623, z: .0400043577}
+  m_LocalRotation: {x: .985424101, y: .0522964671, z: -.0721191615, w: -.144925192}
+  m_LocalPosition: {x: -.321999997, y: -.123000003, z: .0179999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480318}
@@ -1844,6 +1844,7 @@ MonoBehaviour:
   movementVelocitySidesName: 
   movementVelocityAirName: 
   movementGroundedName: 
+  onHitName: Hit
   onDeathName: Dead
 --- !u!114 &11441170
 MonoBehaviour:
@@ -1866,6 +1867,8 @@ MonoBehaviour:
   - script: {fileID: 11453878}
     value: 0
   - script: {fileID: 13625726}
+    value: 0
+  - script: {fileID: 11421618}
     value: 0
 --- !u!114 &11453878
 MonoBehaviour:
@@ -1918,13 +1921,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  precision: .25
+  precision: .400000006
   angleInterpolationFactor: 5
   acceleration: .5
   gravityMultiplier: 1
   actualizationTime: .300000012
   gizmoSize: .100000001
-  moveSpeed: {x: 2.5, y: 0, z: 2.5}
+  moveSpeed: {x: 2, y: 0, z: 2}
 --- !u!135 &13514270
 SphereCollider:
   m_ObjectHideFlags: 1
