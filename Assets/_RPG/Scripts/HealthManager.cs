@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour, IDamageable, ISavable
 {
-    public event EventHandler OnKill;
+    public event EventHandler OnDeath;
 
     [SerializeField]
     private float maxHealth = 10f;
@@ -74,11 +74,11 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
 
     public void Die()
     {
-        if (OnKill != null)
-            OnKill(this, new EventArgs());
+        if (OnDeath != null)
+            OnDeath(this, new EventArgs());
 
         //Temporary
-        Destroy(gameObject);
+        Destroy(gameObject, 10.0f);
     }
 
     public void OnStatsChange(object sender, EventArgs args)

@@ -7,7 +7,7 @@ public class OnPlayerDeath : MonoBehaviour
 
     void Start()
     {
-        GetComponent<HealthManager>().OnKill += OnDeath;
+        GetComponent<HealthManager>().OnDeath += OnDeath;
     }
 
     private void OnDeath(object sender, EventArgs args)

@@ -43,6 +43,8 @@ public class Unit : MonoBehaviour, IControls
     private Vector3 velocity = Vector3.zero;
     public Vector3 Velocity { get { return velocity; } set { velocity = value; } }
 
+    public bool IsGrounded { get { return cc.isGrounded; } }
+
     private CharacterController cc = null;
 
     private float forwardInput = 0.0f;
@@ -74,13 +76,13 @@ public class Unit : MonoBehaviour, IControls
             }
 
             Vector3 direction = currentWaypoint - transform.position;
-            direction.y = transform.position.y;
+            direction.y = 0.0f;
             direction.Normalize();
 
             transform.rotation = Quaternion.Lerp(transform.rotation,
                 Quaternion.LookRotation(direction),
                 angleInterpolationFactor * Time.fixedDeltaTime);
-
+            
             /*if (effectManager != null)
             {
                 IMovementEffect[] effects = effectManager.GetEffects<IMovementEffect>();

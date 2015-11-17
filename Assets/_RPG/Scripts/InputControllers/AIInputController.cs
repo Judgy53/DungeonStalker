@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Unit))]
 public class AIInputController : MonoBehaviour, IControls, ISavable
 {
@@ -22,6 +21,8 @@ public class AIInputController : MonoBehaviour, IControls, ISavable
 
     public Vector3 Velocity { get { return unit.Velocity; } set { unit.Velocity = value; } }
 
+    public bool IsGrounded { get { return unit.IsGrounded; } }
+    
     public float attackDistance = 0.5f;
 
     private WeaponManager weaponManager = null;
@@ -30,14 +31,30 @@ public class AIInputController : MonoBehaviour, IControls, ISavable
 
     private Sensor sensor = null;
 
+    private AnimationDriverBase driver = null;
+
     private void Start()
     {
         weaponManager = GetComponent<WeaponManager>();
         unit = GetComponent<Unit>();
 
+        driver = GetComponent<AnimationDriverBase>();
+
         sensor = GetComponentInChildren<Sensor>();
         if (sensor != null)
             sensor.OnDetect += OnSensorDetect;
+    }
+
+    private void Update()
+    {
+        if (driver != null)
+        {
+            if (Target != null)
+            {
+                Vector3 lsVelocity = transform.InverseTransformDirection(Velocity);
+                driver.SetMovementVelocity(lsVelocity.z / unit.MoveSpeed.z, lsVelocity.x / unit.MoveSpeed.x, lsVelocity.y / unit.MoveSpeed.y, IsGrounded);
+            }
+        }
     }
 
     private void LateUpdate()

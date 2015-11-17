@@ -4,7 +4,7 @@ using System.Collections;
 
 public interface IDamageable 
 {
-    event EventHandler OnKill;
+    event EventHandler OnDeath;
 
     float Damage { get; }
 

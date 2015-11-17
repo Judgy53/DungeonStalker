@@ -41,10 +41,6 @@ public class WeaponManager : MonoBehaviour, ISavable
                     go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
                 go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
                 go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset);
-                // HACK
-                offHandWeaponPoint.DetachChildren();
-                go.transform.localScale = transform.lossyScale;
-                go.transform.parent = offHandWeaponPoint;
             }
 
             RegisterCallbacks(offHandWeapon);
@@ -81,10 +77,6 @@ public class WeaponManager : MonoBehaviour, ISavable
                     go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
                 go.transform.localPosition = mainHandWeapon.HandPositionOffset;
                 go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
-                // HACK
-                mainHandWeaponPoint.DetachChildren();
-                go.transform.localScale = transform.lossyScale;
-                go.transform.parent = mainHandWeaponPoint;
             }
 
             RegisterCallbacks(mainHandWeapon);
@@ -93,12 +85,11 @@ public class WeaponManager : MonoBehaviour, ISavable
         }
     }
 
-    public Animator armsAnimator = null;
+    private AnimationDriverBase driver = null;
 
     private void Start()
     {
-        if (armsAnimator == null)
-            Debug.LogWarning(this.name + " : No arms animator specified.");
+        driver = GetComponent<AnimationDriverBase>();
 
         if (debugMainHandStartWeaponPrefab != null)
             MainHandWeapon = (GameObject.Instantiate(debugMainHandStartWeaponPrefab, Vector3.zero, debugMainHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
@@ -109,55 +100,71 @@ public class WeaponManager : MonoBehaviour, ISavable
 
     private void Update()
     {
-        //You cannot adjust an animation speed with a parameter in blend trees, thanks Unity ...
-        
         if (mainHandWeapon != null)
         {
-            SetAnimatorHandsRestriction(mainHandWeapon, "HandRestriction");
-            UpdateHitAnimatorSpeed("MainHand", mainHandWeapon);
-            SetAnimatorWeaponType(mainHandWeapon, "MainHandWeaponType");
+            if (driver != null)
+            {
+                driver.SetHandsRestrictions(mainHandWeapon);
+                driver.SetSpeed(mainHandWeapon, WeaponRestriction.MainHand);
+                driver.SetWeaponType(mainHandWeapon, WeaponRestriction.MainHand);
+            }
         }
         if (offHandWeapon != null)
         {
-            SetAnimatorWeaponType(offHandWeapon, "OffHandWeaponType");
-            UpdateHitAnimatorSpeed("OffHand", offHandWeapon);
+            if (driver != null)
+            {
+                driver.SetWeaponType(offHandWeapon, WeaponRestriction.OffHand);
+                driver.SetSpeed(offHandWeapon, WeaponRestriction.OffHand);
+            }
         }
     }
 
     private void OnPrimary(object sender, EventArgs args)
     {
         IWeapon weapSender = sender as IWeapon;
-        if (weapSender == mainHandWeapon)
-            SetAnimatorTrigger("MainHandPrimary");
-        else
-            SetAnimatorTrigger("OffHandPrimary");
+        if (driver != null)
+        {
+            if (weapSender == mainHandWeapon)
+                driver.MainHandPrimary();
+            else
+                driver.OffHandPrimary();
+        }
     }
 
     private void OnEndPrimary(object sender, EventArgs args)
     {
         IWeapon weapSender = sender as IWeapon;
-        if (weapSender == mainHandWeapon)
-            SetAnimatorTrigger("MainHandEndPrimary");
-        else
-            SetAnimatorTrigger("OffHandEndPrimary");
+        if (driver != null)
+        {
+            if (weapSender == mainHandWeapon)
+                driver.MainHandEndPrimary();
+            else
+                driver.OffHandEndPrimary();
+        }
     }
 
     private void OnSecondary(object sender, EventArgs args)
     {
         IWeapon weapSender = sender as IWeapon;
-        if (weapSender == mainHandWeapon)
-            SetAnimatorTrigger("MainHandSecondary");
-        else
-            SetAnimatorTrigger("OffHandSecondary");
+        if (driver != null)
+        {
+            if (weapSender == mainHandWeapon)
+                driver.MainHandSecondary();
+            else
+                driver.OffHandSecondary();
+        }
     }
 
     private void OnEndSecondary(object sender, EventArgs args)
     {
         IWeapon weapSender = sender as IWeapon;
-        if (weapSender == mainHandWeapon)
-            SetAnimatorTrigger("MainHandEndSecondary");
-        else
-            SetAnimatorTrigger("OffHandEndSecondary");
+        if (driver != null)
+        {
+            if (weapSender == mainHandWeapon)
+                driver.MainHandEndSecondary();
+            else
+                driver.OffHandEndSecondary();
+        }
     }
 
     private void OnKillCallback(object sender, OnKillArgs args)
@@ -182,40 +189,6 @@ public class WeaponManager : MonoBehaviour, ISavable
         weapon.OnSecondary -= OnSecondary;
         weapon.OnEndSecondary -= OnEndSecondary;
         weapon.OnKill -= OnKillCallback;
-    }
-
-    private void SetAnimatorHandsRestriction(IWeapon weapon, string parameterName)
-    {
-        if (armsAnimator != null)
-            armsAnimator.SetFloat(parameterName, (float)weapon.WeaponHand);
-    }
-
-    private void SetAnimatorWeaponType(IWeapon weapon, string parameterName)
-    {
-        if (armsAnimator != null)
-            armsAnimator.SetFloat(parameterName, (float)weapon.WeaponType);
-    }
-
-    private void SetAnimatorTrigger(string parameterName)
-    {
-        if (armsAnimator != null)
-            armsAnimator.SetTrigger(parameterName);
-    }
-
-    private void UpdateHitAnimatorSpeed(string layerName, IWeapon weapon)
-    {
-        if (armsAnimator == null)
-            return;
-
-        AnimatorStateInfo stateInfo = armsAnimator.GetCurrentAnimatorStateInfo(armsAnimator.GetLayerIndex(layerName));
-
-        if (stateInfo.IsName(layerName + ".Primary"))
-            if (weapon is IPhysicalWeapon)
-                armsAnimator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
-            else
-                armsAnimator.speed = 1.0f;
-        else
-            armsAnimator.speed = 1.0f;
     }
 
     /// <summary>

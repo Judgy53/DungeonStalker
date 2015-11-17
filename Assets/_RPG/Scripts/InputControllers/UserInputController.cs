@@ -18,6 +18,8 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
     private Vector3 velocity = Vector3.zero;
     public Vector3 Velocity { get { return velocity; } set { velocity = value; } }
 
+    public bool IsGrounded { get { return cc.isGrounded; } }
+
     private Vector2 horizontalInputs = Vector2.zero;
     private float sprintInput = 0.0f;
     private bool jumpInput = false;
