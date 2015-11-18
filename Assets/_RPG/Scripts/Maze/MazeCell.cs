@@ -49,4 +49,11 @@ public class MazeCell : MonoBehaviour
         edges[(int)direction] = edge;
         initializedEdgeCount++;
     }
+
+    public void DestroyEdge(MazeDirection dir)
+    {
+        GameObject.Destroy(edges[(int)dir].gameObject);
+        edges[(int)dir] = null;
+        initializedEdgeCount--;
+    }
 }

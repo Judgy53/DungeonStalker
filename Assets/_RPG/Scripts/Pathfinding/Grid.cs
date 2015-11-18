@@ -96,6 +96,10 @@ public class Grid : MonoBehaviour
         return neighbours;
     }
 
+    /// <summary>
+    /// This function will recompute the static nodes mask for the A* pathfinding.
+    /// </summary>
+    /// <param name="clearNodes">Shoud the function clear the grid ? (Warning : if set to true, dynamic obstacles will be cleared until they move again.)</param>
     public void RecomputeStaticObstacles(bool clearNodes = false)
     {
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2.0f - Vector3.forward * gridWorldSize.y / 2.0f;
@@ -146,6 +150,7 @@ public class Grid : MonoBehaviour
             instance.TryProcessNextRequest();
             return true;
         }
+
         return false;
     }
 

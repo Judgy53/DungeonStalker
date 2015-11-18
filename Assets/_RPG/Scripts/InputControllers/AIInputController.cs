@@ -62,7 +62,7 @@ public class AIInputController : MonoBehaviour, IControls, ISavable
         if (Target == null)
             return;
 
-        if (Vector3.Distance(transform.position, Target.transform.position) <= attackDistance)
+        if (Vector3.Distance(transform.position, Target.transform.position) <= attackDistance && Target != null)
         {
             weaponManager.Primary(0);
             if (weaponManager.OffHandWeapon != null)
