@@ -8,6 +8,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject content;
 
+    [SerializeField]
+    private UISaveMenu SaveMenu;
+
     private void Start()
     {
         Show(false);
@@ -37,14 +40,18 @@ public class PauseMenu : MonoBehaviour
 
     public void Save()
     {
-        SaveManager.Instance.Save(false);
         Show(false);
+
+        SaveMenu.State = SaveLoadState.Save;
+        SaveMenu.gameObject.SetActive(true);
     }
 
     public void Load()
     {
-        SaveManager.Instance.LoadLast();
         Show(false);
+
+        SaveMenu.State = SaveLoadState.Load;
+        SaveMenu.gameObject.SetActive(true);
     }
 
     public void MainMenu()

@@ -19,11 +19,30 @@ public class GameManager : MonoBehaviour, ISavable
 
     [SerializeField]
     private uint stage = 1;
-    public static uint Stage { get { return instance.stage; } }
+    public static uint Stage { get { return instance.stage; } set { instance.stage = value; } }
 
     private static GameManager instance = null;
 
     private SaveData toLoad = null;
+
+    private DateTime startTime;
+    public static DateTime StartTime { get { return instance.startTime; } set { instance.startTime = value; } }
+
+    private long timePlayed;
+    public static long TimePlayed 
+    { 
+        get 
+        {
+            return instance.timePlayed += Convert.ToInt64((DateTime.Now - StartTime).TotalSeconds);
+        } 
+        set 
+        { 
+            instance.timePlayed = value; 
+        } 
+    }
+
+    private string playerName = "Player";
+    public static string PlayerName { get { return instance.playerName; } set { instance.playerName = value; } }
 
     private void Start()
     {
@@ -35,6 +54,14 @@ public class GameManager : MonoBehaviour, ISavable
             mazeGeneration.Finished += MazeGenerationFinished;
             mazeGeneration.Start();
         }
+
+        ResetTime(0L);
+    }
+
+    public static void ResetTime(long played)
+    {
+        StartTime = DateTime.Now;
+        TimePlayed = played;
     }
 
     private void MazeGenerationFinished(bool manual)

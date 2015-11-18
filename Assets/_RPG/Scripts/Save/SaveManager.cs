@@ -99,12 +99,26 @@ public class SaveManager {
         save.Load();
     }
 
-    public void Save(bool auto)
+    public void Load(string saveId)
+    {
+        string saveName = "save" + saveId;
+
+        if (Saves.ContainsKey(saveName))
+            Load(Saves[saveName]);
+    }
+
+    public void Save(bool auto, string saveId = "")
     {
         if (!Loaded)
             LoadAllSaves();
 
-        string fileName = "save" + saves.Count.ToString("000");
+        string fileName = "save";
+
+        if (saveId == null || saveId.Length == 0)
+            fileName += saves.Count.ToString("000");
+        else
+            fileName += saveId;
+
         Directory.CreateDirectory(folder);
         Stream stream = File.Open(folder + fileName + ".sav", FileMode.Create);
         BinaryFormatter bformatter = new BinaryFormatter();
@@ -115,12 +129,16 @@ public class SaveManager {
         try
         {
             bformatter.Serialize(stream, sav);
-            saves.Add(fileName, sav);
         }
         catch (Exception e)
         {
             Debug.LogError("Saving Error : " + e.Message);
         }
+
+        if (saves.ContainsKey(fileName))
+            saves.Remove(fileName);
+
+        saves.Add(fileName, sav);
 
         stream.Close();
 

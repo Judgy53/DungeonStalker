@@ -2542,7 +2542,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967007
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2575,7 +2575,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 288
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2784,6 +2784,12 @@ MonoBehaviour:
   offHandWeaponTypeName: OffHandWeaponType
   mainHandWeaponSpeedLayerName: MainHand
   offHandWeaponSpeedLayerName: OffHand
+  movementVelocityForwardName: 
+  movementVelocitySidesName: 
+  movementVelocityAirName: 
+  movementGroundedName: 
+  onHitName: 
+  onDeathName: 
 --- !u!114 &11477554
 MonoBehaviour:
   m_ObjectHideFlags: 1

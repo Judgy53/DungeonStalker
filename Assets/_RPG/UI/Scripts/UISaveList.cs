@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 public class UISaveList : MonoBehaviour
 {
@@ -16,40 +16,90 @@ public class UISaveList : MonoBehaviour
     [SerializeField]
     private UICurrentSave selectedSaveHandler;
 
+    private SaveLoadState state;
+
     private void OnEnable()
     {
+        state = GetComponentInParent<UISaveMenu>().State;
+
         ClearList();
 
         Dictionary<string, Save> saves = SaveManager.Instance.Saves;
 
-        float height = Mathf.Min(saves.Count * 20f, 300f);
-
-        RectTransform transform = GetComponent<RectTransform>();
-
-        Vector2 size = transform.sizeDelta;
-        size.y = height;
-        transform.sizeDelta = size;
-
-        int count = 0;
-
-        foreach (KeyValuePair<string, Save> kvp in SaveManager.Instance.Saves)
+        foreach (KeyValuePair<string, Save> kvp in saves)
         {
-            GameObject newButton = Instantiate(buttonPrefab) as GameObject;
-            UISaveButton button = newButton.GetComponent<UISaveButton>();
-
+            string id = "";
+            
             if (kvp.Value.autoSave)
-                button.SaveId.text = "Auto";
+                id = "Auto";
             else
-                button.SaveId.text = kvp.Key.Replace("save", "");
+                id = kvp.Key.Replace("save", "");
 
-            button.SaveName.text = "Stage " + kvp.Value.Stage;
+            string name = "Stage " + kvp.Value.Stage;
 
-            button.transform.SetParent(content);
-
-            RectTransform rect = button.GetComponent<RectTransform>();
-
-            rect.anchoredPosition = new Vector2(0f, count++ * 20f);
+            CreateButton(id, name);
         }
+
+        //create "New Save" Button
+        if (state == SaveLoadState.Save)
+            CreateButton("", "New Save");
+    }
+
+    private void CreateButton(string id, string name)
+    {
+        GameObject gao = Instantiate(buttonPrefab) as GameObject;
+        UISaveButton button = gao.GetComponent<UISaveButton>();
+
+        button.transform.SetParent(content, false);
+
+        button.SaveId.text = id;
+        button.SaveName.text = name;
+
+        button.OnHover += SaveOnHover;
+        button.OnClick += SaveOnClick;
+
+        gao.transform.SetAsFirstSibling();
+    }
+
+    private void SaveOnHover(object sender, EventArgs e)
+    {
+        UISaveButton btn = (sender as MonoBehaviour).GetComponent<UISaveButton>();
+        selectedSaveHandler.SetSave(btn.SaveId.text);
+    }
+
+    private void SaveOnClick(object sender, EventArgs e)
+    {
+        UISaveButton btn = (sender as MonoBehaviour).GetComponent<UISaveButton>();
+
+        //no confirmation for now, will be needed later
+        //SetButtonsState(false, btn);
+
+        if(state == SaveLoadState.Save)
+        {
+            SaveManager.Instance.Save(false, btn.SaveId.text);
+        }
+        else if(state == SaveLoadState.Load)
+        {
+            SaveManager.Instance.Load(btn.SaveId.text);
+        }
+
+        GetComponentInParent<UISaveMenu>().gameObject.SetActive(false);
+    }
+
+    public void SetButtonsState(bool state, Button except = null)
+    {
+        Button[] buttons = content.GetComponentsInChildren<Button>();
+
+        foreach(Button btn in buttons)
+        {
+            if (btn != null && btn != except)
+                btn.interactable = state;
+        }
+    }
+
+    private void OnDisable()
+    {
+        ClearList();
     }
 
     private void ClearList()
