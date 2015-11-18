@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour, ISavable
 {
@@ -18,23 +19,35 @@ public class GameManager : MonoBehaviour, ISavable
     public int maxEnemiesPerRoom = 10;
 
     [SerializeField]
+    private int seed = 42;
+    public static int Seed { get { return instance.seed; } }
+
+    [SerializeField]
     private uint stage = 1;
     public static uint Stage { get { return instance.stage; } }
+
+    private List<int> keys = new List<int>();
+    public static List<int> Keys { get { return instance.keys; } }
 
     private static GameManager instance = null;
 
     private SaveData toLoad = null;
 
-    private void Start()
+    private bool generateMaze = false;
+
+    private void Awake()
     {
+        if (instance != null)
+        {
+            GameObject.Destroy(this.gameObject);
+            return;
+        }
+
         instance = this;
 
-        if (mazeInstance != null)
-        {
-            Task mazeGeneration = new Task(mazeInstance.Generate(), false);
-            mazeGeneration.Finished += MazeGenerationFinished;
-            mazeGeneration.Start();
-        }
+        LoadStage(stage);
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void MazeGenerationFinished(bool manual)
@@ -60,16 +73,44 @@ public class GameManager : MonoBehaviour, ISavable
 
         if (playerPrefab != null)
         {
+            Camera mc = Camera.main;
+            if (mc == null)
+                throw new InvalidOperationException("Fatal : No main camera found !");
+
             GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
+            mc.transform.SetParent(player.transform, false);
 
             if (OnPlayerCreation != null)
                 OnPlayerCreation(this, new EventPlayerCreationArgs(player));
         }
     }
 
-    private void Update()
+    private void OnLevelWasLoaded(int level)
     {
+        if (generateMaze)
+        {
+            mazeInstance = gameObject.GetComponentWithTag<Maze>("Maze");
 
+            if (mazeInstance != null)
+            {
+                mazeInstance.Seed = seed + (int)stage;
+                Task mazeGeneration = new Task(mazeInstance.Generate(), false);
+                mazeGeneration.Finished += MazeGenerationFinished;
+                mazeGeneration.Start();
+            }
+            else
+                throw new InvalidOperationException("Maze instance undefined.");
+
+            generateMaze = false;
+        }
+    }
+
+    public static void LoadStage(uint s)
+    {
+        OnPlayerCreation = null;
+        instance.stage = s;
+        instance.generateMaze = true;
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     public void Save(SaveData data)

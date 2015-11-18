@@ -31,6 +31,7 @@ public class Maze : MonoBehaviour
     private int seed = -1;
     public int Seed { get { return seed; } set { seed = value; } }
 
+    public DoorChangeStage exitDoorPrefab = null;
 
     public Vector2i RandomCoordinates
     {
@@ -75,6 +76,8 @@ public class Maze : MonoBehaviour
                 yield return false;
             DoNextGenerationStep(activeCells);
         }
+
+        PlaceExitDoor();
     }
 
     public IEnumerator Populate(int enemiesNumber, int maxEnemiesPerRoom)
@@ -166,8 +169,13 @@ public class Maze : MonoBehaviour
                 CreateWall(currentCell, null, direction);
             else
             {
+                //Todo : Create non usable door, Showing : 'I can't go back !'
+
+                /*if (GameManager.Stage != 1)
+                    CreateChangeStageDoor(currentCell, null, direction, 0);
+                else*/
                 CreateWall(currentCell, null, direction);
-                //CreateReloadDoor();
+
                 GameObject start = GameObject.Instantiate(playerStartPrefab) as GameObject;
                 start.transform.parent = transform;
 
@@ -179,6 +187,38 @@ public class Maze : MonoBehaviour
                 playerStartCreated = true;
             }
         }
+    }
+
+    private void PlaceExitDoor()
+    {
+        while (true)
+        {
+            MazeCell rcell = cells[Random.Range(0, size.x), Random.Range(0, size.z)];
+            for (int i = 0; i < MazeDirections.Count; i++)
+            {
+                MazeDirection dir = MazeDirection.North + i;
+                MazeCellEdge edge = rcell.GetEdge(dir);
+                if (edge is MazeWall)
+                {
+                    rcell.DestroyEdge(dir);
+                    Vector2i coordinates = rcell.coordinates + dir.ToVector2i();
+                    if (ContainsCoordinates(coordinates))
+                        CreateChangeStageDoor(rcell, GetCell(coordinates), dir, 1);
+                    else
+                        CreateChangeStageDoor(rcell, null, dir, 1);
+
+                    return;
+                }
+            }
+        }
+    }
+
+    public void CreateChangeStageDoor(MazeCell cell, MazeCell otherCell, MazeDirection direction, uint delta)
+    {
+        DoorChangeStage newDoor = GameObject.Instantiate(exitDoorPrefab as Behaviour, transform.position, transform.rotation) as DoorChangeStage;
+        newDoor.Delta = delta;
+
+        newDoor.Initialize(cell, otherCell, direction);
     }
 
     public bool ContainsCoordinates(Vector2i coordinate)

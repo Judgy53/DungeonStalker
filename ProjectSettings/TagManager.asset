@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - PlayerStart
+  - Maze
   layers:
   - Default
   - TransparentFX

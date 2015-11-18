@@ -137,6 +137,7 @@ public class StatsManager : MonoBehaviour, ISavable
         }
 
         Stats += addedPoints;
+        xpOnKill *= level;
     }
 
     public void Save(SaveData data)

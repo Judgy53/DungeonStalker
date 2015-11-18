@@ -9,6 +9,15 @@ public static class GameObjectExtension
         foreach (Transform t in go.transform)
             t.gameObject.SetLayerRecursively(newLayer);
     }
+
+    //Can't extend static method in C# ...
+    public static T GetComponentWithTag<T>(this GameObject go, string tag)
+    {
+        GameObject f = GameObject.FindGameObjectWithTag(tag);
+        if (f != null)
+            return f.GetComponent<T>();
+        return default(T);
+    }
 }
 
 [System.Serializable]
