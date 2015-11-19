@@ -27,19 +27,47 @@ public class UILoadingScreen : MonoBehaviour
 
     private IEnumerator loaderActualizer = null;
     private IEnumerator textChanger = null;
+    
+    private delegate void ActualizerBehavior();
+    /// <summary>
+    /// Coroutines can't do this job, needed a real thread.
+    /// </summary>
+    private System.Threading.Thread progressActualizerThread = null;
+    private ActualizerBehavior actualizerBehavior = null;
+    private bool quitThread = false;
+
+    /// <summary>
+    /// Unity has protections against multithreading, needed a middle variable.
+    /// </summary>
+    private string percentValue = "0";
 
     private void Start()
     {
+        GameManager.OnMazeGenerationFinished += GameManager_OnMazeGenerationFinished;
+        GameManager.OnMazePopulationFinished += GameManager_OnMazePopulationFinished;
         GameManager.OnPlayerCreation += GameManager_OnPlayerCreation;
+
         animator = GetComponent<Animator>();
         loaderActualizer = ActualizeLoadingSentence();
         textChanger = ChangeTextOnTime();
+        progressActualizerThread = new System.Threading.Thread(ActualizeProgress);
+        
         StartCoroutine(loaderActualizer);
         StartCoroutine(textChanger);
+        progressActualizerThread.Start();
+
         UIStateManager.RegisterUI();
     }
 
-    IEnumerator ChangeTextOnTime()
+    private void Update()
+    {
+        lock (percentValue)
+        {
+            percent.text = percentValue;
+        }
+    }
+
+    private IEnumerator ChangeTextOnTime()
     {
         while (true)
         {
@@ -49,7 +77,7 @@ public class UILoadingScreen : MonoBehaviour
         }
     }
 
-    IEnumerator ActualizeLoadingSentence()
+    private IEnumerator ActualizeLoadingSentence()
     {
         while (true)
         {
@@ -65,15 +93,35 @@ public class UILoadingScreen : MonoBehaviour
         }
     }
 
+    private void ActualizeProgress()
+    {
+        actualizerBehavior = ActualizerBehaviorGeneration;
+
+        while (!quitThread)
+            actualizerBehavior();
+    }
+
     private string GetRandomSentence()
     {
         return sentences[random.Next(sentences.Length)];
     }
 
-    void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    private void GameManager_OnMazeGenerationFinished(object sender, System.EventArgs e)
+    {
+        actualizerBehavior = ActualizerBehaviorPopulate;
+    }
+
+    private void GameManager_OnMazePopulationFinished(object sender, System.EventArgs e)
+    {
+        actualizerBehavior = ActualizerBehaviorPathfindingGeneration;
+    }
+    
+    private void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
         StopCoroutine(loaderActualizer);
         StopCoroutine(textChanger);
+        quitThread = true;
+        progressActualizerThread.Join();
 
         if (loadingSentence != null)
             loadingSentence.text = "Done !";
@@ -81,5 +129,45 @@ public class UILoadingScreen : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("FadeOut");
         UIStateManager.UnregisterUI();
+    }
+
+    private void ActualizerBehaviorGeneration()
+    {
+        float progress = 0.0f;
+        int maxCells = GameManager.MazeInstance.Cells.Length;
+        int initializedCells = 0;
+        foreach (MazeCell cell in GameManager.MazeInstance.Cells)
+        {
+            if (cell != null && cell.IsFullyInitialized)
+                initializedCells++;
+        }
+
+        progress = (float)initializedCells / (float)maxCells;
+        progress *= 0.2f;
+
+        ActualizeProgressText(progress);
+    }
+
+    private void ActualizerBehaviorPopulate()
+    {
+        float progress = (float)GameManager.MazeInstance.Enemies.Count / (float)GameManager.EnemiesNumber;
+        progress *= 0.1f;
+        progress += 0.2f;
+
+        ActualizeProgressText(progress);
+    }
+
+    private void ActualizerBehaviorPathfindingGeneration()
+    {
+        float progress = 1.0f - ((float)Grid.WaitingRequestNumber / (float)Grid.HighestRequestNumber);
+        progress *= 0.7f;
+        progress += 0.3f;
+
+        ActualizeProgressText(progress);
+    }
+
+    private void ActualizeProgressText(float progress)
+    {
+        percentValue = ((int)(progress * 100.0f)).ToString() + "%";
     }
 }

@@ -30,6 +30,11 @@ public class Grid : MonoBehaviour
     private Queue<ObstacleRecomputingRequest> obstacleRequests = new Queue<ObstacleRecomputingRequest>();
     private ObstacleRecomputingRequest currentRequest = null;
 
+    public static int WaitingRequestNumber { get { return instance.obstacleRequests.Count; } }
+    private static int highestRequestNumber = 0;
+    public static int HighestRequestNumber { get { return highestRequestNumber; } }
+    public static event EventHandler OnProcessingQueueEmpty;
+
     private void Awake()
     {
         instance = this;
@@ -144,14 +149,12 @@ public class Grid : MonoBehaviour
 
     public static bool EnqueueRecomputeObstacle(Bounds bounds, Node[] previouslyAffectedNodes, Action<Node[]> callback)
     {
-        if (instance.obstacleRequests.Count < 20)
-        {
-            instance.obstacleRequests.Enqueue(new ObstacleRecomputingRequest(previouslyAffectedNodes, bounds, callback));
-            instance.TryProcessNextRequest();
-            return true;
-        }
+        instance.obstacleRequests.Enqueue(new ObstacleRecomputingRequest(previouslyAffectedNodes, bounds, callback));
+        if (instance.obstacleRequests.Count > highestRequestNumber)
+            highestRequestNumber = instance.obstacleRequests.Count;
 
-        return false;
+        instance.TryProcessNextRequest();
+        return true;
     }
 
     private void TryProcessNextRequest()
@@ -162,6 +165,8 @@ public class Grid : MonoBehaviour
             processingObstacle = true;
             StartCoroutine(RecomputeDynamicObstacleNodes(currentRequest.bounds, currentRequest.previouslyAffectedNodes));
         }
+        else if (obstacleRequests.Count == 0 && OnProcessingQueueEmpty != null)
+            OnProcessingQueueEmpty(this, new EventArgs());
     }
 
     private void FinishedRecompute(Node[] affectedNodes)

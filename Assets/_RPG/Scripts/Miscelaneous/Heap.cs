@@ -50,6 +50,13 @@ public class Heap<T> where T : IHeapItem<T>
         return Equals(items[item.HeapIndex], item);
     }
 
+    public void Clear()
+    {
+        for (int i = 0; i < items.Length; i++)
+            items[i] = default(T);
+        currentItemCount = 0;
+    }
+
     private void SortDown(T item)
     {
         while (true)

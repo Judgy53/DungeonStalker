@@ -9,11 +9,17 @@ public class Pathfinding : MonoBehaviour
 {
     PathRequestManager requestManager = null;
     private Grid grid = null;
+    private Heap<Node> openSet = null;
 
     private void Awake()
     {
         requestManager = GetComponent<PathRequestManager>();
         grid = GetComponent<Grid>();
+    }
+
+    private void Start()
+    {
+        openSet = new Heap<Node>(grid.MaxSize);
     }
 
     public void StartFindPath(Vector3 startPos, Vector3 targetPos)
@@ -31,7 +37,7 @@ public class Pathfinding : MonoBehaviour
 
         if (targetNode.walkable)
         {
-            Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
+            openSet.Clear();
             HashSet<Node> closedSet = new HashSet<Node>();
 
             openSet.Add(startNode);

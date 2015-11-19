@@ -1805,9 +1805,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    strength: 1
-    defense: 1
-    stamina: 1
+    strength: 3
+    defense: 2
+    stamina: 5
     energy: 1
   debugFireEvent: 0
   unspentPoints: 0

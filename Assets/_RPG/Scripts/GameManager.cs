@@ -5,11 +5,22 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour, ISavable
 {
+    private static GameManager instance = null;
+    
     public Maze mazeInstance = null;
+    public static Maze MazeInstance { get { return instance.mazeInstance; } }
 
     public GameObject playerPrefab = null;
 
     public static event EventHandler<EventPlayerCreationArgs> OnPlayerCreation;
+    public static event EventHandler OnMazeGenerationFinished;
+    public static event EventHandler OnMazePopulationFinished;
+
+    /// <summary>
+    /// Any scripts subscribing to this event is responsible for unsubscribing.
+    /// (Example : You need to unsubscribe if your script is destroyed on a Application.LoadLevel()).
+    /// </summary>
+    public static event EventHandler OnReloadStage;
 
     [Range(0, 100)]
     public int minEnemies = 10;
@@ -17,6 +28,8 @@ public class GameManager : MonoBehaviour, ISavable
     public int maxEnemies = 100;
 
     public int maxEnemiesPerRoom = 10;
+
+    public bool debugSpawnBeforePathfinding = false;
 
     [SerializeField]
     private int seed = 42;
@@ -26,14 +39,21 @@ public class GameManager : MonoBehaviour, ISavable
     private uint stage = 1;
     public static uint Stage { get { return instance.stage; } }
 
-    private List<int> keys = new List<int>();
-    public static List<int> Keys { get { return instance.keys; } }
-
-    private static GameManager instance = null;
-
     private SaveData toLoad = null;
 
     private bool generateMaze = false;
+
+    private int enemiesNumber = 0;
+    public static int EnemiesNumber { get { return instance.enemiesNumber; } }
+
+    /// <summary>
+    /// Might move that to another Component ...
+    /// </summary>
+    private List<int> keys = new List<int>();
+    public static List<int> Keys { get { return instance.keys; } }
+
+    private Grid gridInstance = null;
+    public static Grid GridInstance { get { return instance.gridInstance; } }
 
     private void Awake()
     {
@@ -54,15 +74,32 @@ public class GameManager : MonoBehaviour, ISavable
     {
         Debug.Log("Finished generate !");
 
-        mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
-        Task mazePopulation = new Task(mazeInstance.Populate(UnityEngine.Random.Range(minEnemies, maxEnemies), maxEnemiesPerRoom), false);
+        gridInstance.RecomputeStaticObstacles(false);
+        Task mazePopulation = new Task(mazeInstance.Populate(enemiesNumber, maxEnemiesPerRoom), false);
         mazePopulation.Finished += MazePopulationFinished;
         mazePopulation.Start();
+
+        if (OnMazeGenerationFinished != null)
+            OnMazeGenerationFinished(this, new EventArgs());
     }
 
     private void MazePopulationFinished(bool manual)
     {
         Debug.Log("Populate finished !");
+
+        Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
+        if (debugSpawnBeforePathfinding)
+            Grid_OnProcessingQueueEmpty(null, new EventArgs());
+
+        if (OnMazePopulationFinished != null)
+            OnMazePopulationFinished(this, new EventArgs());
+    }
+
+    private void Grid_OnProcessingQueueEmpty(object sender, EventArgs args)
+    {
+        Debug.Log("Dnamic Obstacles pathfinding recalculation done !");
+
+        Grid.OnProcessingQueueEmpty -= Grid_OnProcessingQueueEmpty;
 
         GameObject playerStart = GameObject.FindGameObjectWithTag("PlayerStart");
         if (playerStart == null)
@@ -90,6 +127,7 @@ public class GameManager : MonoBehaviour, ISavable
         if (generateMaze)
         {
             mazeInstance = gameObject.GetComponentWithTag<Maze>("Maze");
+            gridInstance = mazeInstance.GetComponent<Grid>();
 
             if (mazeInstance != null)
             {
@@ -107,9 +145,18 @@ public class GameManager : MonoBehaviour, ISavable
 
     public static void LoadStage(uint s)
     {
+        if (OnReloadStage != null)
+            OnReloadStage(instance, new EventArgs());
+
         OnPlayerCreation = null;
+        OnMazeGenerationFinished = null;
+        OnMazePopulationFinished = null;
+
         instance.stage = s;
         instance.generateMaze = true;
+
+        instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies);
+
         Application.LoadLevel(Application.loadedLevel);
     }
 
