@@ -59,6 +59,15 @@ public class UILoadingScreen : MonoBehaviour
         UIStateManager.RegisterUI();
     }
 
+    private void OnDestroy()
+    {
+        if (progressActualizerThread != null)
+        {
+            quitThread = true;
+            progressActualizerThread.Join();
+        }
+    }
+
     private void Update()
     {
         lock (percentValue)
