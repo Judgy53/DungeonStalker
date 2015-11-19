@@ -147,6 +147,6 @@ public class SaveManager {
 
     public void SortSavesByDate()
     {
-        saves.OrderBy(d => d.Value.CreationDate);
+        saves = saves.OrderBy(d => d.Value.CreationDate).ToDictionary(x=>x.Key,x=>x.Value);
     }
 }

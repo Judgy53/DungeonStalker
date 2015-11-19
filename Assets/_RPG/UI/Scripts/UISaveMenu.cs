@@ -6,6 +6,11 @@ public class UISaveMenu : MonoBehaviour
     private SaveLoadState state = SaveLoadState.None;
     public SaveLoadState State { get { return state; } set { state = value; } }
 
+    private void Update()
+    {
+
+    }
+
     private void OnEnable()
     {
         Time.timeScale = 0f;
