@@ -135,7 +135,7 @@ MonoBehaviour:
     m_Bits: 512
   gridWorldSize: {x: 60, y: 60}
   nodeRadius: .100000001
-  displayGrid: 1
+  displayGrid: 0
 --- !u!114 &255568900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,15 +759,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: .0454545952
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: .681818247
       objectReference: {fileID: 0}
     - target: {fileID: 119132, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_IsActive
@@ -804,6 +804,10 @@ Prefab:
     - target: {fileID: 11487976, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_Value
       value: .125000134
+      objectReference: {fileID: 0}
+    - target: {fileID: 22454222, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 419.999939
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
@@ -911,8 +915,9 @@ MonoBehaviour:
   minEnemies: 30
   maxEnemies: 60
   maxEnemiesPerRoom: 10
+  debugSpawnBeforePathfinding: 0
   seed: 42
-  stage: 3
+  stage: 1
 --- !u!4 &1321811100
 Transform:
   m_ObjectHideFlags: 0

@@ -22,9 +22,13 @@ public class Maze : MonoBehaviour
     public MazeRoomSettings[] roomSettings = new MazeRoomSettings[0];
 
     private MazeCell[,] cells = new MazeCell[0, 0];
+    public MazeCell[,] Cells { get { return cells; } }
+
     private List<MazeRoom> rooms = new List<MazeRoom>();
+    public List<MazeRoom> Rooms { get { return rooms; } }
 
     private List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> Enemies { get { return enemies; } }
 
     private bool playerStartCreated = false;
 
