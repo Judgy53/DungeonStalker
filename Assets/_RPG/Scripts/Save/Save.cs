@@ -11,19 +11,19 @@ public class Save
     public uint PlayerLevel = 0;
     public uint Stage = 0;
     public DateTime CreationDate;
-    public DateTime TimePlayed = new DateTime();
+    public long TimePlayed = 0L; // in seconds
 
     private Dictionary<string, SaveData> datas = new Dictionary<string, SaveData>();
 
     public void SaveScene(bool auto)
     {
         autoSave = auto;
-        //PlayerName = GameManager.PlayerName??
+        PlayerName = GameManager.PlayerName;
         PlayerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<StatsManager>().CurrentLevel;
         Stage = GameManager.Stage;
         CreationDate = DateTime.Now;
-        //TimePlayed = GameManager.TimePlayed??
-
+        TimePlayed = GameManager.TimePlayed;
+        
         UniqueId[] saveables = GameObject.FindObjectsOfType<UniqueId>();
 
         if (saveables.Length == 0) // nothing to save
@@ -55,6 +55,10 @@ public class Save
 
     public void Load()
     {
+        GameManager.Stage = Stage;
+        GameManager.ResetTime(TimePlayed);
+        GameManager.PlayerName = PlayerName;
+
         UniqueId[] ids = GameObject.FindObjectsOfType<UniqueId>();
 
         if (ids.Length == 0)
