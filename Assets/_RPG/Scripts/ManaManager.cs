@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-public class ManaManager : MonoBehaviour, ISavable
+public class ManaManager : MonoBehaviour, ISavable, IQuantifiable
 {
 
     [SerializeField]
@@ -61,5 +61,15 @@ public class ManaManager : MonoBehaviour, ISavable
     {
         MaxMana = float.Parse(data.Get("MaxMana"));
         CurrentMana = float.Parse(data.Get("CurrentMana"));
+    }
+
+    public float GetCurrentValue()
+    {
+        return currentMana;
+    }
+
+    public float GetMaxValue()
+    {
+        return maxMana;
     }
 }

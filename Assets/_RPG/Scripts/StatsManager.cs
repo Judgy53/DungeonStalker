@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class StatsManager : MonoBehaviour, ISavable
+public class StatsManager : MonoBehaviour, ISavable, IQuantifiable
 {
     public event EventHandler OnLevelUp;
 
@@ -164,6 +164,16 @@ public class StatsManager : MonoBehaviour, ISavable
 
         CurrentLevel = uint.Parse(data.Get("CurrentLevel"));
         CurrentExp = uint.Parse(data.Get("CurrentExp"));
+    }
+
+    public float GetCurrentValue()
+    {
+        return currentExp;
+    }
+
+    public float GetMaxValue()
+    {
+        return maxExp;
     }
 }
 

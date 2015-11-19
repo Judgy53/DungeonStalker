@@ -8,7 +8,8 @@ public class UISaveMenu : MonoBehaviour
 
     private void Update()
     {
-
+        if (Input.GetButton("Pause"))
+            gameObject.SetActive(false);
     }
 
     private void OnEnable()

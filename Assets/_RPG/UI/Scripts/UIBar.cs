@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 
 public class UIBar : MonoBehaviour
@@ -14,7 +15,9 @@ public class UIBar : MonoBehaviour
 
     [SerializeField]
     private bool showValues = false;
-    public bool ShowValues { get { return showValues; }
+    public bool ShowValues
+    {
+        get { return showValues; }
         set
         {
             if (value)
@@ -53,15 +56,61 @@ public class UIBar : MonoBehaviour
     private GameObject textgo = null;
     private Text text = null;
 
+    [SerializeField]
+    private string barType;
+
+    private IQuantifiable target;
+
     private void Start()
     {
         bar = GetComponent<Image>();
         if (showValues)
             ShowValues = showValues;
+
+        GameManager.OnPlayerCreation += GameManager_OnPlayerCreation;
+    }
+
+    void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    {
+        if (barType == null || barType.Length == 0)
+        {
+            Debug.LogError(this.name + " has no type");
+            return;
+        }
+
+        Type t = Type.GetType(barType); // get class type from string
+
+        if (t == null) // type not found 
+        {
+            Debug.LogError(this.name + "'s type is invalid");
+            return;
+        }
+
+        Component comp = e.player.GetComponent(t);
+
+        if (comp == null) // component not found
+        {
+            Debug.LogError(this.name + "'s type does not exists on player");
+            return;
+        }
+
+        if (!(comp is IQuantifiable)) // component not quantifiable
+        {
+            Debug.LogError(this.name + "'s type is not quantifiable");
+            return;
+        }
+
+        target = comp as IQuantifiable;
     }
 
     private void Update()
     {
+        if (target == null)
+            return;
+
+        currentValue = target.GetCurrentValue();
+        maxValue = target.GetMaxValue();
+
         Vector3 barScale = bar.transform.localScale;
         barScale.x = currentValue / maxValue;
 

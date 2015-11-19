@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour, IDamageable, ISavable
+public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 {
     public event EventHandler OnDeath;
     public event EventHandler OnHit;
@@ -139,5 +139,15 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable
     {
         MaxHealth = float.Parse(data.Get("MaxHealth"));
         CurrentHealth = float.Parse(data.Get("CurrentHealth"));
+    }
+
+    public float GetCurrentValue()
+    {
+        return currentHealth;
+    }
+
+    public float GetMaxValue()
+    {
+        return maxHealth;
     }
 }
