@@ -167,30 +167,36 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         {
             useTimer += Time.fixedDeltaTime;
 
-            Ray ray = new Ray(transform.root.position, startRaycast.position - transform.root.position);
-            float rootDistance = Vector3.Distance(transform.root.position, startRaycast.position);
-            RaycastHit[] hitInfos = Physics.RaycastAll(ray, rootDistance);
-
-            Debug.DrawLine(ray.origin, ray.origin + ray.direction * rootDistance, Color.cyan);
-
-            foreach (var hit in hitInfos)
+            Ray ray;
+            RaycastHit[] hitInfos;
+            float rootDistance;
+            if (stManager != null)
             {
-                if (!hit.collider.transform.IsChildOf(transform.root))
+                rootDistance = Vector3.Distance(stManager.transform.position, startRaycast.position);
+                ray = new Ray(stManager.transform.position, startRaycast.position - stManager.transform.position);
+                hitInfos = Physics.RaycastAll(ray, rootDistance);
+                
+                Debug.DrawLine(ray.origin, ray.origin + ray.direction * rootDistance, Color.cyan);
+
+                foreach (var hit in hitInfos)
                 {
-                    IDamageable damageable = null;
-                    if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
-                        TryRegisterHit(hit, damageable);
+                    if (!hit.collider.transform.IsChildOf(stManager.transform))
+                    {
+                        IDamageable damageable = null;
+                        if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+                            TryRegisterHit(hit, damageable);
+                    }
                 }
             }
 
             ray = new Ray(startRaycast.position, endRaycast.position - startRaycast.position);
             hitInfos = Physics.RaycastAll(ray, raycastDistance);
 
-            Debug.DrawLine(ray.origin, ray.origin + ray.direction * rootDistance, Color.cyan);
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * raycastDistance, Color.cyan);
 
             foreach (var hit in hitInfos)
             {
-                if (!hit.collider.transform.IsChildOf(transform.root))
+                if (stManager == null || !hit.collider.transform.IsChildOf(stManager.transform))
                 {
                     IDamageable damageable = null;
                     if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
@@ -209,8 +215,16 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
     private void TryRegisterHit(RaycastHit hit, IDamageable damageable)
     {
-        if ((damageable as Behaviour).gameObject.tag == transform.root.tag)
-            return;
+        if (stManager == null)
+        {
+            if ((damageable as Behaviour).gameObject.tag == transform.root.tag)
+                return;
+        }
+        else
+        {
+            if ((damageable as Behaviour).gameObject.tag == stManager.tag)
+                return;
+        }
 
         if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
         {
