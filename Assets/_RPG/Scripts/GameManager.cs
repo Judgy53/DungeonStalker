@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour, ISavable
     {
         get
         {
-            return instance.timePlayed += Convert.ToInt64((DateTime.Now - StartTime).TotalSeconds);
+            return instance.timePlayed + Convert.ToInt64((DateTime.Now - StartTime).TotalSeconds);
         }
         set
         {

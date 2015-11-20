@@ -16,12 +16,8 @@ public class UISaveList : MonoBehaviour
     [SerializeField]
     private UICurrentSave selectedSaveHandler;
 
-    private SaveLoadState state;
-
     private void OnEnable()
     {
-        state = GetComponentInParent<UISaveMenu>().State;
-
         ClearList();
 
         Dictionary<string, Save> saves = SaveManager.Instance.Saves;
@@ -39,10 +35,6 @@ public class UISaveList : MonoBehaviour
 
             CreateButton(id, name);
         }
-
-        //create "New Save" Button
-        if (state == SaveLoadState.Save)
-            CreateButton("", "New Save");
     }
 
     private void CreateButton(string id, string name)
@@ -71,17 +63,7 @@ public class UISaveList : MonoBehaviour
     {
         UISaveButton btn = (sender as MonoBehaviour).GetComponent<UISaveButton>();
 
-        //no confirmation for now, will be needed later
-        //SetButtonsState(false, btn);
-
-        if(state == SaveLoadState.Save)
-        {
-            SaveManager.Instance.Save(false, btn.SaveId.text);
-        }
-        else if(state == SaveLoadState.Load)
-        {
-            SaveManager.Instance.Load(btn.SaveId.text);
-        }
+        SaveManager.Instance.Load(btn.SaveId.text);
 
         GetComponentInParent<UISaveMenu>().gameObject.SetActive(false);
     }
