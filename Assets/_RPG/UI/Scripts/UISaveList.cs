@@ -16,11 +16,12 @@ public class UISaveList : MonoBehaviour
     [SerializeField]
     private UICurrentSave selectedSaveHandler;
 
-    private SaveLoadState state;
+    private UIScrollRect scroller;
 
     private void OnEnable()
     {
-        state = GetComponentInParent<UISaveMenu>().State;
+        if (scroller == null)
+            scroller = GetComponent<UIScrollRect>();
 
         ClearList();
 
@@ -40,9 +41,7 @@ public class UISaveList : MonoBehaviour
             CreateButton(id, name);
         }
 
-        //create "New Save" Button
-        if (state == SaveLoadState.Save)
-            CreateButton("", "New Save");
+        selectedSaveHandler.SetSave("");
     }
 
     private void CreateButton(string id, string name)
@@ -54,47 +53,20 @@ public class UISaveList : MonoBehaviour
 
         button.SaveId.text = id;
         button.SaveName.text = name;
-
-        button.OnHover += SaveOnHover;
+        
         button.OnClick += SaveOnClick;
 
         gao.transform.SetAsFirstSibling();
     }
 
-    private void SaveOnHover(object sender, EventArgs e)
-    {
-        UISaveButton btn = (sender as MonoBehaviour).GetComponent<UISaveButton>();
-        selectedSaveHandler.SetSave(btn.SaveId.text);
-    }
-
     private void SaveOnClick(object sender, EventArgs e)
     {
         UISaveButton btn = (sender as MonoBehaviour).GetComponent<UISaveButton>();
+        selectedSaveHandler.SetSave(btn.SaveId.text);
 
-        //no confirmation for now, will be needed later
-        //SetButtonsState(false, btn);
+        GetComponentInParent<UIPanelLoad>().SaveId = btn.SaveId.text;
 
-        if(state == SaveLoadState.Save)
-        {
-            SaveManager.Instance.Save(false, btn.SaveId.text);
-        }
-        else if(state == SaveLoadState.Load)
-        {
-            SaveManager.Instance.Load(btn.SaveId.text);
-        }
-
-        GetComponentInParent<UISaveMenu>().gameObject.SetActive(false);
-    }
-
-    public void SetButtonsState(bool state, Button except = null)
-    {
-        Button[] buttons = content.GetComponentsInChildren<Button>();
-
-        foreach(Button btn in buttons)
-        {
-            if (btn != null && btn != except)
-                btn.interactable = state;
-        }
+        UpdateScroller(btn);
     }
 
     private void OnDisable()
@@ -106,5 +78,24 @@ public class UISaveList : MonoBehaviour
     {
         foreach (Transform tr in content)
             Destroy(tr.gameObject);
+    }
+
+    private void UpdateScroller(UISaveButton btn)
+    {
+        float scrolled = content.anchoredPosition.y;
+        float holderHeight = GetComponent<RectTransform>().sizeDelta.y;
+
+        float btnHeight = btn.GetComponent<RectTransform>().sizeDelta.y;
+
+        float pos = btn.transform.GetSiblingIndex() * btnHeight;
+
+        if(pos < scrolled + btnHeight) // if selected button overflow on top
+        {
+            content.anchoredPosition = new Vector2(0f, pos);
+        }
+        else if (pos + btnHeight > scrolled + holderHeight) // if selected button overflow on bottom
+        {
+            content.anchoredPosition = new Vector2(0f, pos - btnHeight * (holderHeight / btnHeight - 1));
+        }
     }
 }
