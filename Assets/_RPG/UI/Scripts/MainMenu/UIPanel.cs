@@ -25,9 +25,11 @@ public class UIPanel : MonoBehaviour
     private void OnDisable()
     {
         EventSystem eventSys = EventSystem.current;
-        if (eventSys.currentSelectedGameObject.transform.IsChildOf(transform))
+
+        if (eventSys != null && eventSys.currentSelectedGameObject != null &&
+            eventSys.currentSelectedGameObject.transform.IsChildOf(transform))
         {
-            eventSys.SetSelectedGameObject(GameObject.Find("FirstSelected"));
+            eventSys.SetSelectedGameObject(GameObject.Find("FirstSelected")); // FirstSelected : invisible Gao above menu
         }
     }
 
@@ -44,7 +46,6 @@ public class UIPanel : MonoBehaviour
         if(!closed)
             StartCoroutine("SwitchState");
     }
-
 
     private IEnumerator SwitchState()
     {

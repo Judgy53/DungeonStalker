@@ -60,7 +60,7 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
 
         
         if (Input.GetKeyDown(KeyCode.F5))
-            SaveManager.Instance.Save(false);
+            SaveManager.Instance.Save();
         if (Input.GetKeyDown(KeyCode.F9))
             SaveManager.Instance.LoadLast();
         

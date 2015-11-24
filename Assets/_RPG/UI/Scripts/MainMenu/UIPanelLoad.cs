@@ -21,7 +21,12 @@ public class UIPanelLoad : UIPanel
 
     private void Load()
     {
-        if(saveId != null)
+        if (saveId != null)
+        {
+            Debug.Log("Loading : " + saveId);
+
+            Application.LoadLevel("GameScene");
             SaveManager.Instance.Load(saveId);
+        }
     }
 }

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour, ISavable
 
     [SerializeField]
     private int seed = 42;
-    public static int Seed { get { return instance.seed; } }
+    public static int Seed { get { return instance.seed; } set { instance.seed = value; }}
 
     [SerializeField]
     private uint stage = 1;
@@ -102,9 +102,13 @@ public class GameManager : MonoBehaviour, ISavable
         Debug.Log("Finished generate !");
 
         gridInstance.RecomputeStaticObstacles(false);
-        Task mazePopulation = new Task(mazeInstance.Populate(enemiesNumber, maxEnemiesPerRoom), false);
-        mazePopulation.Finished += MazePopulationFinished;
-        mazePopulation.Start();
+
+        if(toLoad == null)
+        {
+            Task mazePopulation = new Task(mazeInstance.Populate(enemiesNumber, maxEnemiesPerRoom), false);
+            mazePopulation.Finished += MazePopulationFinished;
+            mazePopulation.Start();
+        }
 
         if (OnMazeGenerationFinished != null)
             OnMazeGenerationFinished(this, new EventArgs());
@@ -189,37 +193,35 @@ public class GameManager : MonoBehaviour, ISavable
 
     public void Save(SaveData data)
     {
+        data.Add("seed", seed);
         data.Add("stage", stage);
         mazeInstance.Save(data);
     }
 
     public void Load(SaveData data)
     {
-        int seed = int.Parse(data.Get("seed"));
+        Debug.Log(Application.loadedLevelName);
+
+        int loadedSeed = int.Parse(data.Get("seed"));
+        uint stage = uint.Parse(data.Get("stage"));
 
         toLoad = data;
 
-        if(mazeInstance.Seed != seed)
-        {
-            mazeInstance.Seed = seed;
+        seed = loadedSeed;
+        LoadStage(stage);
 
-            mazeInstance.Clear();
-
-            Task mazeGeneration = new Task(mazeInstance.Generate(), false);
-            mazeGeneration.Finished += MazeLoadFinished;
-            mazeGeneration.Start();
-        }
-        else
-            MazeLoadFinished(true);
+        OnMazeGenerationFinished += MazeLoadFinished;
     }
 
-    private void MazeLoadFinished(bool manual)
+    private void MazeLoadFinished(object sender, EventArgs e)
     {
         mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
 
         mazeInstance.GenerateEnemiesFromSave(toLoad);
 
         toLoad = null;
+
+        MazePopulationFinished(true);
     }
 }
 

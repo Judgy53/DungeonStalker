@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class Save
 {
     //store informations outside dictionnary for easy access
-    public bool autoSave = false;
     public string PlayerName = "Player";
     public uint PlayerLevel = 0;
     public uint Stage = 0;
@@ -15,9 +14,8 @@ public class Save
 
     private Dictionary<string, SaveData> datas = new Dictionary<string, SaveData>();
 
-    public void SaveScene(bool auto)
+    public void SaveScene()
     {
-        autoSave = auto;
         PlayerName = GameManager.PlayerName;
         PlayerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<StatsManager>().CurrentLevel;
         Stage = GameManager.Stage;

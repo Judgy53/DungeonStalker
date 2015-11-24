@@ -303,8 +303,6 @@ public class Maze : MonoBehaviour
 
     public void Save(SaveData data)
     {
-        data.Add("seed", seed.ToString());
-
         int count = 0;
 
         foreach(GameObject enemy in enemies)
