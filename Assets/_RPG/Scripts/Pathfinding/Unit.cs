@@ -31,6 +31,8 @@ public class Unit : MonoBehaviour, IControls
     public float gizmoSize = 1.0f;
 
     private Vector3[] path = null;
+    public Vector3[] Path { get { return path; } }
+
     private int targetIndex = 0;
     private bool pathProcessing = false;
 
@@ -63,7 +65,7 @@ public class Unit : MonoBehaviour, IControls
             Vector3 direction = Vector3.zero;
             if (path != null && path.Length != 0 && targetIndex < path.Length)
                 direction = path[targetIndex] - transform.position;
-            else if (path != null && targetIndex >= path.Length)
+            else if (path != null && path.Length != 0 && targetIndex >= path.Length)
                 direction = path[path.Length - 1] - transform.position;
 
             direction.y = 0.0f;

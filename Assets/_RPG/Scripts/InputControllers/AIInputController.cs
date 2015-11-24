@@ -136,6 +136,8 @@ public class AIInputController : MonoBehaviour, IControls, ISavable
                 else
                     behavior = AIBehaviorExtensions.GetInRangeAndAttackBehavior;
             }
+            else
+                behavior = AIBehaviorExtensions.GetInRangeAndAttackBehavior;
         }
     }
 }
@@ -144,7 +146,7 @@ public static class AIBehaviorExtensions
 {
     public static void GetInRangeAndAttackBehavior(AIInputController controller)
     {
-        if (controller.Target != null)
+        if (controller.Target != null && controller.Unit.Path != null && controller.Unit.Path.Length != 0)
         {
             Vector3 dir = controller.Unit.DirectionToNextPoint;
             if (dir != Vector3.zero)
@@ -165,6 +167,8 @@ public static class AIBehaviorExtensions
                 controller.Unit.ForwardInput = Mathf.Lerp(controller.Unit.ForwardInput, 0.0f, 3.0f * Time.deltaTime);
             }
         }
+        else
+            controller.Unit.ForwardInput = Mathf.Lerp(controller.Unit.ForwardInput, 0.0f, 3.0f * Time.deltaTime);
     }
 
     public static void BackpedalBehavior(AIInputController controller)

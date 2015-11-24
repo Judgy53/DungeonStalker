@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        //LoadStage(stage);
+        LoadStage(stage);
 
         //ResetTime(0L);
 
