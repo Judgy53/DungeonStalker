@@ -1881,7 +1881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03a22de97b82a2459356a7a76279c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 1
+  attackDistance: .850000024
+  canBackpedal: 0
+  safetyZone: 1
+  runZone: 0
 --- !u!114 &11483392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1921,7 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  precision: .400000006
+  precision: .300000012
   angleInterpolationFactor: 5
   acceleration: .5
   gravityMultiplier: 1
@@ -2055,7 +2058,7 @@ CharacterController:
   m_Height: 2
   m_Radius: .569999993
   m_SlopeLimit: 45
-  m_StepOffset: .300000012
+  m_StepOffset: .0500000007
   m_SkinWidth: .0799999982
   m_MinMoveDistance: .00100000005
   m_Center: {x: 0, y: 1.20000005, z: 0}

@@ -9,6 +9,9 @@ public class Maze : MonoBehaviour
     public MazeCell cellPrefab = null;
     public MazePassage passagePrefab = null;
     public MazeWall[] wallPrefabs = null;
+    public GameObject straightWallDecorPrefab = null;
+    public GameObject closedTurnWallDecorPrefab = null;
+    public GameObject openTurnWallDecorPrefab = null;
 
     public MazeDoor doorPrefab = null;
 
@@ -80,6 +83,8 @@ public class Maze : MonoBehaviour
                 yield return false;
             DoNextGenerationStep(activeCells);
         }
+
+        yield return StartCoroutine(PlaceWallDecors());
 
         PlaceExitDoor();
     }
@@ -213,6 +218,70 @@ public class Maze : MonoBehaviour
 
                     return;
                 }
+            }
+        }
+    }
+
+    private IEnumerator PlaceWallDecors()
+    {
+        int checkedCellCount = 0;
+        foreach (MazeCell cell in cells)
+        {
+            if (checkedCellCount % 100 == 0)
+                yield return null;
+
+            for (MazeDirection dir = 0; (int)dir < MazeDirections.Count; dir++)
+            {
+                if (!(cell.GetEdge(dir) is MazeWall))
+                    continue;
+
+                CheckWallside(cell, dir, 1);
+                CheckWallside(cell, dir, -1);
+            }
+            checkedCellCount++;
+        }
+
+        Debug.Log("Finished placing decor !");
+    }
+
+    private void CheckWallside(MazeCell cell, MazeDirection dir, int delta)
+    {
+        if (cell.GetEdge(dir + delta) is MazeWall)
+        {
+            if (closedTurnWallDecorPrefab != null && !cell.IsCornerInitialized(dir, delta))
+                cell.InitializeCorner(closedTurnWallDecorPrefab, dir, delta);
+            return;
+        }
+
+        if (ContainsCoordinates(cell.coordinates + (dir + delta).ToVector2i() + dir.ToVector2i()))
+        {
+            MazeCell otherCell = GetCell(cell.coordinates + (dir + delta).ToVector2i() + dir.ToVector2i());
+            if (otherCell.GetEdge(dir - delta) is MazeWall)
+            {
+                if (openTurnWallDecorPrefab != null)
+                {
+                    if (!cell.IsCornerInitialized(dir, delta))
+                        cell.InitializeCorner(openTurnWallDecorPrefab, dir, delta);
+
+                    if (ContainsCoordinates(cell.coordinates + (dir + delta).ToVector2i()))
+                    {
+                        MazeCell sideCell = GetCell(cell.coordinates + (dir + delta).ToVector2i());
+                        if (!sideCell.IsCornerInitialized(dir, -delta))
+                            sideCell.InitializeCorner(openTurnWallDecorPrefab, dir, -delta);
+                    }
+                }
+                return;
+            }
+        }
+
+        if (ContainsCoordinates(cell.coordinates + (dir + delta).ToVector2i()))
+        {
+            MazeCell otherCell = GetCell(cell.coordinates + (dir + delta).ToVector2i());
+            if (otherCell.GetEdge(dir) is MazeWall)
+            {
+                if (straightWallDecorPrefab != null && !cell.IsCornerInitialized(dir, delta))
+                    cell.InitializeCorner(straightWallDecorPrefab, dir, delta);
+                return;
             }
         }
     }
@@ -369,12 +438,59 @@ public class Maze : MonoBehaviour
 }
 
 
-public enum MazeDirection
+public struct MazeDirection
 {
-    North,
-    East,
-    South,
-    West
+    private int InternalValue { get; set; }
+
+    public static readonly int North = 0;
+    public static readonly int East = 1;
+    public static readonly int South = 2;
+    public static readonly int West = 3;
+
+    public static implicit operator MazeDirection(int other)
+    {
+        return new MazeDirection
+        {
+            InternalValue = other
+        };
+    }
+
+    public static implicit operator int(MazeDirection other)
+    {
+        return other.InternalValue;
+    }
+
+    public static MazeDirection operator +(MazeDirection dir, int i)
+    {
+        if (i < 0)
+            return dir - -i;
+
+        if ((int)dir + i > MazeDirections.Count - 1)
+            return (int)i + (int)dir - MazeDirections.Count;
+
+        return (int)dir + i;
+    }
+
+    public static MazeDirection operator -(MazeDirection dir, int i)
+    {
+        if (i < 0)
+            return dir + -i;
+
+        if ((int)dir - i < 0)
+            return (int)dir - i + MazeDirections.Count;
+
+        return (int)dir - i;
+    }
+
+    public static MazeDirection operator ++(MazeDirection dir)
+    {
+        return (int)dir + 1;
+    }
+
+    public static MazeDirection operator --(MazeDirection dir)
+    {
+        return (int)dir - 1;
+    }
 }
 
 public static class MazeDirections

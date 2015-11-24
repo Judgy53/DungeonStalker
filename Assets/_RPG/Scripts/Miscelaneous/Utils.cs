@@ -35,6 +35,31 @@ public class Vector2i
     {
         return new Vector2i(a.x + b.x, a.z + b.z);
     }
+
+    public override bool Equals(object other)
+    {
+        return this == (Vector2i)other;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public static bool operator ==(Vector2i a, Vector2i b)
+    {
+        return a.x == b.x && a.z == b.z;
+    }
+
+    public static bool operator != (Vector2i a, Vector2i b)
+    {
+        return a.x != b.x || a.z != b.z;
+    }
+
+    public override string ToString()
+    {
+        return "[" + x + ", " + z + "]";
+    }
 }
 
 public static class Vector3Extension

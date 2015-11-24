@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 423652}
+  - 114: {fileID: 11480410}
+  - 114: {fileID: 11426814}
+  - 114: {fileID: 11489860}
+  - 114: {fileID: 11495764}
+  - 114: {fileID: 11496564}
+  m_Layer: 0
+  m_Name: Maze
+  m_TagString: Maze
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &423652
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11426814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9af90786ce589345ad206f295d63a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11480410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa01d5936b94bf7449825fff1b91bdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size:
+    x: 20
+    z: 20
+  cellPrefab: {fileID: 11453030, guid: 5471530069ae7684f8c752b801090e49, type: 2}
+  passagePrefab: {fileID: 11446928, guid: 2200dcd1fb7a2ee46b989e16fda7add4, type: 2}
+  wallPrefabs:
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  doorPrefab: {fileID: 11425256, guid: 52ba6195d4785334482e2894319249af, type: 2}
+  doorProbablity: .100000001
+  playerStartPrefab: {fileID: 144442, guid: 3b06cdbb78132e847a8f664a20a932d0, type: 2}
+  enemiesPrefabs:
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
+  roomSettings:
+  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+  exitDoorPrefab: {fileID: 11436292, guid: 0a6c3ce994aff084689a19727fab97d5, type: 2}
+--- !u!114 &11489860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32c5ddbc74143749a65e35f097fd60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11495764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0eb0bcdd3144f04690a88e3ee4bc531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 512
+  gridWorldSize: {x: 20, y: 20}
+  nodeRadius: .100000001
+  displayGrid: 0
+--- !u!114 &11496564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113d434bc756f8e4480e1cb2d47aa78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 4321454c-c365-45c6-b1bb-98ccd9cf2d8d
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 106986}
+  m_IsPrefabParent: 1
