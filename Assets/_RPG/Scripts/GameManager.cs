@@ -84,9 +84,9 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        LoadStage(stage);
+        //LoadStage(stage);
 
-        ResetTime(0L);
+        //ResetTime(0L);
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies);
 
-        Application.LoadLevel(Application.loadedLevel);
+        Application.LoadLevel("GameScene");
     }
 
     public void Save(SaveData data)

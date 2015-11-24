@@ -1,29 +1,37 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class UIPanel : MonoBehaviour
 {
-    [SerializeField]
-    private Button linkedButton;
-
     private RectTransform rect;
 
     private bool closed = true;
 
-    private void Start()
+    [SerializeField]
+    private float openedPos = 150f;
+
+    [SerializeField]
+    private float transitionSpeed = 25f;
+
+    private void OnEnable()
     {
         rect = GetComponent<RectTransform>();
-
-        if(linkedButton != null)
-        {
-            linkedButton.onClick.AddListener(btnClick);
-        }
 
         rect.anchoredPosition = new Vector2(500f, 0f);
     }
 
-    private void btnClick()
+    private void OnDisable()
+    {
+        EventSystem eventSys = EventSystem.current;
+        if (eventSys.currentSelectedGameObject.transform.IsChildOf(transform))
+        {
+            eventSys.SetSelectedGameObject(GameObject.Find("FirstSelected"));
+        }
+    }
+
+    public void Open()
     {
         CloseOtherPanels();
 
@@ -41,25 +49,37 @@ public class UIPanel : MonoBehaviour
     private IEnumerator SwitchState()
     {
         float from = 500f;
-        float to = 150f;
+        float to = openedPos;
 
         if (!closed)
         {
-            from = 150f;
+            from = openedPos;
             to = 500f;
         }
 
         rect.anchoredPosition = new Vector2(from, 0f);
 
-        Vector2 speed = new Vector2(closed ? -25f : 25f, 0f);
+        Vector2 speed = new Vector2(closed ? -transitionSpeed : transitionSpeed, 0f);
 
-        while (rect.anchoredPosition.x != to)
+        bool wasInferior = rect.anchoredPosition.x < to;
+        bool isInferior = rect.anchoredPosition.x < to;
+
+        while (wasInferior == isInferior)
         {
             rect.anchoredPosition += speed;
+            
+            wasInferior = isInferior;
+            isInferior = rect.anchoredPosition.x < to;
+            
             yield return null;
         }
 
         closed = !closed;
+
+        if(closed)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void CloseOtherPanels()

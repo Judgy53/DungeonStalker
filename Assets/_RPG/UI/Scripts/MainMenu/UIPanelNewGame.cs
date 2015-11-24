@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class UIPanelNewGame : MonoBehaviour {
+public class UIPanelNewGame : UIPanel
+{
+    [SerializeField]
+    private Button createButton;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    [SerializeField]
+    private Button cancelButton;
+
+    void Start()
+    {
+        createButton.onClick.AddListener(Create);
+        cancelButton.onClick.AddListener(Close);
+    }
+
+    private void Create()
+    {
+        //Create Game with Seed and player Name
+        Application.LoadLevel("GameScene");
+    }
 }

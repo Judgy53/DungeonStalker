@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIPanelQuit : MonoBehaviour
+public class UIPanelQuit : UIPanel
 {
     [SerializeField]
     private Button yesButton;
@@ -12,7 +12,12 @@ public class UIPanelQuit : MonoBehaviour
 
     void Start()
     {
-        yesButton.onClick.AddListener(Application.Quit);
-        noButton.onClick.AddListener(GetComponent<UIPanel>().Close);
+        yesButton.onClick.AddListener(Quit);
+        noButton.onClick.AddListener(Close);
+    }
+
+    private void Quit()
+    {
+        Application.Quit();
     }
 }
