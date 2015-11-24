@@ -31,6 +31,8 @@ public class Unit : MonoBehaviour, IControls
     public float gizmoSize = 1.0f;
 
     private Vector3[] path = null;
+    public Vector3[] Path { get { return path; } }
+
     private int targetIndex = 0;
     private bool pathProcessing = false;
 
@@ -43,11 +45,43 @@ public class Unit : MonoBehaviour, IControls
     private Vector3 velocity = Vector3.zero;
     public Vector3 Velocity { get { return velocity; } set { velocity = value; } }
 
+    public Vector3 DirectionToTarget 
+    { 
+        get 
+        {
+            if (target == null)
+                return Vector3.zero;
+
+            Vector3 direction = target.transform.position - transform.position;
+            direction.y = 0.0f;
+            return direction.normalized;
+        }
+    }
+
+    public Vector3 DirectionToNextPoint
+    {
+        get
+        {
+            Vector3 direction = Vector3.zero;
+            if (path != null && path.Length != 0 && targetIndex < path.Length)
+                direction = path[targetIndex] - transform.position;
+            else if (path != null && path.Length != 0 && targetIndex >= path.Length)
+                direction = path[path.Length - 1] - transform.position;
+
+            direction.y = 0.0f;
+
+            return direction;
+        }
+    }
+
+    public bool PathComplete { get { return path == null || path.Length == 0 || targetIndex >= path.Length; } }
+
     public bool IsGrounded { get { return cc.isGrounded; } }
 
     private CharacterController cc = null;
 
     private float forwardInput = 0.0f;
+    public float ForwardInput { get { return forwardInput; } set { forwardInput = Mathf.Clamp(value, -1.0f, 1.0f); } }
 
     private void Awake()
     {
@@ -75,13 +109,13 @@ public class Unit : MonoBehaviour, IControls
                 currentWaypoint = path[targetIndex];
             }
 
-            Vector3 direction = currentWaypoint - transform.position;
+            /*Vector3 direction = currentWaypoint - transform.position;
             direction.y = 0.0f;
             direction.Normalize();
 
             transform.rotation = Quaternion.Lerp(transform.rotation,
                 Quaternion.LookRotation(direction),
-                angleInterpolationFactor * Time.fixedDeltaTime);
+                angleInterpolationFactor * Time.fixedDeltaTime);*/
             
             /*if (effectManager != null)
             {
@@ -90,10 +124,10 @@ public class Unit : MonoBehaviour, IControls
                     e.ApplyMovementEffect(ref frameVelocity);
             }*/
 
-            forwardInput = Mathf.Lerp(forwardInput, 1.0f, 0.5f * Time.fixedDeltaTime);
+            //forwardInput = Mathf.Lerp(forwardInput, 1.0f, 0.5f * Time.fixedDeltaTime);
         }
-        else
-            forwardInput = Mathf.Lerp(forwardInput, 0.0f, 5.0f * Time.fixedDeltaTime);
+        //else
+            //forwardInput = Mathf.Lerp(forwardInput, 0.0f, 5.0f * Time.fixedDeltaTime);
 
         Vector3 frameVelocity = moveSpeed;
         frameVelocity.Scale(new Vector3(0.0f, 1.0f, forwardInput));

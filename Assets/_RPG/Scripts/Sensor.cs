@@ -8,6 +8,9 @@ public class Sensor : MonoBehaviour
 {
     public event EventHandler<DetectSensorEvent> OnDetect;
 
+    private bool gotVisual = false;
+    public bool GotVisual { get { return gotVisual; } }
+
     private void OnTriggerStay(Collider other)
     {
         Ray ray = new Ray(transform.position, other.transform.position - transform.position);
@@ -15,9 +18,22 @@ public class Sensor : MonoBehaviour
         Debug.DrawLine(transform.position, other.transform.position);
         if (Physics.Raycast(ray, out hitInfo))
         {
-            if (hitInfo.collider == other && OnDetect != null)
-                OnDetect(this, new DetectSensorEvent(other));
+            if (hitInfo.collider == other)
+            {
+                if (OnDetect != null)
+                    OnDetect(this, new DetectSensorEvent(other));
+                gotVisual = true;
+            }
+            else
+                gotVisual = false;
         }
+        else
+            gotVisual = false;
+    }
+
+    private void OntriggerExit()
+    {
+        gotVisual = false;
     }
 }
 

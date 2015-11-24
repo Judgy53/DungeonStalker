@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        //LoadStage(stage);
+        LoadStage(stage);
 
         //ResetTime(0L);
 
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour, ISavable
 
     private void Grid_OnProcessingQueueEmpty(object sender, EventArgs args)
     {
-        Debug.Log("Dnamic Obstacles pathfinding recalculation done !");
+        Debug.Log("Dynamic Obstacles pathfinding recalculation done !");
 
         Grid.OnProcessingQueueEmpty -= Grid_OnProcessingQueueEmpty;
 
