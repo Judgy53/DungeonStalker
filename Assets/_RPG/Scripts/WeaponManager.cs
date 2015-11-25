@@ -8,6 +8,7 @@ public class WeaponManager : MonoBehaviour, ISavable
     public event EventHandler<EventWeaponChange> OnOffHandWeaponChange;
 
     public event EventHandler<OnKillArgs> OnKill;
+    public event EventHandler<OnHitArgs> OnHit;
 
     public GameObject debugMainHandStartWeaponPrefab = null;
     public GameObject debugOffHandStartWeaponPrefab = null;
@@ -173,6 +174,12 @@ public class WeaponManager : MonoBehaviour, ISavable
             OnKill(sender, args);
     }
 
+    public void OnHitCallback(object sender, OnHitArgs args)
+    {
+        if (OnHit != null)
+            OnHit(sender, args);
+    }
+
     private void RegisterCallbacks(IWeapon weapon)
     {
         weapon.OnPrimary += OnPrimary;
@@ -180,6 +187,7 @@ public class WeaponManager : MonoBehaviour, ISavable
         weapon.OnSecondary += OnSecondary;
         weapon.OnEndSecondary += OnEndSecondary;
         weapon.OnKill += OnKillCallback;
+        weapon.OnHit += OnHitCallback;
     }
 
     private void UnregisterCallbacks(IWeapon weapon)
@@ -189,6 +197,7 @@ public class WeaponManager : MonoBehaviour, ISavable
         weapon.OnSecondary -= OnSecondary;
         weapon.OnEndSecondary -= OnEndSecondary;
         weapon.OnKill -= OnKillCallback;
+        weapon.OnHit -= OnHitCallback;
     }
 
     /// <summary>

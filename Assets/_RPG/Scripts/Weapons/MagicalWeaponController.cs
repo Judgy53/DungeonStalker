@@ -7,7 +7,7 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     [HideInInspector]
     public bool canUse = true;
 
-    public event EventHandler OnHit;
+    public event EventHandler<OnHitArgs> OnHit;
 
     public event EventHandler OnPrimary;
     public event EventHandler OnEndPrimary;

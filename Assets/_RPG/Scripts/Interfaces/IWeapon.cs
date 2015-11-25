@@ -4,7 +4,7 @@ using System;
 
 public interface IWeapon
 {
-    event EventHandler OnHit;
+    event EventHandler<OnHitArgs> OnHit;
 
     event EventHandler OnPrimary;
     event EventHandler OnEndPrimary;
@@ -55,7 +55,8 @@ public enum WeaponType : int
     Shield,
     Staff,
     Wand,
-    Magic
+    Magic,
+    None
 }
 
 public class OnKillArgs : EventArgs
@@ -65,5 +66,17 @@ public class OnKillArgs : EventArgs
     public OnKillArgs(IDamageable damageable)
     {
         target = damageable;
+    }
+}
+
+public class OnHitArgs : EventArgs
+{
+    public IDamageable target = null;
+    public float damages = 0.0f;
+
+    public OnHitArgs(IDamageable damageable, float dmg)
+    {
+        target = damageable;
+        damages = dmg;
     }
 }

@@ -7,7 +7,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 {
     public bool canUse = true;
 
-    public event EventHandler OnHit;
+    public event EventHandler<OnHitArgs> OnHit;
 
     public event EventHandler OnPrimary;
     public event EventHandler OnEndPrimary;
@@ -237,7 +237,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
                     damages = UnityEngine.Random.Range(minDamages, maxDamages);
 
                 if (OnHit != null)
-                    OnHit(this, new EventArgs());
+                    OnHit(this, new OnHitArgs(damageable, damages));
 
                 if (stManager != null)
                 {

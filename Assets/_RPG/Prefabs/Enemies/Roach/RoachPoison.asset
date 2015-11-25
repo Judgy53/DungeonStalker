@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9757c4ffe8219c645a250ffd2d99b2c2, type: 3}
+  m_Name: RoachPoison
+  m_EditorClassIdentifier: 
+  effectName: Roach poison
+  effectSprite: {fileID: 0}
+  showSprite: 0
+  remainingTime: 18
+  isInfinite: 0
+  style: 1
+  type: 2
+  tickTime: 3
+  minTickDamages: 1
+  maxTickDamages: 3
+  speedMultiplier: 1
+  damageMultiplier: 1.20000005

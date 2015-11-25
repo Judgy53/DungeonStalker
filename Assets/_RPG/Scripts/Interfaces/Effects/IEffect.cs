@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public interface IEffect
 {
+    EffectManager Manager { get; set; }
+
     string Name { get; }
 
     Sprite EffectSprite { get; set; }
@@ -12,6 +14,12 @@ public interface IEffect
 
     float RemainingTime { get; set; }
     bool IsInfinite { get; set; }
+
+    void OnApply(EffectManager manager);
+    void OnDestroy();
+    void Update();
+
+    IEffect Clone();
 
     EffectStyle Style { get; }
     EffectType Type { get; }
