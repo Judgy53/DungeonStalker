@@ -105,9 +105,11 @@ public class SaveManager {
 
         if (Saves.ContainsKey(saveName))
             Load(Saves[saveName]);
+        else
+            Debug.Log("Failed loading " + saveName + " : save doesn't exists");
     }
 
-    public void Save(bool auto, string saveId = "")
+    public void Save(string saveId = "")
     {
         if (!Loaded)
             LoadAllSaves();
@@ -124,7 +126,7 @@ public class SaveManager {
         BinaryFormatter bformatter = new BinaryFormatter();
 
         Save sav = new Save();
-        sav.SaveScene(auto);
+        sav.SaveScene();
 
         try
         {

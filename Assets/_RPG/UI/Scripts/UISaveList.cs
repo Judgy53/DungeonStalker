@@ -29,12 +29,7 @@ public class UISaveList : MonoBehaviour
 
         foreach (KeyValuePair<string, Save> kvp in saves)
         {
-            string id = "";
-            
-            if (kvp.Value.autoSave)
-                id = "Auto";
-            else
-                id = kvp.Key.Replace("save", "");
+            string id = kvp.Key.Replace("save", "");
 
             string name = "Stage " + kvp.Value.Stage;
 

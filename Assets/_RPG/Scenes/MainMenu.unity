@@ -316,6 +316,7 @@ GameObject:
   - 114: {fileID: 59157067}
   - 114: {fileID: 59157066}
   - 114: {fileID: 59157069}
+  - 114: {fileID: 59157070}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -421,6 +422,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedPanel: {fileID: 2084323810}
+--- !u!114 &59157070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59157064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7ca47951f30874b8c38bffc453cf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &115806707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,6 +1186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openedPos: 150
   transitionSpeed: 25
+  linkedButton: {fileID: 0}
   yesButton: {fileID: 1345809934}
   noButton: {fileID: 222225072}
 --- !u!1 &290928877
@@ -3824,6 +3837,7 @@ GameObject:
   - 114: {fileID: 1545809455}
   - 114: {fileID: 1545809454}
   - 114: {fileID: 1545809457}
+  - 114: {fileID: 1545809458}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -3929,6 +3943,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedPanel: {fileID: 285185327}
+--- !u!114 &1545809458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545809452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7ca47951f30874b8c38bffc453cf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1636356114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4101,6 +4126,8 @@ MonoBehaviour:
   transitionSpeed: 25
   createButton: {fileID: 2143934371}
   cancelButton: {fileID: 873416875}
+  nameField: {fileID: 1964633714}
+  seedField: {fileID: 1862716770}
 --- !u!1 &1759964655
 GameObject:
   m_ObjectHideFlags: 0
