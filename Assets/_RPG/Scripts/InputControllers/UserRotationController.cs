@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UserRotationController : MonoBehaviour, IRotationControls
+public class UserRotationController : MonoBehaviour, IRotationControls, ISavable
 {
     [SerializeField]
     private Vector2 sensivity = new Vector2(5.0f, 5.0f);
@@ -38,5 +38,15 @@ public class UserRotationController : MonoBehaviour, IRotationControls
 
             target.localEulerAngles = rotation;
         }
+    }
+
+    public void Save(SaveData data)
+    {
+        rotation.ToSaveData(data, "Rotation");
+    }
+
+    public void Load(SaveData data)
+    {
+        rotation = new Vector3().FromSaveData(data, "Rotation");
     }
 }

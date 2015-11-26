@@ -22,17 +22,6 @@ public class UIPanel : MonoBehaviour
         rect.anchoredPosition = new Vector2(500f, 0f);
     }
 
-    private void OnDisable()
-    {
-        EventSystem eventSys = EventSystem.current;
-
-        if (eventSys != null && eventSys.currentSelectedGameObject != null &&
-            eventSys.currentSelectedGameObject.transform.IsChildOf(transform))
-        {
-            eventSys.SetSelectedGameObject(GameObject.Find("FirstSelected")); // FirstSelected : invisible Gao above menu
-        }
-    }
-
     public void Open()
     {
         CloseOtherPanels();
@@ -79,6 +68,14 @@ public class UIPanel : MonoBehaviour
 
         if(closed)
         {
+            EventSystem eventSys = EventSystem.current;
+
+            if (eventSys != null && eventSys.currentSelectedGameObject != null &&
+                eventSys.currentSelectedGameObject.transform.IsChildOf(transform))
+            {
+                eventSys.SetSelectedGameObject(GameObject.Find("FirstSelected")); // FirstSelected : invisible Gao above menu
+            }
+
             gameObject.SetActive(false);
         }
     }

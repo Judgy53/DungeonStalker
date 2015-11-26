@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11426814}
   - 114: {fileID: 11489860}
   - 114: {fileID: 11495764}
-  - 114: {fileID: 11496564}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Maze
@@ -61,6 +60,26 @@ MonoBehaviour:
   passagePrefab: {fileID: 11446928, guid: 2200dcd1fb7a2ee46b989e16fda7add4, type: 2}
   wallPrefabs:
   - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
+  - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
+  - {fileID: 11457376, guid: fe623ffd09849b948a57c303fdde31c1, type: 2}
+  straightWallDecorPrefab: {fileID: 159224, guid: b2b96f5c3dd97ae4f816d000315fef76,
+    type: 2}
+  closedTurnWallDecorPrefab: {fileID: 147428, guid: a1e5c7c04e581bc43be14c635321216c,
+    type: 2}
+  openTurnWallDecorPrefab: {fileID: 117280, guid: c816524fe7cce9d47bf5277fdc6e392b,
+    type: 2}
   doorPrefab: {fileID: 11425256, guid: 52ba6195d4785334482e2894319249af, type: 2}
   doorProbablity: .100000001
   playerStartPrefab: {fileID: 144442, guid: 3b06cdbb78132e847a8f664a20a932d0, type: 2}
@@ -74,16 +93,16 @@ MonoBehaviour:
   - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
   - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
   roomSettings:
-  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-  - floorMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
-    wallMaterial: {fileID: 2100000, guid: 6c97a6533e2180f418e8ae452d41b439, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+    wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+    wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+    wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+    wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
+    wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
   exitDoorPrefab: {fileID: 11436292, guid: 0a6c3ce994aff084689a19727fab97d5, type: 2}
 --- !u!114 &11489860
 MonoBehaviour:
@@ -113,18 +132,6 @@ MonoBehaviour:
   gridWorldSize: {x: 20, y: 20}
   nodeRadius: .100000001
   displayGrid: 0
---- !u!114 &11496564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 113d434bc756f8e4480e1cb2d47aa78e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueId: 4321454c-c365-45c6-b1bb-98ccd9cf2d8d
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

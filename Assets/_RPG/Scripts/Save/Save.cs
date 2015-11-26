@@ -6,16 +6,19 @@ using System.Collections.Generic;
 public class Save
 {
     //store informations outside dictionnary for easy access
+    public string GameId = null;
     public string PlayerName = "Player";
     public uint PlayerLevel = 0;
     public uint Stage = 0;
     public DateTime CreationDate;
-    public long TimePlayed = 0L; // in seconds
+    public int TimePlayed = 0; // in seconds
 
-    private Dictionary<string, SaveData> datas = new Dictionary<string, SaveData>();
+    private Dictionary<string, SaveData> saveDatas = new Dictionary<string, SaveData>();
+    private Dictionary<string, SaveData> delayedDatas = new Dictionary<string, SaveData>();
 
-    public void SaveScene()
+    public void SaveGame()
     {
+        GameId = GameManager.GameId;
         PlayerName = GameManager.PlayerName;
         PlayerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<StatsManager>().CurrentLevel;
         Stage = GameManager.Stage;
@@ -36,7 +39,10 @@ public class Save
                 string dataId = savGaO.uniqueId;
                 SaveData data = CreateSaveData(save);
 
-                datas.Add(dataId, data);
+                if(savGaO.DelayedLoad)
+                    delayedDatas.Add(dataId, data);
+                else
+                    saveDatas.Add(dataId, data);
             }
         }
     }
@@ -53,10 +59,30 @@ public class Save
 
     public void Load()
     {
+        GameManager.GameId = GameId;
         GameManager.Stage = Stage;
         GameManager.ResetTime(TimePlayed);
         GameManager.PlayerName = PlayerName;
 
+        LoadDatas(saveDatas);
+
+        Debug.Log("Save Data Loaded");
+
+        if(delayedDatas.Count > 0)
+            GameManager.OnPlayerCreation += DelayedLoad; // PlayerCreation should be the last action in level creation
+    }
+
+    private void DelayedLoad(object sender, EventArgs e)
+    {
+        GameManager.OnPlayerCreation -= DelayedLoad;
+
+        LoadDatas(delayedDatas);
+
+        Debug.Log("Delayed Save Data Loaded");
+    }
+
+    private void LoadDatas(Dictionary<string, SaveData> datas)
+    {
         UniqueId[] ids = GameObject.FindObjectsOfType<UniqueId>();
 
         if (ids.Length == 0)

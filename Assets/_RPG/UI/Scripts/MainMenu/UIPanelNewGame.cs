@@ -37,6 +37,7 @@ public class UIPanelNewGame : UIPanel
 
         GameManager.PlayerName = playerName;
         GameManager.Seed = seed;
+        GameManager.GameId = null; // set to null to force regeneration
 
         GameManager.LoadStage(1); //stage must be at least 1
     }

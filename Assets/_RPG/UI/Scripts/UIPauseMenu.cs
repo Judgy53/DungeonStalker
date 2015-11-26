@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseMenu : MonoBehaviour
+public class UIPauseMenu : MonoBehaviour
 {
     private bool state = false;
 
     [SerializeField]
     private GameObject content;
-
-    [SerializeField]
-    private UISaveMenu SaveMenu;
 
     private void Start()
     {
@@ -38,25 +35,10 @@ public class PauseMenu : MonoBehaviour
             UIStateManager.UnregisterUI();
     }
 
-    public void Save()
-    {
-        Show(false);
-
-        SaveMenu.State = SaveLoadState.Save;
-        SaveMenu.gameObject.SetActive(true);
-    }
-
-    public void Load()
-    {
-        Show(false);
-
-        SaveMenu.State = SaveLoadState.Load;
-        SaveMenu.gameObject.SetActive(true);
-    }
-
     public void MainMenu()
     {
-        Application.LoadLevel(0);
+        SaveManager.Instance.Save();
+        Application.LoadLevel("MainMenu");
     }
 
     private void OnDestroy()

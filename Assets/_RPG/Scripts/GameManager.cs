@@ -46,12 +46,12 @@ public class GameManager : MonoBehaviour, ISavable
     private DateTime startTime;
     public static DateTime StartTime { get { return instance.startTime; } set { instance.startTime = value; } }
 
-    private long timePlayed;
-    public static long TimePlayed
+    private int timePlayed;
+    public static int TimePlayed
     {
         get
         {
-            return instance.timePlayed + Convert.ToInt64((DateTime.Now - StartTime).TotalSeconds);
+            return instance.timePlayed + Convert.ToInt32((DateTime.Now - StartTime).TotalSeconds);
         }
         set
         {
@@ -61,6 +61,20 @@ public class GameManager : MonoBehaviour, ISavable
 
     private string playerName = "Player";
     public static string PlayerName { get { return instance.playerName; } set { instance.playerName = value; } }
+
+    private string gameId = null;
+    public static string GameId 
+    {
+        get 
+        {
+            if (instance.gameId == null)
+                instance.gameId = Guid.NewGuid().ToString();
+
+            return instance.gameId;
+        }
+
+        set { instance.gameId = value; }
+    }
 
     private int enemiesNumber = 0;
     public static int EnemiesNumber { get { return instance.enemiesNumber; } }
@@ -84,14 +98,12 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        LoadStage(stage);
-
-        //ResetTime(0L);
+        //LoadStage(stage);
 
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public static void ResetTime(long played)
+    public static void ResetTime(int played)
     {
         StartTime = DateTime.Now;
         TimePlayed = played;
@@ -117,6 +129,8 @@ public class GameManager : MonoBehaviour, ISavable
     private void MazePopulationFinished(bool manual)
     {
         Debug.Log("Populate finished !");
+
+        toLoad = null; // reset this to ensure it won't be loaded at next load/level
 
         Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
         if (debugSpawnBeforePathfinding)
@@ -148,6 +162,8 @@ public class GameManager : MonoBehaviour, ISavable
             GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
             mc.transform.SetParent(player.transform, false);
 
+            ResetTime(0);
+
             if (OnPlayerCreation != null)
                 OnPlayerCreation(this, new EventPlayerCreationArgs(player));
         }
@@ -157,6 +173,7 @@ public class GameManager : MonoBehaviour, ISavable
     {
         if (generateMaze)
         {
+            Debug.Log("generateMaze");
             mazeInstance = gameObject.GetComponentWithTag<Maze>("Maze");
             gridInstance = mazeInstance.GetComponent<Grid>();
 
@@ -188,6 +205,8 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies);
 
+        Debug.Log("LoadStage");
+
         Application.LoadLevel("GameScene");
     }
 
@@ -200,10 +219,12 @@ public class GameManager : MonoBehaviour, ISavable
 
     public void Load(SaveData data)
     {
-        Debug.Log(Application.loadedLevelName);
+        Debug.Log("Loading GameManager");
 
         int loadedSeed = int.Parse(data.Get("seed"));
         uint stage = uint.Parse(data.Get("stage"));
+
+        enemiesNumber = int.Parse(data.Get("enemyCount")); //for loading counter
 
         toLoad = data;
 
@@ -217,11 +238,11 @@ public class GameManager : MonoBehaviour, ISavable
     {
         mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
 
-        mazeInstance.GenerateEnemiesFromSave(toLoad);
+        //mazeInstance.GenerateEnemiesFromSave(toLoad);
 
-        toLoad = null;
-
-        MazePopulationFinished(true);
+        Task mazePopulation = new Task(mazeInstance.GenerateEnemiesFromSave(toLoad), false);
+        mazePopulation.Finished += MazePopulationFinished;
+        mazePopulation.Start();
     }
 }
 

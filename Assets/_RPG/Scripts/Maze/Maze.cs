@@ -373,6 +373,7 @@ public class Maze : MonoBehaviour
     public void Save(SaveData data)
     {
         int count = 0;
+        data.Add("enemyCount", enemies.Count);
 
         foreach(GameObject enemy in enemies)
         {
@@ -397,10 +398,8 @@ public class Maze : MonoBehaviour
         data.Prefix = "";
     }
 
-    public void GenerateEnemiesFromSave(SaveData data)
+    public IEnumerator GenerateEnemiesFromSave(SaveData data)
     {
-        int count = 0;
-
         foreach (var e in enemies)
         {
             if (e != null)
@@ -408,16 +407,28 @@ public class Maze : MonoBehaviour
         }
         enemies.Clear();
 
-        while(true)
+        int count = int.Parse(data.Get("enemyCount"));
+
+        for (int i = 0; i < count; i++)
         {
-            data.Prefix = "enemy_" + count++ + "_";
+            if(count % 10 == 0)
+                yield return null;
+
+            data.Prefix = "enemy_" + i + "_";
 
             string prefab_path = data.Get("prefab_path");
 
             if (prefab_path == null)
-                break;
+                continue;
 
             GameObject prefab = Resources.Load<GameObject>(prefab_path);
+
+            if (prefab == null)
+            {
+                Debug.LogError("Enemy Prefab not found (" + prefab_path + ")");
+                continue;
+            }
+
             GameObject enemy = Instantiate(prefab) as GameObject;
 
             ISavable[] savables = enemy.GetComponents<ISavable>();

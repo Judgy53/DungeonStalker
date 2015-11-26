@@ -98,14 +98,12 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
     public void Save(SaveData data)
     {
         transform.position.ToSaveData(data, "Position");
-        transform.eulerAngles.ToSaveData(data, "Rotation");
         velocity.ToSaveData(data, "Velocity");
     }
 
     public void Load(SaveData data)
     {
         transform.position = new Vector3().FromSaveData(data, "Position");
-        transform.rotation = Quaternion.Euler(new Vector3().FromSaveData(data, "Rotation"));
         velocity = new Vector3().FromSaveData(data, "Velocity");
     }
 }

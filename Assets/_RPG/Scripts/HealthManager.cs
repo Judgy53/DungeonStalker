@@ -29,12 +29,15 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     private void Start()
     {
-        currentHealth = maxHealth;
         effectManager = GetComponent<EffectManager>();
 
         statsManager = GetComponentInParent<StatsManager>();
         if (statsManager != null)
             statsManager.Stats.OnStatsChange += OnStatsChange;
+
+        OnStatsChange(null, null); // get Max Health From Stats
+
+        currentHealth = maxHealth;
     }
 
     public void AddDamage(float damage)
@@ -87,7 +90,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void OnStatsChange(object sender, EventArgs args)
     {
-        maxHealth = 50u + statsManager.Stats.Stamina * 30u;
+        maxHealth = statsManager.Stats.Stamina * 10u;
 
         currentHealth = Mathf.Min(currentHealth, maxHealth);
     }

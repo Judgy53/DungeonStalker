@@ -1186,7 +1186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openedPos: 150
   transitionSpeed: 25
-  linkedButton: {fileID: 0}
   yesButton: {fileID: 1345809934}
   noButton: {fileID: 222225072}
 --- !u!1 &290928877
@@ -1338,7 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2865,6 +2864,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1026711049}
   - 114: {fileID: 1026711048}
+  - 114: {fileID: 1026711050}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2903,6 +2903,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1026711050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026711047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113d434bc756f8e4480e1cb2d47aa78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 39a94465-3270-4395-95e6-d426f6fb953c
+  DelayedLoad: 0
 --- !u!1 &1210003130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,7 +4377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .279411793, g: .279411793, b: .279411793, a: 1}
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4621,7 +4634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .279411793, g: .279411793, b: .279411793, a: 1}
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
