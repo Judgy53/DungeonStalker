@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class BlockEffect : IDamageReceivedEffect
 {
+    private EffectManager manager = null;
+    public EffectManager Manager { get { return manager; } set { manager = value; } }
+
     [SerializeField]
     private string name = "BlockEffect";
     public string Name { get { return name; } }
@@ -53,5 +57,25 @@ public class BlockEffect : IDamageReceivedEffect
         Debug.Log("Blocked " + rand + " damages ...");
 
         return damages;
+    }
+
+    public void Update()
+    {
+    }
+
+    public void OnApply(EffectManager manager)
+    {
+    }
+
+    public void OnDestroy()
+    {
+    }
+
+    public IEffect Clone()
+    {
+        IEffect effect = this.MemberwiseClone() as IEffect;
+        effect.Manager = null;
+
+        return effect;
     }
 }

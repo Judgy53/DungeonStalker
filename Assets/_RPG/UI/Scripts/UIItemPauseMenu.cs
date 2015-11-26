@@ -40,7 +40,7 @@ public class UIItemPauseMenu : MonoBehaviour
 
     private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
-        target = e.player.GetComponent<PlayerContainer>();
+        target = e.player.GetComponentInChildren<PlayerContainer>();
     }
 
     //Must be called after all registrations are done (ScriptExecutionOrder)

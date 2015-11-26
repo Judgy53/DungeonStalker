@@ -9,13 +9,21 @@ public class EffectManager : MonoBehaviour
 
     private List<IEffect> toRemove = new List<IEffect>();
 
+    private void OnDestroy()
+    {
+        foreach (IEffect e in effects)
+            e.OnDestroy();
+    }
+
     public void AddEffect(IEffect effect)
     {
         effects.Add(effect);
+        effect.OnApply(this);
     }
 
     public void RemoveEffect(IEffect effect)
     {
+        effect.OnDestroy();
         toRemove.Add(effect);
     }
 
@@ -26,6 +34,8 @@ public class EffectManager : MonoBehaviour
 
     public void ClearEffects()
     {
+        foreach (var e in effects)
+            e.OnDestroy();
         effects.Clear();
     }
 
@@ -38,6 +48,17 @@ public class EffectManager : MonoBehaviour
         }
 
         return default(T);
+    }
+
+    public IEffect GetEffect(string name)
+    {
+        foreach (var e in effects)
+        {
+            if (e.Name == name)
+                return e;
+        }
+
+        return null;
     }
 
     public T[] GetEffects<T>() where T : IEffect
@@ -61,9 +82,13 @@ public class EffectManager : MonoBehaviour
 
             if (effect.RemainingTime <= 0.0f)
                 RemoveEffect(effect);
+
+            effect.Update();
         }
 
         foreach (var e in toRemove)
             effects.Remove(e);
+
+        toRemove.Clear();
     }   
 }

@@ -1,0 +1,1976 @@
+fileFormatVersion: 2
+guid: 964c805431a3d1948843b052e38c9013
+timeCreated: 1448362733
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: ArmL
+    100004: ArmR
+    100006: ArmRootL
+    100008: ArmRootR
+    100010: Camera
+    100012: ClawBackL
+    100014: ClawBackL_end
+    100016: ClawBackLL
+    100018: ClawBackLL_end
+    100020: ClawBackR
+    100022: ClawBackR_end
+    100024: ClawBackRL
+    100026: ClawBackRL_end
+    100028: ClawFrontL
+    100030: ClawFrontL_end
+    100032: ClawFrontLH
+    100034: ClawFrontLH_end
+    100036: ClawFrontR
+    100038: ClawFrontR_end
+    100040: ClawFrontRH
+    100042: ClawFrontRH_end
+    100044: Floor
+    100046: Floor_end
+    100048: FloorLH
+    100050: FloorLL
+    100052: FloorRH
+    100054: FloorRL
+    100056: ForearmFrontL
+    100058: ForearmFrontR
+    100060: ForeLegL
+    100062: ForeLegR
+    100064: Head
+    100066: Head_end
+    100068: JawL
+    100070: JawL_end
+    100072: JawR
+    100074: JawR_end
+    100076: JawRootL
+    100078: JawRootR
+    100080: JL
+    100082: JL_end
+    100084: JR
+    100086: JR_end
+    100088: Lamp
+    100090: Lamp.001
+    100092: Lamp.002
+    100094: Lamp.003
+    100096: Lamp.004
+    100098: Lamp.005
+    100100: LegL
+    100102: LegR
+    100104: LegRootL
+    100106: LegRootR
+    100108: LH
+    100110: LH.001
+    100112: LH.001_end
+    100114: LL
+    100116: MasterBone
+    100118: Neck
+    100120: RH
+    100122: RL
+    100124: Roach
+    100126: //RootNode
+    100128: Shoulder
+    100130: SpineHigh
+    100132: SpineLow
+    100134: Tail
+    100136: Tail2
+    100138: Tail3
+    100140: TailEnd
+    100142: TailEnd_end
+    100144: TailEndM
+    100146: TailEndM_end
+    100148: TongeRoot
+    100150: Tongue
+    100152: Tongue2
+    100154: Tongue3
+    100156: Tongue4
+    100158: TongueEnd
+    100160: TongueEnd_end
+    100162: TongueEndM
+    100164: TongueEndM_end
+    400000: Armature
+    400002: ArmL
+    400004: ArmR
+    400006: ArmRootL
+    400008: ArmRootR
+    400010: Camera
+    400012: ClawBackL
+    400014: ClawBackL_end
+    400016: ClawBackLL
+    400018: ClawBackLL_end
+    400020: ClawBackR
+    400022: ClawBackR_end
+    400024: ClawBackRL
+    400026: ClawBackRL_end
+    400028: ClawFrontL
+    400030: ClawFrontL_end
+    400032: ClawFrontLH
+    400034: ClawFrontLH_end
+    400036: ClawFrontR
+    400038: ClawFrontR_end
+    400040: ClawFrontRH
+    400042: ClawFrontRH_end
+    400044: Floor
+    400046: Floor_end
+    400048: FloorLH
+    400050: FloorLL
+    400052: FloorRH
+    400054: FloorRL
+    400056: ForearmFrontL
+    400058: ForearmFrontR
+    400060: ForeLegL
+    400062: ForeLegR
+    400064: Head
+    400066: Head_end
+    400068: JawL
+    400070: JawL_end
+    400072: JawR
+    400074: JawR_end
+    400076: JawRootL
+    400078: JawRootR
+    400080: JL
+    400082: JL_end
+    400084: JR
+    400086: JR_end
+    400088: Lamp
+    400090: Lamp.001
+    400092: Lamp.002
+    400094: Lamp.003
+    400096: Lamp.004
+    400098: Lamp.005
+    400100: LegL
+    400102: LegR
+    400104: LegRootL
+    400106: LegRootR
+    400108: LH
+    400110: LH.001
+    400112: LH.001_end
+    400114: LL
+    400116: MasterBone
+    400118: Neck
+    400120: RH
+    400122: RL
+    400124: //RootNode
+    400126: Roach
+    400128: Shoulder
+    400130: SpineHigh
+    400132: SpineLow
+    400134: Tail
+    400136: Tail2
+    400138: Tail3
+    400140: TailEnd
+    400142: TailEnd_end
+    400144: TailEndM
+    400146: TailEndM_end
+    400148: TongeRoot
+    400150: Tongue
+    400152: Tongue2
+    400154: Tongue3
+    400156: Tongue4
+    400158: TongueEnd
+    400160: TongueEnd_end
+    400162: TongueEndM
+    400164: TongueEndM_end
+    4300000: Roach
+    7400000: Roach|Attack
+    7400002: Roach|Attack2
+    7400004: Roach|Dance
+    7400006: Roach|Die
+    7400008: Roach|Fear
+    7400010: Roach|Hit
+    7400012: Roach|Idle
+    7400014: Armature|PoseLib
+    7400016: Roach|Sleep
+    7400018: Roach|Walk
+    9500000: //RootNode
+    13700000: Roach
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Roach|Attack
+      takeName: Armature|Attack
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Attack2
+      takeName: Armature|Attack2
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Dance
+      takeName: Armature|Dance
+      firstFrame: 0
+      lastFrame: 167
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Die
+      takeName: Armature|Die
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Fear
+      takeName: Armature|Fear
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Hit
+      takeName: Armature|Hit
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Idle
+      takeName: Armature|Idle
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Sleep
+      takeName: Armature|Sleep
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Roach|Walk
+      takeName: Armature|Walk
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Floor
+        weight: 1
+      - path: Armature/Floor/Floor_end
+        weight: 1
+      - path: Armature/FloorLH
+        weight: 1
+      - path: Armature/FloorLH/LH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH
+        weight: 1
+      - path: Armature/FloorLH/LH/ClawFrontLH/ClawFrontLH_end
+        weight: 1
+      - path: Armature/FloorLL
+        weight: 1
+      - path: Armature/FloorLL/LL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL
+        weight: 1
+      - path: Armature/FloorLL/LL/ClawBackLL/ClawBackLL_end
+        weight: 1
+      - path: Armature/FloorRH
+        weight: 1
+      - path: Armature/FloorRH/RH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH
+        weight: 1
+      - path: Armature/FloorRH/RH/ClawFrontRH/ClawFrontRH_end
+        weight: 1
+      - path: Armature/FloorRL
+        weight: 1
+      - path: Armature/FloorRL/RL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL
+        weight: 1
+      - path: Armature/FloorRL/RL/ClawBackRL/ClawBackRL_end
+        weight: 1
+      - path: Armature/MasterBone
+        weight: 1
+      - path: Armature/MasterBone/LegRootL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL
+        weight: 1
+      - path: Armature/MasterBone/LegRootL/LegL/ForeLegL/ClawBackL/ClawBackL_end
+        weight: 1
+      - path: Armature/MasterBone/LegRootR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR
+        weight: 1
+      - path: Armature/MasterBone/LegRootR/LegR/ForeLegR/ClawBackR/ClawBackR_end
+        weight: 1
+      - path: Armature/MasterBone/LH.001
+        weight: 1
+      - path: Armature/MasterBone/LH.001/LH.001_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootL/ArmL/ForearmFrontL/ClawFrontL/ClawFrontL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/ArmRootR/ArmR/ForearmFrontR/ClawFrontR/ClawFrontR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootL/JawL/JawL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JawRootR/JawR/JawR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JL/JL_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/JR/JR_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongeRoot/Tongue/Tongue2/Tongue3/Tongue4/TongueEnd/TongueEnd_end
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM
+        weight: 1
+      - path: Armature/MasterBone/SpineHigh/Shoulder/Neck/TongueEndM/TongueEndM_end
+        weight: 1
+      - path: Armature/MasterBone/SpineLow
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd
+        weight: 1
+      - path: Armature/MasterBone/SpineLow/Tail/Tail2/Tail3/TailEnd/TailEnd_end
+        weight: 1
+      - path: Armature/MasterBone/TailEndM
+        weight: 1
+      - path: Armature/MasterBone/TailEndM/TailEndM_end
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Lamp.001
+        weight: 1
+      - path: Lamp.002
+        weight: 1
+      - path: Lamp.003
+        weight: 1
+      - path: Lamp.004
+        weight: 1
+      - path: Lamp.005
+        weight: 1
+      - path: Roach
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
