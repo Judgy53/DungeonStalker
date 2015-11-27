@@ -137,7 +137,6 @@ public class UILoadingScreen : MonoBehaviour
 
         if (animator != null)
             animator.SetTrigger("FadeOut");
-        UIStateManager.UnregisterUI();
     }
 
     private void ActualizerBehaviorGeneration()
@@ -182,6 +181,7 @@ public class UILoadingScreen : MonoBehaviour
 
     public void DisableCallback()
     {
+        UIStateManager.UnregisterUI();
         gameObject.SetActive(false);
     }
 }
