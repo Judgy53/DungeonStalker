@@ -17,14 +17,12 @@ public class OverlayManager : MonoBehaviour
     public void RegisterPoisonOverlay()
     {
         poisonOverlayCount++;
-        Debug.Log("Registering poison overlay ... Count : " + poisonOverlayCount);
     }
 
     public void UnregisterPoisonOverlay()
     {
         if (poisonOverlayCount > 0)
             poisonOverlayCount--;
-        Debug.Log("Unregistering poison overlay ... Count : " + poisonOverlayCount);
     }
 
     public void OnRenderImage(RenderTexture source, RenderTexture destination)

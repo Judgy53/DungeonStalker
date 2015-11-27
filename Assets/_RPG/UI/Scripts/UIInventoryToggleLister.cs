@@ -145,8 +145,6 @@ public class UIInventoryToggleLister : MonoBehaviour
             return;
         }
 
-        Debug.Log("Selected toggle number : " + activeToggles.Count + " on " + this.name);
-
         if (activeToggles.Count != 0)
         {
             int index = toggleList.IndexOf(activeToggles[0]);
@@ -156,7 +154,6 @@ public class UIInventoryToggleLister : MonoBehaviour
                 SelectedItem = null;
                 return;
             }
-            Debug.Log("Index : " + index);
             SelectedItem = items[index];
         }
         else

@@ -173,7 +173,6 @@ public class GameManager : MonoBehaviour, ISavable
     {
         if (generateMaze)
         {
-            Debug.Log("generateMaze");
             mazeInstance = gameObject.GetComponentWithTag<Maze>("Maze");
             gridInstance = mazeInstance.GetComponent<Grid>();
 
