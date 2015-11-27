@@ -9,5 +9,5 @@ public interface IContainer
     IItem[] Items { get; }
 
     bool AddItem(IItem item);
-    void RemoveItem(IItem item);
+    bool RemoveItem(IItem item);
 }

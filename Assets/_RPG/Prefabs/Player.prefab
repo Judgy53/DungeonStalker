@@ -2623,7 +2623,7 @@ MonoBehaviour:
   debugFireEvent: 0
   unspentPoints: 0
   currentLevel: 1
-  currentExp: 200
+  currentExp: 0
   canGainExp: 1
   xpOnKill: 5
 --- !u!114 &11429156
@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxWeight: 100
-  PickablesContainer: {fileID: 0}
+  dropDistance: .400000006
 --- !u!114 &11495188
 MonoBehaviour:
   m_ObjectHideFlags: 1

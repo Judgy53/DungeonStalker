@@ -18,6 +18,14 @@ public static class GameObjectExtension
             return f.GetComponent<T>();
         return default(T);
     }
+
+    public static T GetComponentInChildrenWithTag<T>(this GameObject go, string tag)
+    {
+        GameObject f = GameObject.FindGameObjectWithTag(tag);
+        if (f != null)
+            return f.GetComponentInChildren<T>();
+        return default(T);
+    }
 }
 
 [System.Serializable]
