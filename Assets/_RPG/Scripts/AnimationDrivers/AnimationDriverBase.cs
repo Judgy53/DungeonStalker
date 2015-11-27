@@ -7,7 +7,7 @@ public abstract class AnimationDriverBase : MonoBehaviour
     protected Animator animator = null;
     public Animator Animator { get { return animator; } }
 
-    private void Start()
+    private void Awake()
     {
         if (animator == null)
         {
@@ -15,10 +15,16 @@ public abstract class AnimationDriverBase : MonoBehaviour
             throw new System.InvalidOperationException("No animator defined on " + this.name);
         }
 
+        OnAwake();
+    }
+
+    private void Start()
+    {
         OnStart();
     }
 
     protected virtual void OnStart() { }
+    protected virtual void OnAwake() { }
 
     public virtual void MainHandPrimary() { }
     public virtual void MainHandEndPrimary() { }

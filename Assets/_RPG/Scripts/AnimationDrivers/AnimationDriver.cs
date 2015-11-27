@@ -29,7 +29,7 @@ public class AnimationDriver : AnimationDriverBase
     public string onHitName = "";
     public string onDeathName = "";
 
-    protected override void OnStart()
+    protected override void OnAwake()
     {
         HealthManager hm = GetComponent<HealthManager>();
         if (hm != null)

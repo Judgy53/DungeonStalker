@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ManaManager : MonoBehaviour, ISavable, IQuantifiable
 {
-
     [SerializeField]
     private float maxMana = 50.0f;
     public float MaxMana { get { return maxMana; } set { maxMana = value; } }
@@ -18,13 +17,16 @@ public class ManaManager : MonoBehaviour, ISavable, IQuantifiable
 
     private StatsManager statsManager = null;
 
-    private void Start()
+    private void Awake()
     {
-        currentMana = maxMana;
-
         statsManager = GetComponentInParent<StatsManager>();
         if (statsManager != null)
+        {
             statsManager.Stats.OnStatsChange += OnStatsChange;
+            OnStatsChange(null, null); // get Max Mana From Base Stats
+        }
+
+        currentMana = maxMana;
     }
 
     private void FixedUpdate()

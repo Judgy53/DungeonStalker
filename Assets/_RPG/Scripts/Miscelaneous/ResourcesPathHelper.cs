@@ -16,7 +16,7 @@ public class ResourcesPathHelper
     public static string GetItemPath(string name)
     {
         string path = "Items/";
-        //path += type.ToString() + "/"; // Item type would be great
+        //path += type.ToString() + "/"; // Item type ?
         path += CleanName(name);
 
         return path;
@@ -25,7 +25,7 @@ public class ResourcesPathHelper
     public static string GetPickablePath(string name)
     {
         string path = "Pickables/";
-        //path += type.ToString() + "/"; // pickable type would be great
+        //path += type.ToString() + "/"; // pickable type ?
         path += CleanName(name);
 
         return path;
@@ -34,7 +34,7 @@ public class ResourcesPathHelper
     public static string GetEnemyPath(string name)
     {
         string path = "Enemies/";
-        //path += type.ToString() + "/"; // enemies type would be great
+        //path += type.ToString() + "/"; // enemies type ?
         path += CleanName(name);
 
         return path;

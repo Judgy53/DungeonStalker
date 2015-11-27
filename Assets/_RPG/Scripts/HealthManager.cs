@@ -27,15 +27,16 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     private StatsManager statsManager = null;
 
-    private void Start()
+    private void Awake()
     {
         effectManager = GetComponent<EffectManager>();
 
         statsManager = GetComponentInParent<StatsManager>();
         if (statsManager != null)
+        { 
             statsManager.Stats.OnStatsChange += OnStatsChange;
-
-        OnStatsChange(null, null); // get Max Health From Stats
+            OnStatsChange(null, null); // get Max Health From Base Stats
+        }
 
         currentHealth = maxHealth;
     }
@@ -142,6 +143,9 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
     {
         MaxHealth = float.Parse(data.Get("MaxHealth"));
         CurrentHealth = float.Parse(data.Get("CurrentHealth"));
+
+        if (currentHealth <= 0f)
+            Die();
     }
 
     public float GetCurrentValue()
