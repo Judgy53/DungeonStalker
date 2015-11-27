@@ -22,8 +22,7 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
         }
     }
 
-    [SerializeField]
-    private GameObject PickablesContainer;
+    public float dropDistance = 0.1f;
 
     public IItem[] Items { 
         get 
@@ -61,14 +60,17 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
         return true;
     }
 
-    public void RemoveItem(IItem item)
+    public bool RemoveItem(IItem item)
     {
         Behaviour itemBehaviour = (item as Behaviour);
         if (itemBehaviour.transform.IsChildOf(transform))
         {
             itemBehaviour.transform.SetParent(null, false);
             CurrentWeight -= item.Weigth;
+            return true;
         }
+
+        return false;
     }
 
     private void ClearInventory()
@@ -93,11 +95,8 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
 
                 if (item.DropPrefab != null)
                 {
-                    GameObject pickableGo = GameObject.Instantiate(item.DropPrefab, transform.position + transform.forward * 2.0f, Quaternion.identity) as GameObject;
+                    GameObject pickableGo = GameObject.Instantiate(item.DropPrefab, transform.position + transform.forward * dropDistance, Quaternion.identity) as GameObject;
                     pickableGo.GetComponent<Rigidbody>().AddForce(transform.forward * 2.0f);
-
-                    if (PickablesContainer != null)
-                        pickableGo.transform.parent = PickablesContainer.transform;
                 }
 
                 GameObject.Destroy(itemBehaviour.gameObject);

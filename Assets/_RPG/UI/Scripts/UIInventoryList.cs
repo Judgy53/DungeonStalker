@@ -26,6 +26,9 @@ public class UIInventoryList : MonoBehaviour
 
     private IItem[] items = null;
 
+    private IContainer target = null;
+    public IContainer Target { get { return target; } }
+
     private void Start()
     {
         if (buttonTemplatePrefab == null)
@@ -76,6 +79,8 @@ public class UIInventoryList : MonoBehaviour
         if (instantiatedList.Count != 0)
             Clear();
 
+        target = container;
+
         items = container.Items;
 
         float buttonHeight = buttonTemplatePrefab.GetComponent<RectTransform>().rect.height;
@@ -125,6 +130,8 @@ public class UIInventoryList : MonoBehaviour
 
     public void Clear()
     {
+        target = null;
+
         foreach (var button in instantiatedList)
             GameObject.Destroy(button);
 
