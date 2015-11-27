@@ -36,6 +36,7 @@ public class UICharSheet : MonoBehaviour
     private void Start()
     {
         State = UIMenuState.Hidden;
+        content.SetActive(false);
     }
 
     private void Update()

@@ -1100,48 +1100,32 @@ Prefab:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 2010049923}
-    - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+    - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+    - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+    - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
+    - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22477310, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMin.y
-      value: .0454546586
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22477310, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22477310, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: .681818247
-      objectReference: {fileID: 0}
-    - target: {fileID: 109464, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 119132, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 153032, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 196736, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

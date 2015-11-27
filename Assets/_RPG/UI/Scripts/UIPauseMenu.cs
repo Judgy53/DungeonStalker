@@ -38,6 +38,7 @@ public class UIPauseMenu : MonoBehaviour
     private void Start()
     {
         State = UIMenuState.Hidden;
+        content.SetActive(false);
     }
 
     private void Update()

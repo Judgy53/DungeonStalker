@@ -42,9 +42,9 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
 
     public void Use(InteractManager manager, UsableArgs args)
     {
-        IDamageable playerHM = GetComponentInParent<IDamageable>();
+        HealthManager playerHM = GetComponentInParent<HealthManager>();
         if (playerHM != null)
-            playerHM.AddDamage(-10.0f);
+            playerHM.Heal(10.0f);
 
         manager.gameObject.GetComponentInChildren<PlayerContainer>().RemoveItem(this);
         Destroy(this.gameObject);

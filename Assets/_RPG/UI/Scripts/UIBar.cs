@@ -112,7 +112,7 @@ public class UIBar : MonoBehaviour
         maxValue = target.GetMaxValue();
 
         Vector3 barScale = bar.transform.localScale;
-        barScale.x = currentValue / maxValue;
+        barScale.x = Mathf.Max(currentValue / maxValue, 0f);
 
         bar.transform.localScale = barScale;
 
