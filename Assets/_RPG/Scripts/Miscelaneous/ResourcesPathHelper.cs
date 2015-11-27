@@ -4,8 +4,10 @@ public class ResourcesPathHelper
 {
     public static string GetWeaponPath(WeaponType type, string name)
     {
+        string weapType = type == WeaponType.None ? "Special" : type.ToString();
+
         string path = "Weapons/";
-        path += type.ToString() + "/";
+        path += weapType + "/";
         path += CleanName(name);
         
         return path;

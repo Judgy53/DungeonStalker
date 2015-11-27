@@ -51,13 +51,13 @@ public class UICharSheet : MonoBehaviour
 
     private void OnStateChangeCallback(object sender, UIMenuStateChangeArgs args)
     {
-        if (args.newState == UIMenuState.Hidden)
+        if (args.newState == UIMenuState.Hidden && State == UIMenuState.Shown)
         {
             UIStateManager.UnregisterUI();
             content.SetActive(false);
             Time.timeScale = 1.0f;
         }
-        else
+        else if (args.newState == UIMenuState.Shown && State == UIMenuState.Hidden)
         {
             UIStateManager.RegisterUI();
             content.SetActive(true);

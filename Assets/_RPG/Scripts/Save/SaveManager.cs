@@ -109,24 +109,19 @@ public class SaveManager {
             Debug.Log("Failed loading " + saveName + " : save doesn't exists");
     }
 
-    public void Save(string saveId = "")
+    public void Save()
     {
         if (!Loaded)
             LoadAllSaves();
 
-        string fileName = "save";
-
-        if (saveId == null || saveId.Length == 0)
-            fileName += saves.Count.ToString("000");
-        else
-            fileName += saveId;
+        string fileName = GetSaveName();
 
         Directory.CreateDirectory(folder);
         Stream stream = File.Open(folder + fileName + ".sav", FileMode.Create);
         BinaryFormatter bformatter = new BinaryFormatter();
 
         Save sav = new Save();
-        sav.SaveScene();
+        sav.SaveGame();
 
         try
         {
@@ -145,6 +140,19 @@ public class SaveManager {
         stream.Close();
 
         SortSavesByDate();
+    }
+
+    private string GetSaveName()
+    {
+        string currentId = GameManager.GameId;
+
+        foreach(KeyValuePair<string, Save> kvp in Saves)
+        {
+            if (kvp.Value.GameId.Equals(currentId))
+                return kvp.Key;
+        }
+
+       return "save" + saves.Count.ToString("000");
     }
 
     public void SortSavesByDate()

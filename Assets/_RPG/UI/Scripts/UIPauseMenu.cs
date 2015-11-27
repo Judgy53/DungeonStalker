@@ -1,49 +1,40 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System;
+using System.Collections;
 
-public class UIItemPauseMenu : MonoBehaviour
+public class UIPauseMenu : MonoBehaviour
 {
-    public event EventHandler<UIMenuStateChangeArgs> OnItemPauseMenuStateChange;
-
-    public PlayerContainer target = null;
-
-    public GameObject content = null;
-
-    public UnityEngine.EventSystems.EventSystem eventSystem = null;
+    public event EventHandler<UIMenuStateChangeArgs> OnMenuStateChange;
 
     private UIMenuState state = UIMenuState.Hidden;
-    public UIMenuState State { get { return state; }
+    public UIMenuState State
+    {
+        get { return state; }
         set
         {
-            if (OnItemPauseMenuStateChange != null)
-                OnItemPauseMenuStateChange(this, new UIMenuStateChangeArgs(value));
+            if (OnMenuStateChange != null)
+                OnMenuStateChange(this, new UIMenuStateChangeArgs(value));
 
             state = value;
         }
     }
 
+    [SerializeField]
+    private GameObject content;
+
     private void Awake()
     {
         //It must be fired first to enable all gameobjects before other events, hence registration in Awake().
-        OnItemPauseMenuStateChange += OnStateChangeCallback;
-
-        GameManager.OnPlayerCreation += OnPlayerCreation;
+        OnMenuStateChange += OnStateChangeCallback;
 
         if (content == null)
         {
-            Debug.LogError("No content gameobject set on " + this.name);
+            Debug.LogError("No content defined on " + this.name);
             enabled = false;
+            return;
         }
     }
 
-    private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
-    {
-        target = e.player.GetComponentInChildren<PlayerContainer>();
-    }
-
-    //Must be called after all registrations are done (ScriptExecutionOrder)
     private void Start()
     {
         State = UIMenuState.Hidden;
@@ -51,13 +42,18 @@ public class UIItemPauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("ToggleInventory"))
+        if (Input.GetButtonDown("Pause"))
         {
             if (state == UIMenuState.Hidden && UIStateManager.State == UIState.Free)
                 State = UIMenuState.Shown;
             else if (state == UIMenuState.Shown)
                 State = UIMenuState.Hidden;
         }
+    }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
     }
 
     private void OnStateChangeCallback(object sender, UIMenuStateChangeArgs args)
@@ -75,20 +71,10 @@ public class UIItemPauseMenu : MonoBehaviour
             Time.timeScale = 0.0f;
         }
     }
-}
 
-public enum UIMenuState
-{
-    Hidden,
-    Shown
-}
-
-public class UIMenuStateChangeArgs : EventArgs
-{
-    public UIMenuState newState;
-
-    public UIMenuStateChangeArgs(UIMenuState newState)
+    public void MainMenu()
     {
-        this.newState = newState;
+        SaveManager.Instance.Save();
+        Application.LoadLevel("MainMenu");
     }
 }
