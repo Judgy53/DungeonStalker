@@ -25,12 +25,12 @@ public class Save
         CreationDate = DateTime.Now;
         TimePlayed = GameManager.TimePlayed;
         
-        UniqueId[] saveables = GameObject.FindObjectsOfType<UniqueId>();
+        SavableObject[] saveables = GameObject.FindObjectsOfType<SavableObject>();
 
         if (saveables.Length == 0) // nothing to save
             return;
         
-        foreach (UniqueId savGaO in saveables)
+        foreach (SavableObject savGaO in saveables)
         {
             ISavable[] save = savGaO.GetComponents<ISavable>();
 
@@ -39,7 +39,7 @@ public class Save
                 string dataId = savGaO.uniqueId;
                 SaveData data = CreateSaveData(save);
 
-                if(savGaO.DelayedLoad)
+                if (savGaO.WaitPlayerCreationToLoad)
                     delayedDatas.Add(dataId, data);
                 else
                     saveDatas.Add(dataId, data);
@@ -83,12 +83,12 @@ public class Save
 
     private void LoadDatas(Dictionary<string, SaveData> datas)
     {
-        UniqueId[] ids = GameObject.FindObjectsOfType<UniqueId>();
+        SavableObject[] ids = GameObject.FindObjectsOfType<SavableObject>();
 
         if (ids.Length == 0)
             return;
 
-        foreach (UniqueId savGaO in ids)
+        foreach (SavableObject savGaO in ids)
         {
             string dataId = savGaO.uniqueId;
 

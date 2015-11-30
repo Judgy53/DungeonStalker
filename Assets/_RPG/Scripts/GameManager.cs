@@ -39,25 +39,16 @@ public class GameManager : MonoBehaviour, ISavable
     private uint stage = 1;
     public static uint Stage { get { return instance.stage; } set { instance.stage = value; } }
 
-    private SaveData toLoad = null;
+    [SerializeField]
+    private AutoSaver autoSaver = null;
 
-    private bool generateMaze = false;
+    private SaveData toLoad = null;
 
     private DateTime startTime;
     public static DateTime StartTime { get { return instance.startTime; } set { instance.startTime = value; } }
 
     private int timePlayed;
-    public static int TimePlayed
-    {
-        get
-        {
-            return instance.timePlayed + Convert.ToInt32((DateTime.Now - StartTime).TotalSeconds);
-        }
-        set
-        {
-            instance.timePlayed = value;
-        }
-    }
+    public static int TimePlayed { get { return instance.timePlayed; } set { instance.timePlayed = value; } }
 
     private string playerName = "Player";
     public static string PlayerName { get { return instance.playerName; } set { instance.playerName = value; } }
@@ -79,6 +70,8 @@ public class GameManager : MonoBehaviour, ISavable
     private int enemiesNumber = 0;
     public static int EnemiesNumber { get { return instance.enemiesNumber; } }
 
+    private bool generateMaze = false;
+
     /// <summary>
     /// Might move that to another Component ...
     /// </summary>
@@ -87,9 +80,6 @@ public class GameManager : MonoBehaviour, ISavable
 
     private Grid gridInstance = null;
     public static Grid GridInstance { get { return instance.gridInstance; } }
-
-    [SerializeField]
-    private AutoSaver autoSaver = null;
 
     private void Awake()
     {
@@ -110,6 +100,15 @@ public class GameManager : MonoBehaviour, ISavable
     {
         StartTime = DateTime.Now;
         TimePlayed = played;
+    }
+
+    private IEnumerator UpdateTimePlayed()
+    {
+        while (true) // must use StopCoroutine to stop the loop
+        {
+            timePlayed += 1;
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     private void MazeGenerationFinished(bool manual)
@@ -165,10 +164,12 @@ public class GameManager : MonoBehaviour, ISavable
             GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
             mc.transform.SetParent(player.transform, false);
 
-            ResetTime(0);
-
             if (OnPlayerCreation != null)
                 OnPlayerCreation(this, new EventPlayerCreationArgs(player));
+
+            ResetTime(0);
+
+            StartCoroutine("UpdateTimePlayed");
         }
     }
 
@@ -218,6 +219,8 @@ public class GameManager : MonoBehaviour, ISavable
     {
         if(instance != null && instance.autoSaver != null)
             instance.autoSaver.Disable();
+
+        instance.StopCoroutine("UpdateTimePlayed");
 
         Application.LoadLevel("MainMenu");
     }

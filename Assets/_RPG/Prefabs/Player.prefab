@@ -2723,7 +2723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 082444d9-a077-40d7-b8e7-465b2f8c7788
-  DelayedLoad: 1
+  WaitPlayerCreationToLoad: 1
 --- !u!114 &11484992
 MonoBehaviour:
   m_ObjectHideFlags: 1
