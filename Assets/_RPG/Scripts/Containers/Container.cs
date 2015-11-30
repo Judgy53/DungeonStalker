@@ -57,7 +57,10 @@ public class Container : MonoBehaviour, IContainer, IUsable
 
     public string GetDescription()
     {
-        return actionDescription;
+        if (Items.Length > 0)
+            return actionDescription;
+        else
+            return "Empty.";
     }
 
     public void Use(InteractManager user, UsableArgs args = null)

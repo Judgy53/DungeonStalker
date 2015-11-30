@@ -8,7 +8,36 @@ public interface IItem
     string Name { get; }
     string Description { get; }
     uint Weigth { get; }
+    ItemQuality Quality { get; }
 
     bool CanDrop { get; set; }
     GameObject DropPrefab { get; }
+}
+
+public enum ItemQuality
+{
+    Junk = 0,
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary
+}
+
+public static class ItemQualityExpansions
+{
+    static readonly Color[] colors = 
+    {
+        Color.gray,
+        Color.white,
+        Color.green,
+        Color.blue,
+        new Color(153.0f / 255.0f, 0.0f, 153.0f / 255.0f),
+        new Color(1.0f, 128.0f / 255.0f, 0.0f)
+    };
+
+    public static Color ToColor(this ItemQuality q)
+    {
+        return colors[(int)q];
+    }
 }

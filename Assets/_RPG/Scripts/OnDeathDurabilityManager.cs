@@ -38,13 +38,26 @@ public class OnDeathDurabilityManager : MonoBehaviour
         {
             Behaviour script = s.script as Behaviour;
             if (script != null)
-                script.enabled = s.value;
-            else
             {
-                Collider col = s.script as Collider;
-                if (col != null)
-                    col.enabled = s.value;
+                script.enabled = s.value;
+                continue;
             }
+
+            Collider col = s.script as Collider;
+            if (col != null)
+            {
+                col.enabled = s.value;
+                continue;
+            }
+
+            GameObject go = s.script as GameObject;
+            if (go != null)
+            {
+                go.SetActive(s.value);
+                continue;
+            }
+
+            Debug.LogWarning("Invalid object given in " + this.name + ". Supported objects are : Behaviours, Colliders, and GameObjects.");
         }
     }
 }

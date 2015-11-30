@@ -22,7 +22,7 @@ TagManager:
   - Unwalkable
   - SensorDetect
   - Sensor
-  - 
+  - NoCollide
   - 
   - 
   - 

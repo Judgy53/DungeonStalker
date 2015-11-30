@@ -226,7 +226,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
                 return;
         }
 
-        if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
+        if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null && (damageable as Behaviour).enabled)
         {
             if (!hits.Exists(x => x == damageable))
             {

@@ -45,6 +45,7 @@ MonoBehaviour:
   weigth: 30
   canDrop: 1
   dropPrefab: {fileID: 157042, guid: a3f1d07d7621ad640a6a261418db492a, type: 2}
+  quality: 1
   actionName: Equip
   useDescription: Equip this weapon
   weaponPrefab: {fileID: 126292, guid: aed492386c51dd040a97391be6acf85e, type: 2}
@@ -70,6 +71,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: objName
       value: SharpSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: quality
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

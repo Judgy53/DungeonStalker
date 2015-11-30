@@ -308,8 +308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   hitEffectPrefab: {fileID: 172656, guid: a5d1e1cad3b926e4485c2e37fc8fc628, type: 2}
-  minDamages: 4
-  maxDamages: 8
+  minDamages: 13
+  maxDamages: 20
   attackSpeed: .600000024
   minBlockValue: 3
   maxBlockValue: 5
@@ -333,6 +333,14 @@ Prefab:
       propertyPath: inventoryItemPrefab
       value: 
       objectReference: {fileID: 171718, guid: d7a2f3505e3bfc74883088f519e78982, type: 2}
+    - target: {fileID: 0}
+      propertyPath: minDamages
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamages
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126292}

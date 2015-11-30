@@ -27,6 +27,10 @@ public class ItemWeapon : MonoBehaviour, IItem, IUsable
     private GameObject dropPrefab = null;
     public GameObject DropPrefab { get { return dropPrefab; } }
 
+    [SerializeField]
+    private ItemQuality quality = ItemQuality.Common;
+    public ItemQuality Quality { get { return quality; } }
+
     public string actionName = "Equip";
     public string useDescription = "Equip this weapon";
 

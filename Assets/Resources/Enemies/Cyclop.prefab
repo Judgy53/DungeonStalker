@@ -320,6 +320,7 @@ GameObject:
   - 114: {fileID: 11483462}
   - 114: {fileID: 11440626}
   - 114: {fileID: 11441170}
+  - 114: {fileID: 11407940}
   - 54: {fileID: 5476106}
   m_Layer: 0
   m_Name: Cyclop
@@ -403,6 +404,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &140240
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472850}
+  - 136: {fileID: 13689044}
+  m_Layer: 12
+  m_Name: ContainerColldier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &140766
 GameObject:
   m_ObjectHideFlags: 1
@@ -1097,7 +1114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.18600011}
+  m_LocalPosition: {x: .294999987, y: 0, z: -.0390000008}
   m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children:
   - {fileID: 444394}
@@ -1402,6 +1419,7 @@ Transform:
   - {fileID: 435816}
   - {fileID: 480300}
   - {fileID: 446954}
+  - {fileID: 472850}
   m_Father: {fileID: 459586}
   m_RootOrder: 0
 --- !u!4 &464292
@@ -1469,6 +1487,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 431450}
   m_RootOrder: 0
+--- !u!4 &472850
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140240}
+  m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106709}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 464024}
+  m_RootOrder: 3
 --- !u!4 &474082
 Transform:
   m_ObjectHideFlags: 1
@@ -1781,6 +1811,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11407940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a9debe6f4b3ae4da161b08aef9f844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxWeight: 100
+  actionName: Search ...
+  actionDescription: 
+  items: []
 --- !u!114 &11421618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1870,6 +1915,10 @@ MonoBehaviour:
     value: 0
   - script: {fileID: 11421618}
     value: 0
+  - script: {fileID: 11407940}
+    value: 1
+  - script: {fileID: 140240}
+    value: 1
 --- !u!114 &11453878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1907,7 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5749f0f33bc94cbc6e497fb5633b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMainHandStartWeaponPrefab: {fileID: 126292, guid: aed492386c51dd040a97391be6acf85e,
+  debugMainHandStartWeaponPrefab: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
   mainHandWeaponPoint: {fileID: 450536}
@@ -1956,6 +2005,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.20000005, z: 0}
+--- !u!136 &13689044
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .569999993
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13763396
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
