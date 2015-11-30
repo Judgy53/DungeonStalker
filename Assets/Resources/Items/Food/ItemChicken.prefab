@@ -45,6 +45,7 @@ MonoBehaviour:
   weigth: 1
   canDrop: 1
   dropPrefab: {fileID: 158406, guid: 231dd5e483a173944902b789ceb623fa, type: 2}
+  quality: 1
   actionName: Eat
   useDescription: Will restore 10 life
 --- !u!1001 &100100000

@@ -101,3 +101,20 @@ public static class LayerMaskExtension
         return ((mask.value & (1 << layer)) > 0);
     }
 }
+
+[System.Serializable]
+public class MinMax<T>
+{
+    public T min = default(T);
+    public T max = default(T);
+
+    public MinMax()
+    {
+    }
+
+    public MinMax(T min, T max)
+    {
+        this.min = min;
+        this.max = max;
+    }
+}

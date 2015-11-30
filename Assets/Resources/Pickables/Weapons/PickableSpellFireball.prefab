@@ -364,6 +364,12 @@ MonoBehaviour:
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 6
+  magicalType: 0
+  gearStats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
   handPositionOffset: {x: 0, y: 0, z: -.25}
   handRotationOffset: {x: 90, y: 0, z: 0}
   sizeChargeScale: 2
@@ -404,6 +410,12 @@ MonoBehaviour:
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 6
+  magicalType: 0
+  gearStats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
   handPositionOffset: {x: 0, y: 0, z: -.25}
   handRotationOffset: {x: 90, y: 0, z: 0}
   sizeChargeScale: 2
@@ -430,6 +442,12 @@ MonoBehaviour:
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 6
+  magicalType: 0
+  gearStats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
   handPositionOffset: {x: 0, y: 0, z: -.25}
   handRotationOffset: {x: 90, y: 0, z: 0}
   sizeChargeScale: 2
@@ -456,6 +474,12 @@ MonoBehaviour:
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 6
+  magicalType: 0
+  gearStats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
   handPositionOffset: {x: 0, y: 0, z: -.25}
   handRotationOffset: {x: 90, y: 0, z: 0}
   sizeChargeScale: 2

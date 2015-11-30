@@ -51,6 +51,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public MagicalWeaponUseState UseState { get { return useState; } }
 
     [SerializeField]
+    private CharStats gearStats = new CharStats(0);
+    public CharStats GearStats { get { return gearStats; } }
+
+    [SerializeField]
     private Vector3 handPositionOffset = Vector3.zero;
     public Vector3 HandPositionOffset { get { return handPositionOffset; } }
 
@@ -87,6 +91,8 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     [SerializeField]
     private GameObject inventoryItemPrefab = null;
     public GameObject InventoryItemPrefab { get { return inventoryItemPrefab; } }
+
+    private StatsManager stManager = null;
 
     private void Start()
     {
@@ -237,7 +243,14 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     public void OnEquip()
     {
+        stManager = GetComponentInParent<StatsManager>();
+        stManager.GearStats += gearStats;
+    }
 
+    public void OnUnequip()
+    {
+        stManager.GearStats -= gearStats;
+        stManager = null;
     }
 	
 	public void ToSaveData(SaveData data, string name)

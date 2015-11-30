@@ -108,27 +108,8 @@ public class Unit : MonoBehaviour, IControls
 
                 currentWaypoint = path[targetIndex];
             }
-
-            /*Vector3 direction = currentWaypoint - transform.position;
-            direction.y = 0.0f;
-            direction.Normalize();
-
-            transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.LookRotation(direction),
-                angleInterpolationFactor * Time.fixedDeltaTime);*/
-            
-            /*if (effectManager != null)
-            {
-                IMovementEffect[] effects = effectManager.GetEffects<IMovementEffect>();
-                foreach (IMovementEffect e in effects)
-                    e.ApplyMovementEffect(ref frameVelocity);
-            }*/
-
-            //forwardInput = Mathf.Lerp(forwardInput, 1.0f, 0.5f * Time.fixedDeltaTime);
         }
-        //else
-            //forwardInput = Mathf.Lerp(forwardInput, 0.0f, 5.0f * Time.fixedDeltaTime);
-
+        
         Vector3 frameVelocity = moveSpeed;
         frameVelocity.Scale(new Vector3(0.0f, 1.0f, forwardInput));
 

@@ -4,14 +4,14 @@ using System.Collections;
 [ExecuteInEditMode]
 public class Overlay : MonoBehaviour
 {
-    public string shaderSource = "";
+    //public Shader shader = null;
 
-	private Material material;
+	public Material material;
  
-	private void Awake ()
+	/*private void Awake ()
 	{
-		material = new Material(Shader.Find(shaderSource));
-	}
+		material = new Material(shader);
+	}*/
 	
 	public void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{

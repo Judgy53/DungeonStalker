@@ -60,48 +60,14 @@ public class AIInputController : MonoBehaviour, IControls, ISavable
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         EvaluateSituation();
         if (behavior != null)
             behavior(this);
-        /*if (driver != null)
-        {
-            if (Target != null)
-            {
-                targetDistance = Vector3.Distance(transform.position, Target.transform.position);
 
-                if (targetDistance > attackDistance || !sensor.GotVisual)
-                    unit.ForwardInput = Mathf.Lerp(unit.ForwardInput, 1.0f, 0.5f * Time.deltaTime);
-                else
-                {
-                    if (canBackpedal && targetDistance < attackDistance - safetyZone)
-                        unit.ForwardInput = Mathf.Lerp(unit.ForwardInput, -1.0f, 0.5f * Time.deltaTime);
-                    else
-                        unit.ForwardInput = Mathf.Lerp(unit.ForwardInput, 0.0f, 0.8f * Time.deltaTime);
-
-
-                    weaponManager.Primary(0);
-                    if (weaponManager.OffHandWeapon != null)
-                        weaponManager.Primary(1);
-                }
-            }
-            else
-                unit.ForwardInput = Mathf.Lerp(unit.ForwardInput, 0.0f, 0.5f * Time.deltaTime);*/
-
-            Vector3 lsVelocity = transform.InverseTransformDirection(Velocity);
-            driver.SetMovementVelocity(lsVelocity.z / unit.MoveSpeed.z, lsVelocity.x / unit.MoveSpeed.x, lsVelocity.y / unit.MoveSpeed.y, IsGrounded);
-        //}
-    }
-
-    private void LateUpdate()
-    {
-        /*if (unit.Target != null && !(targetDistance > attackDistance || !sensor.GotVisual))
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.LookRotation(unit.DirectionToTarget),
-                unit.angleInterpolationFactor * Time.deltaTime);
-        }*/
+        Vector3 lsVelocity = transform.InverseTransformDirection(Velocity);
+        driver.SetMovementVelocity(lsVelocity.z / unit.MoveSpeed.z, lsVelocity.x / unit.MoveSpeed.x, lsVelocity.y / unit.MoveSpeed.y, IsGrounded);
     }
 
     private void OnSensorDetect(object sender, DetectSensorEvent e)

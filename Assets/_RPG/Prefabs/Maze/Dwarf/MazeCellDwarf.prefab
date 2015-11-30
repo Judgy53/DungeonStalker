@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 418246}
   - 33: {fileID: 3312452}
   - 23: {fileID: 2384822}
-  - 65: {fileID: 6517706}
+  - 64: {fileID: 6496776}
   m_Layer: 0
   m_Name: Floor_collider
   m_TagString: Untagged
@@ -75,7 +75,7 @@ MeshRenderer:
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 2
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
@@ -123,8 +123,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115570}
   m_Mesh: {fileID: 4300000, guid: ca454602ee9f1b9438cb8458e6b9aa3e, type: 3}
---- !u!65 &6517706
-BoxCollider:
+--- !u!64 &6496776
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -133,8 +133,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.02737164, y: 1.26675021e-16, z: 1.02737153}
-  m_Center: {x: 2.98023224e-08, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300002, guid: ca454602ee9f1b9438cb8458e6b9aa3e, type: 3}
 --- !u!114 &11453030
 MonoBehaviour:
   m_ObjectHideFlags: 1

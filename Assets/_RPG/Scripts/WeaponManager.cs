@@ -22,6 +22,7 @@ public class WeaponManager : MonoBehaviour, ISavable
         {
             if (offHandWeapon != null)
             {
+                offHandWeapon.OnUnequip();
                 UnregisterCallbacks(offHandWeapon);
                 IContainer container = GetComponentInChildren<IContainer>();
                 if (container != null)
@@ -58,6 +59,7 @@ public class WeaponManager : MonoBehaviour, ISavable
         {
             if (mainHandWeapon != null)
             {
+                mainHandWeapon.OnUnequip();
                 UnregisterCallbacks(mainHandWeapon);
                 IContainer container = GetComponentInChildren<IContainer>();
                 if (container != null)
