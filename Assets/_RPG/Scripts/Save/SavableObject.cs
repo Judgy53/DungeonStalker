@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UniqueIdAttribute : PropertyAttribute { }
 
-public class UniqueId : MonoBehaviour
+public class SavableObject : MonoBehaviour
 {
     [UniqueId]
     public string uniqueId;
@@ -11,5 +11,6 @@ public class UniqueId : MonoBehaviour
     /// <summary>
     /// Wait for the whole level to load before loading this
     /// </summary>
-    public bool DelayedLoad = false;
+    [Tooltip("Wait for the whole level to load before loading this")]
+    public bool WaitPlayerCreationToLoad = false;
 }
