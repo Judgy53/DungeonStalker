@@ -45,6 +45,7 @@ MonoBehaviour:
   weigth: 150
   canDrop: 1
   dropPrefab: {fileID: 152740, guid: e70e8bfed5d78984dba21d49d5cc7bc9, type: 2}
+  quality: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -59,6 +60,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: objName
       value: Heavy boulder
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: quality
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

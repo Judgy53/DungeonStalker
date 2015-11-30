@@ -45,6 +45,7 @@ MonoBehaviour:
   weigth: 15
   canDrop: 1
   dropPrefab: {fileID: 180728, guid: 44589981bb0e73f40aec830bfb44e990, type: 2}
+  quality: 0
   actionName: Equip
   useDescription: Equip this weapon
   weaponPrefab: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
@@ -58,6 +59,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: itemDescription
       value: A rather well used weapon ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: quality
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

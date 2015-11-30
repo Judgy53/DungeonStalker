@@ -26,4 +26,8 @@ public class Item : MonoBehaviour, IItem
     [SerializeField]
     private GameObject dropPrefab = null;
     public GameObject DropPrefab { get { return dropPrefab; } }
+
+    [SerializeField]
+    private ItemQuality quality = ItemQuality.Common;
+    public ItemQuality Quality { get { return quality; } }
 }

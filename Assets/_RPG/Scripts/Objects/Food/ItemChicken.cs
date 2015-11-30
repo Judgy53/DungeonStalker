@@ -27,6 +27,10 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
     private GameObject dropPrefab = null;
     public GameObject DropPrefab { get { return dropPrefab; } }
 
+    [SerializeField]
+    private ItemQuality quality = ItemQuality.Common;
+    public ItemQuality Quality { get { return quality; } }
+
     public string actionName = "Eat";
     public string useDescription = "Will restore 10 life";
     

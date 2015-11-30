@@ -83,7 +83,10 @@ public class UIInventoryToggleLister : MonoBehaviour
             toggleGo.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, (elementHeight * -i) + (-i * spacing));
 
             if (text != null)
+            {
+                text.color = item.Quality.ToColor();
                 text.text = item.Name + " (W:" + item.Weigth + ")";
+            }
 
             content.sizeDelta = new Vector2(content.sizeDelta.x, elementHeight * (i + 1) + (i * spacing));
             background.sizeDelta = new Vector2(background.sizeDelta.x, elementHeight * (i + 1) + (i * spacing));

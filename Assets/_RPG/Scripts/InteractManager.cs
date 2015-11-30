@@ -18,7 +18,10 @@ public class InteractManager : MonoBehaviour
         {
             IUsable usable = hit.collider.GetComponentInParent<IUsable>();
 
-            target = usable;
+            if (usable != null && (usable as Behaviour).enabled)
+                target = usable;
+            else
+                target = null;
         }
         else
         {
