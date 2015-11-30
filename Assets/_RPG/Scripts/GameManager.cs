@@ -88,6 +88,9 @@ public class GameManager : MonoBehaviour, ISavable
     private Grid gridInstance = null;
     public static Grid GridInstance { get { return instance.gridInstance; } }
 
+    [SerializeField]
+    private AutoSaver autoSaver = null;
+
     private void Awake()
     {
         if (instance != null)
@@ -188,6 +191,8 @@ public class GameManager : MonoBehaviour, ISavable
 
             generateMaze = false;
         }
+
+        UIStateManager.ClearState();
     }
 
     public static void LoadStage(uint s)
@@ -207,6 +212,14 @@ public class GameManager : MonoBehaviour, ISavable
         Debug.Log("LoadStage");
 
         Application.LoadLevel("GameScene");
+    }
+
+    public static void GoToMainMenu()
+    {
+        if(instance != null && instance.autoSaver != null)
+            instance.autoSaver.Disable();
+
+        Application.LoadLevel("MainMenu");
     }
 
     public void Save(SaveData data)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 
@@ -22,6 +23,12 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject content;
 
+    [SerializeField]
+    private Button saveButton;
+
+    [SerializeField]
+    private Button quitButton;
+
     private void Awake()
     {
         //It must be fired first to enable all gameobjects before other events, hence registration in Awake().
@@ -39,6 +46,9 @@ public class UIPauseMenu : MonoBehaviour
     {
         State = UIMenuState.Hidden;
         content.SetActive(false);
+
+        saveButton.onClick.AddListener(SaveClick);
+        quitButton.onClick.AddListener(QuitClick);
     }
 
     private void Update()
@@ -73,9 +83,15 @@ public class UIPauseMenu : MonoBehaviour
         }
     }
 
-    public void MainMenu()
+    private void SaveClick()
     {
         SaveManager.Instance.Save();
-        Application.LoadLevel("MainMenu");
+        State = UIMenuState.Hidden;
+    }
+
+    private void QuitClick()
+    {
+        SaveManager.Instance.Save();
+        GameManager.GoToMainMenu();
     }
 }

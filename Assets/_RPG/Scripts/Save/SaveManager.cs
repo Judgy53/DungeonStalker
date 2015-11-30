@@ -81,7 +81,7 @@ public class SaveManager {
         }
         catch(Exception e)
         {
-            Debug.LogError("Loading Error : " + e.Message);
+            Debug.LogError("Loading \"" + fileName + "\" Error : " + e.Message);
         }
 
         stream.Close();
