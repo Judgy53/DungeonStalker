@@ -28,26 +28,21 @@ public class UISaveList : MonoBehaviour
         Dictionary<string, Save> saves = SaveManager.Instance.Saves;
 
         foreach (KeyValuePair<string, Save> kvp in saves)
-        {
-            string id = kvp.Key.Replace("save", "");
+            CreateButton(kvp.Key, kvp.Value);
 
-            string name = "Stage " + kvp.Value.Stage;
-
-            CreateButton(id, name);
-        }
 
         selectedSaveHandler.SetSave("");
     }
 
-    private void CreateButton(string id, string name)
+    private void CreateButton(string saveFile, Save sav)
     {
         GameObject gao = Instantiate(buttonPrefab) as GameObject;
         UISaveButton button = gao.GetComponent<UISaveButton>();
 
         button.transform.SetParent(content, false);
 
-        button.SaveId.text = id;
-        button.SaveName.text = name;
+        button.FileName = saveFile;
+        button.Data = sav;
         
         button.OnClick += SaveOnClick;
 
@@ -57,9 +52,9 @@ public class UISaveList : MonoBehaviour
     private void SaveOnClick(object sender, EventArgs e)
     {
         UISaveButton btn = (sender as MonoBehaviour).GetComponent<UISaveButton>();
-        selectedSaveHandler.SetSave(btn.SaveId.text);
+        selectedSaveHandler.SetSave(btn.GetSaveId());
 
-        GetComponentInParent<UIPanelLoad>().SaveId = btn.SaveId.text;
+        GetComponentInParent<UIPanelLoad>().SaveId = btn.GetSaveId();
 
         UpdateScroller(btn);
     }

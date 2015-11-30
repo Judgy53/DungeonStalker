@@ -6,10 +6,25 @@ using System.Collections;
 
 public class UISaveButton : MonoBehaviour, ISelectHandler
 {
-    public Text SaveId;
-    public Text SaveName;
+    [SerializeField]
+    private Text playerNameComp;
+    
+    [SerializeField]
+    private Text stageComp;
+
+    private string fileName = "";
+    public string FileName { get { return fileName; } set { fileName = value; } }
+
+    private Save data;
+    public Save Data { get { return data; } set { data = value; } }
 
     public event EventHandler<EventArgs> OnClick;
+
+    private void Start()
+    {
+        playerNameComp.text = data.PlayerName;
+        stageComp.text = "Stage " + data.Stage;
+    }
 
     public void OnSelect(BaseEventData eventData)
     {
@@ -18,5 +33,10 @@ public class UISaveButton : MonoBehaviour, ISelectHandler
 
         if (OnClick != null)
             OnClick(this, new EventArgs());
+    }
+
+    public string GetSaveId()
+    {
+        return fileName.Replace("save", "");
     }
 }
