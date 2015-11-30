@@ -2916,7 +2916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 39a94465-3270-4395-95e6-d426f6fb953c
-  DelayedLoad: 0
+  WaitPlayerCreationToLoad: 0
 --- !u!1 &1210003130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,7 +4650,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 16
+  m_CharacterLimit: 12
   m_EndEdit:
     m_PersistentCalls:
       m_Calls: []
