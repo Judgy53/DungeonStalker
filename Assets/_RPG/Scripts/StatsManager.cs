@@ -19,6 +19,20 @@ public class StatsManager : MonoBehaviour, ISavable, IQuantifiable
         } 
     }
 
+    private CharStats gearStats = new CharStats(0);
+    public CharStats GearStats
+    {
+        get { return gearStats; }
+
+        set
+        {
+            gearStats = value;
+            stats.FireEvent();
+        }
+    }
+
+    public CharStats TotalStats { get { return stats + gearStats; } }
+
     [SerializeField]
     private bool debugFireEvent = false;
 
@@ -283,6 +297,15 @@ public class CharStats : System.Object
             lhs.Stamina + rhs.Stamina,
             lhs.Energy + rhs.Energy,
             lhs.OnStatsChange + rhs.OnStatsChange);
+    }
+
+    public static CharStats operator -(CharStats lhs, CharStats rhs)
+    {
+        return new CharStats(lhs.Strength - rhs.Strength,
+            lhs.Defense - rhs.Defense,
+            lhs.Stamina - rhs.Stamina,
+            lhs.Energy - rhs.Energy,
+            lhs.OnStatsChange - rhs.OnStatsChange);
     }
 }
 

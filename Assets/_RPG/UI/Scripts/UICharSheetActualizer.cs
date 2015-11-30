@@ -56,13 +56,13 @@ public class UICharSheetActualizer : MonoBehaviour
     private void OnStatsChanged(object sender, EventArgs args)
     {
         if (strengthLabel != null)
-            strengthLabel.ActualizeText((int)target.Stats.Strength + (int)tmpAddedPoint.Strength);
+            strengthLabel.ActualizeText((int)target.Stats.Strength + (int)tmpAddedPoint.Strength, (int)target.GearStats.Strength);
         if (defenseLabel != null)
-            defenseLabel.ActualizeText((int)target.Stats.Defense + (int)tmpAddedPoint.Defense);
+            defenseLabel.ActualizeText((int)target.Stats.Defense + (int)tmpAddedPoint.Defense, (int)target.GearStats.Defense);
         if (staminaLabel != null)
-            staminaLabel.ActualizeText((int)target.Stats.Stamina + (int)tmpAddedPoint.Stamina);
+            staminaLabel.ActualizeText((int)target.Stats.Stamina + (int)tmpAddedPoint.Stamina, (int)target.GearStats.Stamina);
         if (energyLabel != null)
-            energyLabel.ActualizeText((int)target.Stats.Energy + (int)tmpAddedPoint.Energy);
+            energyLabel.ActualizeText((int)target.Stats.Energy + (int)tmpAddedPoint.Energy, (int)target.GearStats.Energy);
 
         if (unspentPointsLabel != null)
             unspentPointsLabel.text = "Unspent points : " + target.UnspentPoints;
@@ -161,10 +161,17 @@ public class UICharSheetActualizer : MonoBehaviour
             buttonsDelegate = func;
         }
 
-        public void ActualizeText(int value)
+        public void ActualizeText(int value, int gearValue)
         {
             if (textUI != null)
-                textUI.text = prefix + value;
+            {
+                if (gearValue == 0)
+                    textUI.text = prefix + value;
+                else if (gearValue > 0)
+                    textUI.text = prefix + value + " <color=green>(+" + gearValue + ")</color>";
+                else
+                    textUI.text = prefix + value + " <color=red>(-" + gearValue + ")</color>";
+            }
         }
 
         private void MinusCallback()

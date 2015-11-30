@@ -68,6 +68,10 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public PhysicalWeaponUseState UseState { get { return useState; } }
 
     [SerializeField]
+    private CharStats gearStats = new CharStats(0);
+    public CharStats GearStats { get { return gearStats; } }
+
+    [SerializeField]
     private Vector3 handPositionOffset = Vector3.zero;
     public Vector3 HandPositionOffset { get { return handPositionOffset; } }
 
@@ -280,6 +284,13 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public void OnEquip()
     {
         stManager = GetComponentInParent<StatsManager>();
+        stManager.GearStats += gearStats;
+    }
+
+    public void OnUnequip()
+    {
+        stManager.GearStats -= gearStats;
+        stManager = null;
     }
 	
 	public void ToSaveData(SaveData data, string name)

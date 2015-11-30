@@ -16,12 +16,15 @@ public interface IWeapon
     Vector3 HandPositionOffset { get; }
     Vector3 HandRotationOffset { get; }
 
+    CharStats GearStats { get; }
+
     void Primary();
     void EndPrimary();
     void Secondary();
     void EndSecondary();
 
     void OnEquip();
+    void OnUnequip();
 
     WeaponHand WeaponHand { get; }
     WeaponRestriction WeaponRestrictions { get; }

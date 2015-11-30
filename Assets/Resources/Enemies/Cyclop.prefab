@@ -321,6 +321,8 @@ GameObject:
   - 114: {fileID: 11440626}
   - 114: {fileID: 11441170}
   - 114: {fileID: 11407940}
+  - 114: {fileID: 11430824}
+  - 114: {fileID: 11405396}
   - 54: {fileID: 5476106}
   m_Layer: 0
   m_Name: Cyclop
@@ -1811,6 +1813,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11405396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a57c310260c864c860753d4810513d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11407940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1838,6 +1851,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+--- !u!114 &11430824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c587843333eedc34c8b4c725ac1d312b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootChance: .300000012
+  container: {fileID: 11407940}
+  lootTable:
+  - itemGo: {fileID: 113310, guid: acf83e31504d9f24dafce756cc778479, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 171718, guid: d7a2f3505e3bfc74883088f519e78982, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .800000012
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .800000012
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .800000012
+  - itemGo: {fileID: 190822, guid: bc23669ce57d06945ac6813cd2e57c56, type: 2}
+    dropChance: .00999999978
+  maxItemNumber: 3
 --- !u!114 &11437492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1850,16 +1890,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    strength: 3
+    strength: 2
     defense: 2
-    stamina: 5
+    stamina: 3
     energy: 1
   debugFireEvent: 0
   unspentPoints: 0
   currentLevel: 1
   currentExp: 0
   canGainExp: 0
-  xpOnKill: 5
+  xpOnKill: 15
 --- !u!114 &11440626
 MonoBehaviour:
   m_ObjectHideFlags: 1

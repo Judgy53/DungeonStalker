@@ -23,7 +23,7 @@ public class UIInteractInfos : MonoBehaviour {
     private void Update()
     {
         string output = "";
-        if (interactManager != null && interactManager.Target != null)
+        if (interactManager != null && interactManager.Target as Behaviour != null)
         {
             output = "E - ";
 
