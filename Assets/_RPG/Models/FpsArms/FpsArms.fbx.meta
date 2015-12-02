@@ -145,6 +145,8 @@ ModelImporter:
     7400000: FPSArmsIdleOneHanded
     7400002: FPSArmsHitOneHanded
     7400004: FPSArmsParryOneHanded
+    7400006: FPSArmsTwoHandedGunIdle
+    7400008: FPSArmsTwoHandedGunFire
     9500000: //RootNode
     13700000: arm
   materials:
@@ -496,6 +498,330 @@ ModelImporter:
       takeName: Armature.001|ParryOneHanded
       firstFrame: 0
       lastFrame: 5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: arm
+        weight: 1
+      - path: Armature.001
+        weight: 1
+      - path: Armature.001/Bone
+        weight: 1
+      - path: Armature.001/Bone/Bone_L
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005/Bone_L.006
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005/Bone_L.006/Bone_L.007
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005/Bone_L.006/Bone_L.007/Bone_L.007_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013/Bone_L.014
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013/Bone_L.014/Bone_L.015
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013/Bone_L.014/Bone_L.015/Bone_L.015_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010/Bone_L.011
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010/Bone_L.011/Bone_L.012
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010/Bone_L.011/Bone_L.012/Bone_L.012_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017/Bone_L.018
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017/Bone_L.018/Bone_L.019
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017/Bone_L.018/Bone_L.019/Bone_L.019_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020/Bone_L.021
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020/Bone_L.021/Bone_L.022
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020/Bone_L.021/Bone_L.022/Bone_L.022_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005/Bone_R.006
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005/Bone_R.006/Bone_R.007
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005/Bone_R.006/Bone_R.007/Bone_R.007_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013/Bone_R.014
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013/Bone_R.014/Bone_R.015
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013/Bone_R.014/Bone_R.015/Bone_R.015_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010/Bone_R.011
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010/Bone_R.011/Bone_R.012
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010/Bone_R.011/Bone_R.012/Bone_R.012_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017/Bone_R.018
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017/Bone_R.018/Bone_R.019
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017/Bone_R.018/Bone_R.019/Bone_R.019_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020/Bone_R.021
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020/Bone_R.021/Bone_R.022
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020/Bone_R.021/Bone_R.022/Bone_R.022_end
+        weight: 1
+      - path: Armature.001/Bone_L.023
+        weight: 1
+      - path: Armature.001/Bone_L.023/Bone_L.023_end
+        weight: 1
+      - path: Armature.001/Bone_R.023
+        weight: 1
+      - path: Armature.001/Bone_R.023/Bone_R.023_end
+        weight: 1
+      - path: Armature.001/Hand L
+        weight: 1
+      - path: Armature.001/Hand L/Hand L_end
+        weight: 1
+      - path: Armature.001/Hand R
+        weight: 1
+      - path: Armature.001/Hand R/Hand R_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: FPSArmsTwoHandedGunIdle
+      takeName: Armature.001|TwoHandedGunIdle
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: arm
+        weight: 1
+      - path: Armature.001
+        weight: 1
+      - path: Armature.001/Bone
+        weight: 1
+      - path: Armature.001/Bone/Bone_L
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005/Bone_L.006
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005/Bone_L.006/Bone_L.007
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.004/Bone_L.005/Bone_L.006/Bone_L.007/Bone_L.007_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013/Bone_L.014
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013/Bone_L.014/Bone_L.015
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.008/Bone_L.013/Bone_L.014/Bone_L.015/Bone_L.015_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010/Bone_L.011
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010/Bone_L.011/Bone_L.012
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.009/Bone_L.010/Bone_L.011/Bone_L.012/Bone_L.012_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017/Bone_L.018
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017/Bone_L.018/Bone_L.019
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.016/Bone_L.017/Bone_L.018/Bone_L.019/Bone_L.019_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020/Bone_L.021
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020/Bone_L.021/Bone_L.022
+        weight: 1
+      - path: Armature.001/Bone/Bone_L/Bone_L.001/Bone_L.002/Bone_L.003/Bone_L.020/Bone_L.021/Bone_L.022/Bone_L.022_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005/Bone_R.006
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005/Bone_R.006/Bone_R.007
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.004/Bone_R.005/Bone_R.006/Bone_R.007/Bone_R.007_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013/Bone_R.014
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013/Bone_R.014/Bone_R.015
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.008/Bone_R.013/Bone_R.014/Bone_R.015/Bone_R.015_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010/Bone_R.011
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010/Bone_R.011/Bone_R.012
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.009/Bone_R.010/Bone_R.011/Bone_R.012/Bone_R.012_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017/Bone_R.018
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017/Bone_R.018/Bone_R.019
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.016/Bone_R.017/Bone_R.018/Bone_R.019/Bone_R.019_end
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020/Bone_R.021
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020/Bone_R.021/Bone_R.022
+        weight: 1
+      - path: Armature.001/Bone/Bone_R/Bone_R.001/Bone_R.002/Bone_R.003/Bone_R.020/Bone_R.021/Bone_R.022/Bone_R.022_end
+        weight: 1
+      - path: Armature.001/Bone_L.023
+        weight: 1
+      - path: Armature.001/Bone_L.023/Bone_L.023_end
+        weight: 1
+      - path: Armature.001/Bone_R.023
+        weight: 1
+      - path: Armature.001/Bone_R.023/Bone_R.023_end
+        weight: 1
+      - path: Armature.001/Hand L
+        weight: 1
+      - path: Armature.001/Hand L/Hand L_end
+        weight: 1
+      - path: Armature.001/Hand R
+        weight: 1
+      - path: Armature.001/Hand R/Hand R_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: FPSArmsTwoHandedGunFire
+      takeName: Armature.001|TwoHandedGunFire
+      firstFrame: 0
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

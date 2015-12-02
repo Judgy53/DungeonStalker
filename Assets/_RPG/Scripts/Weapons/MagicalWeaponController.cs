@@ -55,6 +55,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public CharStats GearStats { get { return gearStats; } }
 
     [SerializeField]
+    private bool canFireContinuously = false;
+    public bool CanFireContinuously { get { return canFireContinuously; } set { canFireContinuously = value; } }
+
+    [SerializeField]
     private Vector3 handPositionOffset = Vector3.zero;
     public Vector3 HandPositionOffset { get { return handPositionOffset; } }
 
@@ -241,7 +245,7 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
         GameObject.Destroy(this.gameObject);
     }
 
-    public void OnEquip()
+    public void OnEquip(WeaponManager manager)
     {
         stManager = GetComponentInParent<StatsManager>();
         stManager.GearStats += gearStats;

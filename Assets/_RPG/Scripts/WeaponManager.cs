@@ -47,7 +47,7 @@ public class WeaponManager : MonoBehaviour, ISavable
 
             RegisterCallbacks(offHandWeapon);
 
-            value.OnEquip();
+            value.OnEquip(this);
         }
     }
 
@@ -84,11 +84,14 @@ public class WeaponManager : MonoBehaviour, ISavable
 
             RegisterCallbacks(mainHandWeapon);
 
-            value.OnEquip();
+            value.OnEquip(this);
         }
     }
 
     private AnimationDriverBase driver = null;
+
+    private bool mhPrimaryEnabled = false;
+    private bool ohPrimaryEnabled = false;
 
     private void Start()
     {
@@ -111,6 +114,9 @@ public class WeaponManager : MonoBehaviour, ISavable
                 driver.SetSpeed(mainHandWeapon, WeaponRestriction.MainHand);
                 driver.SetWeaponType(mainHandWeapon, WeaponRestriction.MainHand);
             }
+
+            if (mainHandWeapon.CanFireContinuously && mhPrimaryEnabled)
+                Primary(0);
         }
         if (offHandWeapon != null)
         {
@@ -119,6 +125,9 @@ public class WeaponManager : MonoBehaviour, ISavable
                 driver.SetWeaponType(offHandWeapon, WeaponRestriction.OffHand);
                 driver.SetSpeed(offHandWeapon, WeaponRestriction.OffHand);
             }
+
+            if (offHandWeapon.CanFireContinuously && ohPrimaryEnabled)
+                Primary(1);
         }
     }
 
@@ -128,7 +137,11 @@ public class WeaponManager : MonoBehaviour, ISavable
         if (driver != null)
         {
             if (weapSender == mainHandWeapon)
+            {
+                if (weapSender.WeaponHand == WeaponHand.TwoHanded)
+                    driver.OffHandPrimary();
                 driver.MainHandPrimary();
+            }
             else
                 driver.OffHandPrimary();
         }
@@ -140,7 +153,11 @@ public class WeaponManager : MonoBehaviour, ISavable
         if (driver != null)
         {
             if (weapSender == mainHandWeapon)
+            {
+                if (weapSender.WeaponHand == WeaponHand.TwoHanded)
+                    driver.OffHandEndPrimary();
                 driver.MainHandEndPrimary();
+            }
             else
                 driver.OffHandEndPrimary();
         }
@@ -152,7 +169,11 @@ public class WeaponManager : MonoBehaviour, ISavable
         if (driver != null)
         {
             if (weapSender == mainHandWeapon)
+            {
+                if (weapSender.WeaponHand == WeaponHand.TwoHanded)
+                    driver.OffHandSecondary();
                 driver.MainHandSecondary();
+            }
             else
                 driver.OffHandSecondary();
         }
@@ -164,7 +185,11 @@ public class WeaponManager : MonoBehaviour, ISavable
         if (driver != null)
         {
             if (weapSender == mainHandWeapon)
+            {
+                if (weapSender.WeaponHand == WeaponHand.TwoHanded)
+                    driver.OffHandEndSecondary();
                 driver.MainHandEndSecondary();
+            }
             else
                 driver.OffHandEndSecondary();
         }
@@ -209,9 +234,15 @@ public class WeaponManager : MonoBehaviour, ISavable
     public void Primary(int weapon)
     {
         if (offHandWeapon != null && weapon != 0)
+        {
             offHandWeapon.Primary();
+            ohPrimaryEnabled = true;
+        }
         else if (mainHandWeapon != null)
+        {
             mainHandWeapon.Primary();
+            mhPrimaryEnabled = true;
+        }
     }
     
     /// <summary>
@@ -221,9 +252,15 @@ public class WeaponManager : MonoBehaviour, ISavable
     public void EndPrimary(int weapon)
     {
         if (offHandWeapon != null && weapon != 0)
+        {
             offHandWeapon.EndPrimary();
+            ohPrimaryEnabled = false;
+        }
         else if (mainHandWeapon != null)
+        {
             mainHandWeapon.EndPrimary();
+            mhPrimaryEnabled = false;
+        }
     }
 
     /// <summary>

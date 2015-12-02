@@ -127,10 +127,12 @@ public class AnimationDriver : AnimationDriverBase
                     stateInfo = animator.GetCurrentAnimatorStateInfo(animator.GetLayerIndex(mainHandWeaponSpeedLayerName));
 
                     if (stateInfo.IsName(mainHandWeaponSpeedLayerName + ".Primary"))
+                    {
                         if (weapon is IPhysicalWeapon)
                             animator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
-                        else
-                            animator.speed = 1.0f;
+                        if (weapon is IRangedWeapon)
+                            animator.speed = 1.0f / (weapon as IRangedWeapon).AnimationTime;
+                    }
                     else
                         animator.speed = 1.0f;
                 }
@@ -141,10 +143,12 @@ public class AnimationDriver : AnimationDriverBase
                     stateInfo = animator.GetCurrentAnimatorStateInfo(animator.GetLayerIndex(offHandWeaponSpeedLayerName));
 
                     if (stateInfo.IsName(offHandWeaponSpeedLayerName + ".Primary"))
+                    {
                         if (weapon is IPhysicalWeapon)
                             animator.speed = 1.0f / (weapon as IPhysicalWeapon).AnimationTime;
-                        else
-                            animator.speed = 1.0f;
+                        if (weapon is IRangedWeapon)
+                            animator.speed = 1.0f / (weapon as IRangedWeapon).AnimationTime;
+                    }
                     else
                         animator.speed = 1.0f;
                 }
