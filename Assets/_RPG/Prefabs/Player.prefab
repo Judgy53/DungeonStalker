@@ -1893,7 +1893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .220399112, y: 1.38, z: .211021185}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children:
   - {fileID: 484540}
@@ -2650,7 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5749f0f33bc94cbc6e497fb5633b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMainHandStartWeaponPrefab: {fileID: 126292, guid: aed492386c51dd040a97391be6acf85e,
+  debugMainHandStartWeaponPrefab: {fileID: 122194, guid: 21499145c4cc1a54280d0b0ed1b5aa18,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
   mainHandWeaponPoint: {fileID: 417814}

@@ -18,12 +18,14 @@ public interface IWeapon
 
     CharStats GearStats { get; }
 
+    bool CanFireContinuously { get; set; }
+
     void Primary();
     void EndPrimary();
     void Secondary();
     void EndSecondary();
 
-    void OnEquip();
+    void OnEquip(WeaponManager manager);
     void OnUnequip();
 
     WeaponHand WeaponHand { get; }
@@ -53,13 +55,14 @@ public enum WeaponRestriction : int
 public enum WeaponType : int
 {
     Sword = 0,
-    Axe,
-    Dagger,
-    Shield,
-    Staff,
-    Wand,
-    Magic,
-    None
+    Axe = 1,
+    Dagger = 2,
+    Shield = 3,
+    Staff = 4,
+    Wand = 5,
+    Magic = 6,
+    Gun = 7,
+    None = 8
 }
 
 public class OnKillArgs : EventArgs

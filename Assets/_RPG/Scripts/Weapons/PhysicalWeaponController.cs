@@ -72,6 +72,10 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public CharStats GearStats { get { return gearStats; } }
 
     [SerializeField]
+    private bool canFireContinuously = false;
+    public bool CanFireContinuously { get { return canFireContinuously; } set { canFireContinuously = value; } }
+
+    [SerializeField]
     private Vector3 handPositionOffset = Vector3.zero;
     public Vector3 HandPositionOffset { get { return handPositionOffset; } }
 
@@ -99,10 +103,8 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         if (useState == PhysicalWeaponUseState.Default)
         {
             if (OnPrimary != null)
-            {
                 OnPrimary(this, new EventArgs());
-                OnEndPrimary(this, new EventArgs());
-            }
+            
             useState = PhysicalWeaponUseState.Attacking;
         }
     }
@@ -213,6 +215,9 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
                 useTimer = 0.0f;
                 useState = PhysicalWeaponUseState.Default;
                 hits.Clear();
+
+                if (OnEndPrimary != null)
+                    OnEndPrimary(this, new EventArgs());
             }
         }
     }
@@ -281,7 +286,7 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         GameObject.Destroy(this.gameObject);
     }
 
-    public void OnEquip()
+    public void OnEquip(WeaponManager manager)
     {
         stManager = GetComponentInParent<StatsManager>();
         stManager.GearStats += gearStats;
