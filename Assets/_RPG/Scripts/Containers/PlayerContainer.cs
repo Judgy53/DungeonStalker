@@ -137,24 +137,27 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
     {
         IItem[] items = Items;
 
-        int counter = 0;
+        int count = items.Length;
 
-        foreach(IItem item in items)
+        data.Add("count", count);
+
+        for (int i = 0; i < count; i++)
         {
-            string name = (item as Behaviour).name;
-            data.Add("Item_" + counter++, ResourcesPathHelper.GetItemPath(name));
+            IItem item = items[i];
+
+            data.Add("Item_" + i, ResourcesPathHelper.GetItemPath(item));
         }
     }
 
     public void Load(SaveData data)
     {
         ClearInventory();
-        
-        int counter = 0;
 
-        while(true)
+        int count = int.Parse(data.Get("count"));
+
+        for (int i = 0; i < count; i++)
         {
-            string path = data.Get("Item_" + counter++);
+            string path = data.Get("Item_" + i);
             if (path == null)
                 break;
 

@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        LoadStage(stage);
+        //LoadStage(stage);
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -164,10 +164,10 @@ public class GameManager : MonoBehaviour, ISavable
             GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
             mc.transform.SetParent(player.transform, false);
 
+            ResetTime(0);
+
             if (OnPlayerCreation != null)
                 OnPlayerCreation(this, new EventPlayerCreationArgs(player));
-
-            ResetTime(0);
 
             StartCoroutine("UpdateTimePlayed");
         }

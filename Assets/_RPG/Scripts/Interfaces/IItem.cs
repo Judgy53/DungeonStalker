@@ -8,10 +8,18 @@ public interface IItem
     string Name { get; }
     string Description { get; }
     uint Weigth { get; }
+    ItemType Type { get; }
     ItemQuality Quality { get; }
 
     bool CanDrop { get; set; }
     GameObject DropPrefab { get; }
+}
+
+public enum ItemType
+{
+    Misc = 0,
+    Weapons,
+    Food
 }
 
 public enum ItemQuality

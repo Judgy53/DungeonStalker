@@ -61,7 +61,6 @@ public class Save
     {
         GameManager.GameId = GameId;
         GameManager.Stage = Stage;
-        GameManager.ResetTime(TimePlayed);
         GameManager.PlayerName = PlayerName;
 
         LoadDatas(saveDatas);
@@ -70,6 +69,8 @@ public class Save
 
         if(delayedDatas.Count > 0)
             GameManager.OnPlayerCreation += DelayedLoad; // PlayerCreation should be the last action in level creation
+        else
+            GameManager.ResetTime(TimePlayed); // Reset Time is done after delayed load, must do it if no delayed data is found
     }
 
     private void DelayedLoad(object sender, EventArgs e)
@@ -79,6 +80,8 @@ public class Save
         LoadDatas(delayedDatas);
 
         Debug.Log("Delayed Save Data Loaded");
+
+        GameManager.ResetTime(TimePlayed);
     }
 
     private void LoadDatas(Dictionary<string, SaveData> datas)

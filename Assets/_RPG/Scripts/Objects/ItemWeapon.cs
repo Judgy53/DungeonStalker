@@ -28,6 +28,10 @@ public class ItemWeapon : MonoBehaviour, IItem, IUsable
     public GameObject DropPrefab { get { return dropPrefab; } }
 
     [SerializeField]
+    private ItemType type = ItemType.Weapons;
+    public ItemType Type { get { return type; } }
+
+    [SerializeField]
     private ItemQuality quality = ItemQuality.Common;
     public ItemQuality Quality { get { return quality; } }
 

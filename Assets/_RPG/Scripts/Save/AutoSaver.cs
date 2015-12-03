@@ -62,6 +62,9 @@ public class AutoSaver : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
+            if (enemy == null)
+                continue;
+
             if(Vector3.Distance(enemy.transform.position, player.transform.position) < safeDistance)
             {
                 safe = false;

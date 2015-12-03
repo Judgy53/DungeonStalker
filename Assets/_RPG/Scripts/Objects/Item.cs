@@ -28,6 +28,10 @@ public class Item : MonoBehaviour, IItem
     public GameObject DropPrefab { get { return dropPrefab; } }
 
     [SerializeField]
+    private ItemType type = ItemType.Misc;
+    public ItemType Type { get { return type; } }
+
+    [SerializeField]
     private ItemQuality quality = ItemQuality.Common;
     public ItemQuality Quality { get { return quality; } }
 }

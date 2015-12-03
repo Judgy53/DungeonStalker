@@ -13,20 +13,27 @@ public class ResourcesPathHelper
         return path;
     }
 
-    public static string GetItemPath(string name)
+    public static string GetItemPath(IItem item)
     {
         string path = "Items/";
-        //path += type.ToString() + "/"; // Item type ?
-        path += CleanName(name);
+        path += item.Type.ToString() + "/";
+        path += CleanName((item as Behaviour).name);
 
         return path;
     }
 
-    public static string GetPickablePath(string name)
+    public static string GetPickablePath(Pickable pick)
     {
-        string path = "Pickables/";
-        //path += type.ToString() + "/"; // pickable type ?
-        path += CleanName(name);
+        string path = null;
+
+        IItem item = pick.PickedItemPrefab.GetComponent<IItem>();
+
+        if (item != null)
+        {
+            path = "Pickables/";
+            path += item.Type.ToString() + "/";
+            path += CleanName(pick.name);
+        }
 
         return path;
     }
@@ -36,6 +43,15 @@ public class ResourcesPathHelper
         string path = "Enemies/";
         //path += type.ToString() + "/"; // enemies type ?
         path += CleanName(name);
+
+        return path;
+    }
+
+    public static string GetContainerPath(Container cont)
+    {
+        string path = "Containers/";
+        //path += cont.Type.ToString() + "/"; // container type ?
+        path += CleanName(cont.name);
 
         return path;
     }

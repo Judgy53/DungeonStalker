@@ -94,10 +94,10 @@ public class WeaponManager : MonoBehaviour, ISavable
     {
         driver = GetComponent<AnimationDriverBase>();
 
-        if (debugMainHandStartWeaponPrefab != null)
+        if (debugMainHandStartWeaponPrefab != null && MainHandWeapon == null)
             MainHandWeapon = (GameObject.Instantiate(debugMainHandStartWeaponPrefab, Vector3.zero, debugMainHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
 
-        if (debugOffHandStartWeaponPrefab != null)
+        if (debugOffHandStartWeaponPrefab != null && OffHandWeapon == null)
             OffHandWeapon = (GameObject.Instantiate(debugOffHandStartWeaponPrefab, Vector3.zero, debugOffHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
     }
 
