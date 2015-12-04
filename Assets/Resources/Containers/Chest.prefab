@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2381700}
   - 114: {fileID: 11492522}
   - 54: {fileID: 5497492}
+  - 114: {fileID: 11438372}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -90,6 +91,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11438372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2a9da43ef3b844aacc57365cb46189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticActualizeTimer: .0500000007
 --- !u!114 &11492522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,6 +529,10 @@ Prefab:
       propertyPath: items.Array.data[99]
       value: 
       objectReference: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    - target: {fileID: 0}
+      propertyPath: staticActualizeTimer
+      value: .0500000007
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124020}

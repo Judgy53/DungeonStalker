@@ -896,6 +896,7 @@ GameObject:
   - 114: {fileID: 11411912}
   - 114: {fileID: 11440714}
   - 54: {fileID: 5442344}
+  - 114: {fileID: 11422640}
   m_Layer: 0
   m_Name: Roach
   m_TagString: Enemy
@@ -2282,6 +2283,19 @@ MonoBehaviour:
     value: 1
   - script: {fileID: 118000}
     value: 1
+  - script: {fileID: 11422640}
+    value: 1
+--- !u!114 &11422640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177294}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707eada3828b5ee46952f3ef1233c94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11424716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2584,7 +2598,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[8].script
+      value: 
+      objectReference: {fileID: 11422640}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177294}
