@@ -122,7 +122,13 @@ MonoBehaviour:
   endRaycast: {fileID: 456956}
   weaponHand: 1
   weaponRestriction: 0
-  weaponType: 7
+  weaponType: 8
+  gearStats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
+  canFireContinuously: 0
   handPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 0, y: 0, z: 0}
   inventoryItemPrefab: {fileID: 0}
@@ -132,7 +138,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: weaponType
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186888}

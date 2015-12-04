@@ -115,6 +115,7 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
             {
                 effect = new MovementEffect("Inventory overload", 0.2f, EffectStyle.Debuff, EffectType.Physical);
                 effect.IsInfinite = true;
+                effect.ShouldBeSaved = false;
                 effectManager.AddEffect(effect);
             }
         }

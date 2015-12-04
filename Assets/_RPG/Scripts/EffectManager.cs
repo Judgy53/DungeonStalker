@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Reflection;
 
-public class EffectManager : MonoBehaviour
+public class EffectManager : MonoBehaviour, ISavable
 {
     private List<IEffect> effects = new List<IEffect>();
 
@@ -90,5 +91,52 @@ public class EffectManager : MonoBehaviour
             effects.Remove(e);
 
         toRemove.Clear();
-    }   
+    }
+
+    public void Save(SaveData data)
+    {
+        List<IEffect> toSave = effects.FindAll(x => x.ShouldBeSaved);
+
+        int count = toSave.Count;
+
+        data.Add("count", count);
+
+        for(int i = 0; i < count; i++)
+        {
+            IEffect effect = toSave[i];
+
+            data.Prefix = "effect_" + i + "_";
+
+            data.Add("classType", effect.GetType().ToString());
+
+            effect.Save(data);
+        }
+    }
+
+    public void Load(SaveData data)
+    {
+        ClearEffects();
+
+        int count = int.Parse(data.Get("count"));
+
+        for (int i = 0; i < count; i++)
+        {
+            data.Prefix = "effect_" + i + "_";
+
+            string typeName = data.Get("classType");
+
+            IEffect effect = null;
+
+            Type type = Type.GetType(typeName);
+
+            if (type.BaseType == typeof(ScriptableObject)) // need to call CreateInstance from ScriptableObject
+                effect = (IEffect)ScriptableObject.CreateInstance(type);
+            else
+                effect = (IEffect)Activator.CreateInstance(type);
+
+            effect.Load(data);
+
+            AddEffect(effect);
+        }
+    }
 }

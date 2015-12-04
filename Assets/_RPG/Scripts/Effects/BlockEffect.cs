@@ -35,8 +35,17 @@ public class BlockEffect : IDamageReceivedEffect
     private EffectType type = EffectType.Physical;
     public EffectType Type { get { return type; } }
 
+    [SerializeField]
+    private bool shouldBeSaved = false;
+    public bool ShouldBeSaved { get { return shouldBeSaved; } set { shouldBeSaved = value; } }
+
     public float minBlockValue = 1.0f;
     public float maxBlockValue = 2.0f;
+
+    public BlockEffect()
+    {
+        //Needed for reflection
+    }
 
     public BlockEffect(float min, float max)
     {
@@ -77,5 +86,15 @@ public class BlockEffect : IDamageReceivedEffect
         effect.Manager = null;
 
         return effect;
+    }
+
+    public void Save(SaveData data)
+    {
+        throw new System.Exception("Should not be saved");
+    }
+
+    public void Load(SaveData data)
+    {
+        throw new System.Exception("Should not be loaded");
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 [System.Serializable]
@@ -35,7 +36,16 @@ public class MovementEffect : IMovementEffect
     private EffectType type = EffectType.Magic;
     public EffectType Type { get { return type; } }
 
+    [SerializeField]
+    private bool shouldBeSaved = true;
+    public bool ShouldBeSaved { get { return shouldBeSaved; } set { shouldBeSaved = value; } }
+
     public float movementMultiplier = 1.5f;
+
+    public MovementEffect()
+    {
+        //Needed for reflection
+    }
 
     public MovementEffect(string name, float multiplier, EffectStyle style, EffectType type)
     {
@@ -69,5 +79,27 @@ public class MovementEffect : IMovementEffect
         effect.Manager = null;
 
         return effect;
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("effectName", effectName);
+        data.Add("remainingTime", remainingTime);
+
+        data.Add("movementMultiplier", movementMultiplier);
+
+        data.Add("style", style.ToString());
+        data.Add("type", type.ToString());
+    }
+
+    public void Load(SaveData data)
+    {
+        effectName = data.Get("effectName");
+        remainingTime = int.Parse(data.Get("remainingTime"));
+
+        movementMultiplier = int.Parse(data.Get("movementMultiplier"));
+
+        style = (EffectStyle)Enum.Parse(typeof(EffectStyle), data.Get("style"));
+        type = (EffectType)Enum.Parse(typeof(EffectType), data.Get("type"));
     }
 }

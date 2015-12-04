@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public interface IEffect
+public interface IEffect : ISavable
 {
     EffectManager Manager { get; set; }
 
@@ -23,6 +23,8 @@ public interface IEffect
 
     EffectStyle Style { get; }
     EffectType Type { get; }
+
+    bool ShouldBeSaved { get; set; }
 }
 
 public enum EffectStyle

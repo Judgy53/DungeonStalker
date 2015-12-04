@@ -35,6 +35,10 @@ public class DotEffect : ScriptableObject, IMovementEffect, IDamageReceivedEffec
     private EffectType type = EffectType.Poison;
     public EffectType Type { get { return type; } }
 
+    [SerializeField]
+    private bool shouldBeSaved = true;
+    public bool ShouldBeSaved { get { return shouldBeSaved; } set { shouldBeSaved = value; } }
+
     public float tickTime = 1.0f;
     public float minTickDamages = 1.0f;
     public float maxTickDamages = 1.0f;
@@ -47,6 +51,11 @@ public class DotEffect : ScriptableObject, IMovementEffect, IDamageReceivedEffec
     private HealthManager healthManager = null;
 
     private OverlayManager overlayManager = null;
+
+    public DotEffect()
+    {
+        //Needed for reflection
+    }
 
     public DotEffect(string name, float time, float tickTime, float minTickDamages, float maxTickDamages, EffectType type = EffectType.Poison)
     {
@@ -115,5 +124,31 @@ public class DotEffect : ScriptableObject, IMovementEffect, IDamageReceivedEffec
         (effect as DotEffect).healthManager = null;
 
         return effect;
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("name", name);
+
+        data.Add("remainingTime", remainingTime);
+        data.Add("tickTime", tickTime);
+
+        data.Add("minTickDamages", minTickDamages);
+        data.Add("maxTickDamages", maxTickDamages);
+
+        data.Add("type", type.ToString());
+    }
+
+    public void Load(SaveData data)
+    {
+        name = data.Get("name");
+
+        remainingTime = float.Parse(data.Get("remainingTime"));
+        tickTime = float.Parse(data.Get("tickTime"));
+
+        minTickDamages = float.Parse(data.Get("minTickDamages"));
+        maxTickDamages = float.Parse(data.Get("maxTickDamages"));
+
+        type = (EffectType)System.Enum.Parse(typeof(EffectType), data.Get("type"));
     }
 }
