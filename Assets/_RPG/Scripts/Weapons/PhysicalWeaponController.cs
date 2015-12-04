@@ -191,6 +191,11 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
                         IDamageable damageable = null;
                         if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
                             TryRegisterHit(hit, damageable);
+                        else if (!hit.collider.isTrigger)
+                        {
+                            CheckReturnState();
+                            return;
+                        }
                     }
                 }
             }
@@ -207,18 +212,28 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
                     IDamageable damageable = null;
                     if ((damageable = hit.collider.GetComponentInParent<IDamageable>()) != null)
                         TryRegisterHit(hit, damageable);
+                    else if (!hit.collider.isTrigger)
+                    {
+                        CheckReturnState();
+                        return;
+                    }
                 }
             }
 
-            if (useTimer >= attackSpeed)
-            {
-                useTimer = 0.0f;
-                useState = PhysicalWeaponUseState.Default;
-                hits.Clear();
+            CheckReturnState();
+        }
+    }
 
-                if (OnEndPrimary != null)
-                    OnEndPrimary(this, new EventArgs());
-            }
+    private void CheckReturnState()
+    {
+        if (useTimer >= attackSpeed)
+        {
+            useTimer = 0.0f;
+            useState = PhysicalWeaponUseState.Default;
+            hits.Clear();
+
+            if (OnEndPrimary != null)
+                OnEndPrimary(this, new EventArgs());
         }
     }
 
