@@ -43,6 +43,9 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void AddDamage(float damage)
     {
+        if (currentHealth <= 0.0f)
+            return;
+
         damage = ApplyDamagesModifiers(damage);
 
         CurrentHealth = CurrentHealth - damage;

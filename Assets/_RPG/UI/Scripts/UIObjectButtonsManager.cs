@@ -123,11 +123,16 @@ public class UIObjectButtonsManager : MonoBehaviour
         {
             ChangeButtonState(useButton, false);
 
+            WeaponManager wm = null;
             switch ((args.newItem as ItemWeapon).Restriction)
             {
                 case WeaponRestriction.Both:
                     ChangeButtonState(mainHandEquipButton, true);
-                    ChangeButtonState(offHandEquipButton, true);
+                    wm = GetComponentInParent<UIItemPauseMenu>().target.GetComponentInParent<WeaponManager>();
+                    if (wm != null && (wm.MainHandWeapon == null || wm.MainHandWeapon.WeaponHand == WeaponHand.OneHanded))
+                        ChangeButtonState(offHandEquipButton, true);
+                    else
+                        ChangeButtonState(offHandEquipButton, false);
                     break;
                 case WeaponRestriction.MainHand:
                     ChangeButtonState(mainHandEquipButton, true);
@@ -135,7 +140,11 @@ public class UIObjectButtonsManager : MonoBehaviour
                     break;
                 case WeaponRestriction.OffHand:
                     ChangeButtonState(mainHandEquipButton, false);
-                    ChangeButtonState(offHandEquipButton, true);
+                    wm = GetComponentInParent<UIItemPauseMenu>().target.GetComponentInParent<WeaponManager>();
+                    if (wm != null && (wm.MainHandWeapon == null || wm.MainHandWeapon.WeaponHand == WeaponHand.OneHanded))
+                        ChangeButtonState(offHandEquipButton, true);
+                    else
+                        ChangeButtonState(offHandEquipButton, false);
                     break;
             }
         }

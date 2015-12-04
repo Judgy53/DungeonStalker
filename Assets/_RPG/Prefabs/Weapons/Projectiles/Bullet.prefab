@@ -10,9 +10,10 @@ GameObject:
   - 4: {fileID: 470126}
   - 114: {fileID: 11413786}
   - 54: {fileID: 5499450}
+  - 114: {fileID: 11413308}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +153,22 @@ TrailRenderer:
       rgba: 16777215
   m_MinVertexDistance: .100000001
   m_Autodestruct: 0
+--- !u!114 &11413308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91edc61afd9ab24409058d6c7bcab174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294963199
+  skinWidth: .0799999982
+  restorePosition: 1
 --- !u!114 &11413786
 MonoBehaviour:
   m_ObjectHideFlags: 1

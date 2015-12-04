@@ -93,11 +93,14 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
             {
                 CurrentWeight -= item.Weigth;
 
+                GameObject pickableGo = null;
                 if (item.DropPrefab != null)
                 {
-                    GameObject pickableGo = GameObject.Instantiate(item.DropPrefab, transform.position + transform.forward * dropDistance, Quaternion.identity) as GameObject;
+                    pickableGo = GameObject.Instantiate(item.DropPrefab, transform.position + transform.forward * dropDistance, Quaternion.identity) as GameObject;
                     pickableGo.GetComponent<Rigidbody>().AddForce(transform.forward * 2.0f);
                 }
+
+                item.OnDrop(pickableGo != null ? pickableGo.GetComponent<IPickable>() : null);
 
                 GameObject.Destroy(itemBehaviour.gameObject);
             }

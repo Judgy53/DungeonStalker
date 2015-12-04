@@ -2649,7 +2649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5749f0f33bc94cbc6e497fb5633b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMainHandStartWeaponPrefab: {fileID: 122194, guid: 21499145c4cc1a54280d0b0ed1b5aa18,
+  debugMainHandStartWeaponPrefab: {fileID: 161724, guid: e0b073a18fe594f4aa0f86df82f181d2,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
   mainHandWeaponPoint: {fileID: 417814}

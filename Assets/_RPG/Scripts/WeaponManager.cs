@@ -88,6 +88,24 @@ public class WeaponManager : MonoBehaviour, ISavable
         }
     }
 
+    private IRangedWeaponAmmo currentAmmos = null;
+    public IRangedWeaponAmmo CurrentAmmos { get { return currentAmmos; } 
+        set 
+        {
+            if (currentAmmos != null)
+            {
+                IContainer container = GetComponentInChildren<IContainer>();
+                if (container != null)
+                    currentAmmos.TransferToContainer(container);
+
+                currentAmmos.OnOutOfAmmo -= OnOutOfAmmoCallback;
+            }
+
+            currentAmmos = value;
+            currentAmmos.OnOutOfAmmo += OnOutOfAmmoCallback;
+        } 
+    }
+
     private AnimationDriverBase driver = null;
 
     private bool mhPrimaryEnabled = false;
@@ -201,10 +219,15 @@ public class WeaponManager : MonoBehaviour, ISavable
             OnKill(sender, args);
     }
 
-    public void OnHitCallback(object sender, OnHitArgs args)
+    private void OnHitCallback(object sender, OnHitArgs args)
     {
         if (OnHit != null)
             OnHit(sender, args);
+    }
+
+    private void OnOutOfAmmoCallback(object sender, EventArgs args)
+    {
+        currentAmmos = null;
     }
 
     private void RegisterCallbacks(IWeapon weapon)

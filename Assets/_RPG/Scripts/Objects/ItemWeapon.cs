@@ -76,6 +76,14 @@ public class ItemWeapon : MonoBehaviour, IItem, IUsable
         manager.gameObject.GetComponentInChildren<PlayerContainer>().RemoveItem(this);
         Destroy(this.gameObject);
     }
+
+    public void OnPickup(IPickable pickable)
+    {
+    }
+
+    public void OnDrop(IPickable pickable)
+    {
+    }
 }
 
 public class EquipWeaponArgs : UsableArgs

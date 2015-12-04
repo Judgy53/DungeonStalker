@@ -8,5 +8,9 @@ public interface IRangedWeaponProjectile
     float MinDamages { get; set; }
     float MaxDamages { get; set; }
 
+    Vector3 Direction { get; set; }
+
     void Initialize(IRangedWeapon weapon);
+
+    void Hit(IDamageable damageable);
 }

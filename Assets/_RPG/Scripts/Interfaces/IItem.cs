@@ -12,6 +12,9 @@ public interface IItem
 
     bool CanDrop { get; set; }
     GameObject DropPrefab { get; }
+
+    void OnPickup(IPickable pickable);
+    void OnDrop(IPickable pickable);
 }
 
 public enum ItemQuality

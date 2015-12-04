@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6ca27bb825ec440ab1adb5b944d363, type: 3}
+  m_Name: StandardAmmo
+  m_EditorClassIdentifier: 
+  ammoLeft: 100
+  projectilePrefab: {fileID: 190840, guid: 20c120b3a24e74844aa8ae46c7268d65, type: 2}
+  addedDamages:
+    min: 2
+    max: 5
+  itemGo: {fileID: 139954, guid: 73b61e32c3e0afe4bafb3ee084c5df50, type: 2}

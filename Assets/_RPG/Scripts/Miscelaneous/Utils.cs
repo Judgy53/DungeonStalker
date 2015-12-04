@@ -105,16 +105,37 @@ public static class LayerMaskExtension
 [System.Serializable]
 public class MinMax<T>
 {
-    public T min = default(T);
-    public T max = default(T);
-
-    public MinMax()
-    {
-    }
+    public T min;
+    public T max;
 
     public MinMax(T min, T max)
     {
         this.min = min;
         this.max = max;
+    }
+}
+
+[System.Serializable]
+public class IntMinMax : MinMax<int> 
+{
+    public IntMinMax(int min, int max) : base(min, max) { }
+}
+
+[System.Serializable]
+public class FloatMinMax : MinMax<float>
+{
+    public FloatMinMax(float min, float max) : base(min, max) { }
+}
+
+public static class CameraExtensions
+{
+    public static Vector3 GetWorldHitpoint(this Camera camera, Vector3 screenPos, out RaycastHit hit, float maxDistance = 10000.0f)
+    {
+        Ray ray = camera.ScreenPointToRay(screenPos);
+
+        if (Physics.Raycast(ray, out hit, maxDistance))
+            return hit.point;
+
+        return camera.transform.position + ray.direction * maxDistance;
     }
 }

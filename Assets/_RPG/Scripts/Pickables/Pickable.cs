@@ -11,6 +11,9 @@ public class Pickable : MonoBehaviour, IPickable
     private GameObject pickedItemPrefab = null;
     public GameObject PickedItemPrefab { get { return pickedItemPrefab; } }
 
+    private object userData = null;
+    public object UserData { get { return userData; } set { userData = value; } }
+
     private IItem prefabItem = null;
 
     private void Start()
@@ -39,9 +42,10 @@ public class Pickable : MonoBehaviour, IPickable
             IContainer container = user.gameObject.GetComponentInChildren<IContainer>();
             GameObject itemgo = GameObject.Instantiate(pickedItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
             IItem item = itemgo.GetComponent<IItem>();
-            if (item != null && container != null)
+            if (item != null)
             {
-                if (container.AddItem(item))
+                item.OnPickup(this);
+                if (container != null && container.AddItem(item))
                     GameObject.Destroy(this.gameObject);
             }
         }

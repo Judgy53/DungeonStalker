@@ -30,4 +30,12 @@ public class Item : MonoBehaviour, IItem
     [SerializeField]
     private ItemQuality quality = ItemQuality.Common;
     public ItemQuality Quality { get { return quality; } }
+
+    public void OnPickup(IPickable pickable)
+    {
+    }
+
+    public void OnDrop(IPickable pickable)
+    {
+    }
 }

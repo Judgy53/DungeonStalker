@@ -11,17 +11,22 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     public Transform FireMuzzle { get { return fireMuzzle; } }
 
     [SerializeField]
+    private FloatMinMax baseDamages = new FloatMinMax(1.0f, 2.0f);
+    public FloatMinMax BaseDamages { get { return baseDamages; } set { baseDamages = value; } }
+
+    /*[SerializeField]
     private GameObject projectilePrefab = null;
 
     private IRangedWeaponProjectile projectile = null;
-    public IRangedWeaponProjectile Projectile { get { return projectile; } }
-
-    private IRangedWeaponAmmo ammo = null;
-    public IRangedWeaponAmmo Ammo { get { return ammo; } set { ammo = value; } }
+    public IRangedWeaponProjectile Projectile { get { return projectile; } }*/
 
     [SerializeField]
     private bool useAmmo = true;
     public bool UseAmmo { get { return useAmmo; } set { useAmmo = value; } }
+
+    [SerializeField]
+    private int consumedAmmoPerShot = 1;
+    public int ConsumedAmmoPerShot { get { return consumedAmmoPerShot; } set { consumedAmmoPerShot = Mathf.Clamp(value, 0, int.MaxValue); } }
 
     [SerializeField]
     private float animationTime = 1.5f;
@@ -30,6 +35,14 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     [SerializeField]
     private float projectileLifetime = 10.0f;
     public float ProjectileLifetime { get { return projectileLifetime; } set { projectileLifetime = value; } }
+
+    [SerializeField]
+    private float projectileDeviation = 0.0f;
+    public float ProjectileDeviation { get { return projectileDeviation; } set { projectileDeviation = value; } }
+
+    [SerializeField]
+    private int projectilePerShot = 1;
+    public int ProjectilePerShot { get { return projectilePerShot; } set { projectilePerShot = Mathf.Clamp(value, 0, int.MaxValue); } }
 
     public event EventHandler<OnHitArgs> OnHit;
     public event EventHandler<OnKillArgs> OnKill;
@@ -67,27 +80,44 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     private GameObject inventoryItemPrefab = null;
     public GameObject InventoryItemPrefab { get { return inventoryItemPrefab; } }
 
-    private RangedWeaponState state = RangedWeaponState.Idle;
-    public RangedWeaponState State { get { return state; } }
-
     [SerializeField]
     private bool canFireContinuously = false;
     public bool CanFireContinuously { get { return canFireContinuously; } set { canFireContinuously = value; } }
 
+    private RangedWeaponState state = RangedWeaponState.Idle;
+    public RangedWeaponState State { get { return state; } }
+
+    public IRangedWeaponAmmo Ammo 
+    { 
+        get 
+        {
+            if (weaponManager != null)
+                return weaponManager.CurrentAmmos;
+            return null;
+        }
+
+        set
+        {
+            if (weaponManager != null)
+                weaponManager.CurrentAmmos = value;
+        }
+    }
+
     private StatsManager stManager = null;
+    private WeaponManager weaponManager = null;
 
     private void Start()
     {
-        if (fireMuzzle == null || projectilePrefab == null)
+        /*if (fireMuzzle == null || projectilePrefab == null)
         {
             Debug.LogError(this.name + " isn't configured properly.");
             enabled = false;
             return;
         }
 
-        projectile = projectilePrefab.GetComponent<IRangedWeaponProjectile>();
+        projectile = projectilePrefab.GetComponent<IRangedWeaponProjectile>();*/
     }
-    
+
     public virtual void Primary()
     {
         if (!canUse)
@@ -95,21 +125,18 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
 
         if (state == RangedWeaponState.Idle)
         {
-            /*if (ammo != null && ammo.AmmoLeft != 0)
-            {*/
+            if (Ammo != null && Ammo.AmmoLeft != 0)
+            {
                 if (OnPrimary != null)
-                {
                     OnPrimary(this, new EventArgs());
-                    /*if (OnEndPrimary != null)
-                        OnEndPrimary(this, new EventArgs());*/
-                }
 
                 state = RangedWeaponState.Firing;
                 StartCoroutine(FiringBehavior());
 
-                /*if (!ammo.UseAmmo())
-                    ammo = null;*/
-            //}
+                Ammo.UseAmmo(consumedAmmoPerShot);
+            }
+            else
+                Debug.Log("Out of ammo !");
         }
     }
 
@@ -129,16 +156,22 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     {
         stManager = GetComponentInParent<StatsManager>();
         stManager.GearStats += gearStats;
+        weaponManager = manager;
     }
 
     public void OnUnequip()
     {
         stManager.GearStats -= gearStats;
-        stManager = null;
+        stManager = null; 
+        weaponManager = null;
     }
 
     public void TransferToContainer(IContainer container)
     {
+        if (inventoryItemPrefab != null)
+            container.AddItem((GameObject.Instantiate(inventoryItemPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
+
+        GameObject.Destroy(this.gameObject);
     }
 
     public void ToSaveData(SaveData data, string name)
@@ -148,12 +181,40 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
 
     private IEnumerator FiringBehavior()
     {
-        IRangedWeaponProjectile p = GameObject.Instantiate(projectile as Behaviour, fireMuzzle.position, fireMuzzle.rotation) as IRangedWeaponProjectile;
-        p.Initialize(this);
-        GameObject.Destroy(p as Behaviour, projectileLifetime);
+        float halfDeviation = projectileDeviation / 2.0f;
+        RaycastHit hit;
+        Vector3 worldhp = Camera.main.GetWorldHitpoint(new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 0.0f), out hit);
+        bool isAngleValid = Vector3.Angle(fireMuzzle.forward, worldhp - fireMuzzle.position) < 45.0f;
+        IDamageable dmg = null;
+        if (Vector3.Angle(fireMuzzle.forward, worldhp - fireMuzzle.position) > 45.0f)
+            dmg = hit.collider.gameObject.GetComponentInParent<IDamageable>();
 
-        //ammo.ApplyEffect(p);
 
+        for (int i = 0; i < projectilePerShot; i++)
+        {
+            if (!isAngleValid && dmg == null)
+                break;
+
+            //IRangedWeaponProjectile p = GameObject.Instantiate(Ammo.Projectile as Behaviour, fireMuzzle.position, fireMuzzle.rotation) as IRangedWeaponProjectile;
+            IRangedWeaponProjectile p = Ammo.InstantiateProjectile(fireMuzzle);
+            p.Initialize(this);
+
+            //Ammo.ApplyEffect(p);
+
+            GameObject.Destroy((p as Behaviour).gameObject, projectileLifetime);
+
+            if (!isAngleValid)
+            {
+                p.Hit(dmg);
+                continue;
+            }
+
+            p.Direction = (worldhp - (p as Behaviour).transform.position).normalized;
+            p.Direction = Quaternion.Euler(UnityEngine.Random.Range(-halfDeviation, halfDeviation),
+                    UnityEngine.Random.Range(-halfDeviation, halfDeviation),
+                    UnityEngine.Random.Range(-halfDeviation, halfDeviation)) * p.Direction;
+        }
+        
         yield return new WaitForSeconds(animationTime);
 
         if (OnEndPrimary != null)

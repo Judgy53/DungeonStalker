@@ -16,31 +16,43 @@ public class StandardProjectile : MonoBehaviour, IRangedWeaponProjectile
 
     public float speed = 5.0f;
 
+    private Vector3 direction = Vector3.forward;
+    public Vector3 Direction { get { return direction; } set { direction = value.normalized; } }
+
     public void Initialize(IRangedWeapon weapon)
     {
         this.weapon = weapon;
+        direction = transform.forward;
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(transform.forward * speed * Time.fixedDeltaTime, Space.World);
+        transform.Translate(direction * speed * Time.fixedDeltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.transform.root.tag == transform.tag)
+            return;
+
         if (weapon != null)
         {
             IDamageable damageable = null;
             if ((damageable = other.GetComponentInParent<IDamageable>()) != null)
-            {
-                float damages = UnityEngine.Random.Range(minDamages, maxDamages);
-                if (damageable.WillKill(damages))
-                    weapon.ProjectileOnKillCallback(this, damageable, damages);
-                else
-                    weapon.ProjectileHitCallback(this, damageable, damages);
-            }
+                Hit(damageable);
         }
 
-        GameObject.Destroy(this.gameObject);
+        GameObject.Destroy(this.transform.root.gameObject);
+    }
+
+    public void Hit(IDamageable damageable)
+    {
+        float damages = UnityEngine.Random.Range(minDamages, maxDamages);
+        if (damageable is HealthManager && (damageable as HealthManager).MaxHealth > damageable.Damage && damageable.WillKill(damages))
+            weapon.ProjectileOnKillCallback(this, damageable, damages);
+        else
+            weapon.ProjectileHitCallback(this, damageable, damages);
+
+        damageable.AddDamage(damages);
     }
 }

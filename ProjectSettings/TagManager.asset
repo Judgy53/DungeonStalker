@@ -9,6 +9,7 @@ TagManager:
   - Maze
   - OverlayManager
   - UI
+  - Projectile
   layers:
   - Default
   - TransparentFX

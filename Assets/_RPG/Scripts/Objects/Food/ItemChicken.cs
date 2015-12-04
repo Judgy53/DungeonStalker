@@ -53,4 +53,12 @@ public class ItemChicken : MonoBehaviour, IItem, IUsable
         manager.gameObject.GetComponentInChildren<PlayerContainer>().RemoveItem(this);
         Destroy(this.gameObject);
     }
+
+    public void OnPickup(IPickable pickable)
+    {
+    }
+
+    public void OnDrop(IPickable pickable)
+    {
+    }
 }
