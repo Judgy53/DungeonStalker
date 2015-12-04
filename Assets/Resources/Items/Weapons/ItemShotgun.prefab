@@ -45,6 +45,7 @@ MonoBehaviour:
   weigth: 45
   canDrop: 1
   dropPrefab: {fileID: 175996, guid: 58e433e41d98a1548b732a4424b55cb1, type: 2}
+  type: 1
   quality: 2
   actionName: Equip
   useDescription: Equip this badass weapon
