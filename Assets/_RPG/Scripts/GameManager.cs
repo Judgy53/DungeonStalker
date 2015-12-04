@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour, ISavable
     private Grid gridInstance = null;
     public static Grid GridInstance { get { return instance.gridInstance; } }
 
+    private GameObject player = null;
+
     private void Awake()
     {
         if (instance != null)
@@ -161,7 +163,14 @@ public class GameManager : MonoBehaviour, ISavable
             if (mc == null)
                 throw new InvalidOperationException("Fatal : No main camera found !");
 
-            GameObject player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
+            if (player == null)
+                player = GameObject.Instantiate(playerPrefab, playerStart.transform.position, playerStart.transform.rotation) as GameObject;
+            else
+            {
+                player.transform.position = playerStart.transform.position;
+                player.transform.rotation = playerStart.transform.rotation;
+            }
+
             mc.transform.SetParent(player.transform, false);
 
             ResetTime(0);
@@ -210,17 +219,30 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies);
 
-        Debug.Log("LoadStage");
+        if (instance.player != null)
+        {
+            DontDestroyOnLoad(instance.player);
+            Destroy(Camera.main.gameObject);
+        }
 
         Application.LoadLevel("GameScene");
     }
 
     public static void GoToMainMenu()
     {
-        if(instance != null && instance.autoSaver != null)
-            instance.autoSaver.Disable();
+        if(instance != null) 
+        {
+            if(instance.autoSaver != null)
+                instance.autoSaver.Disable();
 
-        instance.StopCoroutine("UpdateTimePlayed");
+            if(instance.player != null)
+            {
+                Destroy(instance.player);
+                instance.player = null;
+            }
+
+            instance.StopCoroutine("UpdateTimePlayed");
+       }
 
         Application.LoadLevel("MainMenu");
     }
