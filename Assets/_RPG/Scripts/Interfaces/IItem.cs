@@ -8,6 +8,7 @@ public interface IItem
     string Name { get; }
     string Description { get; }
     uint Weigth { get; }
+    ItemType Type { get; }
     ItemQuality Quality { get; }
 
     bool CanDrop { get; set; }
@@ -15,6 +16,13 @@ public interface IItem
 
     void OnPickup(IPickable pickable);
     void OnDrop(IPickable pickable);
+}
+
+public enum ItemType
+{
+    Misc = 0,
+    Weapons,
+    Food
 }
 
 public enum ItemQuality

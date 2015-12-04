@@ -20,6 +20,8 @@ public class Pickable : MonoBehaviour, IPickable
     {
         if (pickedItemPrefab != null)
             prefabItem = pickedItemPrefab.GetComponent<IItem>();
+
+        PickablesManager.RegisterPickable(this);
     }
 
     public string GetActionName()

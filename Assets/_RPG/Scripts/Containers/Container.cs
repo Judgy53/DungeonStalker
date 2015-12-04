@@ -43,11 +43,13 @@ public class Container : MonoBehaviour, IContainer, IUsable
         if (transferUI == null)
             Debug.LogWarning("No TransferUI found !");
 
-        if (items != null)
+        if (items != null && Items.Length == 0) // don't fill with debug items if data already loaded
         {
             foreach (var i in items)
                 AddItem((GameObject.Instantiate(i, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
         }
+
+        ContainersManager.RegisterContainer(this);
     }
 
     public string GetActionName()
@@ -92,5 +94,57 @@ public class Container : MonoBehaviour, IContainer, IUsable
         }
 
         return false;
+    }
+
+    private void ClearInventory()
+    {
+        IItem[] items = Items;
+
+        foreach (IItem item in items)
+        {
+            RemoveItem(item);
+            Destroy((item as Behaviour).gameObject);
+        }
+    }
+
+    public void Save(SaveData data)
+    {
+        IItem[] items = Items;
+
+        int count = items.Length;
+
+        data.Add("count", count);
+
+        for (int i = 0; i < count; i++)
+        {
+            IItem item = items[i];
+
+            data.Add("Item_" + i, ResourcesPathHelper.GetItemPath(item));
+        }
+    }
+
+    public void Load(SaveData data)
+    {
+        ClearInventory();
+
+        int count = int.Parse(data.Get("count"));
+
+        for (int i = 0; i < count; i++)
+        {
+            string path = data.Get("Item_" + i);
+            if (path == null)
+                break;
+
+            GameObject prefab = Resources.Load(path) as GameObject;
+            if (prefab == null)
+            {
+                Debug.LogWarning("Loading Container : Failed to load \"" + path + "\"");
+                continue;
+            }
+
+            GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+            AddItem(instance.GetComponent<IItem>());
+        }
     }
 }
