@@ -9,7 +9,3 @@ EditorBuildSettings:
     path: Assets/_RPG/Scenes/MainMenu.unity
   - enabled: 1
     path: Assets/_RPG/Scenes/GameScene.unity
-  - enabled: 1
-    path: Assets/_RPG/Scenes/MazeTest.unity
-  - enabled: 1
-    path: Assets/_RPG/Scenes/AStarTest.unity
