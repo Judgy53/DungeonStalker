@@ -22,7 +22,8 @@ public enum ItemType
 {
     Misc = 0,
     Weapons,
-    Food
+    Food,
+    Ammo
 }
 
 public enum ItemQuality

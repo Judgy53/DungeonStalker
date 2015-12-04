@@ -33,6 +33,10 @@ public class ItemAmmo : MonoBehaviour, IItem, IUsable
     public uint Weigth { get { return weight; } }
 
     [SerializeField]
+    private ItemType type = ItemType.Ammo;
+    public ItemType Type { get { return type; } }
+
+    [SerializeField]
     private ItemQuality quality = ItemQuality.Common;
     public ItemQuality Quality { get { return quality; } }
 
