@@ -89,7 +89,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
             OnDeath(this, new EventArgs());
 
         //Temporary
-        Destroy(gameObject, 10.0f);
+        //Destroy(gameObject, 10.0f);
     }
 
     public void OnStatsChange(object sender, EventArgs args)
