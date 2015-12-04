@@ -2251,6 +2251,8 @@ MonoBehaviour:
     dropChance: .100000001
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
     dropChance: .200000003
+  - itemGo: {fileID: 139954, guid: 73b61e32c3e0afe4bafb3ee084c5df50, type: 2}
+    dropChance: .0799999982
   maxItemNumber: 3
 --- !u!114 &11416120
 MonoBehaviour:

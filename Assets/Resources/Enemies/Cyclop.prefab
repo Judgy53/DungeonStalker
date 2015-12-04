@@ -1877,6 +1877,12 @@ MonoBehaviour:
     dropChance: .800000012
   - itemGo: {fileID: 190822, guid: bc23669ce57d06945ac6813cd2e57c56, type: 2}
     dropChance: .00999999978
+  - itemGo: {fileID: 139954, guid: 73b61e32c3e0afe4bafb3ee084c5df50, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 139954, guid: 73b61e32c3e0afe4bafb3ee084c5df50, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 138542, guid: 8cc856be57672df44a569527f6320f25, type: 2}
+    dropChance: .0299999993
   maxItemNumber: 3
 --- !u!114 &11437492
 MonoBehaviour:

@@ -57,6 +57,19 @@ public class WeaponManager : MonoBehaviour, ISavable
         get { return mainHandWeapon; }
         set
         {
+            if (value.WeaponHand == WeaponHand.TwoHanded && offHandWeapon != null)
+            {
+                offHandWeapon.OnUnequip();
+                UnregisterCallbacks(offHandWeapon);
+                IContainer container = GetComponentInChildren<IContainer>();
+                if (container != null)
+                    offHandWeapon.TransferToContainer(container);
+
+                if (OnOffHandWeaponChange != null)
+                    OnOffHandWeaponChange(this, new EventWeaponChange(offHandWeapon));
+                offHandWeapon = null;
+            }
+
             if (mainHandWeapon != null)
             {
                 mainHandWeapon.OnUnequip();

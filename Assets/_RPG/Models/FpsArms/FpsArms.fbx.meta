@@ -174,7 +174,7 @@ ModelImporter:
       name: FPSArmsIdleOneHanded
       takeName: Armature.001|IdleOneHanded
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -336,7 +336,7 @@ ModelImporter:
       name: FPSArmsHitOneHanded
       takeName: Armature.001|HitOneHanded
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -984,7 +984,7 @@ ModelImporter:
       name: FPSArmsOneHandedMagicCharge
       takeName: Armature.001|OneHandedMagicCharge
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 967
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
