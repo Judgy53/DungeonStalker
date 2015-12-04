@@ -37,6 +37,7 @@ GameObject:
   - 114: {fileID: 11428234}
   - 136: {fileID: 13680664}
   - 114: {fileID: 11477554}
+  - 114: {fileID: 11435292}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2228,6 +2229,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &11435292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4295f566286354e8e2bfa10adf06a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11437088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2508,6 +2520,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: onDeath.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: uniqueId
       value: 082444d9-a077-40d7-b8e7-465b2f8c7788
       objectReference: {fileID: 0}
@@ -2535,6 +2551,18 @@ Prefab:
       propertyPath: DelayedLoad
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[0].script
+      value: 
+      objectReference: {fileID: 11448762}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[1].script
+      value: 
+      objectReference: {fileID: 11411604}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}
