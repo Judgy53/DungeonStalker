@@ -11,7 +11,7 @@ GameObject:
   - 54: {fileID: 5407540}
   - 114: {fileID: 11495892}
   m_Layer: 0
-  m_Name: StandardAmmo
+  m_Name: PickableStandardAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
