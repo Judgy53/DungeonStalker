@@ -176,7 +176,9 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
 
     public void ToSaveData(SaveData data, string name)
     {
-        //throw new System.NotImplementedException();
+        string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
+
+        data.Add(name, path);
     }
 
     private IEnumerator FiringBehavior()

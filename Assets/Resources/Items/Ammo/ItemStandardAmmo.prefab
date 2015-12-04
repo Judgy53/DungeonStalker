@@ -45,6 +45,7 @@ MonoBehaviour:
   useDescription: Use ammunitions.
   description: To use with ranged weapons.
   weight: 20
+  type: 3
   quality: 1
   canDrop: 1
   dropPrefab: {fileID: 102076, guid: cf9d869cfe1a9474686ce7c806d8663a, type: 2}
