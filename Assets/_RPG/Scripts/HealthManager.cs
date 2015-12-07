@@ -26,12 +26,15 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
     private EffectManager effectManager = null;
 
     private StatsManager statsManager = null;
+    private ArmorManager armorManager = null;
 
     private void Awake()
     {
         effectManager = GetComponent<EffectManager>();
 
         statsManager = GetComponentInParent<StatsManager>();
+        armorManager = GetComponentInParent<ArmorManager>();
+
         if (statsManager != null)
         { 
             statsManager.Stats.OnStatsChange += OnStatsChange;
@@ -87,9 +90,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
     {
         if (OnDeath != null)
             OnDeath(this, new EventArgs());
-
-        //Temporary
-        //Destroy(gameObject, 10.0f);
     }
 
     public void OnStatsChange(object sender, EventArgs args)
@@ -101,9 +101,16 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 	
     private float ComputeDamageReceived(StatsManager self, StatsManager other, float damages)
     {
-        damages *= Mathf.Pow(0.90f, (float)self.Stats.Defense);
+        damages *= Mathf.Pow(0.95f, (float)self.Stats.Defense);
 
         float damageLevelModifier = ((float)other.CurrentLevel - (float)self.CurrentLevel) * 2.0f;
+        float armorDamageReduction = 0.0f;
+        if (armorManager != null)
+        {
+            int totalArmor = armorManager.TotalArmor;
+            armorDamageReduction = ((float)totalArmor / (85.0f * (float)other.CurrentLevel + (float)totalArmor + 400.0f)) * 100.0f;
+            armorDamageReduction = Mathf.Min(armorDamageReduction, 75.0f);
+        }
 
         try
         {
@@ -113,6 +120,10 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
         {
             damages = 0.0f;
         }
+
+        Debug.Log("Armor damage reduction : " + armorDamageReduction + "%");
+
+        damages -= (armorDamageReduction / 100.0f) * damages;
 
         damages = Mathf.Max(damages, 0.1f);
         

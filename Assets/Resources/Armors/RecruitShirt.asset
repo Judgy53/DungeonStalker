@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: RecruitShirt
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Recruit shirt
+  slot:
+    InternalValue: 3
+  type: 3
+  armor: 10
+  stats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
+  state: 1
+  itemPrefab: {fileID: 124088, guid: 30583666a0035d14bb0d2bcd19c3b852, type: 2}
