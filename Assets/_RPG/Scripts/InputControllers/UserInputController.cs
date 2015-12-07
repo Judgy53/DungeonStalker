@@ -41,27 +41,27 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
 
     private void Update()
     {
-        horizontalInputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        sprintInput = Input.GetAxis("Sprint");
-        jumpInput = Input.GetButtonDown("Jump");
+        horizontalInputs = new Vector2(GameInput.GetAxis("Horizontal"), GameInput.GetAxis("Vertical"));
+        sprintInput = GameInput.GetAxis("Sprint");
+        jumpInput = GameInput.GetButtonDown("Jump");
 
         if (weaponManager != null)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (GameInput.GetButtonDown("Fire1"))
                 weaponManager.Primary(1);
-            else if (Input.GetButtonUp("Fire1"))
+            else if (GameInput.GetButtonUp("Fire1"))
                 weaponManager.EndPrimary(1);
 
-            if (Input.GetButtonDown("Fire2"))
+            if (GameInput.GetButtonDown("Fire2"))
                 weaponManager.Secondary();
-            else if (Input.GetButtonUp("Fire2"))
+            else if (GameInput.GetButtonUp("Fire2"))
                 weaponManager.EndSecondary();
         }
 
         
-        if (Input.GetKeyDown(KeyCode.F5))
+        if (GameInput.GetKeyDown(KeyCode.F5))
             SaveManager.Instance.Save();
-        if (Input.GetKeyDown(KeyCode.F9))
+        if (GameInput.GetKeyDown(KeyCode.F9))
             SaveManager.Instance.LoadLast();
         
     }

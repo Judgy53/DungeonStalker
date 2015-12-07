@@ -52,7 +52,7 @@ public class UIItemPauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("ToggleInventory"))
+        if (GameInput.GetButtonDown("ToggleInventory", true))
         {
             if (state == UIMenuState.Hidden && UIStateManager.State == UIState.Free)
                 State = UIMenuState.Shown;
