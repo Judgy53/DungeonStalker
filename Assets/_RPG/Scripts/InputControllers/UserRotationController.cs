@@ -18,7 +18,7 @@ public class UserRotationController : MonoBehaviour, IRotationControls, ISavable
 
     private void Update()
     {
-        mouseInputs = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouseInputs = new Vector2(GameInput.GetAxis("Mouse X"), GameInput.GetAxis("Mouse Y"));
         if (target != null)
             rotation = target.localEulerAngles;
     }
