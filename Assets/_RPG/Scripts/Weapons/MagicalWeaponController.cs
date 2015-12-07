@@ -263,4 +263,17 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
         data.Add(name, path);
 	}
+
+    public string GetInventoryDescription()
+    {
+        string output = "";
+        output += "\nDamages : " + minDamages + " - " + maxDamages;
+        output += "\nMana Cost : " + manaCost + " - " + MaxManaCost;
+        if (weaponHand == WeaponHand.OneHanded)
+            output += "\nOneHanded";
+        else
+            output += "\nTwoHanded";
+
+        return output;
+    }
 }

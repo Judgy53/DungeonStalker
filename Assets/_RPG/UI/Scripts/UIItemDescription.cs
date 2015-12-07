@@ -60,26 +60,25 @@ public class UIItemDescription : MonoBehaviour
             if (args.newItem is ItemWeapon)
             {
                 ItemWeapon weapItem = args.newItem as ItemWeapon;
-                IPhysicalWeapon weapPhys = weapItem.weaponPrefab.GetComponent<IPhysicalWeapon>();
-                if (weapPhys != null)
-                {
-                    objectDescription.text += "\nDamages : " + weapPhys.MinDamages + " - " + weapPhys.MaxDamages;
-                    objectDescription.text += "\nAttack speed : " + weapPhys.AttackSpeed;
-                    if (weapPhys.WeaponHand == WeaponHand.OneHanded)
-                        objectDescription.text += "\nOneHanded";
-                    else
-                        objectDescription.text += "\nTwoHanded";
-                }
 
-                IMagicalWeapon weapMag = weapItem.weaponPrefab.GetComponent<IMagicalWeapon>();
-                if (weapMag != null)
+                IWeapon weapon = weapItem.weaponPrefab.GetComponent<IWeapon>();
+                if (weapon != null)
                 {
-                    objectDescription.text += "\nDamages : " + weapMag.MinDamages + " - " + weapMag.MaxDamages;
-                    objectDescription.text += "\nMana Cost : " + weapMag.ManaCost  + " - " + weapMag.MaxManaCost;
-                    if (weapMag.WeaponHand == WeaponHand.OneHanded)
-                        objectDescription.text += "\nOneHanded";
-                    else
-                        objectDescription.text += "\nTwoHanded";
+                    if (weapon.GearStats != 0)
+                    {
+                        objectDescription.text += "<color=green>\nStats : ";
+                        if (weapon.GearStats.Strength != 0)
+                            objectDescription.text += weapon.GearStats.Strength + " STR | ";
+                        if (weapon.GearStats.Stamina != 0)
+                            objectDescription.text += weapon.GearStats.Stamina + " STA | ";
+                        if (weapon.GearStats.Defense != 0)
+                            objectDescription.text += weapon.GearStats.Defense + " DEF | ";
+                        if (weapon.GearStats.Energy != 0)
+                            objectDescription.text += weapon.GearStats.Energy + " ENG";
+                        objectDescription.text += "</color>";
+                    }
+
+                    objectDescription.text += weapon.GetInventoryDescription();
                 }
             }
         }

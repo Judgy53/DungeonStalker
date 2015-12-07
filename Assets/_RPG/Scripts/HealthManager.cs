@@ -94,7 +94,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void OnStatsChange(object sender, EventArgs args)
     {
-        maxHealth = statsManager.Stats.Stamina * 10u;
+        maxHealth = statsManager.TotalStats.Stamina * 10u;
 
         currentHealth = Mathf.Min(currentHealth, maxHealth);
     }

@@ -37,6 +37,8 @@ public interface IWeapon
     void TransferToContainer(IContainer container);
 
     void ToSaveData(SaveData data, string name);
+
+    string GetInventoryDescription();
 }
 
 public enum WeaponHand : int

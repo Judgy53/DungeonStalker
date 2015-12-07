@@ -21,7 +21,7 @@ public class ItemAmmo : MonoBehaviour, IItem, IUsable
         get 
         {
             string outd = "";
-            outd += description + "\nAdds " + Ammo.AddedDamages.min + " to " + Ammo.AddedDamages.max + " damages to the projectile(s).";
+            outd += description + "\nAdds " + Ammo.AddedDamages.min + " to " + Ammo.AddedDamages.max + " damages to a ranged weapon.";
             outd += "\nAmmo left : " + (ammoLeft >= 0 ? ammoLeft : Ammo.AmmoLeft);
 
             return outd;
