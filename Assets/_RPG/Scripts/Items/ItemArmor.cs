@@ -100,4 +100,14 @@ public class ItemArmor : MonoBehaviour, IItem, IUsable
         user.gameObject.GetComponentInChildren<IContainer>().RemoveItem(this);
         Destroy(this.gameObject);
     }
+
+    public void Save(SaveData data)
+    {
+        // nothing to save
+    }
+
+    public void Load(SaveData data)
+    {
+        // nothing to load
+    }
 }

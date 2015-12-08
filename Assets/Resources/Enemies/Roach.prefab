@@ -2367,6 +2367,7 @@ MonoBehaviour:
   maxWeight: 100
   actionName: Search ...
   actionDescription: 
+  shouldRegister: 0
   items: []
 --- !u!114 &11462610
 MonoBehaviour:
@@ -2609,6 +2610,10 @@ Prefab:
       objectReference: {fileID: 11422640}
     - target: {fileID: 0}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shouldRegister
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

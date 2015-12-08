@@ -48,7 +48,7 @@ MonoBehaviour:
   type: 3
   quality: 1
   canDrop: 1
-  dropPrefab: {fileID: 102076, guid: cf9d869cfe1a9474686ce7c806d8663a, type: 2}
+  dropPrefab: {fileID: 190134, guid: e002184edbe01a14ab1fe87dbd56c046, type: 2}
   ammoPrefab: {fileID: 11400000, guid: 6d2d985bc5dbbbc499e9d4abcf2ecae0, type: 2}
   ammoLeft: -1
 --- !u!1001 &100100000
@@ -61,7 +61,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dropPrefab
       value: 
-      objectReference: {fileID: 102076, guid: cf9d869cfe1a9474686ce7c806d8663a, type: 2}
+      objectReference: {fileID: 190134, guid: e002184edbe01a14ab1fe87dbd56c046, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139954}
