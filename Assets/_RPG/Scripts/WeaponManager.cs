@@ -341,15 +341,31 @@ public class WeaponManager : MonoBehaviour, ISavable
 
     public void Save(SaveData data)
     {
-        if (MainHandWeapon != null)
-            MainHandWeapon.ToSaveData(data, "MainHandWeapon");
+        string origPrefix = data.Prefix;
 
-        if(OffHandWeapon != null)
-            OffHandWeapon.ToSaveData(data, "OffHandWeapon");
+        if (MainHandWeapon != null)
+        {
+            data.Prefix = origPrefix + "mainWeapon_";
+            MainHandWeapon.Save(data);
+        }
+
+        if (OffHandWeapon != null)
+        {
+            data.Prefix = origPrefix + "offWeapon_";
+            OffHandWeapon.Save(data);
+        }
+
+        if (CurrentAmmos != null)
+        {
+            data.Prefix = origPrefix + "ammos_";
+            CurrentAmmos.Save(data);
+        }
     }
 
     public void Load(SaveData data)
     {
+        string origPrefix = data.Prefix; // save original Prefix before editing it
+
         if (MainHandWeapon != null)
         {
             Destroy((MainHandWeapon as Behaviour).gameObject);
@@ -363,8 +379,8 @@ public class WeaponManager : MonoBehaviour, ISavable
         }
 
 
-        string mainHandPath = data.Get("MainHandWeapon");
-        string offHandPath = data.Get("OffHandWeapon");
+        string mainHandPath = data.Get("mainWeapon_path");
+        string offHandPath = data.Get("offWeapon_path");
 
         if(mainHandPath != null)
         {
@@ -390,6 +406,25 @@ public class WeaponManager : MonoBehaviour, ISavable
 
                 OffHandWeapon = instance.GetComponent<IWeapon>();
             }
+        }
+
+        string ammoType = data.Get("ammos_type");
+
+        if (ammoType != null)
+        {
+            Type type = Type.GetType(ammoType);
+
+            IRangedWeaponAmmo ammo;
+
+            if (type.BaseType == typeof(ScriptableObject)) // need to call CreateInstance from ScriptableObject
+                ammo = (IRangedWeaponAmmo)ScriptableObject.CreateInstance(type);
+            else
+                ammo = (IRangedWeaponAmmo)Activator.CreateInstance(type);
+
+            data.Prefix = origPrefix  + "ammos_";
+            ammo.Load(data);
+
+            CurrentAmmos = ammo;
         }
     }
 }

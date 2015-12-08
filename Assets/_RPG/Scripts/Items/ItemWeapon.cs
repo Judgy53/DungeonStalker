@@ -88,6 +88,16 @@ public class ItemWeapon : MonoBehaviour, IItem, IUsable
     public void OnDrop(IPickable pickable)
     {
     }
+
+    public void Save(SaveData data)
+    {
+        // nothing to save
+    }
+
+    public void Load(SaveData data)
+    {
+        // nothing to load
+    }
 }
 
 public class EquipWeaponArgs : UsableArgs

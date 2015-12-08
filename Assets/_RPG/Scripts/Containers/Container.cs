@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Container : MonoBehaviour, IContainer, IUsable
+public class Container : MonoBehaviour, IContainer, IUsable, ISavable
 {
     [SerializeField]
     private float maxWeight = 100.0f;
@@ -31,6 +31,8 @@ public class Container : MonoBehaviour, IContainer, IUsable
 
     private UITransfer transferUI = null;
 
+    [SerializeField]
+    private bool shouldRegister = true;
 
     /// <summary>
     /// DEBUG !
@@ -49,7 +51,8 @@ public class Container : MonoBehaviour, IContainer, IUsable
                 AddItem((GameObject.Instantiate(i, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
         }
 
-        ContainersManager.RegisterContainer(this);
+        if(shouldRegister)
+            ContainersManager.RegisterContainer(this);
     }
 
     public string GetActionName()
@@ -109,31 +112,43 @@ public class Container : MonoBehaviour, IContainer, IUsable
 
     public void Save(SaveData data)
     {
+        string origPrefix = data.Prefix;
+
         IItem[] items = Items;
 
         int count = items.Length;
 
-        data.Add("count", count);
+        data.Add("itemCount", count);
 
         for (int i = 0; i < count; i++)
         {
             IItem item = items[i];
 
-            data.Add("Item_" + i, ResourcesPathHelper.GetItemPath(item));
+            data.Prefix = origPrefix + "Item_" + i + "_";
+
+            data.Add("path", ResourcesPathHelper.GetItemPath(item));
+
+            item.Save(data);
         }
+
+        data.Prefix = origPrefix;
+
+        data.Add("enabled", this.enabled);
     }
 
     public void Load(SaveData data)
     {
+        string origPrefix = data.Prefix;
+
         ClearInventory();
 
-        int count = int.Parse(data.Get("count"));
+        int count = int.Parse(data.Get("itemCount"));
 
         for (int i = 0; i < count; i++)
         {
             string path = data.Get("Item_" + i);
             if (path == null)
-                break;
+                continue;
 
             GameObject prefab = Resources.Load(path) as GameObject;
             if (prefab == null)
@@ -143,8 +158,17 @@ public class Container : MonoBehaviour, IContainer, IUsable
             }
 
             GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+            IItem item = instance.GetComponent<IItem>();
+            
+            data.Prefix = origPrefix + "Item_" + i + "_";
 
-            AddItem(instance.GetComponent<IItem>());
+            item.Load(data);
+
+            AddItem(item);
         }
+
+        data.Prefix = origPrefix;
+
+        this.enabled = bool.Parse(data.Get("enabled"));
     }
 }

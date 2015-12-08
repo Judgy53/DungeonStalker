@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public interface IWeapon
+public interface IWeapon : ISavable
 {
     event EventHandler<OnHitArgs> OnHit;
 
@@ -35,8 +35,6 @@ public interface IWeapon
     GameObject InventoryItemPrefab { get; }
 
     void TransferToContainer(IContainer container);
-
-    void ToSaveData(SaveData data, string name);
 
     string GetInventoryDescription();
 }

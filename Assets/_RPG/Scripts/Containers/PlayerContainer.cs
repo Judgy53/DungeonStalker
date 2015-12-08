@@ -149,8 +149,14 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
         {
             IItem item = items[i];
 
-            data.Add("Item_" + i, ResourcesPathHelper.GetItemPath(item));
+            data.Prefix = "Item_" + i + "_";
+
+            data.Add("path" + i, ResourcesPathHelper.GetItemPath(item));
+
+            item.Save(data);
         }
+
+        data.Prefix = "";
     }
 
     public void Load(SaveData data)
@@ -161,7 +167,9 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
 
         for (int i = 0; i < count; i++)
         {
-            string path = data.Get("Item_" + i);
+            data.Prefix = "Item_" + i + "_";
+
+            string path = data.Get("path" + i);
             if (path == null)
                 break;
 
@@ -173,9 +181,14 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
             }
 
             GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+            IItem item = instance.GetComponent<IItem>();
 
-            AddItem(instance.GetComponent<IItem>());
+            item.Load(data);
+
+            AddItem(item);
         }
+
+        data.Prefix = "";
     }
 }
 

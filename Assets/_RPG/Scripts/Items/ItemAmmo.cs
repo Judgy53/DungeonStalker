@@ -98,4 +98,14 @@ public class ItemAmmo : MonoBehaviour, IItem, IUsable
         if (pickable != null)
             pickable.UserData = (object)ammoLeft;
     }
+
+    public void Save(SaveData data)
+    {
+        data.Add("ammoCount", ammoLeft);
+    }
+
+    public void Load(SaveData data)
+    {
+        ammoLeft = int.Parse(data.Get("ammoCount"));
+    }
 }

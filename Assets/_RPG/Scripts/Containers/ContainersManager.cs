@@ -19,6 +19,11 @@ public class ContainersManager : MonoBehaviour, ISavable
         instance = this;
     }
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public static void RegisterContainer(Container container)
     {
         if (instance == null)
@@ -83,7 +88,7 @@ public class ContainersManager : MonoBehaviour, ISavable
             GameObject prefab = Resources.Load(path) as GameObject;
             if (prefab == null)
             {
-                Debug.LogWarning("Loading Pickables : Failed to load \"" + path + "\"");
+                Debug.LogWarning("Loading Containers : Failed to load \"" + path + "\"");
                 continue;
             }
 

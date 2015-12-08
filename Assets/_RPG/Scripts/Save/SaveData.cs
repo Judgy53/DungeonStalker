@@ -31,7 +31,12 @@ public class SaveData
     public void Add(string key, string value)
     {
         if (datas.ContainsKey(Prefix + key))
+        {
             Debug.LogWarning("Saving : \"" + Prefix + key + "\" has already been saved, overriding current value.");
+            datas.Remove(Prefix + key);
+        }
+
+        //Debug.Log(Prefix + key + " : " + value);
         
         datas.Add(Prefix + key, value);
     }
