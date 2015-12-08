@@ -385,20 +385,22 @@ public class Maze : MonoBehaviour
             if (savables.Length == 0)
                 continue;
 
-            data.Prefix = "enemy_" + count++ + "_";
+            string prefix = "enemy_" + count++ + "_";
+            data.Prefix = prefix;
 
             data.Add("prefab_path", ResourcesPathHelper.GetEnemyPath(enemy.name));
 
             foreach(ISavable sav in savables)
             {
                 sav.Save(data);
+                data.Prefix = prefix; //reset prefix after each save
             }
         }
 
         data.Prefix = "";
     }
 
-    public IEnumerator GenerateEnemiesFromSave(SaveData data)
+    public IEnumerator Load(SaveData data)
     {
         foreach (var e in enemies)
         {
@@ -411,10 +413,11 @@ public class Maze : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            if(count % 10 == 0)
+            if(i % 10 == 0)
                 yield return null;
 
-            data.Prefix = "enemy_" + i + "_";
+            string prefix = "enemy_" + i + "_";
+            data.Prefix = prefix;
 
             string prefab_path = data.Get("prefab_path");
 
@@ -439,6 +442,7 @@ public class Maze : MonoBehaviour
             foreach (ISavable sav in savables)
             {
                 sav.Load(data);
+                data.Prefix = prefix; // reset prefix after each load
             }
 
             enemies.Add(enemy);

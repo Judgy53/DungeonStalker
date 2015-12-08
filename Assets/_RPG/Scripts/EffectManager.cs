@@ -95,6 +95,8 @@ public class EffectManager : MonoBehaviour, ISavable
 
     public void Save(SaveData data)
     {
+        string origPrefix = data.Prefix; // save original Prefix before editing it
+
         List<IEffect> toSave = effects.FindAll(x => x.ShouldBeSaved);
 
         int count = toSave.Count;
@@ -105,7 +107,7 @@ public class EffectManager : MonoBehaviour, ISavable
         {
             IEffect effect = toSave[i];
 
-            data.Prefix = "effect_" + i + "_";
+            data.Prefix = origPrefix + "effect_" + i + "_";
 
             data.Add("classType", effect.GetType().ToString());
 
@@ -115,13 +117,15 @@ public class EffectManager : MonoBehaviour, ISavable
 
     public void Load(SaveData data)
     {
+        string origPrefix = data.Prefix; // save original Prefix before editing it
+
         ClearEffects();
 
         int count = int.Parse(data.Get("count"));
 
         for (int i = 0; i < count; i++)
         {
-            data.Prefix = "effect_" + i + "_";
+            data.Prefix = origPrefix + "effect_" + i + "_";
 
             string typeName = data.Get("classType");
 

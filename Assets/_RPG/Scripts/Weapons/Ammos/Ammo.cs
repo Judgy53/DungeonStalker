@@ -82,4 +82,25 @@ public class Ammo : ScriptableObject, IRangedWeaponAmmo
 
         ScriptableObject.Destroy(this);
     }
+
+    public void Save(SaveData data)
+    {
+        data.Add("type", GetType().ToString());
+        data.Add("left", ammoLeft);
+
+        //save projectile prefab
+        if(projectilePrefab != null)
+            data.Add("projectilePath", ResourcesPathHelper.GetProjectilePath(projectilePrefab.name));
+    }
+
+    public void Load(SaveData data)
+    {
+        ammoLeft = int.Parse(data.Get("left"));
+
+        //Load projectile prefab
+        string projectilePrefabPath = data.Get("projectilePath");
+
+        if (projectilePrefabPath != null)
+            projectilePrefab = Resources.Load<GameObject>(projectilePrefabPath);
+    }
 }

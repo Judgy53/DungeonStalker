@@ -277,7 +277,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         //mazeInstance.GenerateEnemiesFromSave(toLoad);
 
-        Task mazePopulation = new Task(mazeInstance.GenerateEnemiesFromSave(toLoad), false);
+        Task mazePopulation = new Task(mazeInstance.Load(toLoad), false);
         mazePopulation.Finished += MazePopulationFinished;
         mazePopulation.Start();
     }

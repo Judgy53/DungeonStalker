@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 
 public class PickablesManager : MonoBehaviour, ISavable
 {
@@ -16,6 +18,11 @@ public class PickablesManager : MonoBehaviour, ISavable
         }
 
         instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 
     public static void RegisterPickable(Pickable pickable)
@@ -56,6 +63,18 @@ public class PickablesManager : MonoBehaviour, ISavable
 
             if (path != null)
                 data.Add("path", path);
+
+            //UserData can be anything, serializing it to string to save it
+            if(pick.UserData != null && pick.UserData.GetType().IsSerializable)
+            {
+                StringWriter writer = new StringWriter();
+                XmlSerializer xmlSerializer = new XmlSerializer(pick.UserData.GetType()); // We Use XML Serializer to be able to write in a StringWriter
+
+                xmlSerializer.Serialize(writer, pick.UserData);
+
+                data.Add("userDataType", pick.UserData.GetType().ToString());
+                data.Add("userData", writer.ToString());
+            }
         }
     }
 
@@ -87,6 +106,22 @@ public class PickablesManager : MonoBehaviour, ISavable
             GameObject instance = Instantiate(prefab, pos, rot) as GameObject;
 
             instance.transform.parent = transform;
+
+            string userDataType = data.Get("userDataType");
+
+            //UserData can be anything, deserializing it from string to load it
+            if(userDataType != null)
+            {
+                Pickable pick = instance.GetComponent<Pickable>();
+
+                System.Type dataType = System.Type.GetType(userDataType);
+                string userDataSerialized = data.Get("userData");
+
+                StringReader textReader = new StringReader(userDataSerialized);
+                XmlSerializer xmlSerializer = new XmlSerializer(dataType);
+
+                pick.UserData = xmlSerializer.Deserialize(textReader);
+            }
         }
     }
 

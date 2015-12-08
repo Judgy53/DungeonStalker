@@ -56,6 +56,15 @@ public class ResourcesPathHelper
         return path;
     }
 
+    public static string GetProjectilePath(string name)
+    {
+        string path = "Projectiles/";
+        //path += cont.Type.ToString() + "/"; // container type ?
+        path += CleanName(name);
+
+        return path;
+    }
+
     private static string CleanName(string name)
     {
         string weaponName = name;

@@ -312,11 +312,16 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
         stManager.GearStats -= gearStats;
         stManager = null;
     }
-	
-	public void ToSaveData(SaveData data, string name)
+
+    public void Save(SaveData data)
     {
         string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
 
-        data.Add(name, path);
-	}
+        data.Add("path", path);
+    }
+
+    public void Load(SaveData data)
+    {
+        //nothing to load
+    }
 }

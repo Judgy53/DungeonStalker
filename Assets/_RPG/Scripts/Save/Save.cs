@@ -37,6 +37,7 @@ public class Save
             if (save.Length > 0)
             {
                 string dataId = savGaO.uniqueId;
+
                 SaveData data = CreateSaveData(save);
 
                 if (savGaO.WaitPlayerCreationToLoad)
@@ -52,7 +53,10 @@ public class Save
         SaveData data = new SaveData();
 
         foreach (ISavable compData in save)
+        {
             compData.Save(data);
+            data.Prefix = ""; // reinit prefix after each component save
+        }
 
         return data;
     }
@@ -107,7 +111,10 @@ public class Save
             data.Prefix = ""; //no prefix when loading starts
 
             foreach (ISavable sav in savables)
+            {
                 sav.Load(data);
+                data.Prefix = ""; // reinit prefix after each component load
+            }
         }
     }
 

@@ -174,13 +174,6 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
         GameObject.Destroy(this.gameObject);
     }
 
-    public void ToSaveData(SaveData data, string name)
-    {
-        string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
-
-        data.Add(name, path);
-    }
-
     private IEnumerator FiringBehavior()
     {
         float halfDeviation = projectileDeviation / 2.0f;
@@ -235,5 +228,17 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     {
         if (OnKill != null)
             OnKill(this, new OnKillArgs(target));
+    }
+
+    public void Save(SaveData data)
+    {
+        string path = ResourcesPathHelper.GetWeaponPath(this.WeaponType, this.name);
+
+        data.Add("path", path);
+    }
+
+    public void Load(SaveData data)
+    {
+        //nothing to load
     }
 }

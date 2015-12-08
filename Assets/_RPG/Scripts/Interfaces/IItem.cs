@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public interface IItem
+public interface IItem : ISavable
 {
     Sprite Image { get; }
     string Name { get; }

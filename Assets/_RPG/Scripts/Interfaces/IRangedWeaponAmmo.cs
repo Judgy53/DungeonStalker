@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IRangedWeaponAmmo
+public interface IRangedWeaponAmmo : ISavable
 {
     event System.EventHandler OnOutOfAmmo;
 
