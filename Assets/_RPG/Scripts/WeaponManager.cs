@@ -121,7 +121,8 @@ public class WeaponManager : MonoBehaviour, ISavable
             }
 
             currentAmmos = value;
-            currentAmmos.OnOutOfAmmo += OnOutOfAmmoCallback;
+            if (currentAmmos != null)
+                currentAmmos.OnOutOfAmmo += OnOutOfAmmoCallback;
         } 
     }
 
