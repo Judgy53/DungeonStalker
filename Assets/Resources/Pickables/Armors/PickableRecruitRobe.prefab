@@ -11,7 +11,7 @@ GameObject:
   - 54: {fileID: 5405592}
   - 114: {fileID: 11466398}
   m_Layer: 0
-  m_Name: PickableRecruitShirt
+  m_Name: PickableRecruitRobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae83bfacbf95c94c95228f1107f09b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Pickup - RecruitShirt
+  actionName: Pickup - RecruitRobe
   description: It looks more like a mop ...
   pickedItemPrefab: {fileID: 124088, guid: 30583666a0035d14bb0d2bcd19c3b852, type: 2}
 --- !u!1001 &100100000
@@ -138,7 +138,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: actionName
+      value: Pickup - RecruitRobe
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101038}

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 433338}
   - 114: {fileID: 11473544}
   m_Layer: 0
-  m_Name: ItemRecruitShirt
+  m_Name: ItemRecruitRobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13e5120ef0def64eb654932aa75c707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: e7a119c2c17794f4ba58fb8aaf549b6b, type: 3}
-  itemName: RecruitShirt
+  image: {fileID: 21300000, guid: 0e897080e68c12d4da5a8bf77086fc01, type: 3}
+  itemName: RecruitRobe
   actionName: Equip
   useDescription: Equip Armor.
   description: It's already shreded ...
@@ -60,8 +60,12 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: image
       value: 
-      objectReference: {fileID: 21300000, guid: e7a119c2c17794f4ba58fb8aaf549b6b,
+      objectReference: {fileID: 21300000, guid: 0e897080e68c12d4da5a8bf77086fc01,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: itemName
+      value: RecruitRobe
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124088}

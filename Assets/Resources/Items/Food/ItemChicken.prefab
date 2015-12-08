@@ -39,12 +39,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06847a88e6c93ae4082861e2c367bbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 106e5642c23e4174a8a64f4f11863532, type: 3}
+  image: {fileID: 21300000, guid: c95caf50b5c453d47a9a260574abb219, type: 3}
   objName: Chicken
   itemDescription: Roasted chicken !
   weigth: 1
   canDrop: 1
   dropPrefab: {fileID: 158406, guid: 231dd5e483a173944902b789ceb623fa, type: 2}
+  type: 2
   quality: 1
   actionName: Eat
   useDescription: Will restore 10 life
@@ -62,7 +63,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: image
       value: 
-      objectReference: {fileID: 21300000, guid: 106e5642c23e4174a8a64f4f11863532,
+      objectReference: {fileID: 21300000, guid: c95caf50b5c453d47a9a260574abb219,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

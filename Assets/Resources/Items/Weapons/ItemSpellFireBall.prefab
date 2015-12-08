@@ -39,12 +39,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97564fe864570c4682ebc3d1aba2d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: f52e1fa65d99ccc47b6c3f7c78090bfa, type: 3}
   objName: Spell FireBall
   itemDescription: Summon a chargeable Fireball.
   weigth: 5
   canDrop: 1
   dropPrefab: {fileID: 146290, guid: 14c26e1cc530bc44ba3a1470ad0b6bfa, type: 2}
+  type: 1
   quality: 2
   actionName: Equip
   useDescription: Equip this weapon
@@ -80,6 +81,11 @@ Prefab:
       propertyPath: quality
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 21300000, guid: f52e1fa65d99ccc47b6c3f7c78090bfa,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120742}

@@ -33,21 +33,24 @@ public class WeaponManager : MonoBehaviour, ISavable
                 OnOffHandWeaponChange(this, new EventWeaponChange(offHandWeapon));
             offHandWeapon = value;
 
-            if (offHandWeaponPoint != null)
+            if (offHandWeapon != null)
             {
-                GameObject go = (offHandWeapon as Behaviour).gameObject;
-                go.transform.SetParent(offHandWeaponPoint);
-                if (tag == "Player")
-                    go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
-                else
-                    go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
-                go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
-                go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset);
+                if (offHandWeaponPoint != null)
+                {
+                    GameObject go = (offHandWeapon as Behaviour).gameObject;
+                    go.transform.SetParent(offHandWeaponPoint);
+                    if (tag == "Player")
+                        go.SetLayerRecursively(offHandWeaponPoint.gameObject.layer);
+                    else
+                        go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
+                    go.transform.localPosition = new Vector3(-offHandWeapon.HandPositionOffset.x, offHandWeapon.HandPositionOffset.y, offHandWeapon.HandPositionOffset.z);
+                    go.transform.localRotation = Quaternion.Euler(offHandWeapon.HandRotationOffset);
+                }
+
+                RegisterCallbacks(offHandWeapon);
+
+                value.OnEquip(this);
             }
-
-            RegisterCallbacks(offHandWeapon);
-
-            value.OnEquip(this);
         }
     }
 
@@ -57,7 +60,7 @@ public class WeaponManager : MonoBehaviour, ISavable
         get { return mainHandWeapon; }
         set
         {
-            if (value.WeaponHand == WeaponHand.TwoHanded && offHandWeapon != null)
+            if (value != null && value.WeaponHand == WeaponHand.TwoHanded && offHandWeapon != null)
             {
                 offHandWeapon.OnUnequip();
                 UnregisterCallbacks(offHandWeapon);
@@ -83,21 +86,24 @@ public class WeaponManager : MonoBehaviour, ISavable
                 OnMainHandWeaponChange(this, new EventWeaponChange(mainHandWeapon));
             mainHandWeapon = value;
 
-            if (mainHandWeaponPoint != null)
+            if (mainHandWeapon != null)
             {
-                GameObject go = (mainHandWeapon as Behaviour).gameObject;
-                go.transform.SetParent(mainHandWeaponPoint);
-                if (tag == "Player")
-                    go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
-                else
-                    go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
-                go.transform.localPosition = mainHandWeapon.HandPositionOffset;
-                go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
+                if (mainHandWeaponPoint != null)
+                {
+                    GameObject go = (mainHandWeapon as Behaviour).gameObject;
+                    go.transform.SetParent(mainHandWeaponPoint);
+                    if (tag == "Player")
+                        go.SetLayerRecursively(mainHandWeaponPoint.gameObject.layer);
+                    else
+                        go.SetLayerRecursively(LayerMask.NameToLayer("Default"));
+                    go.transform.localPosition = mainHandWeapon.HandPositionOffset;
+                    go.transform.localRotation = Quaternion.Euler(mainHandWeapon.HandRotationOffset);
+                }
+
+                RegisterCallbacks(mainHandWeapon);
+
+                value.OnEquip(this);
             }
-
-            RegisterCallbacks(mainHandWeapon);
-
-            value.OnEquip(this);
         }
     }
 

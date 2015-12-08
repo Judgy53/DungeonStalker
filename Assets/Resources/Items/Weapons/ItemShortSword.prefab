@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97564fe864570c4682ebc3d1aba2d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 947672a3945db7845ae60b507e25a14d, type: 3}
   objName: ShortSword
   itemDescription: A rather well used weapon ...
   weigth: 15
@@ -65,6 +65,11 @@ Prefab:
       propertyPath: quality
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 21300000, guid: 947672a3945db7845ae60b507e25a14d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113310}

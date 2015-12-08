@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        //LoadStage(stage);
+        LoadStage(stage);
 
         DontDestroyOnLoad(this.gameObject);
     }

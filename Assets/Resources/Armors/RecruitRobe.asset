@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: RecruitShirt
+  m_Name: RecruitRobe
   m_EditorClassIdentifier: Assembly-CSharp::Armor
-  armorName: Recruit shirt
+  armorName: Recruit Robe
   slot:
     InternalValue: 3
   type: 3

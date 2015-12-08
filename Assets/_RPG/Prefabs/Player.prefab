@@ -2218,6 +2218,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  baseArmor: 0
 --- !u!114 &11428234
 MonoBehaviour:
   m_ObjectHideFlags: 1

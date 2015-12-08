@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97564fe864570c4682ebc3d1aba2d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: d3b63825682e732409ec6017eb0edc73, type: 3}
   objName: SharpSword
   itemDescription: It's sharp !
   weigth: 30
@@ -77,6 +77,11 @@ Prefab:
       propertyPath: quality
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 21300000, guid: d3b63825682e732409ec6017eb0edc73,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171718}

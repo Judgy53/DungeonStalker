@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 
 public class ArmorManager : MonoBehaviour
@@ -56,6 +57,28 @@ public class ArmorManager : MonoBehaviour
             RecomputeGearStats(); 
         }
     }
+    public Armor Wirst
+    {
+        get { return armor[ArmorSlot.Wirst]; }
+        set
+        {
+            if (armor[ArmorSlot.Wirst] != null)
+                armor[ArmorSlot.Wirst].TransferToContainer(container);
+            armor[ArmorSlot.Wirst] = value;
+            RecomputeGearStats();
+        }
+    }
+    public Armor Hands
+    {
+        get { return armor[ArmorSlot.Hands]; }
+        set
+        {
+            if (armor[ArmorSlot.Hands] != null)
+                armor[ArmorSlot.Hands].TransferToContainer(container);
+            armor[ArmorSlot.Hands] = value;
+            RecomputeGearStats();
+        }
+    }
     public Armor Waist { get { return armor[ArmorSlot.Waist]; } 
         set
         {
@@ -103,6 +126,7 @@ public class ArmorManager : MonoBehaviour
     }
 
     private Armor[] armor = new Armor[ArmorSlot.Count];
+    public Armor[] Armor { get { return armor; } }
 
     private CharStats totalGearStats = new CharStats(0);
     private StatsManager stmanager = null;
@@ -169,13 +193,15 @@ public struct ArmorSlot
     public const int Shoulders = 2;
     public const int Chest = 3;
     public const int Back = 4;
-    public const int Waist = 5;
-    public const int Legs = 6;
-    public const int Feets = 7;
-    public const int Ring = 8;
-    public const int Trinket = 9;
+    public const int Wirst = 5;
+    public const int Hands = 6;
+    public const int Waist = 7;
+    public const int Legs = 8;
+    public const int Feets = 9;
+    public const int Ring = 10;
+    public const int Trinket = 11;
 
-    public const int Count = 10;
+    public const int Count = 12;
 
     public static implicit operator ArmorSlot(int other)
     {
@@ -197,11 +223,34 @@ public struct ArmorSlot
         Shoulders = 2,
         Chest = 3,
         Back = 4,
-        Waist = 5,
-        Legs = 6,
-        Feets = 7,
-        Ring = 8,
-        Trinket = 9
+        Wirst = 5,
+        Hands = 6,
+        Waist = 7,
+        Legs = 8,
+        Feets = 9,
+        Ring = 10,
+        Trinket = 11
+    }
+
+    public static void DrawArmorArrayEditorProperty(SerializedProperty list)
+    {
+        EditorGUILayout.PropertyField(list);
+
+        SerializedProperty size = list.FindPropertyRelative("Array.size");
+        EditorGUILayout.PropertyField(size);
+        
+        EditorGUI.indentLevel++;
+
+        for (int i = 0; i < list.arraySize; i++)
+        {
+            string name = "Unknown";
+            if (i < ArmorSlot.Count)
+                name = ((ArmorSlot.ArmorSlotHelper)i).ToString();
+
+            EditorGUILayout.PropertyField(list.GetArrayElementAtIndex(i), new GUIContent(name));
+        }
+        
+        EditorGUI.indentLevel--;
     }
 }
 
@@ -254,5 +303,32 @@ public class Armor : ScriptableObject
             container.AddItem((GameObject.Instantiate(itemPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
 
         ScriptableObject.Destroy(this);
+    }
+}
+
+[CanEditMultipleObjects]
+[CustomEditor(typeof(ArmorManager))]
+public class AmorManagerCustomEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        EditorGUI.BeginChangeCheck();
+        SerializedProperty p = serializedObject.GetIterator();
+        p.Next(true);
+        do
+        {
+            if (p.name.Contains("m_"))
+                continue;
+
+            if (p.name == "debugStartArmor" && p.isExpanded)
+                ArmorSlot.DrawArmorArrayEditorProperty(p);
+            else
+                EditorGUILayout.PropertyField(p);
+        }
+        while (p.Next(false));
+        if (EditorGUI.EndChangeCheck())
+            serializedObject.ApplyModifiedProperties();
     }
 }

@@ -80,6 +80,12 @@ public class ItemArmor : MonoBehaviour, IItem, IUsable
             case ArmorSlot.Back:
                 am.Back = a;
                 break;
+            case ArmorSlot.Wirst:
+                am.Wirst = a;
+                break;
+            case ArmorSlot.Hands:
+                am.Hands = a;
+                break;
             case ArmorSlot.Waist:
                 am.Waist = a;
                 break;
