@@ -41,7 +41,7 @@ public class UICharSheet : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("ToggleCharSheet"))
+        if (GameInput.GetButtonDown("ToggleCharSheet", true))
         {
             if (state == UIMenuState.Hidden && UIStateManager.State == UIState.Free)
                 State = UIMenuState.Shown;

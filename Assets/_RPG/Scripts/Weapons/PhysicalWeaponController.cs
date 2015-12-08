@@ -323,5 +323,18 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public void Load(SaveData data)
     {
         //nothing to load
+	}
+
+    public string GetInventoryDescription()
+    {
+        string output = ""; 
+        output += "\nDamages : " + minDamages + " - " + maxDamages;
+        output += "\nAttack speed : " + attackSpeed;
+        if (weaponHand == WeaponHand.OneHanded)
+            output += "\nOneHanded";
+        else
+            output += "\nTwoHanded";
+
+        return output;
     }
 }

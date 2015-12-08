@@ -47,8 +47,8 @@ public class ManaManager : MonoBehaviour, ISavable, IQuantifiable
 
     public void OnStatsChange(object sender, EventArgs args)
     {
-        maxMana = 40u + statsManager.Stats.Energy * 10u;
-        regenRate = 4u + statsManager.Stats.Energy * 1u;
+        maxMana = 40u + statsManager.TotalStats.Energy * 10u;
+        regenRate = 4u + statsManager.TotalStats.Energy * 1u;
 
         currentMana = Mathf.Min(currentMana, maxMana);
     }

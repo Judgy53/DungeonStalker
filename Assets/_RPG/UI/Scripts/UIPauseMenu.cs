@@ -53,7 +53,7 @@ public class UIPauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (GameInput.GetButtonDown("Pause", true))
         {
             if (state == UIMenuState.Hidden && UIStateManager.State == UIState.Free)
                 State = UIMenuState.Shown;

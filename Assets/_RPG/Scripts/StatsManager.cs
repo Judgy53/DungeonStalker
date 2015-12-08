@@ -27,10 +27,14 @@ public class StatsManager : MonoBehaviour, ISavable, IQuantifiable
         set
         {
             gearStats = value;
+            gearStats.FireEvent();
             stats.FireEvent();
         }
     }
 
+    /// <summary>
+    /// Do not register to this CharStats' event
+    /// </summary>
     public CharStats TotalStats { get { return stats + gearStats; } }
 
     [SerializeField]
@@ -306,6 +310,30 @@ public class CharStats : System.Object
             lhs.Stamina - rhs.Stamina,
             lhs.Energy - rhs.Energy,
             lhs.OnStatsChange - rhs.OnStatsChange);
+    }
+
+    public static bool operator !=(CharStats lhs, int rhs)
+    {
+        if (lhs.Strength == rhs && lhs.defense == rhs && lhs.stamina == rhs && lhs.energy == rhs)
+            return false;
+        return true;
+    }
+
+    public static bool operator ==(CharStats lhs, int rhs)
+    {
+        if (lhs.Strength != rhs || lhs.Defense != rhs || lhs.stamina != rhs || lhs.energy != rhs)
+            return false;
+        return true;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
     }
 }
 

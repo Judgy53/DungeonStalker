@@ -35,6 +35,8 @@ public interface IWeapon : ISavable
     GameObject InventoryItemPrefab { get; }
 
     void TransferToContainer(IContainer container);
+
+    string GetInventoryDescription();
 }
 
 public enum WeaponHand : int

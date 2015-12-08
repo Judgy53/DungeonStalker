@@ -14,12 +14,6 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     private FloatMinMax baseDamages = new FloatMinMax(1.0f, 2.0f);
     public FloatMinMax BaseDamages { get { return baseDamages; } set { baseDamages = value; } }
 
-    /*[SerializeField]
-    private GameObject projectilePrefab = null;
-
-    private IRangedWeaponProjectile projectile = null;
-    public IRangedWeaponProjectile Projectile { get { return projectile; } }*/
-
     [SerializeField]
     private bool useAmmo = true;
     public bool UseAmmo { get { return useAmmo; } set { useAmmo = value; } }
@@ -108,14 +102,12 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
 
     private void Start()
     {
-        /*if (fireMuzzle == null || projectilePrefab == null)
+        if (fireMuzzle == null)
         {
             Debug.LogError(this.name + " isn't configured properly.");
             enabled = false;
             return;
         }
-
-        projectile = projectilePrefab.GetComponent<IRangedWeaponProjectile>();*/
     }
 
     public virtual void Primary()
@@ -190,11 +182,10 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
             if (!isAngleValid && dmg == null)
                 break;
 
-            //IRangedWeaponProjectile p = GameObject.Instantiate(Ammo.Projectile as Behaviour, fireMuzzle.position, fireMuzzle.rotation) as IRangedWeaponProjectile;
             IRangedWeaponProjectile p = Ammo.InstantiateProjectile(fireMuzzle);
             p.Initialize(this);
 
-            //Ammo.ApplyEffect(p);
+            Ammo.ApplyEffect(p);
 
             GameObject.Destroy((p as Behaviour).gameObject, projectileLifetime);
 
@@ -240,5 +231,17 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     public void Load(SaveData data)
     {
         //nothing to load
+	}
+	
+    public string GetInventoryDescription()
+    {
+        string output = "";
+        output += "\nBase damages : " + baseDamages.min + " - " + baseDamages.max;
+        output += "\nFire rate : " + animationTime;
+        output += "\nConsumed ammo per shot : " + consumedAmmoPerShot;
+        output += "\nProjectiles per shot : " + projectilePerShot;
+        output += "\nProjectile deviation : " + projectileDeviation;
+
+        return output;
     }
 }
