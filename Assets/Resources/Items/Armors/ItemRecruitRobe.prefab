@@ -40,13 +40,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 0e897080e68c12d4da5a8bf77086fc01, type: 3}
-  itemName: RecruitRobe
+  itemName: Recruit robe
   actionName: Equip
   useDescription: Equip Armor.
   description: It's already shreded ...
   weight: 5
   type: 4
-  quality: 0
+  quality: 4
   canDrop: 1
   dropPrefab: {fileID: 101038, guid: 8449a99dbc928f54293a5c0a684402ce, type: 2}
   armorPrefab: {fileID: 11400000, guid: 52640b990d999224ca12126566053f74, type: 2}
@@ -64,7 +64,11 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: itemName
-      value: RecruitRobe
+      value: Recruit robe
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: quality
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

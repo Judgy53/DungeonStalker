@@ -46,6 +46,7 @@ public class UIPaperDoll : MonoBehaviour
     {
         if (e.newState == UIMenuState.Shown)
             ActualizeSlots();
+        UITooltip.HideOnce();
     }
 
     void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
@@ -127,6 +128,64 @@ public class UIPaperDoll : MonoBehaviour
         }
 
         ActualizeSlots();
+        RebuildTooltipDescription(sender);
+    }
+
+    public void RebuildTooltipDescription(UIMouseEvents sender)
+    {
+        UITooltip.Text = "";
+        UITooltip.DisableForceHide();
+
+        int senderIndex = System.Array.FindIndex(armorSlots, x => x.gameObject == sender.gameObject);
+        if (senderIndex != -1 && armorTarget != null)
+        {
+            if (armorTarget.Armor[senderIndex] != null && armorTarget.Armor[senderIndex].ItemPrefab != null)
+            {
+                IItem item = armorTarget.Armor[senderIndex].ItemPrefab.GetComponent<IItem>();
+                if (item != null)
+                {
+                    Armor a = armorTarget.Armor[senderIndex];
+
+                    UITooltip.Text += "<size=12>";
+                    UITooltip.Text += "<color=#" + item.Quality.ToColor().ToHexStringRGBA() + ">" + item.Name;
+                    UITooltip.Text += "</color>";
+                    UITooltip.Text += "</size>\n";
+                    UITooltip.Text += "<color=yellow><size=7><i>";
+                    UITooltip.Text += item.Description;
+                    UITooltip.Text += "</i></size></color>\n\n";
+
+                    UITooltip.Text += a.Type.ToString() + " armor\n";
+                    UITooltip.Text += "Armor value : " + a.ArmorValue + "\n";
+
+                    if (a.Stats != 0)
+                    {
+                        UITooltip.Text += "<color=green>";
+                        if (a.Stats.Strength != 0)
+                            UITooltip.Text += "Strength +" + a.Stats.Strength + "\n";
+                        if (a.Stats.Stamina != 0)
+                            UITooltip.Text += "Stamina +" + a.Stats.Stamina + "\n";
+                        if (a.Stats.Defense != 0)
+                            UITooltip.Text += "Defense +" + a.Stats.Defense + "\n";
+                        if (a.Stats.Energy != 0)
+                            UITooltip.Text += "Energy +" + a.Stats.Energy + "\n";
+                        UITooltip.Text += "</color>";
+                    }
+
+                    UITooltip.Text += "<color=green><i>Right click to Unequip</i></color>";
+                }
+            }
+            else
+                UITooltip.ForceHide();
+        }
+        else if (senderIndex == -1 && weapTarget != null)
+        {
+            /*if (sender == mainHandSlot.GetComponent<UIMouseEvents>())
+                weapTarget.MainHandWeapon = null;
+            else if (sender == offHandSlot.GetComponent<UIMouseEvents>())
+                weapTarget.OffHandWeapon = null;
+            else if (sender == ammoSlot.GetComponent<UIMouseEvents>())
+                weapTarget.CurrentAmmos = null;*/
+        }
     }
 }
 
