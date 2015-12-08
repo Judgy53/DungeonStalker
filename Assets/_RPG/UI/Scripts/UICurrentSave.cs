@@ -35,7 +35,7 @@ public class UICurrentSave : MonoBehaviour
             {
                 playerInfos.text = save.PlayerName + ", Level " + save.PlayerLevel;
                 timePlayed.text = TimeToString(save.TimePlayed);
-                creationDate.text = save.CreationDate.ToString("dd/MM/yyyy, hh:mm");
+                creationDate.text = save.CreationDate.ToString("dd/MM/yyyy, HH:mm");
 
                 return;
             }
