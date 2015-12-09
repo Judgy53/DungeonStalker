@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &102618
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,7 +35,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &102938
 GameObject:
   m_ObjectHideFlags: 1
@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &106086
 GameObject:
   m_ObjectHideFlags: 1
@@ -132,6 +132,7 @@ GameObject:
   - 222: {fileID: 22220698}
   - 114: {fileID: 11472222}
   - 114: {fileID: 11450498}
+  - 114: {fileID: 11417214}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-back
   m_TagString: Untagged
@@ -258,7 +259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &109818
 GameObject:
   m_ObjectHideFlags: 1
@@ -311,7 +312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &111402
 GameObject:
   m_ObjectHideFlags: 1
@@ -359,6 +360,7 @@ GameObject:
   - 222: {fileID: 22265776}
   - 114: {fileID: 11468064}
   - 114: {fileID: 11449600}
+  - 114: {fileID: 11406962}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-offhand
   m_TagString: Untagged
@@ -382,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &114162
 GameObject:
   m_ObjectHideFlags: 1
@@ -394,6 +396,7 @@ GameObject:
   - 222: {fileID: 22245726}
   - 114: {fileID: 11477104}
   - 114: {fileID: 11457482}
+  - 114: {fileID: 11478840}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-legs
   m_TagString: Untagged
@@ -470,6 +473,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &117126
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22440866}
+  - 114: {fileID: 11417960}
+  m_Layer: 5
+  m_Name: FilterList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &119132
 GameObject:
@@ -486,7 +505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &119368
 GameObject:
   m_ObjectHideFlags: 1
@@ -619,6 +638,7 @@ GameObject:
   - 222: {fileID: 22256844}
   - 114: {fileID: 11407410}
   - 114: {fileID: 11455528}
+  - 114: {fileID: 11494820}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-ammo
   m_TagString: Untagged
@@ -637,6 +657,7 @@ GameObject:
   - 222: {fileID: 22230982}
   - 114: {fileID: 11490482}
   - 114: {fileID: 11451806}
+  - 114: {fileID: 11426026}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-wirsts
   m_TagString: Untagged
@@ -705,6 +726,7 @@ GameObject:
   - 222: {fileID: 22291268}
   - 114: {fileID: 11485118}
   - 114: {fileID: 11406124}
+  - 114: {fileID: 11436178}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-waist
   m_TagString: Untagged
@@ -747,7 +769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &126322
 GameObject:
   m_ObjectHideFlags: 1
@@ -950,6 +972,7 @@ GameObject:
   - 222: {fileID: 22297768}
   - 114: {fileID: 11474804}
   - 114: {fileID: 11460442}
+  - 114: {fileID: 11457072}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-feets
   m_TagString: Untagged
@@ -1021,6 +1044,7 @@ GameObject:
   - 222: {fileID: 22225710}
   - 114: {fileID: 11422646}
   - 114: {fileID: 11483248}
+  - 114: {fileID: 11490942}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-neck
   m_TagString: Untagged
@@ -1158,6 +1182,7 @@ GameObject:
   - 222: {fileID: 22236752}
   - 114: {fileID: 11469852}
   - 114: {fileID: 11435582}
+  - 114: {fileID: 11463344}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-ring
   m_TagString: Untagged
@@ -1275,6 +1300,7 @@ GameObject:
   - 222: {fileID: 22235994}
   - 114: {fileID: 11479830}
   - 114: {fileID: 11434388}
+  - 114: {fileID: 11479410}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-trinket
   m_TagString: Untagged
@@ -1447,7 +1473,7 @@ GameObject:
   - 222: {fileID: 22234200}
   - 114: {fileID: 11410278}
   m_Layer: 5
-  m_Name: InventoryListBackground
+  m_Name: FilterListBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1641,7 +1667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &168178
 GameObject:
   m_ObjectHideFlags: 1
@@ -1676,7 +1702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &169978
 GameObject:
   m_ObjectHideFlags: 1
@@ -1688,6 +1714,7 @@ GameObject:
   - 222: {fileID: 22256170}
   - 114: {fileID: 11463954}
   - 114: {fileID: 11432288}
+  - 114: {fileID: 11408200}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-head
   m_TagString: Untagged
@@ -1778,6 +1805,7 @@ GameObject:
   - 222: {fileID: 22281480}
   - 114: {fileID: 11404674}
   - 114: {fileID: 11402766}
+  - 114: {fileID: 11487544}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-chest
   m_TagString: Untagged
@@ -1848,6 +1876,23 @@ GameObject:
   - 114: {fileID: 11485680}
   m_Layer: 5
   m_Name: +
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &176390
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22453306}
+  - 222: {fileID: 22282946}
+  - 114: {fileID: 11459890}
+  m_Layer: 5
+  m_Name: InventoryListBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1955,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &182026
 GameObject:
   m_ObjectHideFlags: 1
@@ -2037,6 +2082,7 @@ GameObject:
   - 222: {fileID: 22257586}
   - 114: {fileID: 11415656}
   - 114: {fileID: 11418898}
+  - 114: {fileID: 11422686}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-hands
   m_TagString: Untagged
@@ -2162,6 +2208,7 @@ GameObject:
   - 222: {fileID: 22254322}
   - 114: {fileID: 11403626}
   - 114: {fileID: 11493574}
+  - 114: {fileID: 11428640}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-shoulders
   m_TagString: Untagged
@@ -2180,8 +2227,26 @@ GameObject:
   - 222: {fileID: 22230102}
   - 114: {fileID: 11425722}
   - 114: {fileID: 11475906}
+  - 114: {fileID: 11459648}
   m_Layer: 0
   m_Name: Ui-paperdoll-slot-mainhand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &190848
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22449730}
+  - 114: {fileID: 11450152}
+  - 114: {fileID: 11474406}
+  m_Layer: 5
+  m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2238,7 +2303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &196736
 GameObject:
   m_ObjectHideFlags: 1
@@ -2491,7 +2556,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11402766}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -2793,7 +2869,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11406124}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -2898,6 +2985,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &11406962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11407410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2940,6 +3040,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11408200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11409016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2994,7 +3107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: .125490203}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3379,6 +3492,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11417214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
+--- !u!114 &11417960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a416f3cbb49f12a479c8852a5130dc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11493512}
+  content: {fileID: 190848}
+  buttonPrefab: {fileID: 190044, guid: c339f944a8057074fa4b51834c5a9db2, type: 2}
+  filters: 050000000100000004000000030000000200000000000000
 --- !u!114 &11418474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3432,7 +3573,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11418898}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -3601,6 +3753,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11422686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11423092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3726,6 +3891,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11426026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11426300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3830,6 +4008,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11428640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11428908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3936,7 +4127,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11432288}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -4167,7 +4369,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11434388}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -4219,7 +4432,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11435582}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -4258,6 +4482,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &11436178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11436520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4551,7 +4788,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -4813,7 +5050,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11449600}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -4878,6 +5126,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Debug spawn Shortsword
+--- !u!114 &11450152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
 --- !u!114 &11450488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4943,7 +5204,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11450498}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -5036,7 +5308,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11451806}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -5179,7 +5462,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11455528}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -5321,6 +5615,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11457072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11457482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5334,7 +5641,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11457482}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -5480,6 +5798,40 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11459648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
+--- !u!114 &11459890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: .125490203}
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11460442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5493,7 +5845,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11460442}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -5659,6 +6022,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Cry & Quit
+--- !u!114 &11463344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11463554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6098,6 +6474,26 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ObjectDescription
+--- !u!114 &11474406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
 --- !u!114 &11474688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6160,7 +6556,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11475906}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -6384,6 +6791,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Save
+--- !u!114 &11478840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11478912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6424,6 +6844,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &11479410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11479830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6677,7 +7110,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11483248}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -7065,6 +7509,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11487544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11487744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7264,6 +7721,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11490942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11491580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7385,7 +7855,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTemplatePrefab: {fileID: 190044, guid: c339f944a8057074fa4b51834c5a9db2, type: 2}
   content: {fileID: 22454222}
-  background: {fileID: 22481842}
   weightPrefix: 'Weight : '
   weightText: {fileID: 11442960}
 --- !u!114 &11493574
@@ -7401,7 +7870,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onMouseEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11473422}
+        m_MethodName: RebuildTooltipDescription
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11493574}
+          m_ObjectArgumentAssemblyTypeName: UIMouseEvents, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onMouseExit:
@@ -7507,6 +7987,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Scrollbar+ScrollEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11494820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c884dbe266c741931ae2ac015db75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAddListeners: 1
+  tooltipPrefab: {fileID: 188692, guid: a477c45a75b76ad42943c9f06ea81381, type: 2}
 --- !u!114 &11495764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8400,6 +8893,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127232}
+--- !u!222 &22282946
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176390}
 --- !u!222 &22283374
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -8574,7 +9073,7 @@ RectTransform:
   m_Father: {fileID: 22460116}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: .5, y: .5}
@@ -9450,7 +9949,7 @@ RectTransform:
   - {fileID: 22435354}
   - {fileID: 22493394}
   m_Father: {fileID: 22486486}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 166, y: 37}
@@ -9551,6 +10050,25 @@ RectTransform:
   m_AnchorMax: {x: 0, y: .5}
   m_AnchoredPosition: {x: -150.30011, y: 31.7000008}
   m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22440866
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 22481842}
+  - {fileID: 22449730}
+  m_Father: {fileID: 22486486}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -275, y: 0}
+  m_SizeDelta: {x: 150, y: 425}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22441450
 RectTransform:
@@ -9808,6 +10326,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!224 &22449730
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22440866}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22450328
 RectTransform:
   m_ObjectHideFlags: 1
@@ -9928,6 +10463,23 @@ RectTransform:
   m_AnchoredPosition: {x: 2.5, y: -13.5}
   m_SizeDelta: {x: 535, y: 11}
   m_Pivot: {x: 0, y: 0}
+--- !u!224 &22453306
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22491840}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 7.62939453e-06, y: 0}
+  m_SizeDelta: {x: -1.52587891e-05, y: 0}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453984
 RectTransform:
   m_ObjectHideFlags: 1
@@ -10402,7 +10954,7 @@ RectTransform:
   m_Father: {fileID: 22419120}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: .5, y: .5}
@@ -10434,11 +10986,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 22491840}
-  m_RootOrder: 2
+  m_Father: {fileID: 22486486}
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 236, y: -157}
+  m_AnchoredPosition: {x: 136.000015, y: -157}
   m_SizeDelta: {x: 205.600006, y: 69.6999969}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22479248
@@ -10488,12 +11040,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 22491840}
+  m_Father: {fileID: 22440866}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.62939453e-06, y: 0}
-  m_SizeDelta: {x: -1.52587891e-05, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22482352
 RectTransform:
@@ -10563,7 +11115,7 @@ RectTransform:
   - {fileID: 22409848}
   - {fileID: 22442516}
   m_Father: {fileID: 22486486}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 166, y: -180}
@@ -10633,7 +11185,9 @@ RectTransform:
   m_Children:
   - {fileID: 22462338}
   - {fileID: 22435932}
+  - {fileID: 22440866}
   - {fileID: 22491840}
+  - {fileID: 22478384}
   - {fileID: 22436214}
   - {fileID: 22483396}
   m_Father: {fileID: 22448764}
@@ -10824,15 +11378,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22481842}
+  - {fileID: 22453306}
   - {fileID: 22454222}
-  - {fileID: 22478384}
   m_Father: {fileID: 22486486}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -186, y: 0}
-  m_SizeDelta: {x: 242.5, y: 420}
+  m_AnchoredPosition: {x: -100, y: 0}
+  m_SizeDelta: {x: 150, y: 425}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22492394
 RectTransform:
@@ -10847,7 +11400,7 @@ RectTransform:
   m_Father: {fileID: 22409604}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: .5, y: .5}

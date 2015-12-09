@@ -24,7 +24,9 @@ public enum ItemType
     Weapons,
     Food,
     Ammo,
-    Armor
+    Armor,
+
+    All //for inventory sorting only
 }
 
 public enum ItemQuality

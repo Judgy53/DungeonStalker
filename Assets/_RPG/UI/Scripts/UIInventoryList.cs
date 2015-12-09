@@ -31,6 +31,9 @@ public class UIInventoryList : MonoBehaviour
     private IContainer target = null;
     public IContainer Target { get { return target; } }
 
+    private ItemType currentFilter = ItemType.All;
+    public ItemType CurrentFilter { get { return currentFilter; } set { currentFilter = value; } }    
+
     private void Start()
     {
         if (buttonTemplatePrefab == null)
@@ -97,6 +100,9 @@ public class UIInventoryList : MonoBehaviour
 
         foreach(IItem item in items)
         {
+            if (currentFilter != ItemType.All && item.Type != currentFilter)
+                continue;
+
             GameObject buttonGao = GameObject.Instantiate(buttonTemplatePrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
             buttonGao.transform.SetParent(content, false);
