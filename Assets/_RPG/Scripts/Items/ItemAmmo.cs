@@ -28,6 +28,8 @@ public class ItemAmmo : MonoBehaviour, IItem, IUsable
         }
     }
 
+    public string RealDescription { get { return description; } }
+
     [SerializeField]
     private uint weight = 20u;
     public uint Weigth { get { return weight; } }
