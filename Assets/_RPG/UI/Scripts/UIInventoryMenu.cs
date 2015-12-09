@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
-public class UIItemPauseMenu : MonoBehaviour
+public class UIInventoryMenu : MonoBehaviour
 {
-    public event EventHandler<UIMenuStateChangeArgs> OnItemPauseMenuStateChange;
+    public event EventHandler<UIMenuStateChangeArgs> OnInventoryMenuStateChange;
 
     public PlayerContainer target = null;
 
@@ -17,8 +17,8 @@ public class UIItemPauseMenu : MonoBehaviour
     public UIMenuState State { get { return state; }
         set
         {
-            if (OnItemPauseMenuStateChange != null)
-                OnItemPauseMenuStateChange(this, new UIMenuStateChangeArgs(value));
+            if (OnInventoryMenuStateChange != null)
+                OnInventoryMenuStateChange(this, new UIMenuStateChangeArgs(value));
 
             state = value;
         }
@@ -27,7 +27,7 @@ public class UIItemPauseMenu : MonoBehaviour
     private void Awake()
     {
         //It must be fired first to enable all gameobjects before other events, hence registration in Awake().
-        OnItemPauseMenuStateChange += OnStateChangeCallback;
+        OnInventoryMenuStateChange += OnStateChangeCallback;
 
         GameManager.OnPlayerCreation += OnPlayerCreation;
 
