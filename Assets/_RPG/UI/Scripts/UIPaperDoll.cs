@@ -116,6 +116,7 @@ public class UIPaperDoll : MonoBehaviour
         {
             armorTarget.Armor[senderIndex].TransferToContainer(armorTarget.GetComponentInChildren<IContainer>());
             armorTarget.Armor[senderIndex] = null;
+            armorTarget.RecomputeGearStats();
         }
         else if (senderIndex == -1 && weapTarget != null)
         {

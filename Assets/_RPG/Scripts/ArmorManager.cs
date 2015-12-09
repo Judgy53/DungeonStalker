@@ -44,7 +44,7 @@ public class ArmorManager : MonoBehaviour
         {
             if (armor[ArmorSlot.Chest] != null)
                 armor[ArmorSlot.Chest].TransferToContainer(container);
-            armor[ArmorSlot.Chest] = value; 
+            armor[ArmorSlot.Chest] = value;
             RecomputeGearStats();
         }
     }
@@ -164,7 +164,7 @@ public class ArmorManager : MonoBehaviour
         RecomputeGearStats();
     }
 
-    private void RecomputeGearStats()
+    public void RecomputeGearStats()
     {
         if (stmanager != null)
         {

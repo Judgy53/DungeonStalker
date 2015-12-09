@@ -50,6 +50,7 @@ public class UICharSheetActualizer : MonoBehaviour
             energyLabel.Initialize(OnButtonPressed, target.UnspentPoints != 0);
 
         tmpAddedPoint.OnStatsChange += OnStatsChanged;
+        target.Stats.OnStatsChange += OnStatsChanged;
         OnStatsChanged(this, new EventArgs());
     }
 
