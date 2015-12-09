@@ -56,7 +56,7 @@ public class UISaveList : MonoBehaviour
 
         GetComponentInParent<UIPanelLoad>().SaveId = btn.GetSaveId();
 
-        UpdateScroller(btn);
+        UIUtils.UpdateScroller(content, GetComponent<RectTransform>(), btn.GetComponent<RectTransform>());
     }
 
     private void OnDisable()
@@ -68,24 +68,5 @@ public class UISaveList : MonoBehaviour
     {
         foreach (Transform tr in content)
             Destroy(tr.gameObject);
-    }
-
-    private void UpdateScroller(UISaveButton btn)
-    {
-        float scrolled = content.anchoredPosition.y;
-        float holderHeight = GetComponent<RectTransform>().sizeDelta.y;
-
-        float btnHeight = btn.GetComponent<RectTransform>().sizeDelta.y;
-
-        float pos = btn.transform.GetSiblingIndex() * btnHeight;
-
-        if(pos < scrolled + btnHeight) // if selected button overflow on top
-        {
-            content.anchoredPosition = new Vector2(0f, pos);
-        }
-        else if (pos + btnHeight > scrolled + holderHeight) // if selected button overflow on bottom
-        {
-            content.anchoredPosition = new Vector2(0f, pos - btnHeight * (holderHeight / btnHeight - 1));
-        }
     }
 }

@@ -57,7 +57,6 @@ public class UIObjectButtonsManager : MonoBehaviour
                 UnityEngine.EventSystems.ExecuteEvents.Execute(dropButton.gameObject, pointer, UnityEngine.EventSystems.ExecuteEvents.pointerClickHandler);
             }
         }
-
     }
 
     private void OnUseCallback()
@@ -66,7 +65,7 @@ public class UIObjectButtonsManager : MonoBehaviour
         {
             (lastSelectedItem as IUsable).Use((lastSelectedItem as Behaviour).GetComponentInParent<InteractManager>());
 
-            inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+            inventoryListManager.Populate(GetComponentInParent<UIInventoryMenu>().target);
             inventoryListManager.SelectFirst();
         }
     }
@@ -75,9 +74,9 @@ public class UIObjectButtonsManager : MonoBehaviour
     {
         if (lastSelectedItem.CanDrop)
         {
-            GetComponentInParent<UIItemPauseMenu>().target.DropItem(lastSelectedItem);
+            GetComponentInParent<UIInventoryMenu>().target.DropItem(lastSelectedItem);
 
-            inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+            inventoryListManager.Populate(GetComponentInParent<UIInventoryMenu>().target);
             inventoryListManager.SelectFirst();
         }
     }
@@ -87,7 +86,7 @@ public class UIObjectButtonsManager : MonoBehaviour
         if (lastSelectedItem is ItemWeapon)
             (lastSelectedItem as ItemWeapon).Use((lastSelectedItem as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.MainHand));
 
-        inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+        inventoryListManager.Populate(GetComponentInParent<UIInventoryMenu>().target);
         inventoryListManager.SelectFirst();
     }
 
@@ -96,7 +95,7 @@ public class UIObjectButtonsManager : MonoBehaviour
         if (lastSelectedItem is ItemWeapon)
             (lastSelectedItem as ItemWeapon).Use((lastSelectedItem as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.OffHand));
 
-        inventoryListManager.Populate(GetComponentInParent<UIItemPauseMenu>().target);
+        inventoryListManager.Populate(GetComponentInParent<UIInventoryMenu>().target);
         inventoryListManager.SelectFirst();
     }
 
@@ -128,7 +127,7 @@ public class UIObjectButtonsManager : MonoBehaviour
             {
                 case WeaponRestriction.Both:
                     ChangeButtonState(mainHandEquipButton, true);
-                    wm = GetComponentInParent<UIItemPauseMenu>().target.GetComponentInParent<WeaponManager>();
+                    wm = GetComponentInParent<UIInventoryMenu>().target.GetComponentInParent<WeaponManager>();
                     if (wm != null && (wm.MainHandWeapon == null || wm.MainHandWeapon.WeaponHand == WeaponHand.OneHanded))
                         ChangeButtonState(offHandEquipButton, true);
                     else
@@ -140,7 +139,7 @@ public class UIObjectButtonsManager : MonoBehaviour
                     break;
                 case WeaponRestriction.OffHand:
                     ChangeButtonState(mainHandEquipButton, false);
-                    wm = GetComponentInParent<UIItemPauseMenu>().target.GetComponentInParent<WeaponManager>();
+                    wm = GetComponentInParent<UIInventoryMenu>().target.GetComponentInParent<WeaponManager>();
                     if (wm != null && (wm.MainHandWeapon == null || wm.MainHandWeapon.WeaponHand == WeaponHand.OneHanded))
                         ChangeButtonState(offHandEquipButton, true);
                     else

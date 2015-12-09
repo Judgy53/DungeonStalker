@@ -8,19 +8,21 @@ public class UIInventoryList : MonoBehaviour
 {
     public event EventHandler<ItemFocusChangeArgs> OnItemFocusChange;
 
-    public GameObject buttonTemplatePrefab = null;
+    [SerializeField]
+    private GameObject buttonTemplatePrefab = null;
 
-    public RectTransform content = null;
-    public RectTransform background = null;
+    [SerializeField]
+    private RectTransform content = null;
 
-    public string weightPrefix = "Weight : ";
-    public Text weightText = null;
+    [SerializeField]
+    private string weightPrefix = "Weight : ";
 
-    public float spacing = 5.0f;
+    [SerializeField]
+    private Text weightText = null;
 
     private List<GameObject> instantiatedList = new List<GameObject>();
 
-    private UIItemPauseMenu manager = null;
+    private UIInventoryMenu manager = null;
 
     private GameObject lastSelected = null;
 
@@ -43,9 +45,9 @@ public class UIInventoryList : MonoBehaviour
             enabled = false;
         }
 
-        manager = GetComponentInParent<UIItemPauseMenu>();
+        manager = GetComponentInParent<UIInventoryMenu>();
         if (manager != null)
-            manager.OnItemPauseMenuStateChange += OnItemPauseMenuStateChangeCallback;
+            manager.OnInventoryMenuStateChange += OnInventoryMenuStateChangeCallback;
     }
 
     private void Update()
@@ -60,78 +62,85 @@ public class UIInventoryList : MonoBehaviour
 
                 if (OnItemFocusChange != null)
                     OnItemFocusChange(this, new ItemFocusChangeArgs(items[index]));
+
+                UIUtils.UpdateScroller(content, GetComponent<RectTransform>(), currentSelected.GetComponent<RectTransform>());
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.E) && instantiatedList.IndexOf(currentSelected) != -1)
+        {
+            Button_onLeftClick(currentSelected.GetComponent<UIMouseEvents>());
         }
     }
 
-    private void OnItemPauseMenuStateChangeCallback(object sender, UIMenuStateChangeArgs e)
+    private void OnInventoryMenuStateChangeCallback(object sender, UIMenuStateChangeArgs e)
     {
-        IContainer container = (sender as UIItemPauseMenu).target;
+        IContainer container = (sender as UIInventoryMenu).target;
 
         if (e.newState == UIMenuState.Shown && container != null)
             Populate(container);
         else
-            Clear();
+            ClearList();
     }
 
     public void Populate(IContainer container)
     {
+        int selectPos = 0;
+        if (lastSelected != null)
+            selectPos = lastSelected.transform.GetSiblingIndex();
+
         if (instantiatedList.Count != 0)
-            Clear();
+            ClearList();
 
         target = container;
-
         items = container.Items;
 
-        float buttonHeight = buttonTemplatePrefab.GetComponent<RectTransform>().rect.height;
-
-        content.sizeDelta = new Vector2(content.sizeDelta.x, buttonHeight);
-        background.sizeDelta = new Vector2(background.sizeDelta.x, buttonHeight);
-
-        int i = 0;
-        foreach (IItem item in items)
+        foreach(IItem item in items)
         {
-            GameObject button = GameObject.Instantiate(buttonTemplatePrefab, Vector3.zero, Quaternion.identity) as GameObject;
-            Text text = button.GetComponentInChildren<Text>();
+            GameObject buttonGao = GameObject.Instantiate(buttonTemplatePrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
-            button.transform.SetParent(content, false);
-            
-            button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, (buttonHeight * -i) + (-i * spacing));
+            buttonGao.transform.SetParent(content, false);
 
-            if (text != null)
-            {
-                text.color = item.Quality.ToColor();
-                text.text = item.Name + " (W:" + item.Weigth + ")";
-            }
+            Text text = buttonGao.GetComponentInChildren<Text>();
 
-            content.sizeDelta = new Vector2(content.sizeDelta.x, buttonHeight * (i + 1) + (i * spacing));
-            background.sizeDelta = new Vector2(background.sizeDelta.x, buttonHeight * (i + 1) + (i * spacing));
+            text.color = item.Quality.ToColor();
+            text.text = item.Name;
 
-            instantiatedList.Add(button);
+            instantiatedList.Add(buttonGao);
 
-            ++i;
+            UIMouseEvents events = buttonGao.GetComponent<UIMouseEvents>();
+            events.onMouseEnter.AddListener(Button_onMouseEnter);
+            events.onMouseLeftUp.AddListener(Button_onLeftClick);
+            events.onMouseRightUp.AddListener(Button_onRightClick);
         }
 
-        if (weightText != null)
-        {
-            weightText.text = weightPrefix + container.CurrentWeight + "/" + container.MaxWeight;
-
-            if (container.CurrentWeight <= container.MaxWeight)
-                weightText.color = Color.white;
-            else
-                weightText.color = Color.red;
-        }
+        selectPos = Mathf.Clamp(selectPos - 1, 0, instantiatedList.Count - 1);
 
         if (instantiatedList.Count > 0)
-            instantiatedList[0].GetComponent<Selectable>().Select();
+            instantiatedList[selectPos].GetComponent<Selectable>().Select();
         else
         {
             if (OnItemFocusChange != null)
                 OnItemFocusChange(this, new ItemFocusChangeArgs(null));
         }
+
+        UpdateWeight();
     }
 
-    public void Clear()
+    private void UpdateWeight()
+    {
+        if (weightText != null)
+        {
+            weightText.text = weightPrefix + target.CurrentWeight + "/" + target.MaxWeight;
+
+            if (target.CurrentWeight <= target.MaxWeight)
+                weightText.color = Color.white;
+            else
+                weightText.color = Color.red;
+        }
+    }
+    
+    public void ClearList()
     {
         target = null;
 
@@ -151,6 +160,33 @@ public class UIInventoryList : MonoBehaviour
             if (OnItemFocusChange != null)
                 OnItemFocusChange(this, new ItemFocusChangeArgs(null));
         }
+    }
+
+    private void Button_onMouseEnter(UIMouseEvents btn)
+    {
+        btn.GetComponent<Selectable>().Select();
+    }
+
+    private void Button_onLeftClick(UIMouseEvents btn)
+    {
+        IItem item = items[instantiatedList.IndexOf(btn.gameObject)];
+
+        if (item is IUsable)
+            (item as IUsable).Use((item as Behaviour).GetComponentInParent<InteractManager>());
+        else if (item is ItemWeapon)
+            (item as ItemWeapon).Use((item as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.MainHand));
+
+        Populate(target);
+    }
+
+    private void Button_onRightClick(UIMouseEvents btn)
+    {
+        IItem item = items[instantiatedList.IndexOf(btn.gameObject)];
+
+        if (item is ItemWeapon)
+            (item as ItemWeapon).Use((item as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.OffHand));
+
+        Populate(target);
     }
 }
 

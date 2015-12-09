@@ -4,12 +4,12 @@ using System.Collections;
 
 public class UICrosshair : MonoBehaviour
 {
-    public UIItemPauseMenu pauseMenu = null;
+    public UIInventoryMenu pauseMenu = null;
 
     private void Start()
     {
         if (pauseMenu != null)
-            pauseMenu.OnItemPauseMenuStateChange += OnStateChangeCallback;
+            pauseMenu.OnInventoryMenuStateChange += OnStateChangeCallback;
     }
 
     private void OnStateChangeCallback(object sender, UIMenuStateChangeArgs args)
