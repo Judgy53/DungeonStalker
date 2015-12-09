@@ -113,6 +113,11 @@ public class MinMax<T>
         this.min = min;
         this.max = max;
     }
+
+    public static implicit operator string(MinMax<T> m)
+    {
+        return m.min + " - " + m.max;
+    }
 }
 
 [System.Serializable]

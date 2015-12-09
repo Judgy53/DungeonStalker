@@ -172,7 +172,7 @@ public class UIPaperDoll : MonoBehaviour
                         UITooltip.Text += "</color>";
                     }
 
-                    UITooltip.Text += "<color=green><i>Right click to Unequip</i></color>";
+                    UITooltip.Text += "\n<color=green><i>Right click to Unequip</i></color>";
                 }
             }
             else
@@ -180,12 +180,85 @@ public class UIPaperDoll : MonoBehaviour
         }
         else if (senderIndex == -1 && weapTarget != null)
         {
-            /*if (sender == mainHandSlot.GetComponent<UIMouseEvents>())
-                weapTarget.MainHandWeapon = null;
+            IWeapon weapon = null;
+            IRangedWeaponAmmo ammo = null;
+            if (sender == mainHandSlot.GetComponent<UIMouseEvents>())
+                weapon = weapTarget.MainHandWeapon;
             else if (sender == offHandSlot.GetComponent<UIMouseEvents>())
-                weapTarget.OffHandWeapon = null;
+                weapon = weapTarget.OffHandWeapon;
             else if (sender == ammoSlot.GetComponent<UIMouseEvents>())
-                weapTarget.CurrentAmmos = null;*/
+                ammo = weapTarget.CurrentAmmos;
+
+            if (weapon != null)
+            {
+                IItem item = weapon.InventoryItemPrefab != null ? weapon.InventoryItemPrefab.GetComponent<IItem>() : null;
+                if (item != null)
+                {
+                    UITooltip.Text += "<size=12>";
+                    UITooltip.Text += "<color=#" + item.Quality.ToColor().ToHexStringRGBA() + ">" + item.Name;
+                    UITooltip.Text += "</color>";
+                    UITooltip.Text += "</size>\n";
+                    UITooltip.Text += "<color=yellow><size=7><i>";
+                    UITooltip.Text += item.Description;
+                    UITooltip.Text += "</i></size></color>\n\n";
+
+                    if (weapon.WeaponRestrictions != WeaponRestriction.Both)
+                        UITooltip.Text += "Only usable on " + (weapon.WeaponRestrictions == WeaponRestriction.MainHand ? "main hand." : "offhand.") + "\n";
+
+                    UITooltip.Text += (weapon.WeaponHand == WeaponHand.OneHanded ? "One Handed " : "Two Handed ") + weapon.WeaponType.ToString() + "\n";
+
+                    if (weapon is IPhysicalWeapon)
+                    {
+                        IPhysicalWeapon physWeap = weapon as IPhysicalWeapon;
+                        UITooltip.Text += "Damages : " + physWeap.MinDamages + " - " + physWeap.MaxDamages + "\n";
+                        UITooltip.Text += "Attack speed : " + physWeap.AttackSpeed + "\n";
+                    }
+                    else if (weapon is IMagicalWeapon)
+                    {
+                        UITooltip.Text += "\n\nIMPLEMENT IT LAZY ASS !\n\n";
+                    }
+                    else if (weapon is IRangedWeapon)
+                    {
+                        IRangedWeapon rweap = weapon as IRangedWeapon;
+                        UITooltip.Text += "Base damages : " + rweap.BaseDamages + " X" + rweap.ProjectilePerShot + "\n";
+                        UITooltip.Text += "Consumed ammo per shot : " + rweap.ConsumedAmmoPerShot + "\n";
+                        UITooltip.Text += "Projectile deviation : " + rweap.ProjectileDeviation + "\n";
+                    }
+
+                    if (weapon.GearStats != 0)
+                    {
+                        UITooltip.Text += "<color=green>";
+                        if (weapon.GearStats.Strength != 0)
+                            UITooltip.Text += "Strength +" + weapon.GearStats.Strength + "\n";
+                        if (weapon.GearStats.Stamina != 0)
+                            UITooltip.Text += "Stamina +" + weapon.GearStats.Stamina + "\n";
+                        if (weapon.GearStats.Defense != 0)
+                            UITooltip.Text += "Defense +" + weapon.GearStats.Defense + "\n";
+                        if (weapon.GearStats.Energy != 0)
+                            UITooltip.Text += "Energy +" + weapon.GearStats.Energy + "\n";
+                        UITooltip.Text += "</color>";
+                    }
+                    
+                    UITooltip.Text += "<color=green><i>Right click to Unequip</i></color>";
+                }
+            }
+            else if (ammo != null)
+            {
+                ItemAmmo item = ammo.ItemPrefab as ItemAmmo;
+                UITooltip.Text += "<size=12>";
+                UITooltip.Text += "<color=#" + item.Quality.ToColor().ToHexStringRGBA() + ">" + item.Name;
+                UITooltip.Text += "</color>";
+                UITooltip.Text += "</size>\n";
+                UITooltip.Text += "<color=yellow><size=7><i>";
+                UITooltip.Text += item.RealDescription;
+                UITooltip.Text += "</i></size></color>\n\n";
+
+                UITooltip.Text += "Added damages : " + ammo.AddedDamages + "\n";
+
+                UITooltip.Text += "Ammo left : " + ammo.AmmoLeft + "\n";
+            }
+            else
+                UITooltip.ForceHide();
         }
     }
 }
