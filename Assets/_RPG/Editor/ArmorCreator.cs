@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ArmorCreator : EditorWindow
 {
+    //Armor fields
     private string armorName = "";
     private string armorDescription = "";
     private int armorValue = 0;
@@ -14,12 +15,22 @@ public class ArmorCreator : EditorWindow
     private int defense = 0;
     private int energy = 0;
 
+    //Item fields
     private ItemQuality quality = ItemQuality.Common;
+    private Sprite image = null;
+    private int weight = 5;
+    private bool canDrop = true;
+
+    //Pickable fields
+    private string pickableDescription = "";
+    private GameObject pickableModel = null;
 
     private bool showArmorFields = true;
     private bool showArmorStats = true;
 
     private bool showItemFields = true;
+
+    private bool showPickableFields = true;
 
     [MenuItem("RPG/ArmorCreator")]
     public static void ShowWindow()
@@ -92,7 +103,6 @@ public class ArmorCreator : EditorWindow
         
         EditorGUILayout.Space();
 
-        //EditorGUILayout.LabelField("Item field : ");
         showItemFields = EditorGUILayout.Foldout(showItemFields, "Items fields");
         if (showItemFields)
         {
@@ -101,9 +111,58 @@ public class ArmorCreator : EditorWindow
             {
                 EditorGUILayout.PrefixLabel("Quality");
                 quality = (ItemQuality)EditorGUILayout.EnumPopup(quality);
+                EditorGUILayout.PrefixLabel("Image");
+                image = (Sprite)EditorGUILayout.ObjectField(image, typeof(Sprite), false);
             }
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            {
+                EditorGUILayout.PrefixLabel("Weight");
+                weight = EditorGUILayout.IntField(weight);
+                EditorGUILayout.PrefixLabel("CanDrop");
+                EditorGUILayout.Toggle(canDrop);
+            }
+            EditorGUILayout.EndHorizontal();
+
             EditorGUI.indentLevel--;
+        }
+
+        showPickableFields = EditorGUILayout.Foldout(showPickableFields, "Pickable fields");
+        if (showPickableFields)
+        {
+            EditorGUI.indentLevel++;
+
+            EditorGUILayout.BeginHorizontal();
+            {
+                EditorGUILayout.PrefixLabel("Pickup description");
+                pickableDescription = EditorGUILayout.TextArea(pickableDescription);
+                EditorGUILayout.PrefixLabel("Pickable model");
+                pickableModel = (GameObject)EditorGUILayout.ObjectField(pickableModel, typeof(GameObject), false);
+            }
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.LabelField("The model MUST contain a collider !");
+
+            EditorGUI.indentLevel--;
+        }
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Files will be placed in root/Resources/(Armors|Items/Armors|Pickables/Armors).");
+
+        if (GUILayout.Button("Create Armor"))
+        {
+            //Creating Armor ScriptableObject
+            Armor newArmor = ScriptableObject.CreateInstance<Armor>();
+            Utils.SetPrivateFieldValue<int>(newArmor, "armor", armorValue);
+            Utils.SetPrivateFieldValue<string>(newArmor, "armorName", armorName);
+            Utils.SetPrivateFieldValue<ArmorSlot>(newArmor, "slot", (ArmorSlot)((int)armorSlot));
+            Utils.SetPrivateFieldValue<ArmorType>(newArmor, "type", armorType);
+            Utils.SetPrivateFieldValue<CharStats>(newArmor, "stats", new CharStats((uint)strength, (uint)defense, (uint)stamina, (uint)energy));
+
+            AssetDatabase.CreateAsset(newArmor, "Assets/Armor" + armorName + ".asset");
         }
     }
 }

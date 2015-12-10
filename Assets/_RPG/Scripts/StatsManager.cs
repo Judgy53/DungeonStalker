@@ -214,12 +214,16 @@ public class CharStats : System.Object
         energy = value;
     }
 
-    public CharStats(uint str, uint def, uint stam, uint ener, EventHandler ev)
+    public CharStats(uint str, uint def, uint stam, uint ener)
     {
         strength = str;
         defense = def;
         stamina = stam;
         energy = ener;
+    }
+
+    public CharStats(uint str, uint def, uint stam, uint ener, EventHandler ev) : this(str, def, stam, ener)
+    {
         OnStatsChange = ev;
     }
 
