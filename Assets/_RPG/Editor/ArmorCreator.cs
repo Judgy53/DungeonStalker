@@ -156,13 +156,57 @@ public class ArmorCreator : EditorWindow
         {
             //Creating Armor ScriptableObject
             Armor newArmor = ScriptableObject.CreateInstance<Armor>();
+
             Utils.SetPrivateFieldValue<int>(newArmor, "armor", armorValue);
             Utils.SetPrivateFieldValue<string>(newArmor, "armorName", armorName);
             Utils.SetPrivateFieldValue<ArmorSlot>(newArmor, "slot", (ArmorSlot)((int)armorSlot));
             Utils.SetPrivateFieldValue<ArmorType>(newArmor, "type", armorType);
             Utils.SetPrivateFieldValue<CharStats>(newArmor, "stats", new CharStats((uint)strength, (uint)defense, (uint)stamina, (uint)energy));
 
-            AssetDatabase.CreateAsset(newArmor, "Assets/Armor" + armorName + ".asset");
+            //Creating Armor Item
+            GameObject newItem = new GameObject("Item" + armorName);
+            ItemArmor item = newItem.AddComponent<ItemArmor>();
+            Utils.SetPrivateFieldValue<Sprite>(item, "image", image);
+            Utils.SetPrivateFieldValue<string>(item, "itemName", armorName);
+            Utils.SetPrivateFieldValue<string>(item, "actionName", "Equip");
+            Utils.SetPrivateFieldValue<string>(item, "useDescription", "Equip Armor.");
+            Utils.SetPrivateFieldValue<string>(item, "description", armorDescription);
+            Utils.SetPrivateFieldValue<uint>(item, "weight", (uint)weight);
+            Utils.SetPrivateFieldValue<ItemType>(item, "type", ItemType.Armor);
+            Utils.SetPrivateFieldValue<ItemQuality>(item, "quality", quality);
+            Utils.SetPrivateFieldValue<bool>(item, "canDrop", canDrop);
+
+            //Creating Pickable
+            GameObject newPickable = new GameObject("Pickable" + armorName, typeof(Rigidbody), typeof(Pickable));
+            Rigidbody rb = newPickable.GetComponent<Rigidbody>();
+            rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            Pickable pickable = newPickable.GetComponent<Pickable>();
+            pickable.actionName = "Pickup - " + armorName;
+            pickable.description = pickableDescription;
+
+            //Attaching model to pickable
+            if (pickableModel != null)
+            {
+                GameObject model = GameObject.Instantiate(pickableModel);
+                model.transform.SetParent(newPickable.transform, false);
+            }
+
+            //Saving prefabs
+            GameObject itemPrefab = PrefabUtility.CreatePrefab("Assets/Resources/Items/Armors/" + newItem.name + ".prefab", newItem);
+            GameObject pickablePrefab = PrefabUtility.CreatePrefab("Assets/Resources/Pickables/Armors/" + newPickable.name + ".prefab", newPickable);
+
+            //Linkage
+            Utils.SetPrivateFieldValue<GameObject>(newArmor, "itemPrefab", itemPrefab);
+            Utils.SetPrivateFieldValue<ScriptableObject>(itemPrefab.GetComponent<ItemArmor>(), "armorPrefab", newArmor);
+            Utils.SetPrivateFieldValue<GameObject>(itemPrefab.GetComponent<ItemArmor>(), "dropPrefab", pickablePrefab);
+            Utils.SetPrivateFieldValue<GameObject>(pickablePrefab.GetComponent<Pickable>(), "pickedItemPrefab", itemPrefab);
+
+            //Saving ScriptableObject
+            AssetDatabase.CreateAsset(newArmor, "Assets/Resources/Armors/Armor" + armorName + ".asset");
+            
+            //Cleaning temp gameObjects
+            GameObject.DestroyImmediate(newItem);
+            GameObject.DestroyImmediate(newPickable);
         }
     }
 }
