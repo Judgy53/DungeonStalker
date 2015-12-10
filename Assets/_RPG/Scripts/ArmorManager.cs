@@ -216,7 +216,7 @@ public struct ArmorSlot
         return (int)other.InternalValue;
     }
 
-    private enum ArmorSlotHelper
+    public enum ArmorSlotHelper
     {
         Head = 0,
         Neck = 1,
