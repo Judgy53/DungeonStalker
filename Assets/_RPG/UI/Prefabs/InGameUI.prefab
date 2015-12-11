@@ -894,6 +894,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &135962
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22478406}
+  - 222: {fileID: 22288432}
+  - 114: {fileID: 11461212}
+  - 114: {fileID: 11429372}
+  m_Layer: 5
+  m_Name: HelpText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &135994
 GameObject:
   m_ObjectHideFlags: 1
@@ -4062,6 +4080,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11429372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11431750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5895,6 +5927,32 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UIMouseEvents+UIMouseEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &11461212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!114 &11461702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8015,6 +8073,7 @@ MonoBehaviour:
   objectTitle: {fileID: 11498028}
   objectDescription: {fileID: 11473514}
   objectImage: {fileID: 11485866}
+  helpText: {fileID: 11461212}
 --- !u!114 &11496024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8923,6 +8982,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123350}
+--- !u!222 &22288432
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135962}
 --- !u!222 &22289140
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -10067,7 +10132,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -275, y: 0}
+  m_AnchoredPosition: {x: -300, y: 0}
   m_SizeDelta: {x: 150, y: 425}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22441450
@@ -10993,6 +11058,23 @@ RectTransform:
   m_AnchoredPosition: {x: 136.000015, y: -157}
   m_SizeDelta: {x: 205.600006, y: 69.6999969}
   m_Pivot: {x: .5, y: .5}
+--- !u!224 &22478406
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22486486}
+  m_RootOrder: 7
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 165, y: -194}
+  m_SizeDelta: {x: 410, y: 30}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22479248
 RectTransform:
   m_ObjectHideFlags: 1
@@ -11190,6 +11272,7 @@ RectTransform:
   - {fileID: 22478384}
   - {fileID: 22436214}
   - {fileID: 22483396}
+  - {fileID: 22478406}
   m_Father: {fileID: 22448764}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
@@ -11384,7 +11467,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: -125, y: 0}
   m_SizeDelta: {x: 150, y: 425}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22492394
