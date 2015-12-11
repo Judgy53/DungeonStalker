@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+#region ARMOR_MGR
 public class ArmorManager : MonoBehaviour
 {
     [SerializeField]
@@ -180,7 +181,9 @@ public class ArmorManager : MonoBehaviour
         }
     }
 }
+#endregion
 
+#region ARMOR_SLOT
 [System.Serializable]
 public struct ArmorSlot
 {
@@ -231,6 +234,7 @@ public struct ArmorSlot
         Trinket = 11
     }
 }
+#endregion
 
 public enum ArmorType
 {
@@ -241,6 +245,7 @@ public enum ArmorType
     Misc
 }
 
+#region ARMOR
 [System.Serializable]
 public class Armor : ScriptableObject
 {
@@ -285,3 +290,4 @@ public class Armor : ScriptableObject
         ScriptableObject.Destroy(this);
     }
 }
+#endregion
