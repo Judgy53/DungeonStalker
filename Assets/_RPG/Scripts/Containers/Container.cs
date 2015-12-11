@@ -146,7 +146,9 @@ public class Container : MonoBehaviour, IContainer, IUsable, ISavable
 
         for (int i = 0; i < count; i++)
         {
-            string path = data.Get("Item_" + i);
+            data.Prefix = origPrefix + "Item_" + i + "_";
+
+            string path = data.Get("path");
             if (path == null)
                 continue;
 
@@ -157,10 +159,10 @@ public class Container : MonoBehaviour, IContainer, IUsable, ISavable
                 continue;
             }
 
+            Debug.Log("Loading Item : " + prefab.name);
+
             GameObject instance = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
             IItem item = instance.GetComponent<IItem>();
-            
-            data.Prefix = origPrefix + "Item_" + i + "_";
 
             item.Load(data);
 

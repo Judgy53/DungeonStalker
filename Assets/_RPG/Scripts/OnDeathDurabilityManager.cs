@@ -26,7 +26,7 @@ public class OnDeathDurabilityManager : MonoBehaviour
     [SerializeField]
     private DurableScript[] onDeath = new DurableScript[0];
 
-    public void Start()
+    public void Awake()
     {
         IDamageable damageable = GetComponent<IDamageable>();
         damageable.OnDeath += OnDeath;
