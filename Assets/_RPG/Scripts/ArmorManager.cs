@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
+#region ARMOR_MGR
 public class ArmorManager : MonoBehaviour
 {
     [SerializeField]
@@ -181,7 +182,9 @@ public class ArmorManager : MonoBehaviour
         }
     }
 }
+#endregion
 
+#region ARMOR_SLOT
 [System.Serializable]
 public struct ArmorSlot
 {
@@ -253,6 +256,7 @@ public struct ArmorSlot
         EditorGUI.indentLevel--;
     }
 }
+#endregion
 
 public enum ArmorType
 {
@@ -263,6 +267,7 @@ public enum ArmorType
     Misc
 }
 
+#region ARMOR
 public class Armor : ScriptableObject
 {
     [SerializeField]
@@ -306,7 +311,9 @@ public class Armor : ScriptableObject
         ScriptableObject.Destroy(this);
     }
 }
+#endregion
 
+#region ARMOR_MANAGER_CUSTOM_EDITOR
 [CanEditMultipleObjects]
 [CustomEditor(typeof(ArmorManager))]
 public class AmorManagerCustomEditor : Editor
@@ -333,3 +340,4 @@ public class AmorManagerCustomEditor : Editor
             serializedObject.ApplyModifiedProperties();
     }
 }
+#endregion
