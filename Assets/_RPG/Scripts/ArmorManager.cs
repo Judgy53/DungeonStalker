@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 
 public class ArmorManager : MonoBehaviour
@@ -231,27 +230,6 @@ public struct ArmorSlot
         Ring = 10,
         Trinket = 11
     }
-
-    public static void DrawArmorArrayEditorProperty(SerializedProperty list)
-    {
-        EditorGUILayout.PropertyField(list);
-
-        SerializedProperty size = list.FindPropertyRelative("Array.size");
-        EditorGUILayout.PropertyField(size);
-        
-        EditorGUI.indentLevel++;
-
-        for (int i = 0; i < list.arraySize; i++)
-        {
-            string name = "Unknown";
-            if (i < ArmorSlot.Count)
-                name = ((ArmorSlot.ArmorSlotHelper)i).ToString();
-
-            EditorGUILayout.PropertyField(list.GetArrayElementAtIndex(i), new GUIContent(name));
-        }
-        
-        EditorGUI.indentLevel--;
-    }
 }
 
 public enum ArmorType
@@ -263,6 +241,7 @@ public enum ArmorType
     Misc
 }
 
+[System.Serializable]
 public class Armor : ScriptableObject
 {
     [SerializeField]
@@ -304,32 +283,5 @@ public class Armor : ScriptableObject
             container.AddItem((GameObject.Instantiate(itemPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<IItem>());
 
         ScriptableObject.Destroy(this);
-    }
-}
-
-[CanEditMultipleObjects]
-[CustomEditor(typeof(ArmorManager))]
-public class AmorManagerCustomEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
-
-        EditorGUI.BeginChangeCheck();
-        SerializedProperty p = serializedObject.GetIterator();
-        p.Next(true);
-        do
-        {
-            if (p.name.Contains("m_"))
-                continue;
-
-            if (p.name == "debugStartArmor" && p.isExpanded)
-                ArmorSlot.DrawArmorArrayEditorProperty(p);
-            else
-                EditorGUILayout.PropertyField(p);
-        }
-        while (p.Next(false));
-        if (EditorGUI.EndChangeCheck())
-            serializedObject.ApplyModifiedProperties();
     }
 }

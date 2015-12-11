@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEditor;
 
 public class UIPaperDoll : MonoBehaviour
 {
@@ -260,32 +259,5 @@ public class UIPaperDoll : MonoBehaviour
             else
                 UITooltip.ForceHide();
         }
-    }
-}
-
-[CanEditMultipleObjects]
-[CustomEditor(typeof(UIPaperDoll))]
-public class UIPaperDollDrawer : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
-
-        EditorGUI.BeginChangeCheck();
-        SerializedProperty p = serializedObject.GetIterator();
-        p.Next(true);
-        do
-        {
-            if (p.name.Contains("m_"))
-                continue;
-
-            if (p.name == "armorSlots" && p.isExpanded)
-                ArmorSlot.DrawArmorArrayEditorProperty(p);
-            else
-                EditorGUILayout.PropertyField(p);
-        }
-        while (p.Next(false));
-        if (EditorGUI.EndChangeCheck())
-            serializedObject.ApplyModifiedProperties();
     }
 }

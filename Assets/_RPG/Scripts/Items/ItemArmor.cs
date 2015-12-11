@@ -23,7 +23,7 @@ public class ItemArmor : MonoBehaviour, IItem, IUsable
     public uint Weigth { get { return weight; } }
 
     [SerializeField]
-    private ItemType type = ItemType.Armor;
+    private ItemType type = ItemType.Armors;
     public ItemType Type { get { return type; } }
 
     [SerializeField]

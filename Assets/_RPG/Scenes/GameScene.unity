@@ -139,6 +139,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &319742889
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .629999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.0999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.5999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 453050, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7e5fadbc970f6b74b975a42df937e4cc, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &405744127
 Prefab:
   m_ObjectHideFlags: 0
@@ -572,7 +614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22407750, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 22407750, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchoredPosition.x
