@@ -159,4 +159,20 @@ public class SaveManager {
     {
         saves = saves.OrderBy(d => d.Value.CreationDate).ToDictionary(x=>x.Key,x=>x.Value);
     }
+
+    public void DeleteSave(string gameId)
+    {
+        foreach(KeyValuePair<string, Save> kvp in Saves)
+        {
+            if(kvp.Value.GameId == gameId)
+            {
+                Debug.Log("Save To Delete Found : " + folder + kvp.Key + ".sav");
+                File.Delete(folder + kvp.Key + ".sav");
+
+                Loaded = false; // mark save list to be reloaded
+
+                return;
+            }
+        }
+    }
 }

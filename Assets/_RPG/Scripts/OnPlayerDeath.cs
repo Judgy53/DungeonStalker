@@ -25,5 +25,7 @@ public class OnPlayerDeath : MonoBehaviour
 
         if (rotationController != null)
             rotationController.enabled = false;
+
+        SaveManager.Instance.DeleteSave(GameManager.GameId);
     }
 }
