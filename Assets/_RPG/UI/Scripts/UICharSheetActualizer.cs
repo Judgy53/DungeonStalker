@@ -20,7 +20,7 @@ public class UICharSheetActualizer : MonoBehaviour
 
     private UICharSheet manager = null;
 
-    void Start()
+    private void Start()
     {
         GameManager.OnPlayerCreation += OnPlayerCreation;
 
@@ -35,18 +35,14 @@ public class UICharSheetActualizer : MonoBehaviour
         manager.OnMenuStateChange += OnMenuStateChange;
     }
 
+    private void OnDestroy()
+    {
+        if (target != null)
+            target.Stats.OnStatsChange -= OnStatsChanged;
+    }
+
     private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
-        Debug.Log("OnPlayerCreation fired");
-
-        unsafe
-        {
-            fixed (int* p = &this.test)
-            {
-                Debug.Log("Adress : " + string.Format("0x{0}", new IntPtr(p)));
-            }
-        }
-
         tmpAddedPoint = new CharStats(0);
         target = e.player.GetComponent<StatsManager>();
 
