@@ -7,6 +7,7 @@ public class UICharSheetActualizer : MonoBehaviour
 {
     public int test = 0;
     public StatsManager target = null;
+    private ArmorManager targetArmor = null;
 
     public AttributeUILabel strengthLabel = null;
     public AttributeUILabel defenseLabel = null;
@@ -15,6 +16,8 @@ public class UICharSheetActualizer : MonoBehaviour
 
     public Text unspentPointsLabel = null;
     public Text levelLabel = null;
+
+    public Text armorLabel = null;
 
     private CharStats tmpAddedPoint = new CharStats(0u);
 
@@ -39,12 +42,15 @@ public class UICharSheetActualizer : MonoBehaviour
     {
         if (target != null)
             target.Stats.OnStatsChange -= OnStatsChanged;
+        if (targetArmor != null)
+            targetArmor.OnArmorChanged -= OnStatsChanged;
     }
 
     private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
         tmpAddedPoint = new CharStats(0);
         target = e.player.GetComponent<StatsManager>();
+        targetArmor = e.player.GetComponent<ArmorManager>();
 
         target.OnLevelUp += OnStatsChanged;
 
@@ -77,6 +83,8 @@ public class UICharSheetActualizer : MonoBehaviour
             unspentPointsLabel.text = "Unspent points : " + target.UnspentPoints;
         if (levelLabel != null)
             levelLabel.text = "Level : " + target.CurrentLevel;
+        if (armorLabel != null)
+            armorLabel.text = "Total Armor : " + targetArmor.TotalArmor;
 
         strengthLabel.minusButton.gameObject.SetActive(tmpAddedPoint.Strength > 0u);
         defenseLabel.minusButton.gameObject.SetActive(tmpAddedPoint.Defense > 0u);
