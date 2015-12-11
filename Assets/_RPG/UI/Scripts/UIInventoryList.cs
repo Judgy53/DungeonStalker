@@ -184,7 +184,7 @@ public class UIInventoryList : MonoBehaviour
     {
         IItem item = btn.GetComponent<UIInventoryButton>().Item;
 
-        if (item is ItemWeapon)
+        if (item is ItemWeapon && CanEquip(item as ItemWeapon, WeaponRestriction.MainHand))
             (item as ItemWeapon).Use((item as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.MainHand));
         else if (item is IUsable)
             (item as IUsable).Use((item as Behaviour).GetComponentInParent<InteractManager>());
@@ -196,7 +196,7 @@ public class UIInventoryList : MonoBehaviour
     {
         IItem item = btn.GetComponent<UIInventoryButton>().Item;
 
-        if (item is ItemWeapon)
+        if (item is ItemWeapon && CanEquip(item as ItemWeapon, WeaponRestriction.OffHand))
             (item as ItemWeapon).Use((item as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.OffHand));
 
         Populate(target);
@@ -207,6 +207,25 @@ public class UIInventoryList : MonoBehaviour
         GetComponentInParent<UIInventoryMenu>().target.DropItem(btn.Item);
 
         Populate(target);
+    }
+
+    private bool CanEquip(ItemWeapon weapon, WeaponRestriction slot)
+    {
+        WeaponManager wm = GetComponentInParent<UIInventoryMenu>().target.GetComponentInParent<WeaponManager>();
+
+        switch (weapon.Restriction)
+        {
+            case WeaponRestriction.Both:
+            case WeaponRestriction.OffHand:
+                if (wm != null && (wm.MainHandWeapon == null || wm.MainHandWeapon.WeaponHand == WeaponHand.OneHanded))
+                    return true;
+                else
+                    return slot == WeaponRestriction.MainHand;
+            case WeaponRestriction.MainHand:
+                return slot == WeaponRestriction.MainHand;
+        }
+
+        return false;
     }
 }
 
