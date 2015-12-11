@@ -40,6 +40,7 @@ public class ItemArmor : MonoBehaviour, IItem, IUsable
 
     [SerializeField]
     private ScriptableObject armorPrefab = null;
+    public ScriptableObject ArmorPrefab { get { return armorPrefab; } }
     
     public void OnPickup(IPickable pickable)
     {

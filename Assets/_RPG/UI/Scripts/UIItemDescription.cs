@@ -87,6 +87,29 @@ public class UIItemDescription : MonoBehaviour
                     objectDescription.text += weapon.GetInventoryDescription();
                 }
             }
+            else if (args.newItem is ItemArmor)
+            {
+                ItemArmor item = args.newItem as ItemArmor;
+                Armor armor = item.ArmorPrefab as Armor;
+
+                objectDescription.text += "\n" + armor.Type.ToString() + " armor.\n";
+                if (armor.ArmorValue != 0)
+                    objectDescription.text += "Armor : " + armor.ArmorValue + "\n";
+
+                if (armor.Stats != 0)
+                {
+                    objectDescription.text += "<color=green>Stats : ";
+                    if (armor.Stats.Strength != 0)
+                        objectDescription.text += armor.Stats.Strength + " STR | ";
+                    if (armor.Stats.Stamina != 0)
+                        objectDescription.text += armor.Stats.Stamina + " STA | ";
+                    if (armor.Stats.Defense != 0)
+                        objectDescription.text += armor.Stats.Defense + " DEF | ";
+                    if (armor.Stats.Energy != 0)
+                        objectDescription.text += armor.Stats.Energy + " ENG";
+                    objectDescription.text += "</color>";
+                }
+            }
         }
 
         if (objectImage != null)

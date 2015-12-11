@@ -134,7 +134,7 @@ public class PlayerContainer : MonoBehaviour, IContainer, IStatsDependable, ISav
 
     public void OnStatsChange(object sender, EventArgs args)
     {
-        maxWeight = 90u + statsManager.TotalStats.Strength * 10u;
+        maxWeight = 95u + statsManager.TotalStats.Strength * 5u;
     }
 
     public void Save(SaveData data)

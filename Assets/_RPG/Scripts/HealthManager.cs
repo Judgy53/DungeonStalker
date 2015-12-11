@@ -125,8 +125,6 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
             damages = 0.0f;
         }
 
-        Debug.Log("Armor damage reduction : " + armorDamageReduction + "%");
-
         damages -= (armorDamageReduction / 100.0f) * damages;
 
         damages = Mathf.Max(damages, 0.1f);
