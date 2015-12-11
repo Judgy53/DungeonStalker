@@ -61,6 +61,7 @@ public class UIItemDescription : MonoBehaviour
         if (objectDescription != null)
         {
             objectDescription.text = args.newItem.Description;
+            objectDescription.text += "\nWeight : " + args.newItem.Weigth;
             if (args.newItem is IUsable)
                 objectDescription.text += "\nUse : " + (args.newItem as IUsable).GetDescription();
             if (args.newItem is ItemWeapon)
