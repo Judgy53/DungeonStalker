@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 #region ARMOR_MGR
 public class ArmorManager : MonoBehaviour
 {
+    public event EventHandler OnArmorChanged;
+
     [SerializeField]
     [Tooltip("Head 0, Neck 1, Shoulders 2, Chest 3, Back 4, Waist 5, Legs 6, Feets 7, Ring 8, Trinket 9")]
     private Armor[] debugStartArmor = new Armor[ArmorSlot.Count];
@@ -178,6 +181,8 @@ public class ArmorManager : MonoBehaviour
             }
 
             stmanager.GearStats += totalGearStats;
+            if (OnArmorChanged != null)
+                OnArmorChanged(this, new EventArgs());
         }
     }
 }
