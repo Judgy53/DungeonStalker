@@ -5,6 +5,7 @@ using System.Collections;
 
 public class UICharSheetActualizer : MonoBehaviour
 {
+    public int test = 0;
     public StatsManager target = null;
 
     public AttributeUILabel strengthLabel = null;
@@ -36,6 +37,17 @@ public class UICharSheetActualizer : MonoBehaviour
 
     private void OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
+        Debug.Log("OnPlayerCreation fired");
+
+        unsafe
+        {
+            fixed (int* p = &this.test)
+            {
+                Debug.Log("Adress : " + string.Format("0x{0}", new IntPtr(p)));
+            }
+        }
+
+        tmpAddedPoint = new CharStats(0);
         target = e.player.GetComponent<StatsManager>();
 
         target.OnLevelUp += OnStatsChanged;

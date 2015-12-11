@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b9652598d5809b142aa3aaffccdcd2cc, type: 3}
   m_Name: ArmorWarrior's embrace
   m_EditorClassIdentifier: Assembly-CSharp::Armor
   armorName: Warrior's embrace
