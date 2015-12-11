@@ -106,7 +106,7 @@ public class UIItemDescription : MonoBehaviour
         {
             if (item is ItemArmor)
                 text = "E - Equip";
-            if (item is ItemWeapon)
+            else if (item is ItemWeapon)
                 text = "E - Equip Right Hand    Right Click - Equip Left Hand";
             else if (item is IUsable)
                 text = "E - Use";
