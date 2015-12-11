@@ -10,6 +10,8 @@ public class UIDeath : MonoBehaviour
     [SerializeField]
     private Button quitButton = null;
 
+    private HealthManager health = null;
+
     private void Start()
     {
         GameManager.OnPlayerCreation += GameManager_OnPlayerCreation;
@@ -17,9 +19,17 @@ public class UIDeath : MonoBehaviour
         content.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        GameManager.OnPlayerCreation -= GameManager_OnPlayerCreation;
+        
+        if(health != null)
+            health.OnDeath -= Player_OnDeath;
+    }
+
     private void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
-        HealthManager health = e.player.GetComponent<HealthManager>();
+        health = e.player.GetComponent<HealthManager>();
 
         if(health != null)
             health.OnDeath += Player_OnDeath;

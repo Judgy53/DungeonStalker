@@ -11,7 +11,13 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
     public float MaxHealth 
     { 
         get { return maxHealth; }
-        set { maxHealth = value; CapHealth(); } 
+        set 
+        {
+            float ratio = currentHealth / maxHealth;
+            maxHealth = value;
+            currentHealth = maxHealth * ratio;
+            CapHealth(); 
+        } 
     }
 
     private float currentHealth = 10f;
@@ -51,7 +57,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
         damage = ApplyDamagesModifiers(damage);
 
-        CurrentHealth = CurrentHealth - damage;
+        CurrentHealth -= damage;
 
         if (OnHit != null)
             OnHit(this, new EventArgs());
@@ -83,7 +89,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void Heal(float amount)
     {
-        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        CurrentHealth += amount;
     }
 
     public void Die()
@@ -94,9 +100,7 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void OnStatsChange(object sender, EventArgs args)
     {
-        maxHealth = statsManager.TotalStats.Stamina * 10u;
-
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        MaxHealth = statsManager.TotalStats.Stamina * 10u;
     }
 	
     private float ComputeDamageReceived(StatsManager self, StatsManager other, float damages)

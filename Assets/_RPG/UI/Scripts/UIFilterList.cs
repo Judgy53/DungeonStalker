@@ -39,6 +39,11 @@ public class UIFilterList : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        inventory.CurrentFilter = ItemType.All;
+    }
+
     private void Update()
     {
         GameObject selected = EventSystem.current.currentSelectedGameObject;

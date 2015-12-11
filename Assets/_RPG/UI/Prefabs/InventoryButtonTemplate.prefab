@@ -31,6 +31,7 @@ GameObject:
   - 114: {fileID: 11468314}
   - 114: {fileID: 11478026}
   - 114: {fileID: 11415230}
+  - 114: {fileID: 11462316}
   m_Layer: 5
   m_Name: InventoryButtonTemplate
   m_TagString: Untagged
@@ -100,6 +101,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11462316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab6e7de64eddaa449063ae6d1b40906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11465562
 MonoBehaviour:
   m_ObjectHideFlags: 1

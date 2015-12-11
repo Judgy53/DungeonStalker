@@ -74,6 +74,11 @@ public class UIInventoryList : MonoBehaviour
         {
             Button_onLeftClick(currentSelected.GetComponent<UIMouseEvents>());
         }
+
+        if (Input.GetKeyDown(KeyCode.R) && instantiatedList.IndexOf(currentSelected) != -1)
+        {
+            Button_onDrop(currentSelected.GetComponent<UIInventoryButton>());
+        }
     }
 
     private void OnInventoryMenuStateChangeCallback(object sender, UIMenuStateChangeArgs e)
@@ -113,6 +118,8 @@ public class UIInventoryList : MonoBehaviour
             text.text = item.Name;
 
             instantiatedList.Add(buttonGao);
+
+            buttonGao.GetComponent<UIInventoryButton>().Item = item;
 
             UIMouseEvents events = buttonGao.GetComponent<UIMouseEvents>();
             events.onMouseEnter.AddListener(Button_onMouseEnter);
@@ -175,22 +182,29 @@ public class UIInventoryList : MonoBehaviour
 
     private void Button_onLeftClick(UIMouseEvents btn)
     {
-        IItem item = items[instantiatedList.IndexOf(btn.gameObject)];
+        IItem item = btn.GetComponent<UIInventoryButton>().Item;
 
-        if (item is IUsable)
-            (item as IUsable).Use((item as Behaviour).GetComponentInParent<InteractManager>());
-        else if (item is ItemWeapon)
+        if (item is ItemWeapon)
             (item as ItemWeapon).Use((item as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.MainHand));
+        else if (item is IUsable)
+            (item as IUsable).Use((item as Behaviour).GetComponentInParent<InteractManager>());
 
         Populate(target);
     }
 
     private void Button_onRightClick(UIMouseEvents btn)
     {
-        IItem item = items[instantiatedList.IndexOf(btn.gameObject)];
+        IItem item = btn.GetComponent<UIInventoryButton>().Item;
 
         if (item is ItemWeapon)
             (item as ItemWeapon).Use((item as Behaviour).GetComponentInParent<InteractManager>(), new EquipWeaponArgs(EquipWeaponArgs.Hand.OffHand));
+
+        Populate(target);
+    }
+
+    private void Button_onDrop(UIInventoryButton btn)
+    {
+        GetComponentInParent<UIInventoryMenu>().target.DropItem(btn.Item);
 
         Populate(target);
     }

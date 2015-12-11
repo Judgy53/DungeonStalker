@@ -35,6 +35,8 @@ public class Maze : MonoBehaviour
 
     private bool playerStartCreated = false;
 
+    public MazeCell playerStartCell = null;
+
     private int seed = -1;
     public int Seed { get { return seed; } set { seed = value; } }
 
@@ -93,6 +95,10 @@ public class Maze : MonoBehaviour
     {
         enemies = new List<GameObject>();
         List<MazeRoom> activeRooms = new List<MazeRoom>(rooms);
+
+        if (playerStartCell != null)
+            activeRooms.Remove(playerStartCell.room);
+
         while (enemies.Count < enemiesNumber)
         {
             if (activeRooms.Count == 0)
@@ -144,6 +150,7 @@ public class Maze : MonoBehaviour
         newCell.Initialize(CreateRoom(-1));
         activeCells.Add(newCell);
         playerStartCreated = false;
+        playerStartCell = null;
     }
 
     private void DoNextGenerationStep(List<MazeCell> activeCells)
@@ -194,6 +201,7 @@ public class Maze : MonoBehaviour
                     coordinates.z - size.z * 0.5f + 0.5f - direction.ToVector2i().z);
 
                 playerStartCreated = true;
+                playerStartCell = currentCell;
             }
         }
     }

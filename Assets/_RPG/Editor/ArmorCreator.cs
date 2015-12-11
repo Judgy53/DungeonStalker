@@ -172,7 +172,7 @@ public class ArmorCreator : EditorWindow
             Utils.SetPrivateFieldValue<string>(item, "useDescription", "Equip Armor.");
             Utils.SetPrivateFieldValue<string>(item, "description", armorDescription);
             Utils.SetPrivateFieldValue<uint>(item, "weight", (uint)weight);
-            Utils.SetPrivateFieldValue<ItemType>(item, "type", ItemType.Armor);
+            Utils.SetPrivateFieldValue<ItemType>(item, "type", ItemType.Armors);
             Utils.SetPrivateFieldValue<ItemQuality>(item, "quality", quality);
             Utils.SetPrivateFieldValue<bool>(item, "canDrop", canDrop);
 

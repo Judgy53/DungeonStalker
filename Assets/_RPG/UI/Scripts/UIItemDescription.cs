@@ -12,6 +12,9 @@ public class UIItemDescription : MonoBehaviour
 
     private Sprite defaultSprite = null;
 
+    [SerializeField]
+    private Text helpText = null;
+
     private void Start()
     {
         if (inventoryListManager == null)
@@ -28,6 +31,9 @@ public class UIItemDescription : MonoBehaviour
 
     private void OnItemFocusChangeCallback(object sender, ItemFocusChangeArgs args)
     {
+        if (helpText != null)
+            UpdateHelpText(args.newItem);
+
         if (args.newItem == null)
         {
             if (objectTitle != null)
@@ -90,5 +96,24 @@ public class UIItemDescription : MonoBehaviour
             else
                 objectImage.sprite = defaultSprite;
         }
+    }
+
+    private void UpdateHelpText(IItem item)
+    {
+        string text = "";
+
+        if (item != null)
+        {
+            if (item is ItemArmor)
+                text = "E - Equip";
+            else if (item is ItemWeapon)
+                text = "E - Equip Right Hand    Right Click - Equip Left Hand";
+            else if (item is IUsable)
+                text = "E - Use";
+            
+            text += "    R - Drop";
+        }
+
+        helpText.text = text;
     }
 }
