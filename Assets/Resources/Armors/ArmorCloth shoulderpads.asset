@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorCloth shoulderpads
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Cloth shoulderpads
+  slot:
+    InternalValue: 2
+  type: 3
+  armor: 10
+  stats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
+  state: 1
+  itemPrefab: {fileID: 144780, guid: 62e7c76626c308848baad2ad5b29343c, type: 2}

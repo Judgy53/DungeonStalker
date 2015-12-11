@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorRanger neck
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Ranger neck
+  slot:
+    InternalValue: 1
+  type: 4
+  armor: 0
+  stats:
+    strength: 4
+    defense: 3
+    stamina: 8
+    energy: 2
+  state: 1
+  itemPrefab: {fileID: 115052, guid: 96dcb6e2b986fb0449f1607e0a8a4883, type: 2}

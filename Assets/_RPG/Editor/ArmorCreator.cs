@@ -150,7 +150,7 @@ public class ArmorCreator : EditorWindow
         EditorGUILayout.Space();
         EditorGUILayout.Space();
 
-        EditorGUILayout.LabelField("Files will be placed in root/Resources/(Armors|Items/Armors|Pickables/Armors).");
+        EditorGUILayout.LabelField("Files will be placed in Assets/Resources/(Armors|Items/Armors|Pickables/Armors).");
 
         if (GUILayout.Button("Create Armor"))
         {

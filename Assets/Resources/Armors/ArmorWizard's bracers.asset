@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorWizard's bracers
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Wizard's bracers
+  slot:
+    InternalValue: 5
+  type: 3
+  armor: 10
+  stats:
+    strength: 0
+    defense: 0
+    stamina: 3
+    energy: 10
+  state: 1
+  itemPrefab: {fileID: 197382, guid: 8ebe8eab4868dcc4aa64e0c0565bfc33, type: 2}

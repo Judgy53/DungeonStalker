@@ -259,7 +259,8 @@ public enum ArmorType
     Plate,
     Mail,
     Leather,
-    Cloth
+    Cloth,
+    Misc
 }
 
 public class Armor : ScriptableObject

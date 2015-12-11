@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorBreastplate of Wrath
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Breastplate of Wrath
+  slot:
+    InternalValue: 3
+  type: 0
+  armor: 550
+  stats:
+    strength: 40
+    defense: 25
+    stamina: 35
+    energy: 7
+  state: 1
+  itemPrefab: {fileID: 146190, guid: ea47b41517a89d84a859dadfe1dbe414, type: 2}

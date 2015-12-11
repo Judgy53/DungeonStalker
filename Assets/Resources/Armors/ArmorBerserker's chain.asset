@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorBerserker's chain
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Berserker's chain
+  slot:
+    InternalValue: 3
+  type: 1
+  armor: 115
+  stats:
+    strength: 15
+    defense: 4
+    stamina: 7
+    energy: 0
+  state: 1
+  itemPrefab: {fileID: 139158, guid: 3864e8a25cf797c43bdea737256f5285, type: 2}

@@ -1864,7 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c587843333eedc34c8b4c725ac1d312b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootChance: .300000012
+  lootChance: .400000006
   container: {fileID: 11407940}
   lootTable:
   - itemGo: {fileID: 113310, guid: acf83e31504d9f24dafce756cc778479, type: 2}
@@ -1878,14 +1878,96 @@ MonoBehaviour:
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
     dropChance: .800000012
   - itemGo: {fileID: 190822, guid: bc23669ce57d06945ac6813cd2e57c56, type: 2}
-    dropChance: .00999999978
+    dropChance: .00100000005
   - itemGo: {fileID: 139954, guid: 73b61e32c3e0afe4bafb3ee084c5df50, type: 2}
-    dropChance: .0500000007
+    dropChance: .200000003
   - itemGo: {fileID: 139954, guid: 73b61e32c3e0afe4bafb3ee084c5df50, type: 2}
-    dropChance: .0500000007
+    dropChance: .200000003
   - itemGo: {fileID: 138542, guid: 8cc856be57672df44a569527f6320f25, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 139158, guid: 3864e8a25cf797c43bdea737256f5285, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 136884, guid: 962f0ee0663bc1a43ab6ab4a477b07f4, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 115822, guid: d2d2b874606939b40a4139493bf04fe0, type: 2}
+    dropChance: .00499999989
+  - itemGo: {fileID: 146190, guid: ea47b41517a89d84a859dadfe1dbe414, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 137498, guid: f678d57d47057384598e0cde3c98c178, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 144780, guid: 62e7c76626c308848baad2ad5b29343c, type: 2}
+    dropChance: .150000006
+  - itemGo: {fileID: 183912, guid: da0dc0e7823150d4d8ffbf15a9373918, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 109620, guid: a09ea171e1f7624428e3ddb0e4e15fe7, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 160130, guid: d005e4a555c43ee468a1dfb0e142675e, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 109360, guid: 00fe31c0ddf221a47a9000a06ffe84aa, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 118652, guid: 8b47d4f280284c04e986904ce4d49513, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 165232, guid: ffe16436ec6c05d4d9553ceac90d575e, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 104906, guid: cb42fe94ece160144b8b2d3030bae856, type: 2}
+    dropChance: .00999999978
+  - itemGo: {fileID: 114554, guid: b513ae6c392479a46b3311088c7761b2, type: 2}
     dropChance: .0299999993
-  maxItemNumber: 3
+  - itemGo: {fileID: 151078, guid: 461f568145c65c14a80009e99413ef3d, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 132778, guid: 768d33ad1d8154842904d6355920e5bc, type: 2}
+    dropChance: .0399999991
+  - itemGo: {fileID: 121150, guid: 04b5aab66d4d08347b7746f1fe4a5577, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 115052, guid: 96dcb6e2b986fb0449f1607e0a8a4883, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 124088, guid: 30583666a0035d14bb0d2bcd19c3b852, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 155742, guid: 5cbae3fa0a3c48142b0ce97a2ad646e7, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 159882, guid: 591e603e442258e4da568e923bb4b743, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 126650, guid: 59d97d1edb6cd4e45b0abcef5382662a, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 135800, guid: 7cb62de8c0b130548ae32eeb66445ad4, type: 2}
+    dropChance: .0799999982
+  - itemGo: {fileID: 142042, guid: a17ca38efc36f0444942be584668d92b, type: 2}
+    dropChance: .0799999982
+  - itemGo: {fileID: 110194, guid: 36581465a365fed4fbf85fa2a678e388, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 146522, guid: 90972c7276c65044796577196aa9f9c2, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 137642, guid: ed3fc4e140b4ee446958a24977082901, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 128540, guid: 4106a2c4ab9cdd5479d8b7cdd55dfef6, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 113448, guid: dd12853dde8609649844ec5ff182702e, type: 2}
+    dropChance: .0199999996
+  - itemGo: {fileID: 132982, guid: e4dc02676ce275746ba383855711a4b5, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 115030, guid: 7aa9f06849cdc1046b86bdb93e3e5d91, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 175488, guid: 1d8c0721709819f48ba759882178b8ec, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 190860, guid: f1852f9ed00089b42bc0419f2eecca1c, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 154718, guid: cefbb32ec5d83d64dac500ed321c701f, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 126870, guid: 4fc4b5fcbf024794aa8d81245090a1d6, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 159882, guid: 591e603e442258e4da568e923bb4b743, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 190526, guid: 71a871b4d6be23449975deb388af671b, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 115308, guid: 44367306c73b83c4199e3b8dd468c368, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 145622, guid: b00f5222fde8fd3468836ee763948a4d, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 159882, guid: 591e603e442258e4da568e923bb4b743, type: 2}
+    dropChance: .0299999993
+  - itemGo: {fileID: 159882, guid: 591e603e442258e4da568e923bb4b743, type: 2}
+    dropChance: .0299999993
+  maxItemNumber: 4
 --- !u!114 &11437492
 MonoBehaviour:
   m_ObjectHideFlags: 1
