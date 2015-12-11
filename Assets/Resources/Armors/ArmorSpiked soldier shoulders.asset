@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorSpiked soldier shoulders
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Spiked soldier shoulders
+  slot:
+    InternalValue: 2
+  type: 1
+  armor: 75
+  stats:
+    strength: 10
+    defense: 3
+    stamina: 8
+    energy: 0
+  state: 1
+  itemPrefab: {fileID: 126650, guid: 59d97d1edb6cd4e45b0abcef5382662a, type: 2}

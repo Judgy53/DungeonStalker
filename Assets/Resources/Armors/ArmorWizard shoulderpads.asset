@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorWizard shoulderpads
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Wizard shoulderpads
+  slot:
+    InternalValue: 2
+  type: 3
+  armor: 25
+  stats:
+    strength: 0
+    defense: 0
+    stamina: 4
+    energy: 8
+  state: 1
+  itemPrefab: {fileID: 129518, guid: 494dad1da5a2a1f44a806d2a0bc6bfb2, type: 2}

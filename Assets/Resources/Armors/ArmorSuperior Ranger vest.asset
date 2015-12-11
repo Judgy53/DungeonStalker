@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ArmorSuperior Ranger vest
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  armorName: Superior Ranger vest
+  slot:
+    InternalValue: 3
+  type: 2
+  armor: 55
+  stats:
+    strength: 2
+    defense: 2
+    stamina: 5
+    energy: 0
+  state: 1
+  itemPrefab: {fileID: 135800, guid: 7cb62de8c0b130548ae32eeb66445ad4, type: 2}

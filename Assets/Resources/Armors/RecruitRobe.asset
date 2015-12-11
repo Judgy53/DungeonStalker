@@ -17,9 +17,9 @@ MonoBehaviour:
   type: 3
   armor: 10
   stats:
-    strength: 5
-    defense: 7
-    stamina: 2
-    energy: 3
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
   state: 1
   itemPrefab: {fileID: 124088, guid: 30583666a0035d14bb0d2bcd19c3b852, type: 2}

@@ -46,7 +46,7 @@ MonoBehaviour:
   description: It's already shreded ...
   weight: 5
   type: 4
-  quality: 4
+  quality: 0
   canDrop: 1
   dropPrefab: {fileID: 101038, guid: 8449a99dbc928f54293a5c0a684402ce, type: 2}
   armorPrefab: {fileID: 11400000, guid: 52640b990d999224ca12126566053f74, type: 2}
@@ -68,7 +68,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: quality
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: weight
