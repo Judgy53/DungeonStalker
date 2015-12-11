@@ -38,6 +38,9 @@ public class LootTable : MonoBehaviour
             return;
         }
 
+        if (Container.Items.Length > 0) // if is already filled, don't generate loot
+            return;
+
         float rand = Random.Range(0.0f, 1.0f);
         if (rand > lootChance)
             return;
