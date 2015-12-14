@@ -8,6 +8,9 @@ public class UICharSheet : MonoBehaviour
 
     public GameObject content = null;
 
+    [SerializeField]
+    private GameObject popup;
+
     private UIMenuState state = UIMenuState.Hidden;
     public UIMenuState State { get { return state; }
         set
@@ -30,6 +33,25 @@ public class UICharSheet : MonoBehaviour
             enabled = false;
             return;
         }
+
+        GameManager.OnPlayerCreation += GameManager_OnPlayerCreation;
+        if (popup != null)
+            popup.SetActive(false);
+    }
+
+    void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
+    {
+        StatsManager stats = e.player.GetComponent<StatsManager>();
+        if(stats != null && popup != null)
+        {
+            stats.OnLevelUp += Player_OnLevelUp;
+        }
+    }
+
+    void Player_OnLevelUp(object sender, EventArgs e)
+    {
+        if(!popup.activeInHierarchy)
+            popup.SetActive(true);
     }
 
     //Must be called after all registrations are done (ScriptExecutionOrder)
@@ -63,6 +85,9 @@ public class UICharSheet : MonoBehaviour
             UIStateManager.RegisterUI();
             content.SetActive(true);
             Time.timeScale = 0.0f;
+
+            if (popup != null && popup.activeInHierarchy)
+                popup.SetActive(false);
         }
     }
 }
