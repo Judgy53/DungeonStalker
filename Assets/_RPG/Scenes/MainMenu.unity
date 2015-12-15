@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2208776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1957,6 +1957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d4011bb4ec2c04dada10f0ea2fe61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSourcePrefab: {fileID: 141216, guid: 053ee01e1ee163c469e21425fb0281ca, type: 2}
   sfxVolume: 1
   musicVolume: 1
 --- !u!4 &600256559
@@ -2898,6 +2899,8 @@ MonoBehaviour:
   seed: 42
   stage: 1
   autoSaver: {fileID: 1371022110}
+  menuClip: {fileID: 8300000, guid: 328ccf6f2478d70489e4361dae0000fb, type: 3}
+  inGameClip: {fileID: 8300000, guid: 3a281b30f8c853941b1185f5fa1627a8, type: 3}
 --- !u!4 &1026711049
 Transform:
   m_ObjectHideFlags: 0

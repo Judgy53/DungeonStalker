@@ -83,6 +83,12 @@ public class GameManager : MonoBehaviour, ISavable
 
     private GameObject player = null;
 
+    [SerializeField]
+    private AudioClip menuClip;
+
+    [SerializeField]
+    private AudioClip inGameClip;
+
     private void Awake()
     {
         if (instance != null)
@@ -93,7 +99,8 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        LoadStage(stage);
+        //LoadStage(stage);
+        GoToMainMenu();
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -179,6 +186,8 @@ public class GameManager : MonoBehaviour, ISavable
                 OnPlayerCreation(this, new EventPlayerCreationArgs(player));
 
             StartCoroutine("UpdateTimePlayed");
+
+            AudioManager.PlayMusic(instance.inGameClip, Camera.main.transform);
         }
     }
 
@@ -242,6 +251,9 @@ public class GameManager : MonoBehaviour, ISavable
             }
 
             instance.StopCoroutine("UpdateTimePlayed");
+
+            Debug.Log("Play Music Menu");
+            AudioManager.PlayMusic(instance.menuClip, null);
        }
 
         Application.LoadLevel("MainMenu");

@@ -56,7 +56,7 @@ public class FootStepSound : MonoBehaviour
 
         AudioClip clip = SelectNewClip();
 
-        AudioSource source = AudioManager.PlaySfx(clip, transform, volume);
+        AudioManager.PlaySfx(clip, transform, volume);
     }
 
     private AudioClip SelectNewClip()
