@@ -35,7 +35,6 @@ GameObject:
   - 114: {fileID: 11495188}
   - 114: {fileID: 11461184}
   - 114: {fileID: 11428234}
-  - 136: {fileID: 13680664}
   - 114: {fileID: 11477554}
   - 114: {fileID: 11435292}
   - 114: {fileID: 11417688}
@@ -2435,19 +2434,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .753201723
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13680664
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13757398
 SkinnedMeshRenderer:

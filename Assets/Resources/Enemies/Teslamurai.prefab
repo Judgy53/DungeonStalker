@@ -1919,7 +1919,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 416654}
   - 95: {fileID: 9594982}
-  - 136: {fileID: 13678110}
   - 143: {fileID: 14351396}
   - 114: {fileID: 11479980}
   - 114: {fileID: 11457504}
@@ -3969,6 +3968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9e9892bff3ec24b88c23ca2fb8900d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!114 &11474686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4097,7 +4097,7 @@ MonoBehaviour:
     value: 0
   - script: {fileID: 11404380}
     value: 0
-  - script: {fileID: 13678110}
+  - script: {fileID: 0}
     value: 0
   - script: {fileID: 11457504}
     value: 0
@@ -4119,19 +4119,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13678110
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .00499999989
-  m_Height: .0219999999
-  m_Direction: 1
-  m_Center: {x: 0, y: .0120000001, z: 0}
 --- !u!136 &13693514
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class Sensor : MonoBehaviour
 
     private bool gotVisual = false;
     public bool GotVisual { get { return gotVisual; } }
+    public bool debug = false;
 
     private void OnTriggerStay(Collider other)
     {
@@ -18,6 +19,8 @@ public class Sensor : MonoBehaviour
         Debug.DrawLine(transform.position, other.transform.position);
         if (Physics.Raycast(ray, out hitInfo))
         {
+            if (debug)
+                Debug.Log("Hit : " + hitInfo.collider);
             if (hitInfo.collider == other)
             {
                 if (OnDetect != null)
@@ -29,6 +32,14 @@ public class Sensor : MonoBehaviour
         }
         else
             gotVisual = false;
+
+
+        if (debug)
+        {
+            RaycastHit[] hits = Physics.RaycastAll(ray);
+            foreach (var hit in hits)
+                Debug.Log("- " + hit.collider);
+        }
     }
 
     private void OnTriggerExit(Collider other)

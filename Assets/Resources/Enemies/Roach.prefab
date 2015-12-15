@@ -884,7 +884,6 @@ GameObject:
   - 4: {fileID: 454926}
   - 95: {fileID: 9517824}
   - 143: {fileID: 14337472}
-  - 136: {fileID: 13639446}
   - 114: {fileID: 11496210}
   - 114: {fileID: 11462610}
   - 114: {fileID: 11439536}
@@ -2277,7 +2276,7 @@ MonoBehaviour:
     value: 0
   - script: {fileID: 11498648}
     value: 0
-  - script: {fileID: 13639446}
+  - script: {fileID: 0}
     value: 0
   - script: {fileID: 11462610}
     value: 0
@@ -2309,6 +2308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9e9892bff3ec24b88c23ca2fb8900d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!114 &11439536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2353,6 +2353,7 @@ MonoBehaviour:
   debugMainHandStartWeaponPrefab: {fileID: 186888, guid: 487bb5fcd37d278449565a25b335d47b,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
+  startAmmo: {fileID: 0}
   mainHandWeaponPoint: {fileID: 480434}
   offHandWeaponPoint: {fileID: 0}
 --- !u!114 &11461402
@@ -2382,6 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ca83462d45e440b9b6bb1782b7595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  god: 0
   maxHealth: 5
 --- !u!114 &11492434
 MonoBehaviour:
@@ -2463,19 +2465,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13639446
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177294}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .25
-  m_Height: .49000001
-  m_Direction: 1
-  m_Center: {x: 0, y: .300000012, z: 0}
 --- !u!136 &13665090
 CapsuleCollider:
   m_ObjectHideFlags: 1

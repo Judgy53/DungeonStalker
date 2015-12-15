@@ -114,6 +114,7 @@ public static class AIBehaviorExtensions
     {
         if (controller.Target != null && controller.Unit.Path != null && controller.Unit.Path.Length != 0)
         {
+            Debug.Log("Visual : " + controller.Sensor.GotVisual);
             Vector3 dir;
             if (controller.TargetDistance <= controller.attackDistance && controller.Sensor.GotVisual)
             {
