@@ -896,6 +896,8 @@ GameObject:
   - 114: {fileID: 11440714}
   - 54: {fileID: 5442344}
   - 114: {fileID: 11422640}
+  - 114: {fileID: 11431264}
+  - 114: {fileID: 11472102}
   m_Layer: 0
   m_Name: Roach
   m_TagString: Enemy
@@ -2284,6 +2286,10 @@ MonoBehaviour:
     value: 1
   - script: {fileID: 11422640}
     value: 1
+  - script: {fileID: 11431264}
+    value: 0
+  - script: {fileID: 11472102}
+    value: 0
 --- !u!114 &11422640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2307,6 +2313,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+--- !u!114 &11431264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0a7e7610a772b4d847d7726b7ff11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: b2973d92d4c774e4ca0dafaf15fd92ea, type: 3}
+  - {fileID: 8300000, guid: 0913c704f0baa1243b6c55675baf064c, type: 3}
+  - {fileID: 8300000, guid: 5cdfcae2edc7c36478fa50a4cb592e4a, type: 3}
+  volume: .75
+  autoPlay: 1
+  minDelayBetweenSounds: 0
+  maxDelayBetweenSounds: 5
 --- !u!114 &11439536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2383,6 +2408,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   god: 0
   maxHealth: 5
+--- !u!114 &11472102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 174737d8b4773364396fd6658a2a16da, type: 3}
+  - {fileID: 8300000, guid: ebdb3ba6c5913b5448f6aff127983012, type: 3}
+  - {fileID: 8300000, guid: 3988e8375372c7e41a25f3d7ad329c5a, type: 3}
+  - {fileID: 8300000, guid: 11e13b6e2d8478745ad98f2566177d4e, type: 3}
+  - {fileID: 8300000, guid: 87a5b73b359e3bd45a7fe6b65ae8d953, type: 3}
+  - {fileID: 8300000, guid: e026a315290fe174494641959859865f, type: 3}
+  - {fileID: 8300000, guid: 0c35bab8bf65e3d438db5c907cdbf5c1, type: 3}
+  playAuto: 0
+  delay: .5
+  volume: 1
 --- !u!114 &11492434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2590,13 +2637,17 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: clips.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: onDeath.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: onDeath.Array.data[8].script
       value: 
-      objectReference: {fileID: 11422640}
+      objectReference: {fileID: 11431264}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
@@ -2604,6 +2655,54 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: shouldRegister
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[8].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[9].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[9].script
+      value: 
+      objectReference: {fileID: 11472102}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 174737d8b4773364396fd6658a2a16da, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ebdb3ba6c5913b5448f6aff127983012, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3988e8375372c7e41a25f3d7ad329c5a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: playAuto
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 11e13b6e2d8478745ad98f2566177d4e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 87a5b73b359e3bd45a7fe6b65ae8d953, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: e026a315290fe174494641959859865f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c35bab8bf65e3d438db5c907cdbf5c1, type: 3}
+    - target: {fileID: 0}
+      propertyPath: volume
+      value: .75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

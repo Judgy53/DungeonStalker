@@ -63,7 +63,11 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
             SaveManager.Instance.Save();
         if (GameInput.GetKeyDown(KeyCode.F9))
             SaveManager.Instance.LoadLast();
-        
+
+        if (sprintInput > 0f)
+            GetComponent<FootStepSound>().IsSprinting = true;
+        else
+            GetComponent<FootStepSound>().IsSprinting = false;
     }
 
     private void FixedUpdate()

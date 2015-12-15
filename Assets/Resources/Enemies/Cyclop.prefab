@@ -325,6 +325,8 @@ GameObject:
   - 54: {fileID: 5476106}
   - 114: {fileID: 11448024}
   - 114: {fileID: 11464470}
+  - 114: {fileID: 11404118}
+  - 114: {fileID: 11442784}
   m_Layer: 0
   m_Name: Cyclop
   m_TagString: Enemy
@@ -1842,6 +1844,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11404118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0a7e7610a772b4d847d7726b7ff11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 981ee36d1f15c804cb8dd2a2368dd4b2, type: 3}
+  - {fileID: 8300000, guid: bbfdfb8058cfb9c459d94bf1b488e0ee, type: 3}
+  - {fileID: 8300000, guid: 9a34cdfaf047d494eb4b86b6b688703c, type: 3}
+  volume: .75
+  autoPlay: 1
+  minDelayBetweenSounds: 0
+  maxDelayBetweenSounds: 5
 --- !u!114 &11405396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2078,6 +2099,28 @@ MonoBehaviour:
     value: 1
   - script: {fileID: 11448024}
     value: 1
+  - script: {fileID: 11404118}
+    value: 0
+  - script: {fileID: 11442784}
+    value: 0
+--- !u!114 &11442784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 0ae697751a10fc6488d7fed8b77d6bb5, type: 3}
+  - {fileID: 8300000, guid: 05907670e10f7444a9b53ac85d90325d, type: 3}
+  - {fileID: 8300000, guid: 1fa0f852f94f77047a8f52bd4d4dd05e, type: 3}
+  playAuto: 0
+  delay: .5
+  volume: 1
 --- !u!114 &11448024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2303,19 +2346,55 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: clips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: onDeath.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: onDeath.Array.data[8].script
       value: 
-      objectReference: {fileID: 11448024}
+      objectReference: {fileID: 11404118}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: shouldRegister
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[8].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[9].script
+      value: 
+      objectReference: {fileID: 11442784}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[9].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ae697751a10fc6488d7fed8b77d6bb5, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 05907670e10f7444a9b53ac85d90325d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1fa0f852f94f77047a8f52bd4d4dd05e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: volume
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playAuto
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
