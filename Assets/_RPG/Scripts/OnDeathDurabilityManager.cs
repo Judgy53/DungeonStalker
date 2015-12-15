@@ -36,6 +36,9 @@ public class OnDeathDurabilityManager : MonoBehaviour
     {
         foreach (DurableScript s in onDeath)
         {
+            if (s.script == null)
+                continue;
+
             Behaviour script = s.script as Behaviour;
             if (script != null)
             {

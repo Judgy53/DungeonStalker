@@ -2276,8 +2276,6 @@ MonoBehaviour:
     value: 0
   - script: {fileID: 11498648}
     value: 0
-  - script: {fileID: 0}
-    value: 0
   - script: {fileID: 11462610}
     value: 0
   - script: {fileID: 11461402}
