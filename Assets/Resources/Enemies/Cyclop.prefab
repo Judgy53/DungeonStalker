@@ -325,6 +325,7 @@ GameObject:
   - 114: {fileID: 11405396}
   - 54: {fileID: 5476106}
   - 114: {fileID: 11448024}
+  - 114: {fileID: 11464470}
   m_Layer: 0
   m_Name: Cyclop
   m_TagString: Enemy
@@ -659,6 +660,21 @@ GameObject:
   - 4: {fileID: 496476}
   m_Layer: 0
   m_Name: ring_1_L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &167412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496822}
+  m_Layer: 0
+  m_Name: AimOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1124,6 +1140,7 @@ Transform:
   - {fileID: 487058}
   - {fileID: 474966}
   - {fileID: 497018}
+  - {fileID: 496822}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &426864
@@ -1770,6 +1787,18 @@ Transform:
   - {fileID: 488484}
   m_Father: {fileID: 464868}
   m_RootOrder: 1
+--- !u!4 &496822
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.61000001, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_Children: []
+  m_Father: {fileID: 423688}
+  m_RootOrder: 4
 --- !u!4 &497018
 Transform:
   m_ObjectHideFlags: 1
@@ -1989,7 +2018,7 @@ MonoBehaviour:
   currentLevel: 1
   currentExp: 0
   canGainExp: 0
-  xpOnKill: 15
+  xpOnKill: 20
 --- !u!114 &11440626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2077,6 +2106,18 @@ MonoBehaviour:
   canBackpedal: 0
   safetyZone: 1
   runZone: 0
+--- !u!114 &11464470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cd2034778ebcd46b9712709a04dcd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastOrigin: {fileID: 496822}
 --- !u!114 &11483392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2102,6 +2143,7 @@ MonoBehaviour:
   debugMainHandStartWeaponPrefab: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
+  startAmmo: {fileID: 11400000, guid: 6d2d985bc5dbbbc499e9d4abcf2ecae0, type: 2}
   mainHandWeaponPoint: {fileID: 450536}
   offHandWeaponPoint: {fileID: 0}
 --- !u!114 &11488850
@@ -2120,7 +2162,7 @@ MonoBehaviour:
   angleInterpolationFactor: 5
   acceleration: .5
   gravityMultiplier: 1
-  actualizationTime: .300000012
+  actualizationTime: .200000003
   gizmoSize: .100000001
   moveSpeed: {x: 2, y: 0, z: 2}
 --- !u!135 &13514270

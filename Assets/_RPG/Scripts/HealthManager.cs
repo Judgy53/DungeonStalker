@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 {
+    public bool god = false;
+
     public event EventHandler OnDeath;
     public event EventHandler OnHit;
 
@@ -52,6 +54,9 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void AddDamage(float damage)
     {
+        if (god)
+            return;
+
         if (currentHealth <= 0.0f)
             return;
 
@@ -68,6 +73,9 @@ public class HealthManager : MonoBehaviour, IDamageable, ISavable, IQuantifiable
 
     public void AddDamage(float damages, StatsManager other)
     {
+        if (god)
+            return;
+
         float realDamages = ComputeDamageReceived(statsManager, other, damages);
         AddDamage(realDamages);
     }

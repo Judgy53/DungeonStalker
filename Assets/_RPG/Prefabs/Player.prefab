@@ -39,6 +39,7 @@ GameObject:
   - 114: {fileID: 11477554}
   - 114: {fileID: 11435292}
   - 114: {fileID: 11417688}
+  - 114: {fileID: 11453904}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2254,6 +2255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ca83462d45e440b9b6bb1782b7595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  god: 0
   maxHealth: 100
 --- !u!114 &11435292
 MonoBehaviour:
@@ -2280,6 +2282,7 @@ MonoBehaviour:
   debugMainHandStartWeaponPrefab: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
+  startAmmo: {fileID: 0}
   mainHandWeaponPoint: {fileID: 417814}
   offHandWeaponPoint: {fileID: 461522}
 --- !u!114 &11448762
@@ -2297,6 +2300,17 @@ MonoBehaviour:
   sprintMultiplier: 1.5
   jumpForce: 5
   gravityMultiplier: 1
+--- !u!114 &11453904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a3995ed0d61c645b0545e4d3568727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11455636
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ public class WeaponManager : MonoBehaviour, ISavable
 
     public GameObject debugMainHandStartWeaponPrefab = null;
     public GameObject debugOffHandStartWeaponPrefab = null;
+    public ScriptableObject startAmmo = null;
 
     public Transform mainHandWeaponPoint = null;
     public Transform offHandWeaponPoint = null;
@@ -134,6 +135,14 @@ public class WeaponManager : MonoBehaviour, ISavable
     private void Start()
     {
         driver = GetComponent<AnimationDriverBase>();
+
+        if (startAmmo != null)
+        {
+            if (startAmmo is IRangedWeaponAmmo)
+                currentAmmos = ScriptableObject.Instantiate(startAmmo) as IRangedWeaponAmmo;
+            else
+                Debug.LogWarning("StartAmmo defined on " + this.name + " is not a IRangedWeaponAmmo.");
+        }
 
         if (debugMainHandStartWeaponPrefab != null && MainHandWeapon == null)
             MainHandWeapon = (GameObject.Instantiate(debugMainHandStartWeaponPrefab, Vector3.zero, debugMainHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();

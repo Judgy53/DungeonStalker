@@ -19,6 +19,9 @@ public class StandardProjectile : MonoBehaviour, IRangedWeaponProjectile
     private Vector3 direction = Vector3.forward;
     public Vector3 Direction { get { return direction; } set { direction = value.normalized; } }
 
+    private string ignoreTag = null;
+    public string IgnoreTag { get { return ignoreTag; } set { ignoreTag = value; } }
+
     public void Initialize(IRangedWeapon weapon)
     {
         this.weapon = weapon;
@@ -32,8 +35,13 @@ public class StandardProjectile : MonoBehaviour, IRangedWeaponProjectile
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.tag == transform.tag)
+        if (tag == other.transform.root.tag)
             return;
+        else if (other.gameObject.HasTagInParent(IgnoreTag))
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
         if (weapon != null)
         {
@@ -47,7 +55,7 @@ public class StandardProjectile : MonoBehaviour, IRangedWeaponProjectile
 
     public void Hit(IDamageable damageable)
     {
-        float damages = UnityEngine.Random.Range(minDamages, maxDamages);
+        float damages = Random.Range(minDamages, maxDamages);
         if (damageable is HealthManager && (damageable as HealthManager).MaxHealth > damageable.Damage && damageable.WillKill(damages))
             weapon.ProjectileOnKillCallback(this, damageable, damages);
         else

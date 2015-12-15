@@ -31,7 +31,7 @@ public class Sensor : MonoBehaviour
             gotVisual = false;
     }
 
-    private void OntriggerExit()
+    private void OnTriggerExit(Collider other)
     {
         gotVisual = false;
     }

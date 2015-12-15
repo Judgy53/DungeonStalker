@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1444d687767ab9d438c8d98d0006f862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 004873c85f14e8e40beb4fd9a3a8ab50, type: 3}
+  image: {fileID: 21300000, guid: 2006aa121dbdb5f4b9fc9d1ae9fabb9b, type: 3}
   itemName: StandardAmmo
   actionName: Equip
   useDescription: Use ammunitions.
@@ -65,7 +65,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: image
       value: 
-      objectReference: {fileID: 21300000, guid: 004873c85f14e8e40beb4fd9a3a8ab50,
+      objectReference: {fileID: 21300000, guid: 2006aa121dbdb5f4b9fc9d1ae9fabb9b,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

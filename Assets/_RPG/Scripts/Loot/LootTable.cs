@@ -17,7 +17,7 @@ public class LootTable : MonoBehaviour
 
     public uint maxItemNumber = 3;
 
-    public void Start()
+    public void Awake()
     {
         //Sorted rarest to most common
         System.Array.Sort(lootTable, delegate(Loot x, Loot y)

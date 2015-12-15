@@ -28,6 +28,18 @@ public static class GameObjectExtension
             return f.GetComponentInChildren<T>();
         return default(T);
     }
+
+    public static bool HasTagInParent(this GameObject go, string tag)
+    {
+        Transform current = go.transform;
+        do
+        {
+            if (current.tag == tag)
+                return true;
+        } while ((current = current.transform.parent) != null);
+
+        return false;
+    }
 }
 
 [System.Serializable]
@@ -136,14 +148,18 @@ public class FloatMinMax : MinMax<float>
 
 public static class CameraExtensions
 {
-    public static Vector3 GetWorldHitpoint(this Camera camera, Vector3 screenPos, out RaycastHit hit, float maxDistance = 10000.0f)
+    public static bool GetWorldHitpoint(this Camera camera, Vector3 screenPos, out RaycastHit hit, out Vector3 v, float maxDistance = 10000.0f)
     {
         Ray ray = camera.ScreenPointToRay(screenPos);
 
         if (Physics.Raycast(ray, out hit, maxDistance))
-            return hit.point;
+        {
+            v = hit.point;
+            return true;
+        }
 
-        return camera.transform.position + ray.direction * maxDistance;
+        v = camera.transform.position + ray.direction * maxDistance;
+        return false;
     }
 }
 

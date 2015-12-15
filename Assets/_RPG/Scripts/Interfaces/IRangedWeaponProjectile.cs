@@ -10,6 +10,8 @@ public interface IRangedWeaponProjectile
 
     Vector3 Direction { get; set; }
 
+    string IgnoreTag { get; set; }
+
     void Initialize(IRangedWeapon weapon);
 
     void Hit(IDamageable damageable);
