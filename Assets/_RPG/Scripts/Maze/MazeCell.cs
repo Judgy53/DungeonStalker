@@ -69,7 +69,8 @@ public class MazeCell : MonoBehaviour
     public void InitializeCorner(GameObject prefab, MazeDirection dir, int delta)
     {
         GameObject dgo = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-        dgo.transform.parent = transform;
+        //dgo.transform.parent = transform;
+        dgo.transform.SetParent(transform, false);
         dgo.transform.localPosition = Vector3.zero;
         dgo.transform.localRotation = dir.ToRotation();
         dgo.transform.localScale = new Vector3(delta, dgo.transform.localScale.y, dgo.transform.localScale.z);
