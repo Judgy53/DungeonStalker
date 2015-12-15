@@ -112,6 +112,7 @@ GameObject:
   - 33: {fileID: 3398982}
   - 23: {fileID: 2328910}
   - 64: {fileID: 6403502}
+  - 65: {fileID: 6509138}
   m_Layer: 9
   m_Name: Mur_collider
   m_TagString: Untagged
@@ -387,7 +388,7 @@ MeshCollider:
   m_GameObject: {fileID: 188236}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 5de29d949e2665b46b30fe56775018b0, type: 3}
@@ -403,6 +404,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300004, guid: 4bfa372f40175b34c9cf313e4d927448, type: 3}
+--- !u!65 &6509138
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0190516431, y: .451689601, z: 1.00454092}
+  m_Center: {x: .519999981, y: .2258448, z: 0}
 --- !u!114 &11457376
 MonoBehaviour:
   m_ObjectHideFlags: 1

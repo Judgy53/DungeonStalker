@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 106986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,6 +57,7 @@ MonoBehaviour:
     x: 20
     z: 20
   cellPrefab: {fileID: 11453030, guid: 5471530069ae7684f8c752b801090e49, type: 2}
+  roofPrefab: {fileID: 145788, guid: af4c18998eeb9c64780a9a830745bec9, type: 2}
   passagePrefab: {fileID: 11446928, guid: 2200dcd1fb7a2ee46b989e16fda7add4, type: 2}
   wallPrefabs:
   - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
@@ -82,6 +83,7 @@ MonoBehaviour:
     type: 2}
   doorPrefab: {fileID: 11425256, guid: 52ba6195d4785334482e2894319249af, type: 2}
   doorProbablity: .100000001
+  generateRoof: 1
   playerStartPrefab: {fileID: 144442, guid: 3b06cdbb78132e847a8f664a20a932d0, type: 2}
   enemiesPrefabs:
   - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
@@ -131,7 +133,7 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 512
-  gridWorldSize: {x: 20, y: 20}
+  gridWorldSize: {x: 30, y: 30}
   nodeRadius: .100000001
   displayGrid: 0
 --- !u!1001 &100100000

@@ -7,6 +7,7 @@ public class Maze : MonoBehaviour
     public Vector2i size = new Vector2i(20, 20);
 
     public MazeCell cellPrefab = null;
+    public GameObject roofPrefab = null;
     public MazePassage passagePrefab = null;
     public MazeWall[] wallPrefabs = null;
     public GameObject straightWallDecorPrefab = null;
@@ -17,6 +18,8 @@ public class Maze : MonoBehaviour
 
     [Range(0.0f, 1.0f)]
     public float doorProbablity = 0.1f;
+
+    public bool generateRoof = true;
 
     public GameObject playerStartPrefab = null;
 
@@ -318,8 +321,15 @@ public class Maze : MonoBehaviour
         cells[coordinates.x, coordinates.z] = newCell;
         newCell.coordinates = coordinates;
         newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
-        newCell.transform.parent = transform;
+        //newCell.transform.parent = transform;
+        newCell.transform.SetParent(transform, false);
         newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0.0f, coordinates.z - size.z * 0.5f + 0.5f);
+
+        if (generateRoof)
+        {
+            GameObject roof = GameObject.Instantiate(roofPrefab, transform.position, transform.rotation) as GameObject;
+            roof.transform.SetParent(newCell.transform, false);
+        }
 
         return newCell;
     }
