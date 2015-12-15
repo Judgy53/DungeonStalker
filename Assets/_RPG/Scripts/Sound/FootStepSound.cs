@@ -17,7 +17,7 @@ public class FootStepSound : MonoBehaviour
 
     private Vector3 prevPos = Vector3.zero;
 
-    private float height = 0f;
+    private CharacterController cc;
 
     private float cooldown = 0f;
 
@@ -27,7 +27,7 @@ public class FootStepSound : MonoBehaviour
 	void Start () {
         prevPos = transform.position;
 
-        height = GetComponent<Collider>().bounds.extents.y;
+        cc = GetComponent<CharacterController>();
 	}
 	
 	void Update () {
@@ -36,19 +36,16 @@ public class FootStepSound : MonoBehaviour
 
         cooldown = Mathf.Max(cooldown - Time.deltaTime, 0f);
 
-        if(cooldown == 0f && Vector3.Distance(prevPos, transform.position) > 0.1f) // if has moved
+        if (cooldown == 0f && Vector3.Distance(prevPos, transform.position) > 0.1f && cc.isGrounded) // if has moved and on ground
         {
-            if(Physics.Raycast(transform.position, Vector3.down, height + 0.1f)) // if is on ground
-            {
-                PlayOneStep();
+            PlayOneStep();
 
-                cooldown = delay;
+            cooldown = delay;
 
-                if (isSprinting)
-                    cooldown /= 2f;
+            if (isSprinting)
+                cooldown /= 2f;
 
-                prevPos = transform.position;
-            }
+            prevPos = transform.position;
         }
 	}
 

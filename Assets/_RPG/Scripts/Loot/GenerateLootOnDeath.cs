@@ -7,7 +7,7 @@ public class GenerateLootOnDeath : MonoBehaviour
 {
     private LootTable table = null;
 
-    public void Start()
+    public void Awake()
     {
         IDamageable dmg = GetComponent<IDamageable>();
         table = GetComponent<LootTable>();

@@ -99,6 +99,7 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
 
     private StatsManager stManager = null;
     private WeaponManager weaponManager = null;
+    private IAimGatherer aimGatherer = null;
 
     private void Start()
     {
@@ -125,7 +126,8 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
                 state = RangedWeaponState.Firing;
                 StartCoroutine(FiringBehavior());
 
-                Ammo.UseAmmo(consumedAmmoPerShot);
+                if (useAmmo)
+                    Ammo.UseAmmo(consumedAmmoPerShot);
             }
             else
                 Debug.Log("Out of ammo !");
@@ -149,6 +151,8 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
         stManager = GetComponentInParent<StatsManager>();
         stManager.GearStats += gearStats;
         weaponManager = manager;
+
+        aimGatherer = GetComponentInParent<IAimGatherer>();
     }
 
     public void OnUnequip()
@@ -156,6 +160,8 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
         stManager.GearStats -= gearStats;
         stManager = null; 
         weaponManager = null;
+
+        aimGatherer = null;
     }
 
     public void TransferToContainer(IContainer container)
@@ -169,27 +175,33 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     private IEnumerator FiringBehavior()
     {
         float halfDeviation = projectileDeviation / 2.0f;
-        RaycastHit hit;
-        Vector3 worldhp = Camera.main.GetWorldHitpoint(new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 0.0f), out hit);
-        bool isAngleValid = Vector3.Angle(fireMuzzle.forward, worldhp - fireMuzzle.position) < 45.0f;
-        IDamageable dmg = null;
-        if (Vector3.Angle(fireMuzzle.forward, worldhp - fireMuzzle.position) > 45.0f)
-            dmg = hit.collider.gameObject.GetComponentInParent<IDamageable>();
 
+        IDamageable dmg = null;
+        Vector3 worldhp = Vector3.zero;
+        if (aimGatherer == null)
+            Debug.LogError("No aim gatherer present for " + this.name);
+        else
+            worldhp = aimGatherer.GetAimHitpoint(ref dmg);
+
+        bool isAngleValid = Vector3.Dot(fireMuzzle.forward, (worldhp - fireMuzzle.position).normalized) >= 0.0f;
 
         for (int i = 0; i < projectilePerShot; i++)
         {
             if (!isAngleValid && dmg == null)
+            {
+                Debug.Log("Invalid shot, breaking ...");
                 break;
+            }
 
             IRangedWeaponProjectile p = Ammo.InstantiateProjectile(fireMuzzle);
             p.Initialize(this);
+            p.IgnoreTag = weaponManager.gameObject.tag;
 
             Ammo.ApplyEffect(p);
 
             GameObject.Destroy((p as Behaviour).gameObject, projectileLifetime);
 
-            if (!isAngleValid)
+            if (!isAngleValid && !(dmg as Behaviour).gameObject.transform.IsChildOf(weaponManager.transform))
             {
                 p.Hit(dmg);
                 continue;

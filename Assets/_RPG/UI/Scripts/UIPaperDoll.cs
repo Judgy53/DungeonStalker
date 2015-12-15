@@ -255,6 +255,8 @@ public class UIPaperDoll : MonoBehaviour
                 UITooltip.Text += "Added damages : " + ammo.AddedDamages + "\n";
 
                 UITooltip.Text += "Ammo left : " + ammo.AmmoLeft + "\n";
+
+                UITooltip.Text += "\n<color=green><i>Right click to Unequip</i></color>";
             }
             else
                 UITooltip.ForceHide();

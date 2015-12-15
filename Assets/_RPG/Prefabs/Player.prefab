@@ -35,11 +35,11 @@ GameObject:
   - 114: {fileID: 11495188}
   - 114: {fileID: 11461184}
   - 114: {fileID: 11428234}
-  - 136: {fileID: 13680664}
   - 114: {fileID: 11477554}
   - 114: {fileID: 11435292}
   - 114: {fileID: 11417688}
-  - 114: {fileID: 11420184}
+  - 114: {fileID: 11453904}
+  - 114: {fileID: 11428886}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2222,23 +2222,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   baseArmor: 0
---- !u!114 &11420184
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: 4b75d767fe6d1b8429a07c78020de502, type: 3}
-  - {fileID: 8300000, guid: 636a4f2045d326e419c80329d3f36061, type: 3}
-  playAuto: 1
-  delay: .5
-  volume: .5
 --- !u!114 &11428234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2261,6 +2244,24 @@ MonoBehaviour:
   currentExp: 0
   canGainExp: 1
   xpOnKill: 5
+--- !u!114 &11428886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 4b75d767fe6d1b8429a07c78020de502, type: 3}
+  - {fileID: 8300000, guid: 636a4f2045d326e419c80329d3f36061, type: 3}
+  - {fileID: 8300000, guid: c64b671a785d90e458008c6b6187af23, type: 3}
+  playAuto: 1
+  delay: .5
+  volume: .5
 --- !u!114 &11429156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2272,6 +2273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ca83462d45e440b9b6bb1782b7595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  god: 0
   maxHealth: 100
 --- !u!114 &11435292
 MonoBehaviour:
@@ -2298,6 +2300,7 @@ MonoBehaviour:
   debugMainHandStartWeaponPrefab: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
+  startAmmo: {fileID: 0}
   mainHandWeaponPoint: {fileID: 417814}
   offHandWeaponPoint: {fileID: 461522}
 --- !u!114 &11448762
@@ -2315,6 +2318,17 @@ MonoBehaviour:
   sprintMultiplier: 1.5
   jumpForce: 5
   gravityMultiplier: 1
+--- !u!114 &11453904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a3995ed0d61c645b0545e4d3568727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11455636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2440,19 +2454,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .753201723
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13680664
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13757398
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2565,19 +2566,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: clips.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: onDeath.Array.size
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: walkingClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: sprintingClips.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: uniqueId
@@ -2620,8 +2613,8 @@ Prefab:
       value: 
       objectReference: {fileID: 11411604}
     - target: {fileID: 0}
-      propertyPath: autoPlay
-      value: 0
+      propertyPath: volume
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: clips.Array.data[0]
@@ -2635,26 +2628,6 @@ Prefab:
       propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: c64b671a785d90e458008c6b6187af23, type: 3}
-    - target: {fileID: 0}
-      propertyPath: clips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: c64b671a785d90e458008c6b6187af23, type: 3}
-    - target: {fileID: 0}
-      propertyPath: walkingClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4b75d767fe6d1b8429a07c78020de502, type: 3}
-    - target: {fileID: 0}
-      propertyPath: walkingClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 636a4f2045d326e419c80329d3f36061, type: 3}
-    - target: {fileID: 0}
-      propertyPath: sprintingClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: c64b671a785d90e458008c6b6187af23, type: 3}
-    - target: {fileID: 0}
-      propertyPath: volume
-      value: .5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}

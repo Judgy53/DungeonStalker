@@ -884,7 +884,6 @@ GameObject:
   - 4: {fileID: 454926}
   - 95: {fileID: 9517824}
   - 143: {fileID: 14337472}
-  - 136: {fileID: 13639446}
   - 114: {fileID: 11496210}
   - 114: {fileID: 11462610}
   - 114: {fileID: 11439536}
@@ -897,8 +896,8 @@ GameObject:
   - 114: {fileID: 11440714}
   - 54: {fileID: 5442344}
   - 114: {fileID: 11422640}
-  - 114: {fileID: 11489776}
-  - 114: {fileID: 11425762}
+  - 114: {fileID: 11431264}
+  - 114: {fileID: 11472102}
   m_Layer: 0
   m_Name: Roach
   m_TagString: Enemy
@@ -2279,8 +2278,6 @@ MonoBehaviour:
     value: 0
   - script: {fileID: 11498648}
     value: 0
-  - script: {fileID: 13639446}
-    value: 0
   - script: {fileID: 11462610}
     value: 0
   - script: {fileID: 11461402}
@@ -2289,7 +2286,9 @@ MonoBehaviour:
     value: 1
   - script: {fileID: 11422640}
     value: 1
-  - script: {fileID: 11489776}
+  - script: {fileID: 11431264}
+    value: 0
+  - script: {fileID: 11472102}
     value: 0
 --- !u!114 &11422640
 MonoBehaviour:
@@ -2313,7 +2312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9e9892bff3ec24b88c23ca2fb8900d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11425762
+  debug: 0
+--- !u!114 &11431264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2321,20 +2321,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 177294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c0a7e7610a772b4d847d7726b7ff11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 174737d8b4773364396fd6658a2a16da, type: 3}
-  - {fileID: 8300000, guid: ebdb3ba6c5913b5448f6aff127983012, type: 3}
-  - {fileID: 8300000, guid: 3988e8375372c7e41a25f3d7ad329c5a, type: 3}
-  - {fileID: 8300000, guid: 11e13b6e2d8478745ad98f2566177d4e, type: 3}
-  - {fileID: 8300000, guid: 87a5b73b359e3bd45a7fe6b65ae8d953, type: 3}
-  - {fileID: 8300000, guid: e026a315290fe174494641959859865f, type: 3}
-  - {fileID: 8300000, guid: 0c35bab8bf65e3d438db5c907cdbf5c1, type: 3}
-  playAuto: 0
-  delay: .5
-  volume: 1
+  - {fileID: 8300000, guid: b2973d92d4c774e4ca0dafaf15fd92ea, type: 3}
+  - {fileID: 8300000, guid: 0913c704f0baa1243b6c55675baf064c, type: 3}
+  - {fileID: 8300000, guid: 5cdfcae2edc7c36478fa50a4cb592e4a, type: 3}
+  volume: .75
+  autoPlay: 1
+  minDelayBetweenSounds: 0
+  maxDelayBetweenSounds: 5
 --- !u!114 &11439536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2379,6 +2376,7 @@ MonoBehaviour:
   debugMainHandStartWeaponPrefab: {fileID: 186888, guid: 487bb5fcd37d278449565a25b335d47b,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
+  startAmmo: {fileID: 0}
   mainHandWeaponPoint: {fileID: 480434}
   offHandWeaponPoint: {fileID: 0}
 --- !u!114 &11461402
@@ -2408,8 +2406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ca83462d45e440b9b6bb1782b7595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  god: 0
   maxHealth: 5
---- !u!114 &11489776
+--- !u!114 &11472102
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2417,17 +2416,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 177294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0a7e7610a772b4d847d7726b7ff11b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: b2973d92d4c774e4ca0dafaf15fd92ea, type: 3}
-  - {fileID: 8300000, guid: 0913c704f0baa1243b6c55675baf064c, type: 3}
-  - {fileID: 8300000, guid: 5cdfcae2edc7c36478fa50a4cb592e4a, type: 3}
-  volume: .75
-  autoPlay: 1
-  minDelayBetweenSounds: 0
-  maxDelayBetweenSounds: 5
+  - {fileID: 8300000, guid: 174737d8b4773364396fd6658a2a16da, type: 3}
+  - {fileID: 8300000, guid: ebdb3ba6c5913b5448f6aff127983012, type: 3}
+  - {fileID: 8300000, guid: 3988e8375372c7e41a25f3d7ad329c5a, type: 3}
+  - {fileID: 8300000, guid: 11e13b6e2d8478745ad98f2566177d4e, type: 3}
+  - {fileID: 8300000, guid: 87a5b73b359e3bd45a7fe6b65ae8d953, type: 3}
+  - {fileID: 8300000, guid: e026a315290fe174494641959859865f, type: 3}
+  - {fileID: 8300000, guid: 0c35bab8bf65e3d438db5c907cdbf5c1, type: 3}
+  playAuto: 0
+  delay: .5
+  volume: 1
 --- !u!114 &11492434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2508,19 +2510,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13639446
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177294}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .25
-  m_Height: .49000001
-  m_Direction: 1
-  m_Center: {x: 0, y: .300000012, z: 0}
 --- !u!136 &13665090
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2658,23 +2647,27 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: onDeath.Array.data[8].script
       value: 
-      objectReference: {fileID: 11422640}
+      objectReference: {fileID: 11431264}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: shouldRegister
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: onDeath.Array.data[9].script
-      value: 
-      objectReference: {fileID: 11489776}
+      propertyPath: onDeath.Array.data[8].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: onDeath.Array.data[9].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onDeath.Array.data[9].script
+      value: 
+      objectReference: {fileID: 11472102}
     - target: {fileID: 0}
       propertyPath: clips.Array.data[0]
       value: 
@@ -2687,6 +2680,10 @@ Prefab:
       propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 3988e8375372c7e41a25f3d7ad329c5a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: playAuto
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: clips.Array.data[3]
       value: 
@@ -2703,10 +2700,6 @@ Prefab:
       propertyPath: clips.Array.data[6]
       value: 
       objectReference: {fileID: 8300000, guid: 0c35bab8bf65e3d438db5c907cdbf5c1, type: 3}
-    - target: {fileID: 0}
-      propertyPath: playAuto
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: volume
       value: .75

@@ -114,7 +114,15 @@ public static class AIBehaviorExtensions
     {
         if (controller.Target != null && controller.Unit.Path != null && controller.Unit.Path.Length != 0)
         {
-            Vector3 dir = controller.Unit.DirectionToNextPoint;
+            Vector3 dir;
+            if (controller.TargetDistance <= controller.attackDistance && controller.Sensor.GotVisual)
+            {
+                dir = (controller.Target.transform.position - controller.transform.position).normalized;
+                dir.y = 0.0f;
+            }
+            else
+                dir = controller.Unit.DirectionToNextPoint;
+
             if (dir != Vector3.zero)
             {
                 controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation,
@@ -122,13 +130,19 @@ public static class AIBehaviorExtensions
                     controller.Unit.angleInterpolationFactor * Time.fixedDeltaTime);
             }
 
-            if (controller.TargetDistance > controller.attackDistance)
+            if (controller.TargetDistance > controller.attackDistance || !controller.Sensor.GotVisual)
                 controller.Unit.ForwardInput = Mathf.Lerp(controller.Unit.ForwardInput, 1.0f, 1.0f * Time.deltaTime);
             else
             {
-                controller.WeaponManager.Primary(0);
-                if (controller.WeaponManager.OffHandWeapon != null)
-                    controller.WeaponManager.Primary(1);
+                if (controller.Sensor.GotVisual)
+                {
+                    controller.WeaponManager.Primary(0);
+                    if (controller.WeaponManager.OffHandWeapon != null)
+                        controller.WeaponManager.Primary(1);
+                    controller.WeaponManager.EndPrimary(0);
+                    if (controller.WeaponManager.OffHandWeapon != null)
+                        controller.WeaponManager.EndPrimary(1);
+                }
 
                 controller.Unit.ForwardInput = Mathf.Lerp(controller.Unit.ForwardInput, 0.0f, 3.0f * Time.deltaTime);
             }
@@ -147,9 +161,15 @@ public static class AIBehaviorExtensions
 
             if (controller.TargetDistance < controller.attackDistance)
             {
-                controller.WeaponManager.Primary(0);
-                if (controller.WeaponManager.OffHandWeapon != null)
-                    controller.WeaponManager.Primary(1);
+                if (controller.Sensor.GotVisual)
+                {
+                    controller.WeaponManager.Primary(0);
+                    if (controller.WeaponManager.OffHandWeapon != null)
+                        controller.WeaponManager.Primary(1);
+                    controller.WeaponManager.EndPrimary(0);
+                    if (controller.WeaponManager.OffHandWeapon != null)
+                        controller.WeaponManager.EndPrimary(1);
+                }
             }
 
             controller.Unit.ForwardInput = Mathf.Lerp(controller.Unit.ForwardInput, -1.0f, 2.0f * Time.deltaTime);
