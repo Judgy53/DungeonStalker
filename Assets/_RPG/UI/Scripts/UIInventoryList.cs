@@ -64,7 +64,10 @@ public class UIInventoryList : MonoBehaviour
                 lastSelected = currentSelected;
 
                 if (OnItemFocusChange != null)
-                    OnItemFocusChange(this, new ItemFocusChangeArgs(items[index]));
+                {
+                    IItem item = currentSelected.GetComponent<UIInventoryButton>().Item;
+                    OnItemFocusChange(this, new ItemFocusChangeArgs(item));
+                }
 
                 UIUtils.UpdateScroller(content, GetComponent<RectTransform>(), currentSelected.GetComponent<RectTransform>());
             }
