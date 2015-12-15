@@ -9,7 +9,16 @@ public class ManaManager : MonoBehaviour, ISavable, IQuantifiable
     public float MaxMana { get { return maxMana; } set { maxMana = value; } }
 
     private float currentMana = 50.0f;
-    public float CurrentMana { get { return currentMana; } set { currentMana = value; } }
+    public float CurrentMana 
+    { 
+        get { return currentMana; } 
+        set 
+        {
+            float ratio = currentMana / maxMana;
+            maxMana = value;
+            currentMana = maxMana * ratio;
+        } 
+    }
 
     [SerializeField]
     private float regenRate = 5.0f;
@@ -47,7 +56,7 @@ public class ManaManager : MonoBehaviour, ISavable, IQuantifiable
 
     public void OnStatsChange(object sender, EventArgs args)
     {
-        maxMana = 40u + statsManager.TotalStats.Energy * 10u;
+        MaxMana = 40u + statsManager.TotalStats.Energy * 10u;
         regenRate = 4u + statsManager.TotalStats.Energy * 1u;
 
         currentMana = Mathf.Min(currentMana, maxMana);

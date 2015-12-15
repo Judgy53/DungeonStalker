@@ -271,13 +271,32 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     public string GetInventoryDescription()
     {
-        string output = "";
-        output += "\nDamages : " + minDamages + " - " + maxDamages;
-        output += "\nMana Cost : " + manaCost + " - " + MaxManaCost;
-        if (weaponHand == WeaponHand.OneHanded)
-            output += "\nOneHanded";
+        string output = "\n";
+
+        switch (MagicalType)
+        {
+            case MagicalWeaponType.Destruction:
+                output += "Damages : ";
+                break;
+            case MagicalWeaponType.Restoration:
+                output += "Heal : ";
+                break;
+            case MagicalWeaponType.Illusion:
+                output += "Duration : ";
+                break;
+        }
+
+        if (MaxChargeTime > 0)
+        {
+            output += MinDamages + " - " + MaxDamages;
+            output += "\nMana Cost : " + ManaCost + " - " + MaxManaCost;
+            output += "\nMax Charge Time : " + MaxChargeTime + " seconds";
+        }
         else
-            output += "\nTwoHanded";
+        {
+            output += "Damages : " + MaxDamages;
+            output += "\nMana Cost : " + MaxManaCost;
+        }
 
         return output;
     }

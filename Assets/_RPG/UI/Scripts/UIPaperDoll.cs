@@ -214,7 +214,7 @@ public class UIPaperDoll : MonoBehaviour
                     }
                     else if (weapon is IMagicalWeapon)
                     {
-                        UITooltip.Text += "\n\nIMPLEMENT IT LAZY ASS !\n\n";
+                        UITooltip.Text += weapon.GetInventoryDescription() + "\n";
                     }
                     else if (weapon is IRangedWeapon)
                     {
