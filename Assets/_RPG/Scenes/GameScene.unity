@@ -512,7 +512,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
 --- !u!1 &503510878
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 10, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
 --- !u!1001 &516450772
 Prefab:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!114 &559763291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +884,7 @@ MonoBehaviour:
   audioSourcePrefab: {fileID: 141216, guid: 053ee01e1ee163c469e21425fb0281ca, type: 2}
   sfxVolume: 1
   musicVolume: 1
+  musicFadingSpeed: .00499999989
 --- !u!4 &663145403
 Transform:
   m_ObjectHideFlags: 0
@@ -895,7 +896,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
 --- !u!1001 &766137743
 Prefab:
   m_ObjectHideFlags: 0
@@ -1093,7 +1094,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
 --- !u!1001 &895337074
 Prefab:
   m_ObjectHideFlags: 0
@@ -1366,6 +1367,128 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8449a99dbc928f54293a5c0a684402ce, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1029260155
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.23533821
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 12.0044985
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416654, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196194, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: m_Name
+      value: Teslamurai (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457504, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: maxHealth
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[0].itemGo
+      value: 
+      objectReference: {fileID: 137498, guid: f678d57d47057384598e0cde3c98c178, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[0].dropChance
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[1].itemGo
+      value: 
+      objectReference: {fileID: 190822, guid: bc23669ce57d06945ac6813cd2e57c56, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[1].dropChance
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[2].itemGo
+      value: 
+      objectReference: {fileID: 146190, guid: ea47b41517a89d84a859dadfe1dbe414, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[2].dropChance
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[3].itemGo
+      value: 
+      objectReference: {fileID: 115822, guid: d2d2b874606939b40a4139493bf04fe0, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[4].itemGo
+      value: 
+      objectReference: {fileID: 118652, guid: 8b47d4f280284c04e986904ce4d49513, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[4].dropChance
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[5].itemGo
+      value: 
+      objectReference: {fileID: 104906, guid: cb42fe94ece160144b8b2d3030bae856, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[5].dropChance
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[7].itemGo
+      value: 
+      objectReference: {fileID: 136884, guid: 962f0ee0663bc1a43ab6ab4a477b07f4, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[8].itemGo
+      value: 
+      objectReference: {fileID: 113448, guid: dd12853dde8609649844ec5ff182702e, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[10].itemGo
+      value: 
+      objectReference: {fileID: 115030, guid: 7aa9f06849cdc1046b86bdb93e3e5d91, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[10].dropChance
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[11].itemGo
+      value: 
+      objectReference: {fileID: 183912, guid: da0dc0e7823150d4d8ffbf15a9373918, type: 2}
+    - target: {fileID: 11475066, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: lootTable.Array.data[11].dropChance
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11466252, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1165122003
 Prefab:
   m_ObjectHideFlags: 0
@@ -1490,7 +1613,7 @@ Transform:
   - {fileID: 1858714970}
   - {fileID: 623036143}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
 --- !u!114 &1197720620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1691,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
 --- !u!1001 &1276612636
 Prefab:
   m_ObjectHideFlags: 0
@@ -1655,6 +1778,8 @@ MonoBehaviour:
   seed: 42
   stage: 1
   autoSaver: {fileID: 0}
+  menuClip: {fileID: 8300000, guid: 328ccf6f2478d70489e4361dae0000fb, type: 3}
+  inGameClip: {fileID: 8300000, guid: 3a281b30f8c853941b1185f5fa1627a8, type: 3}
 --- !u!4 &1321811100
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,7 +1791,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!1001 &1627871843
 Prefab:
   m_ObjectHideFlags: 0
@@ -1788,7 +1913,7 @@ Transform:
   m_Children:
   - {fileID: 516450773}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
 --- !u!114 &1754174662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,7 +2157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
 --- !u!1001 &2029448300
 Prefab:
   m_ObjectHideFlags: 0
