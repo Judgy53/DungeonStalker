@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158108}
   m_LocalRotation: {x: 0, y: 2.98023224e-08, z: 0, w: 1}
-  m_LocalPosition: {x: .40200001, y: .437999994, z: .463}
+  m_LocalPosition: {x: .40200001, y: .349999994, z: .463}
   m_LocalScale: {x: .144089937, y: .144089967, z: .0490348823}
   m_Children: []
   m_Father: {fileID: 492270}
@@ -320,7 +320,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 25dabbc5d7062d74697cf19543bea33d, type: 2}
+  - {fileID: 2100000, guid: 4c75f38d02cfcc84baa4440714415b3a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -501,15 +501,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 0}
   otherCell: {fileID: 0}
-  direction: 0
   hinge: {fileID: 438814}
+  openClip: {fileID: 8300000, guid: 273836b3be17c2f42b1aacf337b39a42, type: 3}
+  closeClip: {fileID: 8300000, guid: 1a55ab53a8c94984380068201c97c063, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: openClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 273836b3be17c2f42b1aacf337b39a42, type: 3}
+    - target: {fileID: 0}
+      propertyPath: closeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a55ab53a8c94984380068201c97c063, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: .349999994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167854}
