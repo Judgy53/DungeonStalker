@@ -10,36 +10,49 @@ public class Sensor : MonoBehaviour
 
     private bool gotVisual = false;
     public bool GotVisual { get { return gotVisual; } }
-    public bool debug = false;
 
     private void OnTriggerStay(Collider other)
     {
         Ray ray = new Ray(transform.position, other.transform.position - transform.position);
-        RaycastHit hitInfo;
         Debug.DrawLine(transform.position, other.transform.position);
-        if (Physics.Raycast(ray, out hitInfo))
-        {
-            if (debug)
-                Debug.Log("Hit : " + hitInfo.collider);
-            if (hitInfo.collider == other)
+
+        RaycastHit[] hits = Physics.RaycastAll(ray);
+        Array.Sort(hits,
+            delegate (RaycastHit x, RaycastHit y)
             {
-                if (OnDetect != null)
-                    OnDetect(this, new DetectSensorEvent(other));
-                gotVisual = true;
+                float distX = Vector3.Distance(x.point, transform.position);
+                float distY = Vector3.Distance(y.point, transform.position);
+                if (distX < distY)
+                    return -1;
+                else if (distX > distY)
+                    return 1;
+                return 0;
+            });
+
+        if (hits.Length > 0)
+        {
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.collider == other)
+                {
+                    if (OnDetect != null)
+                        OnDetect(this, new DetectSensorEvent(other));
+                    gotVisual = true;
+                    break;
+                }
+                else
+                {
+                    if (transform.IsChildOf(hit.collider.transform) || hit.collider.transform.IsChildOf(transform) || 
+                        hit.collider.transform == transform || other.transform.IsChildOf(hit.transform))
+                        continue;
+
+                    gotVisual = false;
+                    break;
+                }
             }
-            else
-                gotVisual = false;
         }
         else
             gotVisual = false;
-
-
-        if (debug)
-        {
-            RaycastHit[] hits = Physics.RaycastAll(ray);
-            foreach (var hit in hits)
-                Debug.Log("- " + hit.collider);
-        }
     }
 
     private void OnTriggerExit(Collider other)
