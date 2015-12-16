@@ -56,7 +56,7 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
-  cellPrefab: {fileID: 11435788, guid: 5471530069ae7684f8c752b801090e49, type: 2}
+  cellPrefab: {fileID: 11453030, guid: 5471530069ae7684f8c752b801090e49, type: 2}
   roofPrefab: {fileID: 145788, guid: af4c18998eeb9c64780a9a830745bec9, type: 2}
   passagePrefab: {fileID: 11446928, guid: 2200dcd1fb7a2ee46b989e16fda7add4, type: 2}
   wallPrefabs:
