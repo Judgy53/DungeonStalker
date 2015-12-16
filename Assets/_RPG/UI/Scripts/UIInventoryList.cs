@@ -58,8 +58,7 @@ public class UIInventoryList : MonoBehaviour
         GameObject currentSelected = manager.eventSystem.currentSelectedGameObject;
         if (currentSelected != lastSelected)
         {
-            int index = -1;
-            if ((index = instantiatedList.IndexOf(currentSelected)) != -1)
+            if (instantiatedList.IndexOf(currentSelected) != -1)
             {
                 lastSelected = currentSelected;
 

@@ -10,6 +10,12 @@ public class MazeDoor : MazePassage
 
     private Animator animator = null;
 
+    [SerializeField]
+    private AudioClip openClip;
+
+    [SerializeField]
+    private AudioClip closeClip;
+
     private MazeDoor OtherSideOfDoor
     {
         get
@@ -54,6 +60,8 @@ public class MazeDoor : MazePassage
 
         if (animator != null)
             animator.SetBool("Open", state == DoorState.Open);
+
+        AudioManager.PlaySfx(state == DoorState.Open ? openClip : closeClip, transform);
     }
 }
 

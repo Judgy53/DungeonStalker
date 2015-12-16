@@ -42,10 +42,9 @@ public class UICharSheet : MonoBehaviour
     void GameManager_OnPlayerCreation(object sender, EventPlayerCreationArgs e)
     {
         StatsManager stats = e.player.GetComponent<StatsManager>();
+
         if(stats != null && popup != null)
-        {
             stats.OnLevelUp += Player_OnLevelUp;
-        }
     }
 
     void Player_OnLevelUp(object sender, EventArgs e)

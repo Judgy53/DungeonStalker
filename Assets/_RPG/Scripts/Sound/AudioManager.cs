@@ -16,8 +16,11 @@ public class AudioManager : MonoBehaviour
     private float musicVolume = 1.0f;
     public static float MusicVolume { get { return instance.musicVolume; } set { instance.musicVolume = value; } }
 
+    [SerializeField]
+    private float musicFadingSpeed = 0.005f;
+
     private AudioSource currentMusic = null;
-    private float currentMusicCurrentVolume = 1f;
+    private float currentMusicCurrentVolume = 0f;
     private float currentMusicDesiredVolume = 1f;
 
     private AudioSource fadingOutMusic = null;
@@ -40,7 +43,7 @@ public class AudioManager : MonoBehaviour
         if(fadingOutMusic != null)
         {
             if (fadingOutMusic.volume > 0f)
-                fadingOutMusic.volume -= 0.01f;
+                fadingOutMusic.volume -= musicFadingSpeed;
             else
             {
                 Destroy(fadingOutMusic.gameObject);
@@ -50,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
         if(currentMusic != null && currentMusicCurrentVolume < currentMusicDesiredVolume)
         {
-            currentMusicCurrentVolume = Mathf.Min(currentMusicCurrentVolume + 0.01f, currentMusicDesiredVolume);
+            currentMusicCurrentVolume = Mathf.Min(currentMusicCurrentVolume + musicFadingSpeed, currentMusicDesiredVolume);
             currentMusic.volume = currentMusicCurrentVolume * MusicVolume;
         }
 
@@ -109,14 +112,10 @@ public class AudioManager : MonoBehaviour
 
         //Setup music fading
         if(instance.currentMusic != null)
-        {
             instance.fadingOutMusic = instance.currentMusic;
-            instance.currentMusicCurrentVolume = 0f;
-        }
-        else
-            instance.currentMusicCurrentVolume = volume;
 
         instance.currentMusic = source;
+        instance.currentMusicCurrentVolume = -0.5f;
         instance.currentMusicDesiredVolume = volume;
 
         source.Play();
