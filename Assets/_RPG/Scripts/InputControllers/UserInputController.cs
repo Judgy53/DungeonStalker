@@ -32,6 +32,14 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
 
     private EffectManager effectManager = null;
 
+    [SerializeField]
+    private AudioClip jumpClip;
+    
+    [SerializeField]
+    private AudioClip landClip;
+
+    private bool wasGrounded = true;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -90,7 +98,15 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
         velocity.y = velocityy;
 
         if (jumpInput && cc.isGrounded)
+        {
             velocity.y = jumpForce;
+            AudioManager.PlaySfx(jumpClip, transform);
+        }
+        
+        if(!wasGrounded && cc.isGrounded)
+            AudioManager.PlaySfx(landClip, transform);
+
+        wasGrounded = cc.isGrounded;
 
         if(!cc.isGrounded)
             velocity += Physics.gravity * gravityMultiplier * Time.fixedDeltaTime;

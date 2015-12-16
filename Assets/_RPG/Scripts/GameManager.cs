@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour, ISavable
                 player.transform.rotation = playerStart.transform.rotation;
             }
 
-            mc.transform.SetParent(player.transform, false);
+            mc.transform.SetParent(player.transform.Find("CameraPoint"), false);
 
             ResetTime(0);
 
@@ -231,7 +231,8 @@ public class GameManager : MonoBehaviour, ISavable
         if (instance.player != null)
         {
             DontDestroyOnLoad(instance.player);
-            Destroy(Camera.main.gameObject);
+
+            Camera.main.transform.SetParent(null);
         }
 
         Application.LoadLevel("GameScene");
@@ -239,6 +240,8 @@ public class GameManager : MonoBehaviour, ISavable
 
     public static void GoToMainMenu()
     {
+        Camera.main.transform.SetParent(null ,false);
+
         if(instance != null) 
         {
             if(instance.autoSaver != null)
@@ -252,11 +255,10 @@ public class GameManager : MonoBehaviour, ISavable
 
             instance.StopCoroutine("UpdateTimePlayed");
 
-            Debug.Log("Play Music Menu");
-            AudioManager.PlayMusic(instance.menuClip, null);
+            AudioManager.PlayMusic(instance.menuClip, Camera.main.transform);
        }
 
-        Application.LoadLevel("MainMenu");
+       Application.LoadLevel("MainMenu");
     }
 
     public void Save(SaveData data)

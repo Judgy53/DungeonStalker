@@ -11,6 +11,9 @@ public class UIBar : MonoBehaviour
     private float maxValue = 1f;
     public float MaxValue { get { return maxValue; } set { maxValue = value; } }
 
+    private float prevValue = -1f;
+    private float prevMaxValue = -1f;
+
     private Image bar = null;
 
     [SerializeField]
@@ -24,8 +27,8 @@ public class UIBar : MonoBehaviour
             {
                 if (textgo != null)
                 {
-                    text = textgo.GetComponent<Text>();
-                    text.text = (int)currentValue + "/" + (int)maxValue; ;
+                    //text = textgo.GetComponent<Text>();
+                    //text.text = (int)currentValue + "/" + (int)maxValue; ;
                 }
                 else
                 {
@@ -111,12 +114,18 @@ public class UIBar : MonoBehaviour
         currentValue = target.GetCurrentValue();
         maxValue = target.GetMaxValue();
 
-        Vector3 barScale = bar.transform.localScale;
-        barScale.x = Mathf.Max(currentValue / maxValue, 0f);
+        if(currentValue != prevValue || maxValue != prevMaxValue)
+        {
+            Vector3 barScale = bar.transform.localScale;
+            barScale.x = Mathf.Max(currentValue / maxValue, 0f);
 
-        bar.transform.localScale = barScale;
+            bar.transform.localScale = barScale;
 
-        if (textgo != null && text != null && showValues)
-            text.text = prefix + (int)currentValue + "/" + (int)maxValue + suffix;
+            if (textgo != null && text != null && showValues)
+                text.text = prefix + (int)currentValue + "/" + (int)maxValue + suffix;
+        }
+
+        prevValue = currentValue;
+        prevMaxValue = maxValue;
     }
 }

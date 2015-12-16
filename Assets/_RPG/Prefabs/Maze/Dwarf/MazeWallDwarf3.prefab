@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &108748
 GameObject:
@@ -27,12 +27,12 @@ GameObject:
   - 4: {fileID: 403258}
   - 33: {fileID: 3327886}
   - 23: {fileID: 2345246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: couvercle_tonneau
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &121960
 GameObject:
@@ -48,7 +48,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &137204
 GameObject:
@@ -60,12 +60,12 @@ GameObject:
   - 4: {fileID: 488872}
   - 33: {fileID: 3361372}
   - 23: {fileID: 2336630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tonneau
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &171876
 GameObject:
@@ -78,12 +78,12 @@ GameObject:
   - 33: {fileID: 3306034}
   - 23: {fileID: 2352388}
   - 64: {fileID: 6466052}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tonneau_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &176442
 GameObject:
@@ -94,12 +94,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 436406}
   - 54: {fileID: 5443916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &188236
 GameObject:
@@ -118,7 +118,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &403258
 Transform:
@@ -436,7 +436,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121960}

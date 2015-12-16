@@ -49,7 +49,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &102588
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -80,7 +80,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &103536
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -1105,6 +1105,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &199316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457250}
+  m_Layer: 0
+  m_Name: CameraPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &199340
 GameObject:
   m_ObjectHideFlags: 1
@@ -1497,8 +1512,8 @@ Transform:
   m_Children:
   - {fileID: 465268}
   - {fileID: 418172}
-  m_Father: {fileID: 437890}
-  m_RootOrder: 3
+  m_Father: {fileID: 457250}
+  m_RootOrder: 0
 --- !u!4 &425874
 Transform:
   m_ObjectHideFlags: 1
@@ -1632,13 +1647,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children:
-  - {fileID: 484540}
   - {fileID: 480608}
   - {fileID: 448140}
-  - {fileID: 425872}
+  - {fileID: 457250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &438182
@@ -1741,6 +1755,20 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 437890}
+  m_RootOrder: 1
+--- !u!4 &457250
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .699999988, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 425872}
+  - {fileID: 484540}
   m_Father: {fileID: 437890}
   m_RootOrder: 2
 --- !u!4 &460826
@@ -1930,7 +1958,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 437890}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &480686
 Transform:
   m_ObjectHideFlags: 1
@@ -1992,8 +2020,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 437890}
-  m_RootOrder: 0
+  m_Father: {fileID: 457250}
+  m_RootOrder: 1
 --- !u!4 &485118
 Transform:
   m_ObjectHideFlags: 1
@@ -2316,8 +2344,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: {x: 1.5, y: 0, z: 1.5}
   sprintMultiplier: 1.5
-  jumpForce: 5
-  gravityMultiplier: 1
+  jumpForce: 1.75
+  gravityMultiplier: .5
+  jumpClip: {fileID: 8300000, guid: 15f166573920467499e8f0aab2df0d90, type: 3}
+  landClip: {fileID: 8300000, guid: 991e08b2107e7074f90749b4d4c4b397, type: 3}
 --- !u!114 &11453904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2550,7 +2580,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.76999998
+  m_Height: 1.75
   m_Radius: .600000024
   m_SlopeLimit: 45
   m_StepOffset: .00999999978
@@ -2628,6 +2658,18 @@ Prefab:
       propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: c64b671a785d90e458008c6b6187af23, type: 3}
+    - target: {fileID: 0}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 15f166573920467499e8f0aab2df0d90, type: 3}
+    - target: {fileID: 0}
+      propertyPath: landClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 991e08b2107e7074f90749b4d4c4b397, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}

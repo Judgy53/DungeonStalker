@@ -56,7 +56,7 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
-  cellPrefab: {fileID: 11453030, guid: 5471530069ae7684f8c752b801090e49, type: 2}
+  cellPrefab: {fileID: 11435788, guid: 5471530069ae7684f8c752b801090e49, type: 2}
   roofPrefab: {fileID: 145788, guid: af4c18998eeb9c64780a9a830745bec9, type: 2}
   passagePrefab: {fileID: 11446928, guid: 2200dcd1fb7a2ee46b989e16fda7add4, type: 2}
   wallPrefabs:
@@ -69,9 +69,9 @@ MonoBehaviour:
   - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
   - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
   - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
-  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
-  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
-  - {fileID: 11485422, guid: 5104ee125d1848946a877f892f87134c, type: 2}
+  - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
+  - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
+  - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
   - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
   - {fileID: 11405848, guid: 7a32152e5c4d05e41a11e68260fa7059, type: 2}
   - {fileID: 11457376, guid: fe623ffd09849b948a57c303fdde31c1, type: 2}
