@@ -54,6 +54,9 @@ public class LootTable : MonoBehaviour
             rand = Random.Range(0.0f, 1.0f);
             if (rand <= loot.dropChance)
             {
+                if (loot.itemGo == null)
+                    Debug.Log("Loot gameobject is null : " + loot.ToString());
+
                 GameObject itemgo = GameObject.Instantiate(loot.itemGo, Vector3.zero, Quaternion.identity) as GameObject;
                 IItem item = itemgo.GetComponent<IItem>();
 

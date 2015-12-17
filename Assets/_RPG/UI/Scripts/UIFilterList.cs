@@ -19,8 +19,12 @@ public class UIFilterList : MonoBehaviour
 
     private List<GameObject> buttons = new List<GameObject>();
 
+    private UIButtonsSoundHandler soundHandler;
+
     private void Start()
     {
+        soundHandler = GetComponentInParent<UIButtonsSoundHandler>();
+
         foreach(ItemType type in filters)
         {
             GameObject buttonGao = Instantiate<GameObject>(buttonPrefab);
@@ -64,6 +68,8 @@ public class UIFilterList : MonoBehaviour
         inventory.CurrentFilter = filters[btn.transform.GetSiblingIndex()];
 
         inventory.Populate(inventory.Target);
+
+        soundHandler.onBtnClick();
     }
 
     private void SelectButton(GameObject select)
@@ -77,5 +83,10 @@ public class UIFilterList : MonoBehaviour
             else
                 ExecuteEvents.Execute(select, pointer, ExecuteEvents.pointerExitHandler);
         }
+    }
+
+    private void Button_onMouseEnter(UIMouseEvents btn)
+    {
+        soundHandler.onBtnHover();
     }
 }

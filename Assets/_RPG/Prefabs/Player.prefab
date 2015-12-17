@@ -2466,6 +2466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 1
+  pickupClip: {fileID: 8300000, guid: 4bc04752bae76f4498720866ba98f0bb, type: 3}
 --- !u!114 &11496146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2684,6 +2685,10 @@ Prefab:
       propertyPath: m_Height
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pickupClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bc04752bae76f4498720866ba98f0bb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}

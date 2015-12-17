@@ -32,10 +32,20 @@ public class UIInventoryList : MonoBehaviour
     public IContainer Target { get { return target; } }
 
     private ItemType currentFilter = ItemType.All;
-    public ItemType CurrentFilter { get { return currentFilter; } set { currentFilter = value; } }    
+    public ItemType CurrentFilter { get { return currentFilter; } set { currentFilter = value; } }
+
+    private UIButtonsSoundHandler soundHandler;
+
+    [SerializeField]
+    private AudioClip equipClip;
+
+    [SerializeField]
+    private AudioClip dropClip;
 
     private void Start()
     {
+        soundHandler = GetComponentInParent<UIButtonsSoundHandler>();
+
         if (buttonTemplatePrefab == null)
         {
             Debug.LogError("No button template defined on " + this.name);
@@ -180,6 +190,8 @@ public class UIInventoryList : MonoBehaviour
     private void Button_onMouseEnter(UIMouseEvents btn)
     {
         btn.GetComponent<Selectable>().Select();
+
+        soundHandler.onBtnHover();
     }
 
     private void Button_onLeftClick(UIMouseEvents btn)
@@ -192,6 +204,8 @@ public class UIInventoryList : MonoBehaviour
             (item as IUsable).Use((item as Behaviour).GetComponentInParent<InteractManager>());
 
         Populate(target);
+
+        AudioManager.PlaySfx(equipClip, Camera.main.transform);
     }
 
     private void Button_onRightClick(UIMouseEvents btn)
@@ -209,6 +223,8 @@ public class UIInventoryList : MonoBehaviour
         GetComponentInParent<UIInventoryMenu>().target.DropItem(btn.Item);
 
         Populate(target);
+
+        AudioManager.PlaySfx(dropClip, Camera.main.transform);
     }
 
     private bool CanEquip(ItemWeapon weapon, WeaponRestriction slot)
