@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour, ISavable
     public static event EventHandler<EventPlayerCreationArgs> OnPlayerCreation;
     public static event EventHandler OnMazeGenerationFinished;
     public static event EventHandler OnMazePopulationFinished;
+    public static event EventHandler OnMazeChestGenerationFinished;
 
     /// <summary>
     /// Any scripts subscribing to this event is responsible for unsubscribing.
@@ -26,8 +27,13 @@ public class GameManager : MonoBehaviour, ISavable
     public int minEnemies = 10;
     [Range(0, 100)]
     public int maxEnemies = 100;
-
     public int maxEnemiesPerRoom = 10;
+
+    [Range(1, 10)]
+    public int minChestNumber = 1;
+    [Range(1, 10)]
+    public int maxChestNumber = 10;
+    public int maxChestNumberPerRoom = 2;
 
     public bool debugSpawnBeforePathfinding = false;
 
@@ -69,14 +75,9 @@ public class GameManager : MonoBehaviour, ISavable
 
     private int enemiesNumber = 0;
     public static int EnemiesNumber { get { return instance.enemiesNumber; } }
+    private int chestNumber = 0;
 
     private bool generateMaze = false;
-
-    /// <summary>
-    /// Might move that to another Component ...
-    /// </summary>
-    private List<int> keys = new List<int>();
-    public static List<int> Keys { get { return instance.keys; } }
 
     private Grid gridInstance = null;
     public static Grid GridInstance { get { return instance.gridInstance; } }
@@ -140,15 +141,44 @@ public class GameManager : MonoBehaviour, ISavable
     private void MazePopulationFinished(bool manual)
     {
         Debug.Log("Populate finished !");
+        
+        if (OnMazePopulationFinished != null)
+            OnMazePopulationFinished(this, new EventArgs());
+
+        if (toLoad == null)
+        {
+            Task mazeChestGeneration = new Task(mazeInstance.GenerateChests(chestNumber, maxChestNumberPerRoom), false);
+            mazeChestGeneration.Finished += MazeChestGenerationFinished;
+            mazeChestGeneration.Start();
+        }
+        else
+        {
+            Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
+
+            if (debugSpawnBeforePathfinding)
+                Grid_OnProcessingQueueEmpty(null, new EventArgs());
+            if (OnMazeChestGenerationFinished != null)
+                OnMazeChestGenerationFinished(this, new EventArgs());
+            Debug.Log("Chests generation finished !");
+        }
 
         toLoad = null; // reset this to ensure it won't be loaded at next load/level
+    }
+
+    private void MazeChestGenerationFinished(bool manual)
+    {
+        Debug.Log("Chests generation finished !");
 
         Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
+        
+        List<Container> chests = mazeInstance.Chests;
+        //Generate loot.
+
         if (debugSpawnBeforePathfinding)
             Grid_OnProcessingQueueEmpty(null, new EventArgs());
 
-        if (OnMazePopulationFinished != null)
-            OnMazePopulationFinished(this, new EventArgs());
+        if (OnMazeChestGenerationFinished != null)
+            OnMazeChestGenerationFinished(this, new EventArgs());
     }
 
     private void Grid_OnProcessingQueueEmpty(object sender, EventArgs args)
@@ -226,7 +256,8 @@ public class GameManager : MonoBehaviour, ISavable
         instance.stage = s;
         instance.generateMaze = true;
 
-        instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies);
+        instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies + 1);
+        instance.chestNumber = UnityEngine.Random.Range(instance.minChestNumber, instance.maxChestNumber + 1);
 
         if (instance.player != null)
         {

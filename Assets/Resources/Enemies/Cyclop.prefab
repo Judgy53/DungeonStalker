@@ -2494,7 +2494,6 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 0223a2abbe4656949b94742c96df2e73, type: 2}
-  - {fileID: 2100000, guid: 245ba82435436394daa6d3403b365be9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2569,8 +2568,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 446954}
   m_AABB:
-    m_Center: {x: -.334829152, y: -.000351667404, z: .0448483229}
-    m_Extent: {x: 1.61004901, y: 1.67747319, z: 1.28361154}
+    m_Center: {x: -.33709079, y: 0, z: 0}
+    m_Extent: {x: 1.50709081, y: 1.73000002, z: .49000001}
   m_DirtyAABB: 0
 --- !u!143 &14326000
 CharacterController:
