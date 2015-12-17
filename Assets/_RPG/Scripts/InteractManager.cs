@@ -9,6 +9,9 @@ public class InteractManager : MonoBehaviour
     [SerializeField]
     private float maxDistance = 3.0f;
 
+    [SerializeField]
+    private AudioClip pickupClip;
+
     private void Update()
     {
         RaycastHit hit;
@@ -29,7 +32,12 @@ public class InteractManager : MonoBehaviour
         }
 
         if (target != null && Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0.0f)
+        {
+            if (target is IPickable)
+                AudioManager.PlaySfx(pickupClip, transform);
+
             target.Use(this);
+        }
 
         Debug.DrawLine(transform.position, transform.position + transform.forward * maxDistance, Color.red);
     }

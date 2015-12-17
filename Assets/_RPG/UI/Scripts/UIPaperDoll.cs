@@ -18,6 +18,9 @@ public class UIPaperDoll : MonoBehaviour
     private Sprite defaultOffHandSprite = null;
     private Sprite defaultAmmoSprite = null;
 
+    [SerializeField]
+    private AudioClip unequipClip;
+
     private void Start()
     {
         GameManager.OnPlayerCreation += GameManager_OnPlayerCreation;
@@ -116,15 +119,24 @@ public class UIPaperDoll : MonoBehaviour
             armorTarget.Armor[senderIndex].TransferToContainer(armorTarget.GetComponentInChildren<IContainer>());
             armorTarget.Armor[senderIndex] = null;
             armorTarget.RecomputeGearStats();
+
+            AudioManager.PlaySfx(unequipClip, Camera.main.transform);
         }
         else if (senderIndex == -1 && weapTarget != null)
         {
+            bool playSound = true;
+
             if (sender == mainHandSlot.GetComponent<UIMouseEvents>())
                 weapTarget.MainHandWeapon = null;
             else if (sender == offHandSlot.GetComponent<UIMouseEvents>())
                 weapTarget.OffHandWeapon = null;
             else if (sender == ammoSlot.GetComponent<UIMouseEvents>())
                 weapTarget.CurrentAmmos = null;
+            else
+                playSound = false;
+
+            if(playSound)
+                AudioManager.PlaySfx(unequipClip, Camera.main.transform);
         }
 
         ActualizeSlots();

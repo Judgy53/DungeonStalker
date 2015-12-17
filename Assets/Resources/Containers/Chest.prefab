@@ -117,6 +117,8 @@ MonoBehaviour:
   maxWeight: 100
   actionName: Open the cube ...
   actionDescription: 
+  shouldRegister: 1
+  openClip: {fileID: 8300000, guid: c68784158dde9de44a6c30217ef2f390, type: 3}
   items: []
 --- !u!1001 &100100000
 Prefab:
@@ -533,6 +535,10 @@ Prefab:
       propertyPath: staticActualizeTimer
       value: .0500000007
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: openClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c68784158dde9de44a6c30217ef2f390, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124020}

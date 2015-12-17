@@ -34,6 +34,9 @@ public class Container : MonoBehaviour, IContainer, IUsable, ISavable
     [SerializeField]
     private bool shouldRegister = true;
 
+    [SerializeField]
+    private AudioClip openClip;
+
     /// <summary>
     /// DEBUG !
     /// </summary>
@@ -73,6 +76,7 @@ public class Container : MonoBehaviour, IContainer, IUsable, ISavable
         if (transferUI != null)
             transferUI.OpenUI(user.GetComponentInChildren<IContainer>(), this);
 
+        AudioManager.PlaySfx(openClip, transform);
     }
 
     public bool AddItem(IItem item)

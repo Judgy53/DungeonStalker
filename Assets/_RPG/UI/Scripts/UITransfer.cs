@@ -25,6 +25,9 @@ public class UITransfer : MonoBehaviour
     [SerializeField]
     private UIInventoryToggleLister listerB = null;
 
+    [SerializeField]
+    private AudioClip closeClip;
+
     public void OpenUI(IContainer a, IContainer b)
     {
         if (UIStateManager.State == UIState.Free && state == UITransferState.Free)
@@ -45,6 +48,9 @@ public class UITransfer : MonoBehaviour
     {
         if (state == UITransferState.Busy)
         {
+            if (listerB.Target is Container)
+                AudioManager.PlaySfx(closeClip, Camera.main.transform);
+
             UIStateManager.UnregisterUI();
             listerA.Clear();
             listerB.Clear();
