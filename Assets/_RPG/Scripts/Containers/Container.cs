@@ -76,7 +76,8 @@ public class Container : MonoBehaviour, IContainer, IUsable, ISavable
         if (transferUI != null)
             transferUI.OpenUI(user.GetComponentInChildren<IContainer>(), this);
 
-        AudioManager.PlaySfx(openClip, transform);
+        if(openClip != null)
+            AudioManager.PlaySfx(openClip, transform);
     }
 
     public bool AddItem(IItem item)
