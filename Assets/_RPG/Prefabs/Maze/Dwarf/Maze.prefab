@@ -95,6 +95,10 @@ MonoBehaviour:
   - {fileID: 177294, guid: 26c300e911f84c04e8f1f6e16e188e74, type: 2}
   - {fileID: 177294, guid: 26c300e911f84c04e8f1f6e16e188e74, type: 2}
   - {fileID: 196194, guid: 5246f4ca426da374381af3f121d79d6d, type: 2}
+  minChestNumber: 10
+  maxChestNumber: 10
+  maxChestNumberPerRoom: 2
+  chestPrefab: {fileID: 11492522, guid: c05542563f7aa9f4ab20143c41078a27, type: 2}
   roomSettings:
   - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
     wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}

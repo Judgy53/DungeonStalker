@@ -2359,6 +2359,7 @@ MonoBehaviour:
   moveSpeed: {x: 1.5, y: 0, z: 1.5}
   sprintMultiplier: 1.5
   jumpForce: 1.75
+  debugSuperJump: 1
   gravityMultiplier: .5
   jumpClip: {fileID: 8300000, guid: 15f166573920467499e8f0aab2df0d90, type: 3}
   landClip: {fileID: 8300000, guid: 991e08b2107e7074f90749b4d4c4b397, type: 3}

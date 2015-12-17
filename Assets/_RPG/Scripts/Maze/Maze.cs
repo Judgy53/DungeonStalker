@@ -25,6 +25,8 @@ public class Maze : MonoBehaviour
 
     public GameObject[] enemiesPrefabs = null;
 
+    public Container chestPrefab = null;
+
     public MazeRoomSettings[] roomSettings = new MazeRoomSettings[0];
 
     private MazeCell[,] cells = new MazeCell[0, 0];
@@ -35,6 +37,9 @@ public class Maze : MonoBehaviour
 
     private List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> Enemies { get { return enemies; } }
+
+    private List<Container> chests = new List<Container>();
+    public List<Container> Chests { get { return chests; } }
 
     private bool playerStartCreated = false;
 
@@ -137,13 +142,90 @@ public class Maze : MonoBehaviour
 
             MazeCell randCell = activeCells[Random.Range(0, activeCells.Count)];
             activeCells.Remove(randCell);
+            if (randCell.IsFree)
+            {
+                randCell.RegisterEntity();
 
-            GameObject enemy = GameObject.Instantiate(enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)]) as GameObject;
-            enemy.transform.parent = transform;
-            enemy.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, transform.position.y + 1.0f, randCell.coordinates.z - size.z * 0.5f + 0.5f);
-            enemiesGenerated++;
+                GameObject enemy = GameObject.Instantiate(enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)]) as GameObject;
+                enemy.transform.parent = transform;
+                enemy.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, transform.position.y + 1.0f, randCell.coordinates.z - size.z * 0.5f + 0.5f);
+                enemiesGenerated++;
 
-            enemies.Add(enemy);
+                enemies.Add(enemy);
+            }
+        }
+    }
+
+    public IEnumerator GenerateChests(int chestNumber, int maxChestNumberPerRoom)
+    {
+        chests = new List<Container>();
+        List<MazeRoom> activeRooms = new List<MazeRoom>(rooms);
+
+        while (chests.Count < chestNumber)
+        {
+            if (activeRooms.Count == 0)
+                break;
+
+            MazeRoom randRoom = activeRooms[Random.Range(0, activeRooms.Count)];
+            activeRooms.Remove(randRoom);
+
+            int randNumber = Random.Range(1, maxChestNumberPerRoom + 1);
+
+            yield return StartCoroutine(GenerateChestsInRoom(randRoom, randNumber));
+        }
+    }
+
+    private IEnumerator GenerateChestsInRoom(MazeRoom room, int number)
+    {
+        int chestsGenerated = 0;
+        List<MazeCell> activeCells = new List<MazeCell>(room.Cells);
+
+        while (chestsGenerated < number)
+        {
+            if (enemies.Count % 10 == 0)
+                yield return false;
+
+            if (activeCells.Count == 0)
+                break;
+
+            MazeCell randCell = activeCells[Random.Range(0, activeCells.Count)];
+            activeCells.Remove(randCell);
+            if (randCell.IsFree)
+            {
+                int passageCount = 0;
+                for (int i = 0; i < 4; i++)
+                {
+                    MazeCellEdge edge = randCell.GetEdge(i);
+                    if (edge is MazePassage)
+                    {
+                        passageCount++;
+                        if (passageCount > 1)
+                            break;
+                    }
+                }
+
+                if (passageCount > 1)
+                    continue;
+
+                randCell.RegisterEntity();
+
+                Container chest = GameObject.Instantiate(chestPrefab) as Container;
+                chest.transform.parent = transform;
+
+                MeshRenderer renderer = chest.GetComponent<MeshRenderer>();
+                if (renderer != null)
+                    chest.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, 
+                        transform.position.y + renderer.bounds.extents.y, 
+                        randCell.coordinates.z - size.z * 0.5f + 0.5f);
+                else
+                    chest.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, 
+                        transform.position.y + 1.0f, 
+                        randCell.coordinates.z - size.z * 0.5f + 0.5f);
+
+                chestsGenerated++;
+
+                chests.Add(chest);
+            }
         }
     }
 
@@ -205,6 +287,7 @@ public class Maze : MonoBehaviour
 
                 playerStartCreated = true;
                 playerStartCell = currentCell;
+                playerStartCell.RegisterEntity();
             }
         }
     }

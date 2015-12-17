@@ -1,55 +1,63 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : MonoBehaviour, IItem
+public class ItemStageKey : MonoBehaviour, IItem
 {
     [SerializeField]
     private Sprite image = null;
     public Sprite Image { get { return image; } }
 
-    [SerializeField]
-    private string objName = "A really heavy boulder";
-    public string Name { get { return objName; } }
+    public string Name
+    {
+        get
+        {
+            return "Stage " + stageValue + " key";
+        }
+    }
 
     [SerializeField]
-    private string itemDescription = "Why would you carry that ?";
+    private string itemDescription = "You'd better keep that around ...";
     public string Description { get { return itemDescription; } }
 
     [SerializeField]
-    private uint weigth = 150u;
+    private uint weigth = 0u;
     public uint Weigth { get { return weigth; } }
 
-    [SerializeField]
-    private bool canDrop = true;
+    private bool canDrop = false;
     public bool CanDrop { get { return canDrop; } set { canDrop = value; } }
 
-    [SerializeField]
-    private GameObject dropPrefab = null;
-    public GameObject DropPrefab { get { return dropPrefab; } }
+    public GameObject DropPrefab { get { return null; } }
 
     [SerializeField]
     private ItemType type = ItemType.Misc;
     public ItemType Type { get { return type; } }
 
     [SerializeField]
-    private ItemQuality quality = ItemQuality.Common;
+    private ItemQuality quality = ItemQuality.Legendary;
     public ItemQuality Quality { get { return quality; } }
-    
+
+    [SerializeField]
+    private int stageValue = 1;
+    public int StageValue { get { return stageValue; } }
+
     public void OnPickup(IPickable pickable)
     {
+        if (pickable.UserData != null)
+            stageValue = (int)pickable.UserData;
+        else
+            stageValue = (int)GameManager.Stage;
     }
 
     public void OnDrop(IPickable pickable)
     {
+        pickable.UserData = stageValue;
     }
 
     public void Save(SaveData data)
     {
-        //nothing to save
     }
 
     public void Load(SaveData data)
     {
-        //nothing to load
     }
 }

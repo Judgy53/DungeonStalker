@@ -8,7 +8,10 @@ public class UsableButton : MonoBehaviour, IUsable
     public string actionName = "";
     public string actionDescription = "";
 
-    public UnityEvent onUse = new UnityEvent();
+    [System.Serializable]
+    public class ButtonUseEvent : UnityEvent<InteractManager> { }
+
+    public ButtonUseEvent onUse = new ButtonUseEvent();
 
     public virtual string GetActionName()
     {
@@ -22,6 +25,6 @@ public class UsableButton : MonoBehaviour, IUsable
 
     public virtual void Use(InteractManager user, UsableArgs args = null)
     {
-        onUse.Invoke();
+        onUse.Invoke(user);
     }
 }

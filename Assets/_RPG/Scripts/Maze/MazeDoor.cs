@@ -43,7 +43,12 @@ public class MazeDoor : MazePassage
             Debug.LogWarning("No AnimatorController on " + this.name);
     }
 
-    public void ToogleState(bool callOtherSide = true)
+    public void ToogleState(InteractManager manager)
+    {
+        ToogleState(manager, true);
+    }
+
+    public void ToogleState(InteractManager manager, bool callOtherSide = true)
     {
         switch (state)
         {
@@ -56,7 +61,7 @@ public class MazeDoor : MazePassage
         }
 
         if (callOtherSide)
-            OtherSideOfDoor.ToogleState(false);
+            OtherSideOfDoor.ToogleState(manager, false);
 
         if (animator != null)
             animator.SetBool("Open", state == DoorState.Open);

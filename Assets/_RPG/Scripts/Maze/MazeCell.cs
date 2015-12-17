@@ -33,6 +33,9 @@ public class MazeCell : MonoBehaviour
 
     private bool[] initializedCorners = new bool[4];
 
+    private bool isFree = true;
+    public bool IsFree { get { return isFree; } }
+
     public void Initialize(MazeRoom room)
     {
         room.Add(this);
@@ -76,5 +79,10 @@ public class MazeCell : MonoBehaviour
         dgo.transform.localScale = new Vector3(delta, dgo.transform.localScale.y, dgo.transform.localScale.z);
 
         initializedCorners[(int)((float)dir + 0.5f + (float)delta / 2.0f) % MazeDirections.Count] = true;
+    }
+
+    public void RegisterEntity()
+    {
+        isFree = false;
     }
 }

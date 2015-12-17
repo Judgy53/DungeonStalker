@@ -11,6 +11,7 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
     public float sprintMultiplier = 2.5f;
 
     public float jumpForce = 5.0f;
+    public bool debugSuperJump = false;
 
     private CharacterController cc = null;
     public CharacterController CC { get { return cc; } }
@@ -93,13 +94,12 @@ public class UserInputController : MonoBehaviour, IControls, ISavable
         }
 
         float velocityy = velocity.y;
-        //velocity = transform.TransformDirection(frameVelocity);
         velocity = frameVelocity.RotateAround(Vector3.zero, Quaternion.Euler(0f, transform.eulerAngles.y, 0f));
         velocity.y = velocityy;
 
         if (jumpInput && cc.isGrounded)
         {
-            velocity.y = jumpForce;
+            velocity.y = jumpForce * (debugSuperJump ? 3.0f : 1.0f);
             AudioManager.PlaySfx(jumpClip, transform);
         }
         
