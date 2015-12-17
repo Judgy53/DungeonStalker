@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 425872}
   - 95: {fileID: 9554568}
+  - 114: {fileID: 11429896}
   m_Layer: 8
   m_Name: FpsArms
   m_TagString: Untagged
@@ -2304,6 +2305,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   god: 1
   maxHealth: 100
+--- !u!114 &11429896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c678bc5bc714b46a20bc21e5bca332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 11437088}
 --- !u!114 &11435292
 MonoBehaviour:
   m_ObjectHideFlags: 1

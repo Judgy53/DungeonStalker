@@ -899,6 +899,7 @@ GameObject:
   - 114: {fileID: 11431264}
   - 114: {fileID: 11472102}
   - 114: {fileID: 11456888}
+  - 114: {fileID: 11441200}
   m_Layer: 0
   m_Name: Roach
   m_TagString: Enemy
@@ -2363,6 +2364,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a57c310260c864c860753d4810513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11441200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d57ff11b6e495f439d3f8d333bdbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSounds:
+  - {fileID: 8300000, guid: 8338bcc5ad84b104f90e55519641e909, type: 3}
 --- !u!114 &11449816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2407,6 +2421,7 @@ MonoBehaviour:
   actionName: Search ...
   actionDescription: 
   shouldRegister: 0
+  openClip: {fileID: 0}
   items: []
 --- !u!114 &11462610
 MonoBehaviour:
@@ -2658,6 +2673,10 @@ Prefab:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: hitSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: onDeath.Array.data[8].script
       value: 
       objectReference: {fileID: 11431264}
@@ -2717,6 +2736,10 @@ Prefab:
       propertyPath: volume
       value: .75
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8338bcc5ad84b104f90e55519641e909, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177294}

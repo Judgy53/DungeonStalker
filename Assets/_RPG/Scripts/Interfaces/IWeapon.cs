@@ -37,6 +37,11 @@ public interface IWeapon : ISavable
     void TransferToContainer(IContainer container);
 
     string GetInventoryDescription();
+
+    bool AutoFirePrimaryClip { get; }
+
+    AudioClip GetPrimaryClip();
+    AudioClip GetEndPrimaryClip();
 }
 
 public enum WeaponHand : int

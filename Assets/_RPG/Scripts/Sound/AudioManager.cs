@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public static AudioSource PlaySfx(AudioClip clip, Transform emitter, float volume = 1.0f)
+    public static AudioSource PlaySfx(AudioClip clip, Transform emitter, float volume = 1.0f, bool loop = false)
     {
         GameObject gao = Instantiate<GameObject>(instance.audioSourcePrefab);
         gao.name = "SfxClip_" + clip.name;
@@ -70,10 +70,12 @@ public class AudioManager : MonoBehaviour
         AudioSource source = gao.GetComponent<AudioSource>();
         source.clip = clip;
         source.volume = volume * SfxVolume;
+        source.loop = loop;
 
         source.Play();
 
-        Destroy(gao, clip.length);
+        if(!loop)
+            Destroy(gao, clip.length);
 
         return source;
     }

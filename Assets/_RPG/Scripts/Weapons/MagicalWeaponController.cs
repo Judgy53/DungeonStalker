@@ -98,6 +98,21 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     private StatsManager stManager = null;
 
+    [SerializeField]
+    private bool autoFirePrimaryClip = true;
+    public bool AutoFirePrimaryClip { get { return autoFirePrimaryClip; } }
+
+    [SerializeField]
+    private AudioClip startChargeClip;
+
+    [SerializeField]
+    private AudioClip loopChargeClip;
+
+    [SerializeField]
+    private AudioClip releaseChargeClip;
+
+    private AudioSource loopSource;
+
     private void Start()
     {
         currentCD = cooldown;
@@ -114,7 +129,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
                 OnPrimary(this, new EventArgs());
 
             if (MaxChargeTime > 0f)
+            {
                 useState = MagicalWeaponUseState.Charging;
+                loopSource = AudioManager.PlaySfx(loopChargeClip, transform, 1.0f, true);
+            }
             else
             {
                 if (OnEndPrimary != null)
@@ -136,6 +154,9 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
             if (OnPrimary != null)
                 OnEndPrimary(this, new EventArgs());
             useState = MagicalWeaponUseState.Launching;
+
+            if (loopSource != null)
+                Destroy(loopSource.gameObject);
         }
     }
 
@@ -299,5 +320,16 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
         }
 
         return output;
+    }
+
+
+    public AudioClip GetPrimaryClip()
+    {
+        return startChargeClip;
+    }
+
+    public AudioClip GetEndPrimaryClip()
+    {
+        return releaseChargeClip;
     }
 }

@@ -323,6 +323,7 @@ GameObject:
   - 114: {fileID: 11468434}
   - 54: {fileID: 5446866}
   - 114: {fileID: 11477120}
+  - 114: {fileID: 11486424}
   m_Layer: 0
   m_Name: Cyclop
   m_TagString: Enemy
@@ -2001,6 +2002,7 @@ MonoBehaviour:
   actionName: Search ...
   actionDescription: 
   shouldRegister: 0
+  openClip: {fileID: 0}
   items: []
 --- !u!114 &11421618
 MonoBehaviour:
@@ -2323,6 +2325,25 @@ MonoBehaviour:
   startAmmo: {fileID: 11400000, guid: 6d2d985bc5dbbbc499e9d4abcf2ecae0, type: 2}
   mainHandWeaponPoint: {fileID: 450536}
   offHandWeaponPoint: {fileID: 0}
+--- !u!114 &11486424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d57ff11b6e495f439d3f8d333bdbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSounds:
+  - {fileID: 8300000, guid: cd09d6a58021ca341bbc8904f58bdc68, type: 3}
+  - {fileID: 8300000, guid: cd09d6a58021ca341bbc8904f58bdc68, type: 3}
+  - {fileID: 8300000, guid: f66de8df0d607ff44af1a3074705a5f6, type: 3}
+  - {fileID: 8300000, guid: f66de8df0d607ff44af1a3074705a5f6, type: 3}
+  - {fileID: 8300000, guid: d8b7641ccce5b694d87a4ccbefb74604, type: 3}
+  - {fileID: 8300000, guid: d8b7641ccce5b694d87a4ccbefb74604, type: 3}
+  - {fileID: 8300000, guid: 5ac7e0571ce39ae489d826a12edfdeb6, type: 3}
 --- !u!114 &11488850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3025,6 +3046,10 @@ Prefab:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: hitSounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: onDeath.Array.data[8].script
       value: 
       objectReference: {fileID: 11404118}
@@ -3068,6 +3093,30 @@ Prefab:
       propertyPath: playAuto
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cd09d6a58021ca341bbc8904f58bdc68, type: 3}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: cd09d6a58021ca341bbc8904f58bdc68, type: 3}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: f66de8df0d607ff44af1a3074705a5f6, type: 3}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: f66de8df0d607ff44af1a3074705a5f6, type: 3}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: d8b7641ccce5b694d87a4ccbefb74604, type: 3}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d8b7641ccce5b694d87a4ccbefb74604, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127488}

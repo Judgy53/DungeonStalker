@@ -12,6 +12,12 @@ public class MagicProjectileFireball : MagicProjectile
     [SerializeField]
     private Vector3 scaleFactor = new Vector3(1f, 1f, 1f);
 
+    [SerializeField]
+    private AudioClip loopClip;
+
+    [SerializeField]
+    private AudioClip hitClip;
+
     private void Start()
     {
         transform.position = launcher.transform.position + launcher.transform.forward * summonDistance;
@@ -22,6 +28,8 @@ public class MagicProjectileFireball : MagicProjectile
         Vector3 scale = transform.localScale;
         scale.Scale(scaleFactor * (Power + 1f));
         transform.localScale = scale;
+
+        AudioManager.PlaySfx(loopClip, transform, 1.0f, true);
     }
 
     private void FixedUpdate()
@@ -47,6 +55,8 @@ public class MagicProjectileFireball : MagicProjectile
                 
             target.AddDamage(Damage);
         }
+
+        AudioManager.PlaySfx(hitClip, transform.position);
 
         Destroy(gameObject);
     }

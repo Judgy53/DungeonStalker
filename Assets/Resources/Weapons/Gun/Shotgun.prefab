@@ -273,13 +273,18 @@ MonoBehaviour:
   weaponType: 7
   inventoryItemPrefab: {fileID: 138542, guid: 8cc856be57672df44a569527f6320f25, type: 2}
   canFireContinuously: 1
+  shotClip: {fileID: 8300000, guid: fb623d645f60756479ceb69be705a8e4, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: shotClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fb623d645f60756479ceb69be705a8e4, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161724}

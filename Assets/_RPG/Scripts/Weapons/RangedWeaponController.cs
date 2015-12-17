@@ -101,6 +101,13 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     private WeaponManager weaponManager = null;
     private IAimGatherer aimGatherer = null;
 
+    [SerializeField]
+    private bool autoFirePrimaryClip = true;
+    public bool AutoFirePrimaryClip { get { return autoFirePrimaryClip; } }
+
+    [SerializeField]
+    private AudioClip shotClip;
+
     private void Start()
     {
         if (fireMuzzle == null)
@@ -255,5 +262,21 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
         output += "\nProjectile deviation : " + projectileDeviation;
 
         return output;
+    }
+
+
+    public AudioClip GetPrimaryClip()
+    {
+        if (state == RangedWeaponState.Idle)
+        {
+            return shotClip;
+        }
+
+        return null;
+    }
+
+    public AudioClip GetEndPrimaryClip()
+    {
+        return null;
     }
 }

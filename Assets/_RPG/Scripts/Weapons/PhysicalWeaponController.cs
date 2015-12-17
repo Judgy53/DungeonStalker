@@ -95,6 +95,13 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
 
     private StatsManager stManager = null;
 
+    [SerializeField]
+    private bool autoFirePrimaryClip = false;
+    public bool AutoFirePrimaryClip { get { return autoFirePrimaryClip; } }
+
+    [SerializeField]
+    private AudioClip[] attackClips;
+
     public void Primary()
     {
         if (!canUse) 
@@ -336,5 +343,22 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
             output += "\nTwoHanded";
 
         return output;
+    }
+
+
+    public AudioClip GetPrimaryClip()
+    {
+        if (attackClips.Length == 0)
+            return null;
+
+        int tabPos = UnityEngine.Random.Range(0, attackClips.Length);
+        AudioClip clip = attackClips[tabPos];
+
+        return clip;
+    }
+
+    public AudioClip GetEndPrimaryClip()
+    {
+        return null;
     }
 }

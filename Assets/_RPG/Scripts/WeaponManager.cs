@@ -132,6 +132,9 @@ public class WeaponManager : MonoBehaviour, ISavable
     private bool mhPrimaryEnabled = false;
     private bool ohPrimaryEnabled = false;
 
+    private AudioSource mhPrimarySource;
+    private AudioSource ohPrimarySource;
+
     private void Start()
     {
         driver = GetComponent<AnimationDriverBase>();
@@ -252,6 +255,12 @@ public class WeaponManager : MonoBehaviour, ISavable
     {
         if (OnHit != null)
             OnHit(sender, args);
+
+        if (sender == mainHandWeapon && mhPrimarySource != null)
+            Destroy(mhPrimarySource.gameObject);
+        else if (sender == offHandWeapon && ohPrimarySource != null)
+            Destroy(ohPrimarySource.gameObject);
+
     }
 
     private void OnOutOfAmmoCallback(object sender, EventArgs args)
@@ -287,11 +296,17 @@ public class WeaponManager : MonoBehaviour, ISavable
     {
         if (offHandWeapon != null && weapon != 0)
         {
+            if (offHandWeapon.AutoFirePrimaryClip)
+                PlayPrimarySoundOffHand();
+
             offHandWeapon.Primary();
             ohPrimaryEnabled = true;
         }
         else if (mainHandWeapon != null)
         {
+            if (mainHandWeapon.AutoFirePrimaryClip)
+                PlayPrimarySound();
+
             mainHandWeapon.Primary();
             mhPrimaryEnabled = true;
         }
@@ -307,11 +322,15 @@ public class WeaponManager : MonoBehaviour, ISavable
         {
             offHandWeapon.EndPrimary();
             ohPrimaryEnabled = false;
+
+            PlayEndPrimarySoundOffHand();
         }
         else if (mainHandWeapon != null)
         {
             mainHandWeapon.EndPrimary();
             mhPrimaryEnabled = false;
+
+            PlayEndPrimarySound();
         }
     }
 
@@ -436,6 +455,50 @@ public class WeaponManager : MonoBehaviour, ISavable
 
             CurrentAmmos = ammo;
         }
+    }
+
+    public void PlayPrimarySound()
+    {
+        if (mainHandWeapon == null)
+            return;
+
+        AudioClip clip = mainHandWeapon.GetPrimaryClip();
+
+        if (clip != null)
+            mhPrimarySource = AudioManager.PlaySfx(clip, (mainHandWeapon as Behaviour).transform);
+    }
+
+    public void PlayPrimarySoundOffHand()
+    {
+        if (offHandWeapon == null)
+            return;
+
+        AudioClip clip = offHandWeapon.GetPrimaryClip();
+
+        if (clip != null)
+            ohPrimarySource = AudioManager.PlaySfx(clip, (offHandWeapon as Behaviour).transform);
+    }
+
+    public void PlayEndPrimarySound()
+    {
+        if (mainHandWeapon == null)
+            return;
+
+        AudioClip clip = mainHandWeapon.GetEndPrimaryClip();
+
+        if (clip != null)
+            mhPrimarySource = AudioManager.PlaySfx(clip, (mainHandWeapon as Behaviour).transform);
+    }
+
+    public void PlayEndPrimarySoundOffHand()
+    {
+        if (offHandWeapon == null)
+            return;
+
+        AudioClip clip = offHandWeapon.GetEndPrimaryClip();
+
+        if (clip != null)
+            ohPrimarySource = AudioManager.PlaySfx(clip, (offHandWeapon as Behaviour).transform);
     }
 }
 

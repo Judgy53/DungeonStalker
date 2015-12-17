@@ -93,7 +93,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summonDistance: 1
   speed: 10
-  scaleFactor: {x: 1, y: 1, z: 1}
+  scaleFactor: {x: .5, y: .5, z: .5}
+  loopClip: {fileID: 8300000, guid: d848bda45291edc429e89891c35a1241, type: 3}
+  hitClip: {fileID: 8300000, guid: d0c0f46d7ff785a41a7da9d3774cd9d5, type: 3}
 --- !u!135 &13536440
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1214,7 +1216,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: scaleFactor.y
-      value: 1
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ReceiveShadows
@@ -1336,6 +1338,22 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .200000003
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scaleFactor.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scaleFactor.z
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: loopClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d848bda45291edc429e89891c35a1241, type: 3}
+    - target: {fileID: 0}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0c0f46d7ff785a41a7da9d3774cd9d5, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 147408}

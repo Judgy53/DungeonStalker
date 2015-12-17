@@ -319,9 +319,19 @@ MonoBehaviour:
   weaponHand: 0
   weaponRestriction: 0
   weaponType: 0
+  gearStats:
+    strength: 0
+    defense: 0
+    stamina: 0
+    energy: 0
+  canFireContinuously: 0
   handPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 0, y: 0, z: 0}
   inventoryItemPrefab: {fileID: 171718, guid: d7a2f3505e3bfc74883088f519e78982, type: 2}
+  attackClips:
+  - {fileID: 8300000, guid: d7da00a130960074db449989c0dac553, type: 3}
+  - {fileID: 8300000, guid: dc9b21f48ff5ae24698a2697b9a057da, type: 3}
+  - {fileID: 8300000, guid: 4d02c5122f563ba4299db00ade4f2167, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -329,6 +339,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: inventoryItemPrefab
       value: 
@@ -341,6 +355,18 @@ Prefab:
       propertyPath: maxDamages
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d7da00a130960074db449989c0dac553, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc9b21f48ff5ae24698a2697b9a057da, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d02c5122f563ba4299db00ade4f2167, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126292}

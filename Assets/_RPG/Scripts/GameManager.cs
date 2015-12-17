@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour, ISavable
         {
             DontDestroyOnLoad(instance.player);
 
-            Camera.main.transform.SetParent(null);
+            Camera.main.transform.SetParent(null, false);
         }
 
         Application.LoadLevel("GameScene");

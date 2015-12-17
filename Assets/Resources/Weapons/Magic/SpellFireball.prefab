@@ -125,6 +125,9 @@ MonoBehaviour:
   manaCost: 10
   manaChargeScale: 1.5
   inventoryItemPrefab: {fileID: 120742, guid: 4bbbd0efc65bc4e45a91711992d6ff1a, type: 2}
+  startChargeClip: {fileID: 8300000, guid: f8145d06ea578074d8c8dc451bfbd501, type: 3}
+  loopChargeClip: {fileID: 8300000, guid: d848bda45291edc429e89891c35a1241, type: 3}
+  releaseChargeClip: {fileID: 8300000, guid: 4cd5ddf5d9387664fa6a8bc90e04965a, type: 3}
 --- !u!135 &13570084
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1259,6 +1262,18 @@ Prefab:
       propertyPath: EmissionModule.rate.scalar
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startChargeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f8145d06ea578074d8c8dc451bfbd501, type: 3}
+    - target: {fileID: 0}
+      propertyPath: loopChargeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d848bda45291edc429e89891c35a1241, type: 3}
+    - target: {fileID: 0}
+      propertyPath: releaseChargeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cd5ddf5d9387664fa6a8bc90e04965a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106920}
