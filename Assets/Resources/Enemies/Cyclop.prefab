@@ -322,6 +322,7 @@ GameObject:
   - 114: {fileID: 11442784}
   - 114: {fileID: 11468434}
   - 54: {fileID: 5446866}
+  - 114: {fileID: 11477120}
   m_Layer: 0
   m_Name: Cyclop
   m_TagString: Enemy
@@ -2282,6 +2283,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: .5
+--- !u!114 &11477120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd74ffad9b2261b4499a58642d4274b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushPower: 2
 --- !u!114 &11483392
 MonoBehaviour:
   m_ObjectHideFlags: 1

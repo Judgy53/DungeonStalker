@@ -898,6 +898,7 @@ GameObject:
   - 114: {fileID: 11422640}
   - 114: {fileID: 11431264}
   - 114: {fileID: 11472102}
+  - 114: {fileID: 11456888}
   m_Layer: 0
   m_Name: Roach
   m_TagString: Enemy
@@ -2312,7 +2313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9e9892bff3ec24b88c23ca2fb8900d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
 --- !u!114 &11431264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2328,7 +2328,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b2973d92d4c774e4ca0dafaf15fd92ea, type: 3}
   - {fileID: 8300000, guid: 0913c704f0baa1243b6c55675baf064c, type: 3}
   - {fileID: 8300000, guid: 5cdfcae2edc7c36478fa50a4cb592e4a, type: 3}
-  volume: .75
+  normalVolume: 1
+  angryVolume: 1
   autoPlay: 1
   minDelayBetweenSounds: 0
   maxDelayBetweenSounds: 5
@@ -2379,6 +2380,18 @@ MonoBehaviour:
   startAmmo: {fileID: 0}
   mainHandWeaponPoint: {fileID: 480434}
   offHandWeaponPoint: {fileID: 0}
+--- !u!114 &11456888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd74ffad9b2261b4499a58642d4274b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushPower: 2
 --- !u!114 &11461402
 MonoBehaviour:
   m_ObjectHideFlags: 1
