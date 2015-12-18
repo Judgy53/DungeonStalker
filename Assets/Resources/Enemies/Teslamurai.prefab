@@ -4308,6 +4308,8 @@ MonoBehaviour:
     dropChance: .100000001
   - itemGo: {fileID: 190822, guid: bc23669ce57d06945ac6813cd2e57c56, type: 2}
     dropChance: .0199999996
+  - itemGo: {fileID: 181914, guid: 88b2652a79c27694996d25844f35773b, type: 2}
+    dropChance: .150000006
   maxItemNumber: 2
 --- !u!114 &11479796
 MonoBehaviour:
@@ -5130,6 +5132,10 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: lootTable.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: d7ba9cbafbeb45d47819191d9e817de0, type: 3}
@@ -5161,6 +5167,14 @@ Prefab:
       propertyPath: hitSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: e2cfe15c37e30a34db2ba30a2d7e7555, type: 3}
+    - target: {fileID: 0}
+      propertyPath: lootTable.Array.data[12].itemGo
+      value: 
+      objectReference: {fileID: 181914, guid: 88b2652a79c27694996d25844f35773b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: lootTable.Array.data[12].dropChance
+      value: .150000006
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196194}

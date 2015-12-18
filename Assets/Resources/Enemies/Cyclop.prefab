@@ -2129,6 +2129,8 @@ MonoBehaviour:
     dropChance: .0299999993
   - itemGo: {fileID: 159882, guid: 591e603e442258e4da568e923bb4b743, type: 2}
     dropChance: .0299999993
+  - itemGo: {fileID: 181914, guid: 88b2652a79c27694996d25844f35773b, type: 2}
+    dropChance: .100000001
   - itemGo: {fileID: 159882, guid: 591e603e442258e4da568e923bb4b743, type: 2}
     dropChance: .0299999993
   maxItemNumber: 4
@@ -3049,6 +3051,10 @@ Prefab:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: lootTable.Array.size
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: onDeath.Array.data[8].script
       value: 
       objectReference: {fileID: 11404118}
@@ -3119,6 +3125,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: normalVolume
       value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lootTable.Array.data[49].itemGo
+      value: 
+      objectReference: {fileID: 181914, guid: 88b2652a79c27694996d25844f35773b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: lootTable.Array.data[49].dropChance
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
