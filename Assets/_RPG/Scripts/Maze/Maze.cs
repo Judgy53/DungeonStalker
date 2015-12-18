@@ -269,11 +269,6 @@ public class Maze : MonoBehaviour
                 CreateWall(currentCell, null, direction);
             else
             {
-                //Todo : Create non usable door, Showing : 'I can't go back !'
-
-                /*if (GameManager.Stage != 1)
-                    CreateChangeStageDoor(currentCell, null, direction, 0);
-                else*/
                 CreateWall(currentCell, null, direction);
 
                 GameObject start = GameObject.Instantiate(playerStartPrefab) as GameObject;

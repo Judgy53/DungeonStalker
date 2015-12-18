@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour, ISavable
     {
         Debug.Log("Finished generate !");
 
+        Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
         gridInstance.RecomputeStaticObstacles(false);
 
         if(toLoad == null)
@@ -169,8 +170,6 @@ public class GameManager : MonoBehaviour, ISavable
         }
         else
         {
-            Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
-
             if (debugSpawnBeforePathfinding)
                 Grid_OnProcessingQueueEmpty(null, new EventArgs());
             if (OnMazeChestGenerationFinished != null)
@@ -185,7 +184,6 @@ public class GameManager : MonoBehaviour, ISavable
     {
         Debug.Log("Chests generation finished !");
 
-        Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
         
         List<Container> chests = mazeInstance.Chests;
         if (chests.Count != 0)
@@ -360,8 +358,6 @@ public class GameManager : MonoBehaviour, ISavable
     private void MazeLoadFinished(object sender, EventArgs e)
     {
         mazeInstance.GetComponent<Grid>().RecomputeStaticObstacles(false);
-
-        //mazeInstance.GenerateEnemiesFromSave(toLoad);
 
         Task mazePopulation = new Task(mazeInstance.Load(toLoad), false);
         mazePopulation.Finished += MazePopulationFinished;

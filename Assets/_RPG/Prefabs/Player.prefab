@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5749f0f33bc94cbc6e497fb5633b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMainHandStartWeaponPrefab: {fileID: 126292, guid: aed492386c51dd040a97391be6acf85e,
+  debugMainHandStartWeaponPrefab: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce,
     type: 2}
   debugOffHandStartWeaponPrefab: {fileID: 0}
   startAmmo: {fileID: 0}
@@ -2706,6 +2706,10 @@ Prefab:
       propertyPath: debugSuperJump
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: debugMainHandStartWeaponPrefab
+      value: 
+      objectReference: {fileID: 158242, guid: a46add32bec1865448fb9da369cb51ce, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}
