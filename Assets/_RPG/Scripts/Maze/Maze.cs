@@ -192,6 +192,7 @@ public class Maze : MonoBehaviour
 
             MazeCell randCell = activeCells[Random.Range(0, activeCells.Count)];
             activeCells.Remove(randCell);
+            MazePassage passage = null;
             if (randCell.IsFree)
             {
                 int passageCount = 0;
@@ -200,6 +201,7 @@ public class Maze : MonoBehaviour
                     MazeCellEdge edge = randCell.GetEdge(i);
                     if (edge is MazePassage)
                     {
+                        passage = edge as MazePassage;
                         passageCount++;
                         if (passageCount > 1)
                             break;
@@ -214,15 +216,10 @@ public class Maze : MonoBehaviour
                 Container chest = GameObject.Instantiate(chestPrefab) as Container;
                 chest.transform.parent = transform;
 
-                MeshRenderer renderer = chest.GetComponent<MeshRenderer>();
-                if (renderer != null)
-                    chest.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, 
-                        transform.position.y + renderer.bounds.extents.y, 
-                        randCell.coordinates.z - size.z * 0.5f + 0.5f);
-                else
-                    chest.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f, 
-                        transform.position.y + 1.0f, 
-                        randCell.coordinates.z - size.z * 0.5f + 0.5f);
+                chest.transform.localPosition = new Vector3(randCell.coordinates.x - size.x * 0.5f + 0.5f,
+                    transform.position.y,
+                    randCell.coordinates.z - size.z * 0.5f + 0.5f);
+                chest.transform.localRotation = passage.direction.ToRotation();
 
                 chestsGenerated++;
 
