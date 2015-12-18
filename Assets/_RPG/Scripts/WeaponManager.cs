@@ -256,9 +256,9 @@ public class WeaponManager : MonoBehaviour, ISavable
         if (OnHit != null)
             OnHit(sender, args);
 
-        if (sender == mainHandWeapon && mhPrimarySource != null)
+        if (sender == mainHandWeapon && mainHandWeapon.StopPrimaryClipOnHit && mhPrimarySource != null)
             Destroy(mhPrimarySource.gameObject);
-        else if (sender == offHandWeapon && ohPrimarySource != null)
+        else if (sender == offHandWeapon && offHandWeapon.StopPrimaryClipOnHit && ohPrimarySource != null)
             Destroy(ohPrimarySource.gameObject);
 
     }

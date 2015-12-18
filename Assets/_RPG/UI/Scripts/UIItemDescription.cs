@@ -131,11 +131,18 @@ public class UIItemDescription : MonoBehaviour
             if (item is ItemArmor)
                 text = "E - Equip";
             else if (item is ItemWeapon)
-                text = "E - Equip Right Hand    Right Click - Equip Left Hand";
+            {
+                if ((item as ItemWeapon).Restriction != WeaponRestriction.OffHand)
+                    text += "E - Equip Right Hand";
+
+                if ((item as ItemWeapon).Restriction != WeaponRestriction.MainHand)
+                    text += "    Right Click - Equip Left Hand";
+            }
             else if (item is IUsable)
                 text = "E - Use";
             
-            text += "    R - Drop";
+            if(item.CanDrop)
+                text += "    R - Drop";
         }
 
         helpText.text = text;

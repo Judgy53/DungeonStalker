@@ -146,7 +146,7 @@ Camera:
     height: 1
   near clip plane: .00999999978
   far clip plane: 50
-  field of view: 45
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3370,6 +3370,9 @@ MonoBehaviour:
   minEnemies: 40
   maxEnemies: 80
   maxEnemiesPerRoom: 10
+  minChestNumber: 1
+  maxChestNumber: 10
+  maxChestNumberPerRoom: 2
   debugSpawnBeforePathfinding: 0
   seed: 42
   stage: 1

@@ -39,6 +39,7 @@ public interface IWeapon : ISavable
     string GetInventoryDescription();
 
     bool AutoFirePrimaryClip { get; }
+    bool StopPrimaryClipOnHit { get; }
 
     AudioClip GetPrimaryClip();
     AudioClip GetEndPrimaryClip();

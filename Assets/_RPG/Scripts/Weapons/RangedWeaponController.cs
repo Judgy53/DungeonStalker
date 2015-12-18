@@ -106,6 +106,10 @@ public class RangedWeaponController : MonoBehaviour, IRangedWeapon
     public bool AutoFirePrimaryClip { get { return autoFirePrimaryClip; } }
 
     [SerializeField]
+    private bool stopPrimaryClipOnHit = false;
+    public bool StopPrimaryClipOnHit { get { return stopPrimaryClipOnHit; } }
+
+    [SerializeField]
     private AudioClip shotClip;
 
     private void Start()

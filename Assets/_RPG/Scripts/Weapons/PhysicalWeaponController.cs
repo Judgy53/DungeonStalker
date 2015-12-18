@@ -100,6 +100,10 @@ public class PhysicalWeaponController : MonoBehaviour, IPhysicalWeapon, IBlockab
     public bool AutoFirePrimaryClip { get { return autoFirePrimaryClip; } }
 
     [SerializeField]
+    private bool stopPrimaryClipOnHit = true;
+    public bool StopPrimaryClipOnHit { get { return stopPrimaryClipOnHit; } }
+
+    [SerializeField]
     private AudioClip[] attackClips;
 
     public void Primary()

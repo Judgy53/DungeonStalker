@@ -103,6 +103,10 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
     public bool AutoFirePrimaryClip { get { return autoFirePrimaryClip; } }
 
     [SerializeField]
+    private bool stopPrimaryClipOnHit = false;
+    public bool StopPrimaryClipOnHit { get { return stopPrimaryClipOnHit; } }
+
+    [SerializeField]
     private AudioClip startChargeClip;
 
     [SerializeField]
