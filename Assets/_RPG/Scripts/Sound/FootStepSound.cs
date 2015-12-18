@@ -36,7 +36,7 @@ public class FootStepSound : MonoBehaviour
 
         cooldown = Mathf.Max(cooldown - Time.deltaTime, 0f);
 
-        if (cooldown == 0f && Vector3.Distance(prevPos, transform.position) > 0.1f && cc.isGrounded) // if has moved and on ground
+        if (cooldown == 0f && Vector3.Distance(prevPos, transform.position) > 0.5f && cc.isGrounded) // if has moved and on ground
         {
             PlayOneStep();
 

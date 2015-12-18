@@ -2359,7 +2359,7 @@ MonoBehaviour:
   moveSpeed: {x: 1.5, y: 0, z: 1.5}
   sprintMultiplier: 1.5
   jumpForce: 1.75
-  debugSuperJump: 0
+  debugSuperJump: 1
   gravityMultiplier: .5
   jumpClip: {fileID: 8300000, guid: 15f166573920467499e8f0aab2df0d90, type: 3}
   landClip: {fileID: 8300000, guid: 991e08b2107e7074f90749b4d4c4b397, type: 3}
@@ -2702,6 +2702,10 @@ Prefab:
       propertyPath: pickupClip
       value: 
       objectReference: {fileID: 8300000, guid: 4bc04752bae76f4498720866ba98f0bb, type: 3}
+    - target: {fileID: 0}
+      propertyPath: debugSuperJump
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102502}

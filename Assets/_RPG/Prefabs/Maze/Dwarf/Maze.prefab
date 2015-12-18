@@ -83,7 +83,7 @@ MonoBehaviour:
     type: 2}
   doorPrefab: {fileID: 11425256, guid: 52ba6195d4785334482e2894319249af, type: 2}
   doorProbablity: .100000001
-  generateRoof: 1
+  generateRoof: 0
   playerStartPrefab: {fileID: 144442, guid: 3b06cdbb78132e847a8f664a20a932d0, type: 2}
   enemiesPrefabs:
   - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
@@ -107,7 +107,6 @@ MonoBehaviour:
     wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
   - floorMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
     wallMaterial: {fileID: 2100000, guid: d423ad43ef3519b45bc486b1100a8eeb, type: 2}
-  playerStartCell: {fileID: 0}
   exitDoorPrefab: {fileID: 11436292, guid: 0a6c3ce994aff084689a19727fab97d5, type: 2}
 --- !u!114 &11489860
 MonoBehaviour:
@@ -143,7 +142,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: generateRoof
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106986}
