@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a9debe6f4b3ae4da161b08aef9f844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWeight: 100
+  maxWeight: 1000
   actionName: Open the cube ...
   actionDescription: 
   shouldRegister: 1
@@ -778,6 +778,10 @@ Prefab:
       propertyPath: openClip
       value: 
       objectReference: {fileID: 8300000, guid: c68784158dde9de44a6c30217ef2f390, type: 3}
+    - target: {fileID: 0}
+      propertyPath: maxWeight
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124020}
