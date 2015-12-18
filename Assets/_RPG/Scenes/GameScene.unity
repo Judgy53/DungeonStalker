@@ -1087,23 +1087,23 @@ Prefab:
       objectReference: {fileID: 478724946}
     - target: {fileID: 22449730, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_SizeDelta.y
-      value: -425
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
@@ -1700,20 +1700,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c587843333eedc34c8b4c725ac1d312b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootChance: 0
+  lootChance: 1
   container: {fileID: 0}
   lootTable:
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
-    dropChance: 1
+    dropChance: .5
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
-    dropChance: 1
+    dropChance: .5
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
-    dropChance: 1
+    dropChance: .5
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
-    dropChance: 1
+    dropChance: .5
   - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
-    dropChance: 1
-  maxItemNumber: 3
+    dropChance: .5
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .5
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .5
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .5
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .5
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: .5
+  - itemGo: {fileID: 139158, guid: 3864e8a25cf797c43bdea737256f5285, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 136884, guid: 962f0ee0663bc1a43ab6ab4a477b07f4, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 146190, guid: ea47b41517a89d84a859dadfe1dbe414, type: 2}
+    dropChance: .0500000007
+  - itemGo: {fileID: 137498, guid: f678d57d47057384598e0cde3c98c178, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 183912, guid: da0dc0e7823150d4d8ffbf15a9373918, type: 2}
+    dropChance: .25
+  - itemGo: {fileID: 160130, guid: d005e4a555c43ee468a1dfb0e142675e, type: 2}
+    dropChance: .800000012
+  - itemGo: {fileID: 109360, guid: 00fe31c0ddf221a47a9000a06ffe84aa, type: 2}
+    dropChance: .300000012
+  - itemGo: {fileID: 118652, guid: 8b47d4f280284c04e986904ce4d49513, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 104906, guid: cb42fe94ece160144b8b2d3030bae856, type: 2}
+    dropChance: .100000001
+  - itemGo: {fileID: 151078, guid: 461f568145c65c14a80009e99413ef3d, type: 2}
+    dropChance: .800000012
+  - itemGo: {fileID: 115052, guid: 96dcb6e2b986fb0449f1607e0a8a4883, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 121150, guid: 04b5aab66d4d08347b7746f1fe4a5577, type: 2}
+    dropChance: .349999994
+  - itemGo: {fileID: 126650, guid: 59d97d1edb6cd4e45b0abcef5382662a, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 110194, guid: 36581465a365fed4fbf85fa2a678e388, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 166212, guid: 86fc37de99a94f0478a33ca700296ff4, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 174922, guid: ed3fc4e140b4ee446958a24977082901, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 146522, guid: 90972c7276c65044796577196aa9f9c2, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 128540, guid: 4106a2c4ab9cdd5479d8b7cdd55dfef6, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 113448, guid: dd12853dde8609649844ec5ff182702e, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 132982, guid: e4dc02676ce275746ba383855711a4b5, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 115030, guid: 7aa9f06849cdc1046b86bdb93e3e5d91, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 190860, guid: f1852f9ed00089b42bc0419f2eecca1c, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 104368, guid: 9f6a97177635daf4f9db5477663dbf86, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 154718, guid: cefbb32ec5d83d64dac500ed321c701f, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 197382, guid: 8ebe8eab4868dcc4aa64e0c0565bfc33, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 126870, guid: 4fc4b5fcbf024794aa8d81245090a1d6, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 115308, guid: 44367306c73b83c4199e3b8dd468c368, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 132982, guid: e4dc02676ce275746ba383855711a4b5, type: 2}
+    dropChance: .200000003
+  - itemGo: {fileID: 145622, guid: b00f5222fde8fd3468836ee763948a4d, type: 2}
+    dropChance: .200000003
+  maxItemNumber: 8
 --- !u!1001 &1627871843
 Prefab:
   m_ObjectHideFlags: 0
