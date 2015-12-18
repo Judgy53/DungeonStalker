@@ -105,8 +105,8 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        LoadStage(stage);
-        //GoToMainMenu();
+        //LoadStage(stage);
+        GoToMainMenu();
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -286,6 +286,7 @@ public class GameManager : MonoBehaviour, ISavable
         if (instance.player != null)
         {
             DontDestroyOnLoad(instance.player);
+            instance.player.transform.Translate(0f, 3000f, 0f);
 
             Camera.main.transform.SetParent(null, false);
         }

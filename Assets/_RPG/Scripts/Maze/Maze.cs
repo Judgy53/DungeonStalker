@@ -43,7 +43,7 @@ public class Maze : MonoBehaviour
 
     private bool playerStartCreated = false;
 
-    public MazeCell playerStartCell = null;
+    private MazeCell playerStartCell = null;
 
     private int seed = -1;
     public int Seed { get { return seed; } set { seed = value; } }
@@ -503,6 +503,7 @@ public class Maze : MonoBehaviour
         }
 
         data.Prefix = "";
+        exitDoor.Save(data);
     }
 
     public IEnumerator Load(SaveData data)
@@ -552,6 +553,9 @@ public class Maze : MonoBehaviour
 
             enemies.Add(enemy);
         }
+
+        data.Prefix = "";
+        exitDoor.Load(data);
     }
 }
 

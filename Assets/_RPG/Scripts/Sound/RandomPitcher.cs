@@ -6,7 +6,7 @@ public class RandomPitcher : MonoBehaviour {
     [SerializeField]
     private float pitchRandomness = 0.02f;
 
-	void Start () {
+	void Awake () {
         GetComponent<AudioSource>().pitch += Random.Range(-pitchRandomness, pitchRandomness);
 	}
 }

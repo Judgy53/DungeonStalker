@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DoorChangeStage : MazeCellEdge
+public class DoorChangeStage : MazeCellEdge, ISavable
 {
     [SerializeField]
     private uint delta = 1;
@@ -72,5 +72,17 @@ public class DoorChangeStage : MazeCellEdge
             else
                 usable.actionDescription = unlockedDescription;
         }
+    }
+
+    public void Save(SaveData data)
+    {
+        data.Add("locked", locked);
+        data.Add("delta", delta);
+    }
+
+    public void Load(SaveData data)
+    {
+        Locked = bool.Parse(data.Get("locked"));
+        Delta = uint.Parse(data.Get("delta"));
     }
 }
