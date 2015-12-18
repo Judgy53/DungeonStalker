@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class AutoSaver : MonoBehaviour
 {
     private static AutoSaver instance = null;
+
+    public static event EventHandler OnAutoSave;
     
     [Tooltip("Seconds to wait between each auto save")]
     [SerializeField]
@@ -75,6 +78,10 @@ public class AutoSaver : MonoBehaviour
         if (safe)
         {
             Debug.Log("No enemies around, autosaving ...");
+
+            if (OnAutoSave != null)
+                OnAutoSave(this, new EventArgs());
+
             SaveManager.Instance.Save();
             timer = 0f;
         }
