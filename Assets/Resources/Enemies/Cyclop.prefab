@@ -1971,7 +1971,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 981ee36d1f15c804cb8dd2a2368dd4b2, type: 3}
   - {fileID: 8300000, guid: bbfdfb8058cfb9c459d94bf1b488e0ee, type: 3}
   - {fileID: 8300000, guid: 9a34cdfaf047d494eb4b86b6b688703c, type: 3}
-  normalVolume: 1
+  normalVolume: .75
   angryVolume: 1
   autoPlay: 1
   minDelayBetweenSounds: 0
@@ -3116,6 +3116,10 @@ Prefab:
       propertyPath: hitSounds.Array.data[5]
       value: 
       objectReference: {fileID: 8300000, guid: d8b7641ccce5b694d87a4ccbefb74604, type: 3}
+    - target: {fileID: 0}
+      propertyPath: normalVolume
+      value: .75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127488}

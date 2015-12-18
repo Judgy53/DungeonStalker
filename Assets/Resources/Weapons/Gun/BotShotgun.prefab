@@ -273,7 +273,9 @@ MonoBehaviour:
   weaponType: 7
   inventoryItemPrefab: {fileID: 0}
   canFireContinuously: 1
-  shotClip: {fileID: 8300000, guid: fb623d645f60756479ceb69be705a8e4, type: 3}
+  autoFirePrimaryClip: 1
+  stopPrimaryClipOnHit: 0
+  shotClip: {fileID: 8300000, guid: 365732fadeddc7b40b1df3bcb3d7824c, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -312,7 +314,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: shotClip
       value: 
-      objectReference: {fileID: 8300000, guid: fb623d645f60756479ceb69be705a8e4, type: 3}
+      objectReference: {fileID: 8300000, guid: 365732fadeddc7b40b1df3bcb3d7824c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161724}
