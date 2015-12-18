@@ -83,7 +83,7 @@ MonoBehaviour:
     type: 2}
   doorPrefab: {fileID: 11425256, guid: 52ba6195d4785334482e2894319249af, type: 2}
   doorProbablity: .100000001
-  generateRoof: 0
+  generateRoof: 1
   playerStartPrefab: {fileID: 144442, guid: 3b06cdbb78132e847a8f664a20a932d0, type: 2}
   enemiesPrefabs:
   - {fileID: 127488, guid: 795370295703b0e4fb5cd1661c0a3080, type: 2}
@@ -145,7 +145,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: generateRoof
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

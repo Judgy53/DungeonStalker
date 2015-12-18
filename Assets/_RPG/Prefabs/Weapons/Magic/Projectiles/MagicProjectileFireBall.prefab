@@ -1354,6 +1354,10 @@ Prefab:
       propertyPath: hitClip
       value: 
       objectReference: {fileID: 8300000, guid: d0c0f46d7ff785a41a7da9d3774cd9d5, type: 3}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 147408}

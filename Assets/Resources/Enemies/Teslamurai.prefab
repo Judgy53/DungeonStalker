@@ -1967,6 +1967,9 @@ GameObject:
   - 114: {fileID: 11475066}
   - 114: {fileID: 11420606}
   - 114: {fileID: 11422778}
+  - 114: {fileID: 11449816}
+  - 114: {fileID: 11482346}
+  - 114: {fileID: 11463312}
   m_Layer: 0
   m_Name: Teslamurai
   m_TagString: Enemy
@@ -4097,6 +4100,7 @@ MonoBehaviour:
   actionName: Search ...
   actionDescription: 
   shouldRegister: 0
+  openClip: {fileID: 0}
   items: []
 --- !u!114 &11404182
 MonoBehaviour:
@@ -4191,6 +4195,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushPower: 2
+--- !u!114 &11449816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acda5a71ac7e6f48b05fc1f8ae3f6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 52491a5daead7f746a75b35579e284a8, type: 3}
+  - {fileID: 8300000, guid: e3965a282073bc645833254f184d4bd0, type: 3}
+  - {fileID: 8300000, guid: c8c2b74c09a5c8f4f9379989604e4e98, type: 3}
+  - {fileID: 8300000, guid: c312647a367c0474daa80df4391b08b8, type: 3}
+  playAuto: 0
+  delay: .5
+  volume: 1
 --- !u!114 &11457504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4204,6 +4227,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   god: 0
   maxHealth: 15
+--- !u!114 &11463312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d57ff11b6e495f439d3f8d333bdbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSounds:
+  - {fileID: 8300000, guid: e2cfe15c37e30a34db2ba30a2d7e7555, type: 3}
 --- !u!114 &11466252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4323,6 +4359,25 @@ MonoBehaviour:
   startAmmo: {fileID: 11400000, guid: 3093bffaa6e88af47850c4c7f202d2aa, type: 2}
   mainHandWeaponPoint: {fileID: 455476}
   offHandWeaponPoint: {fileID: 0}
+--- !u!114 &11482346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0a7e7610a772b4d847d7726b7ff11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: d7ba9cbafbeb45d47819191d9e817de0, type: 3}
+  - {fileID: 8300000, guid: a6bbd26e2d4504f438d2fb41eb7f2282, type: 3}
+  normalVolume: .5
+  angryVolume: .75
+  autoPlay: 1
+  minDelayBetweenSounds: 0
+  maxDelayBetweenSounds: 5
 --- !u!114 &11485038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5065,7 +5120,47 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d7ba9cbafbeb45d47819191d9e817de0, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a6bbd26e2d4504f438d2fb41eb7f2282, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c8c2b74c09a5c8f4f9379989604e4e98, type: 3}
+    - target: {fileID: 0}
+      propertyPath: clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: c312647a367c0474daa80df4391b08b8, type: 3}
+    - target: {fileID: 0}
+      propertyPath: playAuto
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: normalVolume
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: angryVolume
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e2cfe15c37e30a34db2ba30a2d7e7555, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196194}

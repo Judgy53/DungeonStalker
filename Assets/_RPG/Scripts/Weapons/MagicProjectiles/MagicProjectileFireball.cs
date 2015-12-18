@@ -18,9 +18,13 @@ public class MagicProjectileFireball : MagicProjectile
     [SerializeField]
     private AudioClip hitClip;
 
+    private bool setuped = false;
+
     private void Start()
     {
         transform.position = launcher.transform.position + launcher.transform.forward * summonDistance;
+        transform.Translate(0f, 0.2f, 0f);
+
         transform.rotation = launcher.transform.rotation;
 
         speed -= speed / 3f * Power;
@@ -30,16 +34,22 @@ public class MagicProjectileFireball : MagicProjectile
         transform.localScale = scale;
 
         AudioManager.PlaySfx(loopClip, transform, 1.0f, true);
+
+        setuped = true;
     }
 
     private void FixedUpdate()
     {
-        transform.position += transform.forward * speed * Time.fixedDeltaTime;
+        if(setuped)
+            transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject == launcher.gameObject || collider.gameObject.layer == LayerMask.NameToLayer("FirstPass"))
+        if (!setuped)
+            return;
+
+        if (collider.transform.IsChildOf(launcher.transform)|| collider.gameObject.layer == LayerMask.NameToLayer("FirstPass"))
             return; // Don't collide with launcher or player arms
 
         if (collider.gameObject.GetComponent<MagicProjectile>())

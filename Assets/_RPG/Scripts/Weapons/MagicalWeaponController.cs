@@ -329,11 +329,17 @@ public class MagicalWeaponController : MonoBehaviour, IMagicalWeapon
 
     public AudioClip GetPrimaryClip()
     {
-        return startChargeClip;
+        if(canUse)
+            return startChargeClip;
+
+        return null;
     }
 
     public AudioClip GetEndPrimaryClip()
     {
-        return releaseChargeClip;
+        if (useState == MagicalWeaponUseState.Launching)
+            return releaseChargeClip;
+
+        return null;
     }
 }
