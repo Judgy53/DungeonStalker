@@ -120,6 +120,9 @@ public class AudioManager : MonoBehaviour
         instance.currentMusicCurrentVolume = -0.5f;
         instance.currentMusicDesiredVolume = volume;
 
+        //remove random pitcher
+        gao.GetComponent<RandomPitcher>().enabled = false;
+
         source.Play();
 
         DontDestroyOnLoad(gao);
