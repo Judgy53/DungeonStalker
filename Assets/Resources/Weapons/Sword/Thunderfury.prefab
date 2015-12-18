@@ -202,16 +202,39 @@ MonoBehaviour:
     defense: 10
     stamina: 20
     energy: 5
+  canFireContinuously: 0
   handPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 0, y: 0, z: 0}
   inventoryItemPrefab: {fileID: 190822, guid: bc23669ce57d06945ac6813cd2e57c56, type: 2}
+  autoFirePrimaryClip: 0
+  stopPrimaryClipOnHit: 1
+  attackClips:
+  - {fileID: 8300000, guid: d7da00a130960074db449989c0dac553, type: 3}
+  - {fileID: 8300000, guid: 4d02c5122f563ba4299db00ade4f2167, type: 3}
+  - {fileID: 8300000, guid: dc9b21f48ff5ae24698a2697b9a057da, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d7da00a130960074db449989c0dac553, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d02c5122f563ba4299db00ade4f2167, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attackClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc9b21f48ff5ae24698a2697b9a057da, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141310}
