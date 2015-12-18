@@ -8,6 +8,16 @@ public class OverlayManager : MonoBehaviour
     private int poisonOverlayCount = 0;
     public bool IsPoisonOverlayBusy { get { return poisonOverlayCount != 0; } }
 
+    private void Start()
+    {
+        if (Camera.main != null)
+        {
+            OnRenderImageCallback cb = Camera.main.GetComponent<OnRenderImageCallback>();
+            if (cb != null)
+                cb.manager = this;
+        }
+    }
+
     public void Update()
     {
         if (overlays[(int)OverlayEnum.Poison] != null)
