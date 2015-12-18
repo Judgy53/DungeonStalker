@@ -572,23 +572,23 @@ Prefab:
       objectReference: {fileID: 478724946}
     - target: {fileID: 22449730, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -425
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
@@ -892,9 +892,9 @@ MonoBehaviour:
     dropChance: .200000003
   - itemGo: {fileID: 181914, guid: 88b2652a79c27694996d25844f35773b, type: 2}
     dropChance: .400000006
-  - itemGo: {fileID: 106920, guid: 5a4230a0f2763754b958bcdc5cdd4a03, type: 2}
+  - itemGo: {fileID: 120742, guid: 4bbbd0efc65bc4e45a91711992d6ff1a, type: 2}
     dropChance: .400000006
-  - itemGo: {fileID: 181914, guid: 88b2652a79c27694996d25844f35773b, type: 2}
+  - itemGo: {fileID: 155994, guid: 8c5256bf836e18d48b65daf469ac84fe, type: 2}
     dropChance: .400000006
   maxItemNumber: 8
 --- !u!1 &1754174660
