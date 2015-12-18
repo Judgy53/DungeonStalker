@@ -9,11 +9,6 @@ public class Headbob : MonoBehaviour
     public float midpoint = 0.0f;
     private float timer = 0.0f;
 
-    /*private void Start()
-    {
-        midpoint = transform.localPosition.y;
-    }*/
-
     private void Update()
     {
         float waveslice = 0.0f;
