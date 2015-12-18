@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour, ISavable
 
         Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
         
-        /*List<Container> chests = mazeInstance.Chests;
+        List<Container> chests = mazeInstance.Chests;
         if (chests.Count != 0)
         {
             if (keyPrefab != null)
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour, ISavable
             }
         }
         else
-            mazeInstance.ExitDoor.Locked = false;*/
+            mazeInstance.ExitDoor.Locked = false;
 
         if (debugSpawnBeforePathfinding)
             Grid_OnProcessingQueueEmpty(null, new EventArgs());
