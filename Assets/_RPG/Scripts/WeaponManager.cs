@@ -135,6 +135,8 @@ public class WeaponManager : MonoBehaviour, ISavable
     private AudioSource mhPrimarySource;
     private AudioSource ohPrimarySource;
 
+    private bool saveLoaded = false;
+
     private void Start()
     {
         driver = GetComponent<AnimationDriverBase>();
@@ -147,10 +149,10 @@ public class WeaponManager : MonoBehaviour, ISavable
                 Debug.LogWarning("StartAmmo defined on " + this.name + " is not a IRangedWeaponAmmo.");
         }
 
-        if (debugMainHandStartWeaponPrefab != null && MainHandWeapon == null)
+        if (debugMainHandStartWeaponPrefab != null && MainHandWeapon == null && saveLoaded == false)
             MainHandWeapon = (GameObject.Instantiate(debugMainHandStartWeaponPrefab, Vector3.zero, debugMainHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
 
-        if (debugOffHandStartWeaponPrefab != null && OffHandWeapon == null)
+        if (debugOffHandStartWeaponPrefab != null && OffHandWeapon == null && saveLoaded == false)
             OffHandWeapon = (GameObject.Instantiate(debugOffHandStartWeaponPrefab, Vector3.zero, debugOffHandStartWeaponPrefab.transform.rotation) as GameObject).GetComponent<IWeapon>();
     }
 
@@ -455,6 +457,8 @@ public class WeaponManager : MonoBehaviour, ISavable
 
             CurrentAmmos = ammo;
         }
+
+        saveLoaded = true;
     }
 
     public void PlayPrimarySound()
