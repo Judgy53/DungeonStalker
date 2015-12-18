@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour, ISavable
     public static uint Stage { get { return instance.stage; } set { instance.stage = value; } }
 
     [SerializeField]
+    private ItemStageKey keyPrefab = null;
+
+    [SerializeField]
     private AutoSaver autoSaver = null;
 
     private SaveData toLoad = null;
@@ -77,6 +80,8 @@ public class GameManager : MonoBehaviour, ISavable
     public static int EnemiesNumber { get { return instance.enemiesNumber; } }
     private int chestNumber = 0;
 
+    public LootTable chestLootTable = null;
+
     private bool generateMaze = false;
 
     private Grid gridInstance = null;
@@ -89,7 +94,7 @@ public class GameManager : MonoBehaviour, ISavable
 
     [SerializeField]
     private AudioClip inGameClip;
-
+    
     private void Awake()
     {
         if (instance != null)
@@ -100,8 +105,8 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
-        //LoadStage(stage);
-        GoToMainMenu();
+        LoadStage(stage);
+        //GoToMainMenu();
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -171,8 +176,27 @@ public class GameManager : MonoBehaviour, ISavable
 
         Grid.OnProcessingQueueEmpty += Grid_OnProcessingQueueEmpty;
         
-        List<Container> chests = mazeInstance.Chests;
-        //Generate loot.
+        /*List<Container> chests = mazeInstance.Chests;
+        if (chests.Count != 0)
+        {
+            if (keyPrefab != null)
+            {
+                ItemStageKey key = GameObject.Instantiate(keyPrefab);
+                key.Initialize((int)stage);
+                if (!chests[0].AddItem(key))
+                    mazeInstance.ExitDoor.Locked = false;
+            }
+            else
+                mazeInstance.ExitDoor.Locked = false;
+
+            if (chestLootTable != null)
+            {
+                foreach (Container chest in chests)
+                    chestLootTable.GenerateLoot(chest);
+            }
+        }
+        else
+            mazeInstance.ExitDoor.Locked = false;*/
 
         if (debugSpawnBeforePathfinding)
             Grid_OnProcessingQueueEmpty(null, new EventArgs());

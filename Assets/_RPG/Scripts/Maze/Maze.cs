@@ -49,6 +49,8 @@ public class Maze : MonoBehaviour
     public int Seed { get { return seed; } set { seed = value; } }
 
     public DoorChangeStage exitDoorPrefab = null;
+    private DoorChangeStage exitDoor = null;
+    public DoorChangeStage ExitDoor { get { return exitDoor; } }
 
     public Vector2i RandomCoordinates
     {
@@ -182,7 +184,7 @@ public class Maze : MonoBehaviour
 
         while (chestsGenerated < number)
         {
-            if (enemies.Count % 10 == 0)
+            if (chests.Count % 10 == 0)
                 yield return false;
 
             if (activeCells.Count == 0)
@@ -306,9 +308,9 @@ public class Maze : MonoBehaviour
                     rcell.DestroyEdge(dir);
                     Vector2i coordinates = rcell.coordinates + dir.ToVector2i();
                     if (ContainsCoordinates(coordinates))
-                        CreateChangeStageDoor(rcell, GetCell(coordinates), dir, 1);
+                        exitDoor = CreateChangeStageDoor(rcell, GetCell(coordinates), dir, 1);
                     else
-                        CreateChangeStageDoor(rcell, null, dir, 1);
+                        exitDoor = CreateChangeStageDoor(rcell, null, dir, 1);
 
                     return;
                 }
@@ -380,12 +382,14 @@ public class Maze : MonoBehaviour
         }
     }
 
-    public void CreateChangeStageDoor(MazeCell cell, MazeCell otherCell, MazeDirection direction, uint delta)
+    public DoorChangeStage CreateChangeStageDoor(MazeCell cell, MazeCell otherCell, MazeDirection direction, uint delta)
     {
         DoorChangeStage newDoor = GameObject.Instantiate(exitDoorPrefab as Behaviour, transform.position, transform.rotation) as DoorChangeStage;
         newDoor.Delta = delta;
 
         newDoor.Initialize(cell, otherCell, direction);
+
+        return newDoor;
     }
 
     public bool ContainsCoordinates(Vector2i coordinate)
