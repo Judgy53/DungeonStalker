@@ -276,9 +276,12 @@ public class GameManager : MonoBehaviour, ISavable
         OnPlayerCreation = null;
         OnMazeGenerationFinished = null;
         OnMazePopulationFinished = null;
+        OnMazeChestGenerationFinished = null;
 
         instance.stage = s;
         instance.generateMaze = true;
+
+        UnityEngine.Random.seed = instance.seed;
 
         instance.enemiesNumber = UnityEngine.Random.Range(instance.minEnemies, instance.maxEnemies + 1);
         instance.chestNumber = UnityEngine.Random.Range(instance.minChestNumber, instance.maxChestNumber + 1);
