@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 146290, guid: 14c26e1cc530bc44ba3a1470ad0b6bfa, type: 2}
   - {fileID: 158406, guid: 231dd5e483a173944902b789ceb623fa, type: 2}
   - {fileID: 124020, guid: c05542563f7aa9f4ab20143c41078a27, type: 2}
+  - {fileID: 142514, guid: 5de0f3b7c2ed3cf48b7ec2b787c0593e, type: 2}
 --- !u!4 &478724947
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,19 +1091,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
@@ -1641,6 +1642,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1321811100}
   - 114: {fileID: 1321811099}
+  - 114: {fileID: 1321811101}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1670,7 +1672,9 @@ MonoBehaviour:
   debugSpawnBeforePathfinding: 0
   seed: 42
   stage: 1
+  keyPrefab: {fileID: 11409790, guid: aa4a6acd6a0e4dc4d8cff1e3ca388008, type: 2}
   autoSaver: {fileID: 0}
+  chestLootTable: {fileID: 1321811101}
   menuClip: {fileID: 8300000, guid: 328ccf6f2478d70489e4361dae0000fb, type: 3}
   inGameClip: {fileID: 8300000, guid: 3a281b30f8c853941b1185f5fa1627a8, type: 3}
 --- !u!4 &1321811100
@@ -1685,6 +1689,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!114 &1321811101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321811098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c587843333eedc34c8b4c725ac1d312b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootChance: 0
+  container: {fileID: 0}
+  lootTable:
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: 1
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: 1
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: 1
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: 1
+  - itemGo: {fileID: 138962, guid: 8c195537c1db35440bb2df4dc5589d30, type: 2}
+    dropChance: 1
+  maxItemNumber: 3
 --- !u!1001 &1627871843
 Prefab:
   m_ObjectHideFlags: 0

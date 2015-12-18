@@ -60,4 +60,9 @@ public class ItemStageKey : MonoBehaviour, IItem
     public void Load(SaveData data)
     {
     }
+
+    public void Initialize(int stage)
+    {
+        stageValue = stage;
+    }
 }

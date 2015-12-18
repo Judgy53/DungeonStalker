@@ -20,7 +20,7 @@ public class LootTable : MonoBehaviour
     public void Awake()
     {
         //Sorted rarest to most common
-        System.Array.Sort(lootTable, delegate(Loot x, Loot y)
+        System.Array.Sort(lootTable, delegate (Loot x, Loot y)
         {
             if (x.dropChance < y.dropChance)
                 return -1;
@@ -41,6 +41,11 @@ public class LootTable : MonoBehaviour
         if (Container.Items.Length > 0) // if is already filled, don't generate loot
             return;
 
+        GenerateLoot(Container);
+    }
+
+    public void GenerateLoot(IContainer container)
+    {
         float rand = Random.Range(0.0f, 1.0f);
         if (rand > lootChance)
             return;
@@ -60,13 +65,14 @@ public class LootTable : MonoBehaviour
                 GameObject itemgo = GameObject.Instantiate(loot.itemGo, Vector3.zero, Quaternion.identity) as GameObject;
                 IItem item = itemgo.GetComponent<IItem>();
 
-                Container.AddItem(item);
+                if (!container.AddItem(item))
+                    GameObject.Destroy(itemgo);
+
                 addedItemCount++;
             }
         }
     }
 }
-
 [System.Serializable]
 public class Loot
 {

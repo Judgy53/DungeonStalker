@@ -2303,7 +2303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ca83462d45e440b9b6bb1782b7595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  god: 1
+  god: 0
   maxHealth: 100
 --- !u!114 &11429896
 MonoBehaviour:
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   moveSpeed: {x: 1.5, y: 0, z: 1.5}
   sprintMultiplier: 1.5
   jumpForce: 1.75
-  debugSuperJump: 1
+  debugSuperJump: 0
   gravityMultiplier: .5
   jumpClip: {fileID: 8300000, guid: 15f166573920467499e8f0aab2df0d90, type: 3}
   landClip: {fileID: 8300000, guid: 991e08b2107e7074f90749b4d4c4b397, type: 3}
