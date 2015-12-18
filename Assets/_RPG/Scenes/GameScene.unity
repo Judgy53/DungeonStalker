@@ -241,6 +241,7 @@ GameObject:
   - 81: {fileID: 559763286}
   - 114: {fileID: 559763291}
   - 114: {fileID: 559763292}
+  - 114: {fileID: 559763293}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -337,6 +338,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883a5e198889b3b4087edd602318c004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &559763293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 559763285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a315af6bd3b4d0f4bbea4174e38c3106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 10
+  bobbingAmount: .0500000007
+  midpoint: 0
 --- !u!1 &663145401
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,19 +576,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22402710, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22492394, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524641a9e9bfab0458fca7078bed199c, type: 2}
