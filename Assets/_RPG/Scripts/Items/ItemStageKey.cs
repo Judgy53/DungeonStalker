@@ -55,10 +55,12 @@ public class ItemStageKey : MonoBehaviour, IItem
 
     public void Save(SaveData data)
     {
+        data.Add("stageValue", stageValue);
     }
 
     public void Load(SaveData data)
     {
+        stageValue = int.Parse(data.Get("stageValue"));
     }
 
     public void Initialize(int stage)

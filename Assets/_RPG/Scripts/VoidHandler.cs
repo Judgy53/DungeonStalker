@@ -3,7 +3,7 @@ using System.Collections;
 
 public class VoidHandler : MonoBehaviour
 {
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
         if(collider.tag == "Player")
         {
