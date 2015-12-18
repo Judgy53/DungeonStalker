@@ -61,6 +61,12 @@ public class AudioManager : MonoBehaviour
 
     public static AudioSource PlaySfx(AudioClip clip, Transform emitter, float volume = 1.0f, bool loop = false)
     {
+        if (instance == null)
+        {
+            Debug.LogError("AudioManager not instantiated !");
+            return null;
+        }
+
         GameObject gao = Instantiate<GameObject>(instance.audioSourcePrefab);
         gao.name = "SfxClip_" + clip.name;
         gao.transform.position = Vector3.zero;
@@ -82,6 +88,12 @@ public class AudioManager : MonoBehaviour
 
     public static AudioSource PlaySfx(AudioClip clip, Vector3 position, float volume = 1.0f)
     {
+        if(instance == null)
+        {
+            Debug.LogError("AudioManager not instantiated !");
+            return null;
+        }
+
         GameObject gao = Instantiate<GameObject>(instance.audioSourcePrefab);
         gao.name = "SfxClip_" + clip.name;
         gao.transform.position = position;
@@ -100,6 +112,12 @@ public class AudioManager : MonoBehaviour
 
     public static AudioSource PlayMusic(AudioClip clip, Transform emitter, float volume = 1.0f)
     {
+        if (instance == null)
+        {
+            Debug.LogError("AudioManager not instantiated !");
+            return null;
+        }
+
         GameObject gao = Instantiate<GameObject>(instance.audioSourcePrefab);
         gao.name = "MusicClip_" + clip.name;
         gao.transform.position = Vector3.zero;

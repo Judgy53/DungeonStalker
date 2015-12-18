@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour, ISavable
     private int timePlayed;
     public static int TimePlayed { get { return instance.timePlayed; } set { instance.timePlayed = value; } }
 
+    private bool countingTime = false;
+
+    private float updateTimePlayed = 0f;
+
     private string playerName = "Player";
     public static string PlayerName { get { return instance.playerName; } set { instance.playerName = value; } }
 
@@ -105,25 +109,32 @@ public class GameManager : MonoBehaviour, ISavable
 
         instance = this;
 
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void Start()
+    {
         //LoadStage(stage);
         GoToMainMenu();
+    }
 
-        DontDestroyOnLoad(this.gameObject);
+    private void Update()
+    {
+        if(countingTime)
+        {
+            updateTimePlayed += Time.deltaTime;
+            if(updateTimePlayed >= 1f)
+            {
+                timePlayed++;
+                updateTimePlayed %= 1f;
+            }
+        }
     }
 
     public static void ResetTime(int played)
     {
         StartTime = DateTime.Now;
         TimePlayed = played;
-    }
-
-    private IEnumerator UpdateTimePlayed()
-    {
-        while (true) // must use StopCoroutine to stop the loop
-        {
-            timePlayed += 1;
-            yield return new WaitForSeconds(1f);
-        }
     }
 
     private void MazeGenerationFinished(bool manual)
@@ -239,7 +250,7 @@ public class GameManager : MonoBehaviour, ISavable
             if (OnPlayerCreation != null)
                 OnPlayerCreation(this, new EventPlayerCreationArgs(player));
 
-            StartCoroutine("UpdateTimePlayed");
+            countingTime = true;
 
             AudioManager.PlayMusic(instance.inGameClip, Camera.main.transform);
         }
@@ -291,6 +302,8 @@ public class GameManager : MonoBehaviour, ISavable
             Camera.main.transform.SetParent(null, false);
         }
 
+        instance.countingTime = false;
+
         Application.LoadLevel("GameScene");
     }
 
@@ -309,7 +322,7 @@ public class GameManager : MonoBehaviour, ISavable
                 instance.player = null;
             }
 
-            instance.StopCoroutine("UpdateTimePlayed");
+            instance.countingTime = false;
 
             AudioManager.PlayMusic(instance.menuClip, Camera.main.transform);
        }
